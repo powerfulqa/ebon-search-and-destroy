@@ -123,6 +123,9 @@ me.OptionsCharacterDefault = {
 		[ 5340 ] = L.NPCs[ 5340 ]; -- [Ebonhold] vanilla rares
 		[ 5354 ] = L.NPCs[ 5354 ]; -- [Ebonhold] vanilla rares
 		[ 5355 ] = L.NPCs[ 5355 ]; -- [Ebonhold] vanilla rares
+		[ 1766 ] = L.NPCs[ 1766 ]; -- [Ebonhold] vanilla rares
+		[ 1768 ] = L.NPCs[ 1768 ]; -- [Ebonhold] vanilla rares
+		[ 1694 ] = L.NPCs[ 1694 ]; -- [Ebonhold] vanilla rares
 	};
 	NPCWorldIDs = {
 		[ 18684 ] = 3; -- Bro'Gaz the Clanless
@@ -217,6 +220,9 @@ me.OptionsCharacterDefault = {
 		[ 5340 ] = 1; -- [Ebonhold] vanilla rares
 		[ 5354 ] = 1; -- [Ebonhold] vanilla rares
 		[ 5355 ] = 1; -- [Ebonhold] vanilla rares
+		[ 1766 ] = 2; -- [Ebonhold] vanilla rares
+		[ 1768 ] = 2; -- [Ebonhold] vanilla rares
+		[ 1694 ] = 2; -- [Ebonhold] vanilla rares
 	};
 	Achievements = {
 		[ 1312 ] = true; -- Bloody Rare (Outlands)

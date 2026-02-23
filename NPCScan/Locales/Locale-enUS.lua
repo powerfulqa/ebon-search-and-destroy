@@ -99,6 +99,9 @@ select( 2, ... ).L = setmetatable( {
 		[ 5340 ] = "Simone the Inconspicuous", -- [Ebonhold] vanilla rares
 		[ 5354 ] = "Gibblewilt", -- [Ebonhold] vanilla rares
 		[ 5355 ] = "The Minstrel", -- [Ebonhold] vanilla rares
+		[ 1766 ] = "Mirelow", -- [Ebonhold] vanilla rares
+		[ 1768 ] = "Sever", -- [Ebonhold] vanilla rares
+		[ 1694 ] = "Zaricotl", -- [Ebonhold] vanilla rares
 	};
 
 	BUTTON_FOUND = "NPC found!",

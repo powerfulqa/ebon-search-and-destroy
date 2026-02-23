@@ -226,7 +226,7 @@ do
 							Plate._NPCScanHighlight = Highlight;
 						end
 						Plate._NPCScanHighlight:Show();
-						me.Button.HighlightedPlate = Plate;
+						me.HighlightedPlate = Plate;
 					end
 				end );
 			end

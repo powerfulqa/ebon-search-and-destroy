@@ -238,7 +238,7 @@ me.Achievements = { --- Criteria data for each achievement.
 me.ContinentIDs = {}; --- [ Localized continent name ] = Continent ID (mirrors WorldMapContinent.dbc)
 
 me.NpcIDMax = 0xFFFFF; --- Largest ID that will fit in a GUID's 20-bit NPC ID field.
-me.Frame.UpdateRate = 0.1;
+me.Frame.UpdateRate = 0.5; -- [Ebonhold] nameplate detection
 
 
 
@@ -380,6 +380,9 @@ end
 
 --- @return True if the given WorldID is active on the current world.
 local function IsWorldIDActive ( WorldID )
+	if ( WorldID ~= nil and WorldID ~= me.WorldID ) then
+		print( "[NPCScan DEBUG] WorldID REJECTED for NPC, NPC WorldID: "..tostring( WorldID ).." Current: "..tostring( me.WorldID ) ); -- [DEBUG]
+	end
 	return not WorldID or WorldID == me.WorldID; -- False/nil active on all worlds
 end
 
@@ -389,6 +392,7 @@ do
 	--- Starts actual scan for NPC if on the right world.
 	function NPCActivate ( NpcID, WorldID )
 		if ( not NPCsActive[ NpcID ] and IsWorldIDActive( WorldID ) and ScanAdd( NpcID ) ) then
+			print( "[NPCScan DEBUG] Activating NPC: "..tostring( NpcID ).." WorldID: "..tostring( WorldID ) ); -- [DEBUG]
 			NPCsActive[ NpcID ] = true;
 			me.Config.Search.UpdateTab( "NPC" );
 			return true; -- Successfully activated
@@ -674,6 +678,7 @@ do
 	end
 	--- Validates found mobs before showing alerts.
 	local function OnFound ( NpcID, Name )
+		print( "[NPCScan DEBUG] OnFound fired for: "..tostring( Name ) ); -- [Ebonhold]
 		-- Disable active scans
 		NPCDeactivate( NpcID );
 		for AchievementID in pairs( me.OptionsCharacter.Achievements ) do
@@ -689,6 +694,8 @@ do
 		if ( Valid ) then
 			me.Print( L[ Tamable and "FOUND_TAMABLE_FORMAT" or "FOUND_FORMAT" ]:format( Name ), GREEN_FONT_COLOR );
 			me.Button:SetNPC( NpcID, Name ); -- Sends added and found overlay messages
+			print( "[NPCScan DEBUG] SetNPC called, button visible: "..tostring( me.Button:IsVisible() ) ); -- [Ebonhold]
+			print( "[NPCScan DEBUG] Button NPC set to: "..tostring( Name ) ); -- [Ebonhold]
 		elseif ( InvalidReason ) then
 			me.Print( InvalidReason );
 		end
@@ -696,6 +703,26 @@ do
 
 	local pairs = pairs;
 	local GetAchievementCriteriaInfo = GetAchievementCriteriaInfo;
+	local UnitExists = UnitExists;
+	local UnitName = UnitName;
+	-- [Ebonhold] nameplate detection
+	local function ScanNameplates ()
+		for i = 1, 40 do
+			local Unit = "nameplate"..i;
+			if ( UnitExists( Unit ) ) then
+				local Name = UnitName( Unit );
+				if ( Name ) then
+					for NpcID in pairs( ScanIDs ) do
+						if ( me.OptionsCharacter.NPCs[ NpcID ] == Name ) then
+							print( "[NPCScan DEBUG] NAMEPLATE HIT: "..Name ); -- [Ebonhold] nameplate detection
+							OnFound( NpcID, Name );
+							return true;
+						end
+					end
+				end
+			end
+		end
+	end
 	--- Scans all active criteria and removes any completed NPCs.
 	local function AchievementCriteriaUpdate ()
 		if ( not me.Options.AchievementsAddFound ) then
@@ -721,17 +748,21 @@ do
 	function me.Frame:OnUpdate ( Elapsed )
 		NextUpdate = NextUpdate - Elapsed;
 		if ( NextUpdate <= 0 ) then
-			LastUpdate = self.UpdateRate;
+			NextUpdate = self.UpdateRate; -- [Ebonhold] nameplate detection
 
 			if ( CriteriaUpdated ) then -- CRITERIA_UPDATE bucket
 				CriteriaUpdated = false;
 				AchievementCriteriaUpdate();
 			end
 
-			for NpcID in pairs( ScanIDs ) do
-				local Name = me.TestID( NpcID );
-				if ( Name ) then
-					OnFound( NpcID, Name );
+			local Found = ScanNameplates(); -- [Ebonhold] nameplate detection
+			if ( not Found ) then
+				for NpcID in pairs( ScanIDs ) do
+					local Name = me.TestID( NpcID );
+					if ( Name ) then
+						OnFound( NpcID, Name );
+						break;
+					end
 				end
 			end
 		end
@@ -818,6 +849,8 @@ do
 		-- Since real MapIDs aren't available to addons, a "WorldID" is a universal ContinentID or the map's localized name.
 		local MapName = GetInstanceInfo();
 		me.WorldID = me.ContinentIDs[ MapName ] or MapName;
+		print( "[NPCScan DEBUG] WorldID set to: "..tostring( me.WorldID ) ); -- [DEBUG]
+		print( "[NPCScan DEBUG] ContinentIDs: "..tostring( me.ContinentIDs ) ); -- [DEBUG]
 
 		-- Activate scans on this world
 		for NpcID, WorldID in pairs( me.OptionsCharacter.NPCWorldIDs ) do
@@ -827,6 +860,14 @@ do
 			local Achievement = me.Achievements[ AchievementID ];
 			if ( Achievement.WorldID ) then
 				AchievementActivate( Achievement );
+			end
+		end
+
+		-- [Ebonhold] timing fix: re-activate NPCs added during PLAYER_LOGIN
+		-- before WorldID was known and therefore rejected
+		for NpcID in pairs( me.OptionsCharacter.NPCs ) do
+			if ( not ScanIDs[ NpcID ] ) then
+				NPCActivate( NpcID, me.OptionsCharacter.NPCWorldIDs[ NpcID ] );
 			end
 		end
 

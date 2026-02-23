@@ -76,6 +76,7 @@ end
 -- If in combat, queues the button to appear when combat ends.
 -- @see me:Update
 function me:SetNPC ( ID, Name )
+	self.NpcName = Name; -- [Ebonhold]
 	if ( tonumber( ID ) ) then
 		ID = tonumber( ID );
 		_NPCScan.Overlays.Add( ID );
@@ -102,6 +103,7 @@ end
 -- @param ID  A numeric NpcID or string UnitID.
 -- @param Name  Localized name of the unit.  If ID is an NpcID, Name is used in the targetting macro.
 function me:Update ( ID, Name )
+	print( "[NPCScan DEBUG] Update() called, InCombatLockdown: "..tostring( InCombatLockdown() ) ); -- [Ebonhold]
 	if ( type( self.ID ) == "number" ) then -- Remove last overlay
 		_NPCScan.Overlays.Remove( self.ID );
 	end
@@ -120,9 +122,10 @@ function me:Update ( ID, Name )
 		Name = ID;
 		self:RegisterEvent( "UNIT_MODEL_CHANGED" );
 	end
-	self:SetAttribute( "macrotext", "/cleartarget\n/targetexact "..Name );
+	self:SetAttribute( "macrotext", "/targetexact "..Name ); -- [Ebonhold]
 	self:PLAYER_TARGET_CHANGED(); -- Updates the target icon
 
+	print( "[NPCScan DEBUG] Update() reached Show()" ); -- [Ebonhold]
 	self:Show();
 	self:StopAnimating();
 	self.Glow:Play();
@@ -153,6 +156,11 @@ function me:OnHide ()
 	self:UnregisterEvent( "PLAYER_TARGET_CHANGED" );
 	self:UnregisterEvent( "UNIT_MODEL_CHANGED" );
 	self:EnableDrag( false );
+	-- [Ebonhold] nameplate highlight cleanup
+	if ( self.HighlightedPlate and self.HighlightedPlate._NPCScanHighlight ) then
+		self.HighlightedPlate._NPCScanHighlight:Hide();
+		self.HighlightedPlate = nil;
+	end
 
 	if ( type( self.ID ) == "number" ) then -- Remove current overlay
 		_NPCScan.Overlays.Remove( self.ID );
@@ -195,12 +203,32 @@ do
 	end
 	--- Raid marks the rare when it's targetted.
 	function me:PLAYER_TARGET_CHANGED ()
+		-- [Ebonhold] clear nameplate highlight when target changes
+		if ( self.HighlightedPlate and self.HighlightedPlate._NPCScanHighlight ) then
+			if ( not UnitExists( "target" ) or UnitName( "target" ) ~= self.NpcName ) then
+				self.HighlightedPlate._NPCScanHighlight:Hide();
+				self.HighlightedPlate = nil;
+			end
+		end
 		local ID = self.ID;
 		if ( TargetIsFoundRare( ID ) ) then
-			if ( GetRaidTargetIndex( "target" ) ~= self.RaidTargetIcon -- Wrong mark
-				and ( GetNumRaidMembers() == 0 or IsRaidOfficer() ) -- Player can mark
-			) then
-				SetRaidTarget( "target", self.RaidTargetIcon );
+			-- [Ebonhold] nameplate highlight for found target
+			if ( UnitExists( "target" ) and UnitName( "target" ) == self.NpcName ) then
+				-- [Ebonhold] delay highlight to allow nameplate to initialize
+				C_Timer.After( 0.1, function ()
+					local Plate = C_NamePlate.GetNamePlateForUnit( "target" );
+					if ( Plate ) then
+						if ( not Plate._NPCScanHighlight ) then
+							local Highlight = Plate:CreateTexture( nil, "OVERLAY" );
+							Highlight:SetAllPoints( Plate );
+							Highlight:SetTexture( "Interface\\TargetingFrame\\UI-TargetingFrame-Flash" );
+							Highlight:SetBlendMode( "ADD" );
+							Plate._NPCScanHighlight = Highlight;
+						end
+						Plate._NPCScanHighlight:Show();
+						me.Button.HighlightedPlate = Plate;
+					end
+				end );
 			end
 
 			if ( type( ID ) == "number" ) then -- Update model with more accurate visual

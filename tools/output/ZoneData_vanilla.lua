@@ -3,3 +3,16 @@
 Add( 1, 1100, 900 ); -- Elwynn Forest
 Add( 21, 1200, 977 ); -- Tirisfal Glades
 Add( 215, 1100, 895 ); -- Mulgore
+Add( 33, 950, 773 ); -- Silverpine Forest
+Add( 38, 875, 712 ); -- Loch Modan
+Add( 41, 1000, 812 ); -- Westfall
+Add( 44, 1087, 884 ); -- Redridge Mountains
+Add( 10, 900, 732 ); -- Duskwood
+Add( 45, 1037, 843 ); -- Arathi Highlands
+Add( 40, 1262, 1028 ); -- Wetlands
+Add( 1413, 800, 651 ); -- Teldrassil
+Add( 148, 925, 753 ); -- Darkshore
+Add( 15, 937, 762 ); -- Ashenvale
+Add( 7, 925, 753 ); -- Stonetalon Mountains
+Add( 405, 925, 753 ); -- Desolace
+Add( 357, 925, 753 ); -- Feralas

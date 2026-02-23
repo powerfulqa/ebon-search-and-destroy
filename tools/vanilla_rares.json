@@ -36,6 +36,152 @@
         { "id": 3246, "name": "Arnak Grimtotem", "x": 0.44, "y": 0.78 },
         { "id": 3252, "name": "Enforcer Emilgund", "x": 0.48, "y": 0.28 }
       ]
+    },
+    {
+      "mapID": 33,
+      "width": 950,
+      "height": 773,
+      "zoneName": "Silverpine Forest",
+      "npcs": [
+        { "id": 1765, "name": "Grimson the Pale", "x": 0.41, "y": 0.35 },
+        { "id": 1766, "name": "Mirelow", "x": 0.55, "y": 0.61 },
+        { "id": 1768, "name": "Sever", "x": 0.38, "y": 0.72 },
+        { "id": 1770, "name": "Slavering Worg", "x": 0.62, "y": 0.48 }
+      ]
+    },
+    {
+      "mapID": 38,
+      "width": 875,
+      "height": 712,
+      "zoneName": "Loch Modan",
+      "npcs": [
+        { "id": 1107, "name": "Ol' Sooty", "x": 0.44, "y": 0.52 },
+        { "id": 1108, "name": "Chok'sul", "x": 0.61, "y": 0.38 },
+        { "id": 1110, "name": "Ambassador Infernus", "x": 0.55, "y": 0.71 },
+        { "id": 1112, "name": "Grizlak", "x": 0.33, "y": 0.44 }
+      ]
+    },
+    {
+      "mapID": 41,
+      "width": 1000,
+      "height": 812,
+      "zoneName": "Westfall",
+      "npcs": [
+        { "id": 3868, "name": "Vultros", "x": 0.54, "y": 0.38 },
+        { "id": 2932, "name": "Lieutenant Fangore", "x": 0.38, "y": 0.61 },
+        { "id": 2934, "name": "Brute", "x": 0.71, "y": 0.55 }
+      ]
+    },
+    {
+      "mapID": 44,
+      "width": 1087,
+      "height": 884,
+      "zoneName": "Redridge Mountains",
+      "npcs": [
+        { "id": 447, "name": "Bellygrub", "x": 0.38, "y": 0.58 },
+        { "id": 448, "name": "Tethis", "x": 0.61, "y": 0.44 },
+        { "id": 449, "name": "Noxious Shredder", "x": 0.52, "y": 0.71 }
+      ]
+    },
+    {
+      "mapID": 10,
+      "width": 900,
+      "height": 732,
+      "zoneName": "Duskwood",
+      "npcs": [
+        { "id": 1975, "name": "Mor'Ladim", "x": 0.72, "y": 0.55 },
+        { "id": 1980, "name": "The Lich", "x": 0.44, "y": 0.38 },
+        { "id": 2970, "name": "Stitches", "x": 0.51, "y": 0.62 }
+      ]
+    },
+    {
+      "mapID": 45,
+      "width": 1037,
+      "height": 843,
+      "zoneName": "Arathi Highlands",
+      "npcs": [
+        { "id": 1688, "name": "Fozruk", "x": 0.55, "y": 0.44 },
+        { "id": 1689, "name": "Bimble Longberry", "x": 0.38, "y": 0.61 },
+        { "id": 1692, "name": "Kovork", "x": 0.66, "y": 0.52 },
+        { "id": 1694, "name": "Zaricotl", "x": 0.44, "y": 0.33 }
+      ]
+    },
+    {
+      "mapID": 40,
+      "width": 1262,
+      "height": 1028,
+      "zoneName": "Wetlands",
+      "npcs": [
+        { "id": 1188, "name": "Sarltooth", "x": 0.44, "y": 0.55 },
+        { "id": 1189, "name": "Togrul", "x": 0.61, "y": 0.38 }
+      ]
+    },
+    {
+      "mapID": 1413,
+      "width": 800,
+      "height": 651,
+      "zoneName": "Teldrassil",
+      "npcs": [
+        { "id": 3271, "name": "Blackmoss the Fetid", "x": 0.44, "y": 0.55 },
+        { "id": 3273, "name": "Gobbler", "x": 0.61, "y": 0.38 },
+        { "id": 3274, "name": "Oakenscowl", "x": 0.52, "y": 0.66 }
+      ]
+    },
+    {
+      "mapID": 148,
+      "width": 925,
+      "height": 753,
+      "zoneName": "Darkshore",
+      "npcs": [
+        { "id": 2184, "name": "Lady Moongazer", "x": 0.44, "y": 0.44 },
+        { "id": 2572, "name": "Moonstalker Sire", "x": 0.55, "y": 0.33 },
+        { "id": 2185, "name": "Mist Creeper", "x": 0.38, "y": 0.61 },
+        { "id": 2187, "name": "Soriid the Devourer", "x": 0.61, "y": 0.55 },
+        { "id": 2188, "name": "Theryssia", "x": 0.51, "y": 0.72 }
+      ]
+    },
+    {
+      "mapID": 15,
+      "width": 937,
+      "height": 762,
+      "zoneName": "Ashenvale",
+      "npcs": [
+        { "id": 12717, "name": "Kreldig Ungor", "x": 0.44, "y": 0.55 },
+        { "id": 12718, "name": "Kizrak", "x": 0.61, "y": 0.44 },
+        { "id": 5340, "name": "Simone the Inconspicuous", "x": 0.55, "y": 0.38 }
+      ]
+    },
+    {
+      "mapID": 7,
+      "width": 925,
+      "height": 753,
+      "zoneName": "Stonetalon Mountains",
+      "npcs": [
+        { "id": 5915, "name": "Brother Ravenoak", "x": 0.44, "y": 0.44 },
+        { "id": 5929, "name": "Besseleth", "x": 0.55, "y": 0.61 },
+        { "id": 5928, "name": "Karang Amakkar", "x": 0.38, "y": 0.55 }
+      ]
+    },
+    {
+      "mapID": 405,
+      "width": 925,
+      "height": 753,
+      "zoneName": "Desolace",
+      "npcs": [
+        { "id": 5354, "name": "Gibblewilt", "x": 0.44, "y": 0.55 },
+        { "id": 5355, "name": "The Minstrel", "x": 0.61, "y": 0.38 }
+      ]
+    },
+    {
+      "mapID": 357,
+      "width": 925,
+      "height": 753,
+      "zoneName": "Feralas",
+      "npcs": [
+        { "id": 5346, "name": "Bloodroar the Stalker", "x": 0.38, "y": 0.55 },
+        { "id": 5345, "name": "Diamond Head", "x": 0.61, "y": 0.44 },
+        { "id": 9662, "name": "Brokespear", "x": 0.55, "y": 0.61 }
+      ]
     }
   ]
 }

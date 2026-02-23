@@ -1,0 +1,41 @@
+{
+  "zones": [
+    {
+      "mapID": 1,
+      "width": 1100,
+      "height": 900,
+      "zoneName": "Elwynn Forest",
+      "npcs": [
+        { "id": 2938, "name": "Bhag'thera", "x": 0.72, "y": 0.64 },
+        { "id": 2940, "name": "Princess", "x": 0.82, "y": 0.51 },
+        { "id": 2942, "name": "Morgan the Collector", "x": 0.79, "y": 0.72 },
+        { "id": 3670, "name": "Fedfennel", "x": 0.22, "y": 0.31 }
+      ]
+    },
+    {
+      "mapID": 21,
+      "width": 1200,
+      "height": 977,
+      "zoneName": "Tirisfal Glades",
+      "npcs": [
+        { "id": 1482, "name": "Ressan the Needler", "x": 0.44, "y": 0.26 },
+        { "id": 1484, "name": "Deeb", "x": 0.61, "y": 0.48 },
+        { "id": 1485, "name": "Sri'skulk", "x": 0.67, "y": 0.41 },
+        { "id": 1481, "name": "Bayne", "x": 0.51, "y": 0.55 },
+        { "id": 1480, "name": "Muad", "x": 0.18, "y": 0.44 }
+      ]
+    },
+    {
+      "mapID": 215,
+      "width": 1100,
+      "height": 895,
+      "zoneName": "Mulgore",
+      "npcs": [
+        { "id": 3248, "name": "The Rake", "x": 0.50, "y": 0.44 },
+        { "id": 3244, "name": "Snagglespear", "x": 0.56, "y": 0.71 },
+        { "id": 3246, "name": "Arnak Grimtotem", "x": 0.44, "y": 0.78 },
+        { "id": 3252, "name": "Enforcer Emilgund", "x": 0.48, "y": 0.28 }
+      ]
+    }
+  ]
+}

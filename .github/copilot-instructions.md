@@ -61,3 +61,11 @@ Ebonhold adds mechanics not present in standard WotLK. When writing or updating 
 - Warperia WotLK 3.3.5a addon library (use to find baseline/latest versions of existing addons before modifying): https://warperia.com/wotlk-addons/
 - Project Ebonhold bug tracker (check for known issues related to addon behaviour or custom system quirks before shipping changes): https://project-ebonhold.com/support/bug-tracker
 - Project Ebonhold main site: https://project-ebonhold.com/
+
+## _NPCScan Ebonhold Specifics
+- Passive nameplate scanner runs on its own always-shown frame, independent of ScanIDs state
+- Name extraction uses GetPlateNameDirect() — iterates plate:GetRegions() for FontString text
+- Never call OnFound from passive scan — use me.Button:SetNPC(NpcID, Name) directly
+- Saved vars guard: if OptionsCharacter.NPCs count < 10 at PLAYER_LOGIN, nil it to force defaults
+- Deploy via: powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
+- Source folders: _NPCScan/ and _NPCScanOverlay/ (underscore prefix always)

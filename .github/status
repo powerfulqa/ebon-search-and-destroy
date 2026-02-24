@@ -1,0 +1,17 @@
+## Current State (2026-02-24)
+Detection is fully working. Key fixes shipped:
+- Passive always-on nameplate scanner (ScanTrackedNameplates) added — scans all tracked NPCs in OptionsCharacter.NPCs regardless of cache state, calls me.Button:SetNPC directly (not OnFound)
+- GetPlateNameDirect() added — reads NPC name from plate:GetRegions() FontString directly, replaces broken recursive frame crawler
+- npcCount < 10 guard added in PLAYER_LOGIN — forces defaults to load when saved vars are truncated (fixes stale 2-entry saved vars issue)
+- me.Frame (main scan loop) is still present for TestID/namecache fallback for Outland/Northrend rares
+- me.Button.HighlightedPlate nil bug fixed in _NPCScan.Button.lua
+- Repo normalised: _NPCScan/ and _NPCScanOverlay/ are the only source folders
+- Deploy script: tools/deploy-addons.ps1 syncs to G:\Project Ebonhold\Ebonhold\Interface\AddOns\
+
+## Known limitations
+- If saved vars grow corrupt again, delete: G:\Project Ebonhold\Ebonhold\WTF\Account\SERV\Rogue-Lite (Live)\Serv\SavedVariables\_NPCScan.lua and /reload
+- Outland/Northrend detection (TestID path) not yet field-tested — needs confirmation when player travels there
+
+## Acceptance tests passed
+- Bayne (ID 1986) detected via nameplate in Eastern Kingdoms ✅
+- Toast appears and NPC count loads to 89 from defaults ✅

@@ -51,3 +51,27 @@ To add or update a spawn:
 1. Edit tools/vanilla_rares.json.
 2. Ensure x/y are normalized (divide in-game map percentages by 100).
 3. Re-run the script.
+
+## Addon deploy script
+
+Use this script to sync the repo addons into your live WoW AddOns folder with the required names:
+- `_NPCScan` -> `_NPCScan`
+- `_NPCScanOverlay` -> `_NPCScan.Overlay`
+
+### Run (default paths)
+
+From the repo root:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
+```
+
+Defaults:
+- RepoRoot: parent folder of `tools/`
+- AddOnsPath: `G:\Project Ebonhold\Ebonhold\Interface\AddOns`
+
+### Run (custom paths)
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1 -RepoRoot "C:\Users\Chris\ebon-search-and-destroy" -AddOnsPath "G:\Project Ebonhold\Ebonhold\Interface\AddOns"
+```

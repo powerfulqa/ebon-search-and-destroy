@@ -15,10 +15,5 @@ Scans for rare NPCs and fires a toast button when one is detected. Uses two para
 ```powershell
 powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
 ```
-
-## If detection stops working
-Delete the saved vars file and reload:
-G:\Project Ebonhold\Ebonhold\WTF\Account\SERV\Rogue-Lite (Live)\<CharName>\SavedVariables\_NPCScan.lua
-
 ## WoW version
 WotLK 3.3.5a — Interface: 30300

@@ -10,7 +10,7 @@
 			<AbsDimension x="1004" y="672" />
 		</Size>
 		<Anchors>
-			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="WorldMapPositioningGuide">
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="WorldMapDetailFrame">
 			</Anchor>
 		</Anchors>
 		<!-- <Layers>
@@ -30,31 +30,16 @@
 		<Scripts>
 			<OnUpdate>
 				self:SetAlpha(1.0);
-				if(WorldMapFrame.scale==WORLDMAP_RATIO_MINI) then
-					local newScale=WorldMapFrame:GetEffectiveScale()*0.572;
-					if(self:GetScale()~=newScale) then
-						self:SetScale(newScale);
-						self:ClearAllPoints();
-						self:SetPoint("TOPLEFT", WorldMapPositioningGuide, "TOPLEFT", 28, -60);
-						MobMap_PlaceMobMapButtonFrame();
-					end
-				elseif(WorldMapFrame.scale==WORLDMAP_RATIO_SMALL) then
-					local newScale=WorldMapFrame:GetEffectiveScale()*0.69;
-					if(self:GetScale()~=newScale) then
-						self:SetScale(newScale);
-						self:ClearAllPoints();
-						self:SetPoint("TOPLEFT", WorldMapPositioningGuide, "TOPLEFT", 10, -98);
-						MobMap_PlaceMobMapButtonFrame();
-					end
-				else
-					local newScale=WorldMapFrame:GetEffectiveScale();
-					if(self:GetScale()~=newScale) then
-						self:SetScale(newScale);
-						self:ClearAllPoints();
-						self:SetPoint("TOPLEFT", WorldMapPositioningGuide, "TOPLEFT", 4, -67);
-						MobMap_PlaceMobMapButtonFrame();
-					end
+				local detailFrame=WorldMapDetailFrame or WorldMapPositioningGuide;
+				local detailWidth=detailFrame:GetWidth();
+				local detailHeight=detailFrame:GetHeight();
+				if(self:GetWidth()~=detailWidth or self:GetHeight()~=detailHeight) then
+					self:SetWidth(detailWidth);
+					self:SetHeight(detailHeight);
+					MobMap_PlaceMobMapButtonFrame();
 				end
+				self:ClearAllPoints();
+				self:SetPoint("TOPLEFT", detailFrame, "TOPLEFT", 0, 0);
 				if((not WorldMapFrame:IsVisible()) and self:IsVisible()) then
 					self:Hide();
 				end

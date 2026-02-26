@@ -489,7 +489,9 @@ function MobMap_QuestTracker_RefreshQuestStatusFromLog()
 				else
 					currentQuest.qlindex=nil;
 				end
-				table.insert(currentHeader.quests, currentQuest);
+				if(currentHeader~=nil) then
+					table.insert(currentHeader.quests, currentQuest);
+				end
 				local j=1;
 				while(j<=GetNumQuestLeaderBoards(i)) do
 					local lbdesc, lbtype, lbdone = GetQuestLogLeaderBoard(j, i);

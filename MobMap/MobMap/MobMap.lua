@@ -1326,13 +1326,11 @@ function MobMapButtonFrame_OnLoad()
 end
 
 function MobMap_PlaceMobMapButtonFrame()
+	local worldMapDotAnchorFrame=WorldMapDetailFrame or WorldMapPositioningGuide;
+	MobMapDotParentFrame:SetFrameStrata(worldMapDotAnchorFrame:GetFrameStrata());
+	MobMapDotParentFrame:ClearAllPoints();
+	MobMapDotParentFrame:SetAllPoints(worldMapDotAnchorFrame);
 	if(Cartographer) then
-		MobMapDotParentFrame:SetFrameStrata(WorldMapPositioningGuide:GetFrameStrata());
-		MobMapDotParentFrame:SetWidth(WorldMapPositioningGuide:GetWidth());
-		MobMapDotParentFrame:SetHeight(WorldMapPositioningGuide:GetHeight());
-		MobMapDotParentFrame:SetScale(WorldMapFrame:GetScale());
-		MobMapDotParentFrame:ClearAllPoints();
-		MobMapDotParentFrame:SetAllPoints(WorldMapPositioningGuide);
 		MobMapButtonFrame:SetParent(UIParent);
 		MobMapButtonFrame:SetFrameStrata(WorldMapPositioningGuide:GetFrameStrata());
 	else
@@ -1419,11 +1417,21 @@ end
 function MobMapFrame_OnLoad(self)
 	self:RegisterEvent("WORLD_MAP_UPDATE");
 	self:RegisterEvent("ADDON_LOADED");
+	WorldMapFrame:HookScript("OnShow", function()
+		MobMap_PlaceMobMapButtonFrame();
+		MobMap_Display();
+	end);
+	WorldMapFrame:HookScript("OnSizeChanged", function()
+		MobMap_Display();
+	end);
 	MobMap_ShowPanel("MobMapAboutFrame");
 end
 
 mobmap_lastzone="";
 mobmap_lastzonelevel=0;
+mobmap_last_worldmap_detail_width=0;
+mobmap_last_worldmap_detail_height=0;
+mobmap_last_worldmap_detail_scale=0;
 
 function MobMapFrame_OnEvent(self)
 	if(event=="COMBAT_LOG_EVENT_UNFILTERED") then
@@ -1431,14 +1439,22 @@ function MobMapFrame_OnEvent(self)
 			MobMap_ProcessCombatLog(arg2, arg3, arg5, arg9);
 		end
 	elseif(event=="WORLD_MAP_UPDATE") then
+		MobMap_PlaceMobMapButtonFrame();
 		if(mobmap_enabled and WorldMapFrame:IsVisible()) then
 			if(mobmap_button_position>0) then MobMapButtonFrame:Show(); end
 			MobMapDotParentFrame:Show();
 		end
 		if(mobmap_enabled and (WorldMapFrame:IsVisible() or (BattlefieldMinimap and BattlefieldMinimap:IsVisible())) and (MobMapMobSearchFrame or MobMapPickupListFrame or MobMapQuestListFrame or mobmap_currentlyshown or mobmap_multidisplay)) then
-			if(mobmap_lastzone~=MobMap_GetCurrentMapZoneName() or mobmap_lastzonelevel~=GetCurrentMapDungeonLevel()) then
+			local worldMapDetailFrame=WorldMapDetailFrame or WorldMapPositioningGuide;
+			local worldMapDetailWidth=worldMapDetailFrame:GetWidth();
+			local worldMapDetailHeight=worldMapDetailFrame:GetHeight();
+			local worldMapDetailScale=worldMapDetailFrame:GetScale();
+			if(mobmap_lastzone~=MobMap_GetCurrentMapZoneName() or mobmap_lastzonelevel~=GetCurrentMapDungeonLevel() or mobmap_last_worldmap_detail_width~=worldMapDetailWidth or mobmap_last_worldmap_detail_height~=worldMapDetailHeight or mobmap_last_worldmap_detail_scale~=worldMapDetailScale) then
 				mobmap_lastzone=MobMap_GetCurrentMapZoneName();
 				mobmap_lastzonelevel=GetCurrentMapDungeonLevel();
+				mobmap_last_worldmap_detail_width=worldMapDetailWidth;
+				mobmap_last_worldmap_detail_height=worldMapDetailHeight;
+				mobmap_last_worldmap_detail_scale=worldMapDetailScale;
 				MobMap_Display();
 			end
 		end
@@ -2227,17 +2243,20 @@ end
 
 function MobMap_DisplayPositionData(posdata, mobid, ihid, freetext)
 	if(posdata==nil) then return; end
+	local dotWidth=MobMapDotParentFrame:GetWidth()/100;
+	local dotHeight=MobMapDotParentFrame:GetHeight()/100;
 	for k,v in pairs(posdata) do
 		for x=v.x1,v.x2,1 do
 			local frame=getglobal("MobMapDot"..x.."_"..v.y);
 			if(frame==nil) then 
 				frame=CreateFrame("Button","MobMapDot"..x.."_"..v.y,MobMapDotParentFrame,"MobMapDotFrameTemplate");
-				frame:SetPoint("TOPLEFT",MobMapDotParentFrame,"TOPLEFT",x*frame:GetWidth(),-v.y*frame:GetHeight());
 				frame:SetFrameStrata("FULLSCREEN");
 				frame:SetFrameLevel(MobMapDotParentFrame:GetFrameLevel()+21);
 				frame.xcoord=x;
 				frame.ycoord=v.y;
 			end
+			frame:ClearAllPoints();
+			frame:SetPoint("TOPLEFT",MobMapDotParentFrame,"TOPLEFT",x*dotWidth,-v.y*dotHeight);
 			if(mobid) then
 				if(frame.idtable==nil) then frame.idtable={}; end
 				table.insert(frame.idtable,mobid);

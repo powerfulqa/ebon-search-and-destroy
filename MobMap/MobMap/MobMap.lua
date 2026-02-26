@@ -1320,12 +1320,29 @@ end
 
 --- user interface
 
+function MobMap_DebugFrames()
+	local frames = {"WorldMapFrame", "WorldMapDetailFrame", "WorldMapPositioningGuide", "MobMapDotParentFrame"};
+	for _, name in ipairs(frames) do
+		local f = getglobal(name);
+		if f then
+			local w, h = f:GetWidth(), f:GetHeight();
+			local s = f:GetScale();
+			local es = f:GetEffectiveScale();
+			local point, rel, relPoint, x, y = f:GetPoint(1);
+			DEFAULT_CHAT_FRAME:AddMessage(name..": w="..w.." h="..h.." scale="..s.." effScale="..es.." anchor="..tostring(point).." rel="..tostring(relPoint).." x="..tostring(x).." y="..tostring(y));
+		end
+	end
+end
+
 function MobMapButtonFrame_OnLoad()
 	SLASH_MOBMAP1 = "/mobmap";
 	SlashCmdList["MOBMAP"] = MobMap_Command;
+	SLASH_MOBMAPDEBUG1 = "/mmdebug";
+	SlashCmdList["MOBMAPDEBUG"] = function() MobMap_DebugFrames(); end;
 end
 
 function MobMap_PlaceMobMapButtonFrame()
+	DEFAULT_CHAT_FRAME:AddMessage("PlaceButtonFrame called, Cartographer="..tostring(Cartographer~=nil));
 	local worldMapDotAnchorFrame=WorldMapDetailFrame or WorldMapPositioningGuide;
 	MobMapDotParentFrame:SetFrameStrata(worldMapDotAnchorFrame:GetFrameStrata());
 	MobMapDotParentFrame:ClearAllPoints();

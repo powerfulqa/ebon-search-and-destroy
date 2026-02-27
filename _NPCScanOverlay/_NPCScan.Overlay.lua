@@ -217,12 +217,14 @@ do
 	local Max = 2 ^ 16 - 1;
 	local Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2;
 	function me:DrawPath ( PathData, Layer, R, G, B )
-		for Index = 1, #PathData, 12 do
+		for Index = 1, #PathData - 11, 12 do
 			Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2 = PathData:byte( Index, Index + 11 );
-			me.TextureAdd( self, Layer, R, G, B,
-				( Ax1 * 256 + Ax2 ) / Max, ( Ay1 * 256 + Ay2 ) / Max,
-				( Bx1 * 256 + Bx2 ) / Max, ( By1 * 256 + By2 ) / Max,
-				( Cx1 * 256 + Cx2 ) / Max, ( Cy1 * 256 + Cy2 ) / Max );
+			if ( Ax1 and Ax2 and Ay1 and Ay2 and Bx1 and Bx2 and By1 and By2 and Cx1 and Cx2 and Cy1 and Cy2 ) then
+				me.TextureAdd( self, Layer, R, G, B,
+					( Ax1 * 256 + Ax2 ) / Max, ( Ay1 * 256 + Ay2 ) / Max,
+					( Bx1 * 256 + Bx2 ) / Max, ( By1 * 256 + By2 ) / Max,
+					( Cx1 * 256 + Cx2 ) / Max, ( Cy1 * 256 + Cy2 ) / Max );
+			end
 		end
 	end
 end

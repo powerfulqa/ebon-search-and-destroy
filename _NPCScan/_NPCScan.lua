@@ -342,6 +342,27 @@ end
 local next, assert = next, assert;
 
 local ScanIDs = {}; --- [ NpcID ] = Number of concurrent scans for this ID
+local TrackedNames = {}; --- [ Name ] = NpcID for active scans
+local TrackedNamesDirty = true;
+
+local function TrackedNamesRebuild ()
+	wipe( TrackedNames );
+	for NpcID in pairs( ScanIDs ) do
+		local Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ];
+		if ( Name ) then
+			TrackedNames[ Name ] = NpcID;
+		end
+	end
+	TrackedNamesDirty = false;
+end
+
+local function GetTrackedNpcIDByName ( Name )
+	if ( TrackedNamesDirty ) then
+		TrackedNamesRebuild();
+	end
+	return TrackedNames[ Name ];
+end
+
 --- Begins searching for an NPC.
 -- @return True if successfully added.
 local function ScanAdd ( NpcID )
@@ -358,6 +379,7 @@ local function ScanAdd ( NpcID )
 			ScanIDs[ NpcID ] = 1;
 			me.Overlays.Add( NpcID );
 		end
+		TrackedNamesDirty = true;
 		return true; -- Successfully added
 	end
 end
@@ -373,6 +395,7 @@ local function ScanRemove ( NpcID )
 			me.Frame:Hide();
 		end
 	end
+	TrackedNamesDirty = true;
 end
 
 
@@ -711,27 +734,30 @@ do
 		return false;
 	end
 
-	local function GetGUIDNpcID ( Guid )
-		if ( not Guid ) then
+	local function GetNameplateTrackedMatch ( PlateUnit )
+		if ( not UnitExists( PlateUnit ) ) then
 			return;
 		end
 
-		-- [Ebonhold] hyphenated GUID format: Creature-0-4161-0-319-10596-000069A926
-		local Type = Guid:match( "^([^-]+)-" );
-		if ( Type ) then
-			local _, _, _, _, NpcID = strsplit( "-", Guid );
-			return tonumber( NpcID );
+		local Reaction = UnitReaction( PlateUnit, "player" );
+		if ( not Reaction or Reaction > 4 ) then
+			return;
 		end
 
-		-- [Ebonhold] legacy hex GUID format: 0xF1300031AD7AAFB6
-		local NpcIDHex = Guid:match( "^0x%x%x%x000(%x%x%x%x)%x+$" );
-		if ( NpcIDHex ) then
-			return tonumber( NpcIDHex, 16 );
+		local Classification = UnitClassification( PlateUnit );
+		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then
+			return;
 		end
-	end
 
-	local function GetNameplateNpcID ( PlateUnit )
-		return GetGUIDNpcID( UnitGUID( PlateUnit ) );
+		local Name = UnitName( PlateUnit );
+		if ( not Name ) then
+			return;
+		end
+
+		local NpcID = GetTrackedNpcIDByName( Name );
+		if ( NpcID ) then
+			return NpcID, Name;
+		end
 	end
 	-- [Ebonhold] nameplate detection
 	local function ScanNameplates ()
@@ -741,16 +767,15 @@ do
 
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID = GetNameplateNpcID( PlateUnit );
+			local NpcID, Name = GetNameplateTrackedMatch( PlateUnit );
 			if ( NpcID and ScanIDs[ NpcID ] ) then
-				local Name = me.OptionsCharacter.NPCs[ NpcID ] or UnitName( PlateUnit ) or L.NPCs[ NpcID ];
 				OnFound( NpcID, Name );
 				return true;
 			end
 		end
 	end
 
-	-- [Ebonhold] scan tracked NPC IDs from nameplates via UnitGUID.
+	-- [Ebonhold] scan tracked NPCs from nameplates via reaction/classification/name filter.
 	-- Uses direct toast path to avoid NPCDeactivate removing cached entries from active scans.
 	local function ScanTrackedNameplates ()
 		if ( not next( ScanIDs ) ) then
@@ -759,11 +784,10 @@ do
 
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID = GetNameplateNpcID( PlateUnit );
+			local NpcID, Name = GetNameplateTrackedMatch( PlateUnit );
 			if ( NpcID and ScanIDs[ NpcID ] ) then
 				local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
 				if ( not WorldID or WorldID == me.WorldID ) then
-					local Name = me.OptionsCharacter.NPCs[ NpcID ] or UnitName( PlateUnit ) or L.NPCs[ NpcID ];
 					if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then
 						return true;
 					end

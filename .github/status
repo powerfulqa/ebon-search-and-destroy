@@ -1,12 +1,17 @@
-## Current State (2026-02-24)
+## Current State (2026-02-27)
 Detection is fully working. Key fixes shipped:
-- Passive always-on nameplate scanner (ScanTrackedNameplates) added — scans all tracked NPCs in OptionsCharacter.NPCs regardless of cache state, calls me.Button:SetNPC directly (not OnFound)
-- GetPlateNameDirect() added — reads NPC name from plate:GetRegions() FontString directly, replaces broken recursive frame crawler
+- GUID parsing path abandoned for this server (raw/non-standard GUID format proved unreliable)
+- Nameplate detection now uses combined filtering: hostile/neutral only (`UnitReaction <= 4`) + rare class only (`UnitClassification == "rare" or "rareelite"`) + tracked name lookup
+- Passive always-on nameplate scanner (ScanTrackedNameplates) remains active and calls me.Button:SetNPC directly (not OnFound)
 - npcCount < 10 guard added in PLAYER_LOGIN — forces defaults to load when saved vars are truncated (fixes stale 2-entry saved vars issue)
 - me.Frame (main scan loop) is still present for TestID/namecache fallback for Outland/Northrend rares
 - me.Button.HighlightedPlate nil bug fixed in _NPCScan.Button.lua
 - Repo normalised: _NPCScan/ and _NPCScanOverlay/ are the only source folders
 - Deploy script: tools/deploy-addons.ps1 syncs to G:\Project Ebonhold\Ebonhold\Interface\AddOns\
+
+## Server-confirmed values
+- `UnitReaction <= 4` is the correct hostile/neutral filter on this server
+- `UnitClassification == "rare"` or `"rareelite"` is the correct rarity filter
 
 ## Known limitations
 - If saved vars grow corrupt again, delete: G:\Project Ebonhold\Ebonhold\WTF\Account\SERV\Rogue-Lite (Live)\Serv\SavedVariables\_NPCScan.lua and /reload

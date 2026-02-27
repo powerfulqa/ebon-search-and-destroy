@@ -696,11 +696,9 @@ do
 
 	local pairs = pairs;
 	local GetAchievementCriteriaInfo = GetAchievementCriteriaInfo;
-	local type = type;
 	local NameplateScanFrame = CreateFrame( "Frame", nil, UIParent ); -- [Ebonhold] always-on cached-nameplate scanner
 	NameplateScanFrame.UpdateRate = 0.3;
 	local NameplateNextUpdate = 0;
-	local NameplateDebugNextUpdate = 0;
 
 	-- [Ebonhold] true when toast is already showing or queued for this NPC.
 	local function IsToastAlreadyQueuedOrShown ( NpcID, Name )
@@ -713,74 +711,49 @@ do
 		return false;
 	end
 
-	local function GetPlateNameDirect ( plate )
-		for i = 1, select( "#", plate:GetRegions() ) do
-			local r = select( i, plate:GetRegions() );
-			if ( r and r.GetObjectType and r:GetObjectType() == "FontString" ) then
-				local t = r:GetText();
-				if ( t and t ~= "" ) then
-					return t;
-				end
-			end
+	local function GetNameplateNpcID ( PlateUnit )
+		local Guid = UnitGUID( PlateUnit );
+		if ( Guid ) then
+			return tonumber( Guid:sub( 7, 10 ), 16 );
 		end
 	end
 	-- [Ebonhold] nameplate detection
 	local function ScanNameplates ()
-		if ( not C_NamePlate or not C_NamePlate.GetNamePlates ) then
-			return;
-		end
-
 		if ( not next( ScanIDs ) ) then
 			return;
 		end
 
-		local Plates = C_NamePlate.GetNamePlates();
-		if ( type( Plates ) ~= "table" ) then
-			return;
-		end
-
-		for _, Plate in pairs( Plates ) do
-			local PlateName = GetPlateNameDirect( Plate );
-			if ( PlateName ) then
-				for NpcID in pairs( ScanIDs ) do
-					if ( me.OptionsCharacter.NPCs[ NpcID ] == PlateName ) then
-						OnFound( NpcID, PlateName );
-						return true;
-					end
-				end
+		for i = 1, 40 do
+			local PlateUnit = "nameplate" .. i;
+			local NpcID = GetNameplateNpcID( PlateUnit );
+			if ( NpcID and ScanIDs[ NpcID ] ) then
+				local Name = me.OptionsCharacter.NPCs[ NpcID ] or UnitName( PlateUnit ) or L.NPCs[ NpcID ];
+				OnFound( NpcID, Name );
+				return true;
 			end
 		end
 	end
 
-	-- [Ebonhold] scan all tracked NPC names from nameplates, independent of cache/ScanIDs.
+	-- [Ebonhold] scan tracked NPC IDs from nameplates via UnitGUID.
 	-- Uses direct toast path to avoid NPCDeactivate removing cached entries from active scans.
 	local function ScanTrackedNameplates ()
-		if ( not C_NamePlate or not C_NamePlate.GetNamePlates ) then
+		if ( not next( ScanIDs ) ) then
 			return;
 		end
 
-		if ( not next( me.OptionsCharacter.NPCs ) ) then
-			return;
-		end
-
-		local plates = C_NamePlate.GetNamePlates();
-		if ( type( plates ) ~= "table" ) then
-			return;
-		end
-
-		for _, Plate in pairs( plates ) do
-			local PlateName = GetPlateNameDirect( Plate );
-			for NpcID, TrackedName in pairs( me.OptionsCharacter.NPCs ) do
-				if ( PlateName and PlateName == TrackedName ) then
-					local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
-					if ( not WorldID or WorldID == me.WorldID ) then
-						if ( IsToastAlreadyQueuedOrShown( NpcID, PlateName ) ) then
-							return true;
-						end
-						me.Print( L.FOUND_FORMAT:format( PlateName ), GREEN_FONT_COLOR );
-						me.Button:SetNPC( NpcID, PlateName );
+		for i = 1, 40 do
+			local PlateUnit = "nameplate" .. i;
+			local NpcID = GetNameplateNpcID( PlateUnit );
+			if ( NpcID and ScanIDs[ NpcID ] ) then
+				local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
+				if ( not WorldID or WorldID == me.WorldID ) then
+					local Name = me.OptionsCharacter.NPCs[ NpcID ] or UnitName( PlateUnit ) or L.NPCs[ NpcID ];
+					if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then
 						return true;
 					end
+					me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
+					me.Button:SetNPC( NpcID, Name );
+					return true;
 				end
 			end
 		end

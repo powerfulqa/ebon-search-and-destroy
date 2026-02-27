@@ -2,350 +2,205 @@
 select( 2, ... ).PathData = {
 	[ 475 ] = { -- Blade's Edge Mountains
 		-- Hemathion
-		[ 18692 ] = "Jï¿½ï¿½nM]ï¿½hO5ï¿½O5ï¿½STï¿½ï¿½Lï¿½ï¿½Lï¿½ï¿½Hï¿½WFRï¿½ï¿½FRï¿½ï¿½Fï¿½ï¿½ï¿½Jï¿½ï¿½nJï¿½ï¿½nO5ï¿½Lï¿½ï¿½Lï¿½ï¿½FRï¿½ï¿½Jï¿½ï¿½nIï¿½ï¿½ï¿½Jï¿½sï¿½Oï¿½oï¿½Oï¿½oï¿½Qï¿½r3Pï¿½|6RTï¿½ï¿½UÉ…ï¿½Uï¿½ï¿½iUï¿½ï¿½iQï¿½ï¿½Jï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½Oï¿½oï¿½Pï¿½|6RTï¿½ï¿½Uï¿½ï¿½iJï¿½ï¿½ï¿½Oï¿½oï¿½Pï¿½|6Pï¿½|6Uï¿½ï¿½iJï¿½ï¿½ï¿½";
+		[ 18692 ] = "J’¢nM] hO5¢O5¢ST´ÖL»ÚL»ÚHè¹WFRªáFRªáFı¦âJ’¢nJ’¢nO5¢L»ÚL»ÚFRªáJ’¢nIº€ëJûsOØoùOØoùQ°r3P¾|6RTÑUÉ…U÷iU÷iQ‘ÿJŒ…ÉJŒ…ÉIº€ëOØoùP¾|6RTÑU÷iJŒ…ÉOØoùP¾|6P¾|6U÷iJŒ…É";
 		-- Morcrush
-		[ 18690 ] = "ï¿½r7Âœï¿½1ï¿½ï¿½ï¿½3Zï¿½ï¿½3Zï¿½ï¿½9lï¿½=Æ›ï¿½Aï¿½ï¿½Cï¿½ï¿½ï¿½A:ï¿½ï¿½A:ï¿½>;ï¿½r7Â˜r7ÂŸï¿½3Zï¿½=ÆŸ=Æ›ï¿½Aï¿½ï¿½A:ï¿½=Æ–ï¿½A:ï¿½r7Â­Bï¿½Zï¿½ï¿½ï¿½ï¿½Oï¿½4ï¿½Oï¿½4ï¿½-ï¿½ï¿½ï¿½Â¢ï¿½ï¿½Â¢ï¿½Å®ï¿½Bï¿½Zï¿½Oï¿½4ï¿½ï¿½Â¢ï¿½Bï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½\"ï¿½ï¿½e?ï¿½ï¿½Kï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½;~ï¿½ï¿½9ï¿½ï¿½>:7ï¿½\"Eï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½MBï¿½Xfï¿½ï¿½iDï¿½ï¿½k~ï¿½ï¿½ï¿½ï¿½ãŠï¿½ãŠï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\"ï¿½>:7ï¿½ï¿½Gï¿½ï¿½ï¿½=wï¿½ãŠï¿½ï¿½ï¿½\"ï¿½è€°ï¿½ï¿½9ï¿½ï¿½>:7ï¿½ï¿½=wï¿½ï¿½k~ï¿½ãŠï¿½è€°ï¿½ï¿½9ï¿½ï¿½ï¿½=wï¿½=ï¿½ï¿½k~ï¿½è€°ï¿½ hyï¿½ï¿½9ï¿½ï¿½=ï¿½ï¿½>ï¿½ï¿½ï¿½iDï¿½ï¿½k~ï¿½ hyï¿½ï¿½Cï¿½ï¿½ï¿½9ï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½iDï¿½ hyï¿½ï¿½e?ï¿½ï¿½Cï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½Eï¿½MBï¿½ï¿½iDï¿½ï¿½e?ï¿½ï¿½Cï¿½ï¿½ï¿½Eï¿½MBï¿½ï¿½e?ï¿½ï¿½Cï¿½ï¿½ï¿½MB";
+		[ 18690 ] = "˜r7Âœô1–Ÿ3ZŸ3Z ò9lŸ=Æ›ÓA™™C½–A:–A:–>;˜r7Â˜r7ÂŸ3ZŸ=ÆŸ=Æ›ÓA–A:Ÿ=Æ–A:˜r7Â­BÃZ«¬£®OŸ4®OŸ4±-¢²¯Â¢²¯Â¢°Å®­BÃZ®OŸ4²¯Â¢­BÃZ ÿ‰ £ŒV£•‹\"µÖe?¶K¹¸ÁC¸ÁC½Š;~Áñ9 Ç>:7Ì\"E‡ÉáG€¸“MB¸Xf¶ÈiD²½k~«‚©¤ãŠ¤ãŠ ÿ‰£•‹\"Ç>:7ÉáG€Åã=w¤ãŠ£•‹\"¨è€°Áñ9 Ç>:7Åã=w²½k~¤ãŠ¨è€°Áñ9 Åã=wÂ=²½k~¨è€°± hyÁñ9 Â=¾ƒ>²¶ÈiD²½k~± hy¸ÁCÁñ9 ¾ƒ>²¶ÈiD± hyµÖe?¸ÁC¾ƒ>²º¬Eğ¸“MB¶ÈiDµÖe?¸ÁCº¬Eğ¸“MBµÖe?¸ÁC¸“MB";
 		-- Speaker Mar'grom
-		[ 18693 ] = "eï¿½ï¿½ï¿½i=zï¿½mï¿½xï¿½mï¿½xï¿½oï¿½|o4ï¿½ï¿½o4ï¿½ï¿½lÓ‘nfÕ•zfÕ•zdï¿½eï¿½ï¿½ï¿½eï¿½ï¿½ï¿½mï¿½xï¿½o4ï¿½ï¿½o4ï¿½ï¿½fÕ•zeï¿½ï¿½ï¿½\\@vï¿½\r=ï¿½ï¿½u@Uï¿½u@Uï¿½ï¿½Kï¿½ï¿½1R ï¿½1R ï¿½ï¿½YÎï¿½Zï¿½ï¿½Zï¿½ï¿½Wï¿½ï¿½RÑ4Lï¿½ï¿½ï¿½I	ï¿½\\@vï¿½\\@vï¿½u@Uï¿½1R ï¿½1R ï¿½ï¿½Zï¿½RÑ4Lï¿½ï¿½\\@vï¿½1R ï¿½1R ï¿½RÑ;Pï¿½ï¿½1R ï¿½;Pï¿½ï¿½4Lï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½,Ó¨ï¿½/(ï¿½ï¿½/(ï¿½@.ï¿½ï¿½F\
-ï¿½ï¿½F\
-ï¿½dFï¿½ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½4ï¿½ï¿½/ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½/(ï¿½ï¿½F\
-ï¿½ï¿½F\
-ï¿½ï¿½?ï¿½ï¿½ï¿½/ï¿½lï¿½iqhï¿½ï¿½t`ï¿½4t`ï¿½4vï¿½ï¿½xï¿½ï¿½Sxï¿½ï¿½Syï¿½ï¿½ï¿½xlï¿½ï¿½xlï¿½ï¿½mBï¿½ï¿½jï¿½ï¿½ï¿½jï¿½ï¿½ï¿½j^ï¿½ï¿½lï¿½ilï¿½it`ï¿½4xï¿½ï¿½Sxï¿½ï¿½Sxlï¿½ï¿½jï¿½ï¿½ï¿½xï¿½ï¿½Sjï¿½ï¿½ï¿½lï¿½i";
+		[ 18693 ] = "e¼‚ëi=zŒmàxïmàxïoÅ|o4‰­o4‰­lÓ‘nfÕ•zfÕ•zdê“e¼‚ëe¼‚ëmàxïo4‰­o4‰­fÕ•ze¼‚ë\\@v\r=‹’u@U’u@U—üKû˜1R ˜1R ”›YÎƒZƒZŒæW§RÑ4L²ÙI	\\@v\\@v’u@U˜1R ˜1R ƒZRÑ4L²\\@v˜1R ˜1R RÑ;P±˜1R ;P±4L²¢¢/—¥€,Ó¨¦/(¨¦/(¯@.­—F\
+­—F\
+«dF¦é?±¦é?±¢4¢¢/—¢¢/—¨¦/(­—F\
+­—F\
+¦é?±¢¢/—lÎiqhÁ°t`¿4t`¿4vé¿ËxïÄSxïÄSy…ÈÁxlËÌxlËÌmBÖÎjºÕöjºÕöj^ÒĞlÎilÎit`¿4xïÄSxïÄSxlËÌjºÕöxïÄSjºÕölÎi";
 	};
 	[ 486 ] = { -- Borean Tundra
 		-- Fumblub Gearwind
-		[ 32358 ] = "ï¿½t'Lï¿½ï¿½*=ï¿½-2ï¿½ï¿½-2ï¿½ï¿½:eï¿½5Fï¿½9S{ï¿½vOï¿½ï¿½JÇ®JÇ¬:eï¿½-2ï¿½ï¿½-2ï¿½ï¿½ï¿½Cï¿½ï¿½iGÕ¼ï¿½Pï¿½ï¿½ZDï¿½V_;ï¿½V_;ï¿½2gï¿½ï¿½]ï¿½ï¿½]ï¿½ï¿½UTSï¿½ï¿½Jï¿½ï¿½CGyï¿½lGlï¿½\
-Dï¿½ï¿½\
-Dï¿½ï¿½5?ï¿½&ï¿½ï¿½&ï¿½ï¿½t'Lï¿½-2ï¿½ï¿½-2ï¿½ï¿½5Fï¿½ï¿½3Mï¿½9S{ï¿½JÇ±-2ï¿½ï¿½-2ï¿½ï¿½iGÕ¼ï¿½Pï¿½ï¿½CGyï¿½\
-Dï¿½ï¿½&ï¿½ï¿½&ï¿½ï¿½-2ï¿½ï¿½ï¿½3Mï¿½9S{ï¿½-2ï¿½ï¿½ï¿½Pï¿½ï¿½ï¿½Jï¿½ï¿½CGyï¿½&ï¿½ï¿½&ï¿½ï¿½ï¿½3Mï¿½ï¿½6ï¿½ï¿½XÈ³9S{ï¿½ï¿½Pï¿½ï¿½]ï¿½ï¿½ï¿½Jï¿½ï¿½&ï¿½ï¿½&ï¿½ï¿½ï¿½6ï¿½ï¿½>(ï¿½ï¿½XÈ¼ï¿½Pï¿½ï¿½V_;ï¿½]ï¿½ï¿½&ï¿½ï¿½ï¿½>(ï¿½![dï¿½ï¿½XÈ¼V_;ï¿½]ï¿½ï¿½ï¿½>(ï¿½LK6ï¿½![dï¿½V_;ï¿½]ï¿½ï¿½]ï¿½ï¿½LK6ï¿½ï¿½Uï¿½ï¿½ï¿½Uï¿½ï¿½![dï¿½]ï¿½";
+		[ 32358 ] = "£t'L¨ *=±-2ÿ±-2ÿ¬:eª5F³9S{¯vOƒ®JÇ®JÇ¬:e±-2ÿ±-2ÿ»‘C¯½iGÕ¼ÆPÿ¾ZD¼V_;¼V_;µ2g®¤]¥¤]¥UTS¸J­›CGy˜lGl–\
+D¨–\
+D¨—5?Ÿ&®Ÿ&®£t'L±-2ÿ±-2ÿª5F¥µ3M³9S{®JÇ±-2ÿ±-2ÿ½iGÕ¼ÆPÿ›CGy–\
+D¨Ÿ&®Ÿ&®±-2ÿ¥µ3M³9S{±-2ÿ¼ÆPÿ¸J­›CGyŸ&®Ÿ&®¥µ3M¢¶6ã±äXÈ³9S{¼ÆPÿ¤]¥¸J­Ÿ&®Ÿ&®¢¶6ã¡ñ>(±äXÈ¼ÆPÿ¼V_;¤]¥Ÿ&®¡ñ>(®![d±äXÈ¼V_;¤]¥¡ñ>(¤LK6®![d¼V_;¤]¥¤]¥¤LK6§»U”§»U”®![d¤]¥";
 		-- Icehorn
-		[ 32361 ] = "ï¿½pzï¿½ï¿½4rï¿½ï¿½TobÓ¼sï¿½ï¿½wxlï¿½q~ï¿½ï¿½$|ï¿½ï¿½}ï¿½ï¿½pzï¿½ï¿½pzï¿½ï¿½TobÓ¼sï¿½Ó¼sï¿½ï¿½q~ï¿½ï¿½$|Ó¼sï¿½ï¿½$|ï¿½pzï¿½Ò©Lï¿½ï¿½Mï¿½ï¿½0Sï¿½ï¿½0Sï¿½ï¿½URï¿½ï¿½9R3ï¿½9R3ï¿½VN(ï¿½Sï¿½ï¿½Sï¿½ï¿½YkÑ–Xï¿½Ñ–Xï¿½ËŸTï¿½ï¿½oMï¿½ï¿½oMï¿½Ò©Lï¿½0Sï¿½ï¿½0Sï¿½ï¿½9R3ï¿½Sï¿½Ñ–Xï¿½ï¿½oMï¿½ï¿½0Sï¿½ï¿½0Sï¿½ï¿½Sï¿½Ñ–Xï¿½ï¿½Xbï¿½ï¿½ï¿½cgï¿½ï¿½`ï¿½ï¿½ï¿½`ï¿½ï¿½*`ï¿½Xbï¿½";
+		[ 32361 ] = "Ìpz¦Î4r•ĞTobÓ¼sœÛwxlÚq~ÙÖ$|ÎË}ÌÌpz¦Ìpz¦ĞTobÓ¼sœÓ¼sœÚq~ÙÖ$|Ó¼sœÖ$|Ìpz¦Ò©LÔéM¥Ø0SœØ0SœŞUR–ã9R3ã9R3ìVN(ïSİïSİâ©YkÑ–XâÑ–XâËŸTñÏoMíÏoMíÒ©LØ0SœØ0Sœã9R3ïSİÑ–XâÏoMíØ0SœØ0SœïSİÑ–XâèXbäÜæcgÜÅ`ÜÅ`è*`èXbä";
 		-- Old Crystalbark
-		[ 32357 ] = "4Lq5SCï¿½9ï¿½Cï¿½Iï¿½Q'N(K^Q-KXï¿½Eï¿½Vï¿½C{U?;U?;V;0Z#?ï¿½Z#?ï¿½\\\"Cï¿½[ï¿½L[ï¿½LT`Tï¿½RTUSIrWï¿½>^7ï¿½Xï¿½4Lq9ï¿½Cï¿½8ï¿½Jï¿½Iï¿½Q'Q-KU%Oï¿½Xï¿½Eï¿½U?;Z#?ï¿½[ï¿½LRTUSIrWï¿½7ï¿½Xï¿½4Lq8ï¿½Jï¿½AoUï¿½Iï¿½Q'U%Oï¿½Wï¿½M]Xï¿½Eï¿½Z#?ï¿½7ï¿½Xï¿½8ï¿½Jï¿½;#S3Wï¿½M]Z#?ï¿½[ï¿½L7ï¿½Xï¿½;#S3AoUï¿½U%Oï¿½Wï¿½M][ï¿½LIrWï¿½7ï¿½Xï¿½AoUï¿½U%Oï¿½[ï¿½LIrWï¿½AoUï¿½U%Oï¿½IrWï¿½";
+		[ 32357 ] = "4Lq5SC¯9áC¢I™Q'N(K^Q-KXïEıV¡C{U?;U?;V;0Z#?¸Z#?¸\\\"Cˆ[‹L[‹LT`TRTUSIrW€>^7¡XÁ4Lq9áC¢8âJ™I™Q'Q-KU%OåXïEıU?;Z#?¸[‹LRTUSIrW€7¡XÁ4Lq8âJ™AoUğI™Q'U%OåW†M]XïEıZ#?¸7¡XÁ8âJ™;#S3W†M]Z#?¸[‹L7¡XÁ;#S3AoUğU%OåW†M][‹LIrW€7¡XÁAoUğU%Oå[‹LIrW€AoUğU%OåIrW€";
 	};
 	[ 488 ] = { -- Dragonblight
 		-- Crazed Indu'le Survivor
-		[ 32409 ] = "&+ï¿½ï¿½&ï¿½I)ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½3ï¿½Q>Bï¿½ï¿½>Bï¿½ï¿½@.ï¿½lDï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½Kï¿½ï¿½\000Uï¿½ï¿½BUï¿½ï¿½BWï¿½ï¿½ K6ï¿½@K6ï¿½@Hï¿½ï¿½ï¿½D{ï¿½PD{ï¿½PAï¿½ï¿½ï¿½@ï¿½ï¿½|2ï¿½ï¿½,Jï¿½ï¿½(ï¿½ï¿½r(ï¿½ï¿½r&+ï¿½ï¿½)ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½>Bï¿½ï¿½Dï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½Uï¿½ï¿½BK6ï¿½@K6ï¿½@D{ï¿½P@ï¿½ï¿½|(ï¿½ï¿½r)ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½K6ï¿½@@ï¿½ï¿½|2ï¿½ï¿½(ï¿½ï¿½r,ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½@ï¿½ï¿½|<ï¿½ï¿½<ï¿½ï¿½2ï¿½ï¿½,ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½<ï¿½ï¿½%ï¿½wR%ï¿½pï¿½(ï¿½oï¿½(ï¿½oï¿½+)yk)ï¿½{/(ï¿½oï¿½)ï¿½{/%ï¿½wR";
+		[ 32409 ] = "&+•ı&éI)†‹À,’Š3ä‰Q>B„É>B„É@.‡lD¼¤D¼¤K¦\000U¡BU¡BW‘ K6¢@K6¢@H´¢ÊD{›PD{›PA½—ü@‘|2Ñ,J—´(Á˜r(Á˜r&+•ı)†‹À,’Š>B„ÉD¼¤D¼¤U¡BK6¢@K6¢@D{›P@‘|(Á˜r)†‹À,’ŠD¼¤K6¢@@‘|2Ñ(Á˜r,’ŠD¼¤@‘|<íÙ<íÙ2Ñ,’Š,’ŠD¼¤<íÙ%wR%Ép¾(Õoª(Õoª+)yk) {/(Õoª) {/%wR";
 		-- Scarlet Highlord Daion
-		[ 32417 ] = "ï¿½ï¿½7Üµï¿½2ï¿½ï¿½ï¿½9ï¿½ï¿½ANÄ¯Fï¿½ï¿½SHï¿½ï¿½SHï¿½/Gï¿½ï¿½ï¿½C@ï¿½ï¿½C@ï¿½ï¿½7Ü¸ï¿½9ï¿½ï¿½ï¿½9ï¿½ï¿½ANï¿½SHï¿½ï¿½9ï¿½ï¿½SHâ¶§C@ï¿½=mï¿½ï¿½jï¿½ï¿½ï¿½`|ï¿½ï¿½`|ï¿½\\`\000ï¿½f_ï¿½f_ï¿½miï¿½ï¿½ï¿½n!ï¿½ï¿½n!ï¿½!ooï¿½=mï¿½ï¿½=mï¿½ï¿½ï¿½`|ï¿½f_ï¿½f_ï¿½ï¿½n!ï¿½=mÌ¶ï¿½ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¹rï¿½wï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½@ï¿½sï¿½|Å®ï¿½|Å®ï¿½nï¿½Vï¿½Ï¸Qï¿½ï¿½ï¿½Rï¿½ï¿½ß¹rï¿½wï¿½rï¿½wï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Aï¿½|Å®ï¿½Ï¸Qï¿½Ï¸Qï¿½ï¿½ï¿½Rï¿½rï¿½wï¿½rï¿½wï¿½ï¿½ï¿½ï¿½\
-ï¿½Oï¿½\
-ï¿½Oï¿½ï¿½ï¿½Aï¿½Ï¸Qï¿½rï¿½wï¿½\
-ï¿½Oï¿½Ï¸Q";
+		[ 32417 ] = "³•7Üµ®2‚¸á9Á¾ANÄ¯F”ÃSHâÃSHâ¼/G”¶§C@¶§C@³•7Ü¸á9Á¸á9Á¾ANÃSHâ¸á9ÁÃSHâ¶§C@Ù=mÌØjŸÚô`|Úô`|İ\\`\000â©f_â©f_ãmi¦àøn!àøn!Ş!ooÙ=mÌÙ=mÌÚô`|â©f_â©f_àøn!Ù=mÌ¶ü·R¶´­¿¸è­ß¹r»w»ÌÀGº’Áø²øÀA±@Æs¯|Å®¯|Å®±n½V´Ï¸Q¶ü·R¸è­ß¹r»w¹r»wº’Áø·¾²øÀA¯|Å®´Ï¸Q´Ï¸Q¶ü·R¹r»w¹r»w·¾µ\
+½Oµ\
+½O²øÀA´Ï¸Q¹r»wµ\
+½O´Ï¸Q";
 		-- Tukemuth
-		[ 32400 ] = "ï¿½M}ï¿½ï¿½Hï¿½ï¿½;Iï¿½ï¿½QGï¿½qLIï¿½vHÎ¯vHÎ´FHï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½>TZï¿½ï¿½Xï¿½brGï¿½wï¿½ï¿½ï¿½|Óµï¿½|Ó²ï¿½ï¿½Ö°oï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½ï¿½@ï¿½nï¿½@ï¿½dï¿½Ë\rï¿½Ë\rï¿½,ï¿½Í–ï¿½ï¿½[ï¿½Éï¿½ï¿½ï¿½ï¿½[ï¿½,ï¿½Í”,ï¿½Í‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½Òï¿½vï¿½ï¿½ï¿½vï¿½ï¿½ï¿½[Wï¿½M}ï¿½M}ï¿½;Iï¿½ï¿½oNÒ§QGï¿½vHÎ¶ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½ï¿½Xï¿½brGï¿½ï¿½|Ó°oï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Wï¿½*ï¿½Ë\rï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½Éï¿½ï¿½,ï¿½Í”,ï¿½Í…ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½vï¿½ï¿½M}ï¿½oNÒ§QGï¿½ï¿½Lï¿½ï¿½ï¿½Xï¿½i]ï¿½ï¿½brGï¿½oï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Wï¿½*ï¿½\
-ï¿½ï¿½@ï¿½nï¿½Ë\rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½,ï¿½Íï¿½vï¿½ï¿½ï¿½vï¿½ï¿½oNÒ£`Qï¿½ï¿½`Qï¿½ï¿½QGï¿½ï¿½Xï¿½i]ï¿½ï¿½oï¿½ï¿½ï¿½\
-ï¿½ï¿½@ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\
-ï¿½+ï¿½ï¿½ï¿½eï¿½ï¿½vï¿½ï¿½ï¿½vï¿½ï¿½`Qï¿½ï¿½ï¿½Xï¿½i]ï¿½ï¿½\
-ï¿½ï¿½ï¿½Vï¿½ï¿½Vï¿½@ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½Ôƒï¿½ï¿½\
-ï¿½+ï¿½ï¿½vï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Xï¿½i]ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½\\ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Ôƒï¿½ï¿½ï¿½vï¿½ï¿½ï¿½vï¿½ï¿½i]ï¿½ï¿½ï¿½Vï¿½ï¿½Vï¿½\\ï¿½ï¿½ï¿½ï¿½*ï¿½Cï¿½ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½Vï¿½ï¿½Vï¿½ï¿½*ï¿½Cï¿½ï¿½";
+		[ 32400 ] = "™M}›íHš;I­§QGªqLI¯vHÎ¯vHÎ´FHè¶âLí¶âLí·>TZ´ÜX®brG´w®µÂ|ÓµÂ|Ó²ø•Ö°oƒ°oƒ­„Ÿvª˜“¡@’n¡@šdË\rË\r”,™Í–¡‘[”É¾–¡‘[”,™Í”,™Í‰™…‡”¨…‡”¨…sÒƒvµƒvµ•€[W™M}™M};I­ oNÒ§QG¯vHÎ¶âLí¶âLí´ÜX¯ÿXâ®brGµÂ|Ó°oƒ°oƒª˜“©W‡*Ë\r–¡‘[™³’½”‡‰e”É¾”,™Í”,™Í…‡”¨ƒvµƒvµ™M} oNÒ§QG¶âLí¯ÿXâ­i]Š®brG°oƒ°oƒ©W‡*§\
+¡@’nË\r™³’½”‡‰e”,™Íƒvµƒvµ oNÒ£`Q°£`Q°§QG¯ÿXâ­i]Š°oƒ§\
+¡@’n™³’½œ‹‘‰–\
+…+”‡‰eƒvµƒvµ£`Q°¯ÿXâ­i]Š§\
+¢êŒV¢êŒV¡@’nœ‹‘‰˜Ôƒ¯–\
+…+ƒvµƒvµ¯ÿXâ­i]Š¢êŒVœ‹‘‰\\—œC„¢˜Ôƒ¯ƒvµƒvµ­i]Š¢êŒV¢êŒV\\—óˆ*œC„¢ƒvµ¢êŒV¢êŒVóˆ*œC„¢";
 	};
 	[ 141 ] = { -- Dustwallow Marsh
 		-- Dart
-		[ 14232 ] = "tï¿½2u)xï¿½%ï¿½xï¿½%ï¿½{ï¿½$3}ï¿½&ï¿½}ï¿½&ï¿½~ï¿½3T}O5ï¿½}O5ï¿½y6tï¿½2tï¿½2xï¿½%ï¿½}ï¿½&ï¿½}ï¿½&ï¿½}O5ï¿½tï¿½2";
+		[ 14232 ] = "tĞ2u)xÇ%›xÇ%›{À$3}¥&Â}¥&Â~æ3T}O5Ï}O5Ïy6tĞ2tĞ2xÇ%›}¥&Â}¥&Â}O5ÏtĞ2";
 	};
 	[ 490 ] = { -- Grizzly Hills
 		-- Arcturis
-		[ 38453 ] = "Niï¿½MNBï¿½BQï¿½BQï¿½BQÊ’@Niï¿½M";
+		[ 38453 ] = "Ni’MNBBQåBQåBQÊ’@Ni’M";
 		-- Grocklar
-		[ 32422 ] = "ï¿½uï¿½jW*f8*f8ï¿½dzï¿½f_!ï¿½r'yï¿½(1ï¿½o(1ï¿½o'Rï¿½\r%Sï¿½,%Sï¿½,ï¿½ï¿½ï¿½Æ‘aï¿½u*f8ï¿½f_!ï¿½r(1ï¿½o%Sï¿½,%Sï¿½,Æ‘aï¿½ï¿½ï¿½ï¿½ï¿½uï¿½f_ï¿½f_!ï¿½r%Sï¿½,ï¿½ï¿½ï¿½f_%Sï¿½,Qï¿½ï¿½ï¿½M\"Ê²ï¿½\"Ê²ï¿½)ï¿½ï¿½71ï¿½B71ï¿½B8ï¿½ï¿½:ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½9ï¿½ï¿½/ï¿½ï¿½*%9ï¿½lQï¿½\"Ê²ï¿½\"Ê²ï¿½71ï¿½B:ï¿½ï¿½ï¿½/ï¿½ï¿½*%9ï¿½l\"Ê²ï¿½\"Ê²ï¿½:ï¿½ï¿½ï¿½/ï¿½ï¿½*3ï¿½ï¿½ï¿½5Sï¿½B<Ú‰ï¿½<Ú‰ï¿½B ï¿½ï¿½D%ï¿½)D%ï¿½)DMï¿½ï¿½BTï¿½xBTï¿½x5ï¿½ï¿½3Ã–ï¿½3Ã–ï¿½3ï¿½ï¿½ï¿½<Ú‰ï¿½<Ú‰ï¿½D%ï¿½)BTï¿½x<Ú‰ï¿½BTï¿½x3Ã–ï¿½";
+		[ 32422 ] = "ÓuÁjW*f8*f8Ídz«f_!ër'yÛ(1€o(1€o'R\r%S’,%S’,¹“¼Æ‘aÓu*f8«f_!ër(1€o%S’,%S’,Æ‘aòòÓu«f_«f_!ër%S’,ò«f_%S’,Q·’³M\"Ê²×\"Ê²×)ü®71®B71®B8ö±:³¹û:³¹û9¼/¾¸*%9¶lQ·\"Ê²×\"Ê²×71®B:³¹û/¾¸*%9¶l\"Ê²×\"Ê²×:³¹û/¾¸*3¢Ä5SB<Ú‰À<Ú‰ÀB ˆ§D%‹)D%‹)DM–ÜBT™xBT™x5êšÚ3Ã–Ü3Ã–Ü3¢Ä<Ú‰À<Ú‰ÀD%‹)BT™x<Ú‰ÀBT™x3Ã–Ü";
 		-- Seething Hate
-		[ 32429 ] = "C,vfDq[Hï¿½rï¿½Hï¿½rï¿½I#vï¿½Dï¿½zï¿½Hï¿½rï¿½Dï¿½zï¿½C,vfW$zW[]{/[=|[=|Y	ï¿½ï¿½U`ï¿½[=|U`ï¿½W$zWd9yï¿½hzï¿½iï¿½ï¿½iï¿½ï¿½fï¿½ï¿½aï¿½ï¿½ï¿½aï¿½ï¿½ï¿½aN|ï¿½d9yï¿½iï¿½ï¿½aï¿½ï¿½ï¿½d9yï¿½";
+		[ 32429 ] = "C,vfDq[H†r•H†r•I#vâDĞz’H†r•DĞz’C,vfW$zW[]{/[=|[=|Y	‚ˆU`[=|U`W$zWd9yºhz’i ¤i ¤fğ„a£€Øa£€ØaN|úd9yºi ¤a£€Ød9yº";
 		-- Syreian the Bonecarver
-		[ 32438 ] = "ï¿½ï¿½Wï¿½ï¿½.Rhï¿½ï¿½Kï¿½ï¿½ï¿½Bï¿½ï¿½=wï¿½n=ï¿½n=ï¿½T?ï¿½ï¿½ Dï¿½ï¿½Mï¿½ï¿½CRï¿½.Yï¿½ï¿½.Yï¿½ï¿½Zï¿½ï¿½ï¿½_;ï¿½_cï¿½ï¿½gï¿½Ä”lï¿½Ä”lï¿½ï¿½Oqë¼¸pHï¿½ï¿½bï¿½ï¿½ï¿½]jï¿½ï¿½Z)ï¿½ï¿½Vï¿½\\qï¿½waï¿½ï¿½waï¿½ï¿½kÚ«nOï¿½nOï¿½ï¿½kî§dÃ¥ï¿½aï¿½|^ï¿½ï¿½[ï¿½ï¿½[ï¿½ï¿½ï¿½Wï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½Bï¿½n=ï¿½ Dï¿½ï¿½.Yï¿½ï¿½ï¿½_;ï¿½_cï¿½ï¿½_cï¿½Ä”lï¿½ï¿½ï¿½pHï¿½ï¿½bï¿½ï¿½ï¿½Z)ï¿½:Rï¿½ï¿½ï¿½Vï¿½waï¿½ï¿½nOï¿½ï¿½aï¿½[ï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½Bï¿½ Dï¿½ï¿½Mï¿½ï¿½.Yï¿½ï¿½_cï¿½ï¿½_cï¿½pHï¿½\000j)ï¿½ï¿½Vï¿½nOï¿½ï¿½dÃ§ï¿½dÃ¥ï¿½aï¿½ï¿½Kï¿½ï¿½ï¿½Kï¿½ï¿½ Dï¿½ï¿½ï¿½Hï¿½Mï¿½ï¿½_cï¿½\000j)ï¿½ï¿½Rï¿½ï¿½Vï¿½dÃ¤ï¿½Kï¿½ï¿½ï¿½Hï¿½Mï¿½ï¿½Mï¿½ï¿½\000j)ï¿½ï¿½bï¿½ï¿½ï¿½Rï¿½ï¿½dÃ¤ï¿½Kï¿½ï¿½Mï¿½ï¿½ï¿½bï¿½ï¿½:Rï¿½ï¿½cP;ï¿½ï¿½Rï¿½ï¿½Kï¿½ï¿½Mï¿½ï¿½:Rï¿½ï¿½cP;ï¿½ï¿½Kï¿½ï¿½Mï¿½ï¿½cP;";
+		[ 32438 ] = "œ„W.Rh¤¯Kû­ÅB¯ª=w±n=æ±n=æ²T?ù± D¯´M¿ºCR¾.Y¦¾.Y¦ÃZ³Åğ_;Å_cñÆgÕÄ”l„Ä”l„¾Oqë¼¸pH¹îbş³•]j±ÄZ)©™Vğ¬¥\\q­waÿ­waÿ­kÚ«nO«nO§kî§dÃ¥µa |^Š[À[Àœ„W¤¯Kû­ÅB±n=æ± D¯¾.Y¦Åğ_;Å_cñÅ_cñÄ”l„¼¸pH¹îbş±ÄZ)°:R½©™Vğ­waÿ«nO¥µa[À¤¯Kû¤¯Kû­ÅB± D¯´M¿¾.Y¦Å_cñÅ_cñ¼¸pH½\000j)©™Vğ«nO§dÃ§dÃ¥µa¤¯Kû¤¯Kû± D¯°£Hâ´M¿Å_cñ½\000j)©ÚR©™Vğ§dÃ¤¯Kû°£Hâ´M¿´M¿½\000j)¹îbş©ÚR§dÃ¤¯Kû´M¿¹îbş°:R½¬cP;©ÚR¤¯Kû´M¿°:R½¬cP;¤¯Kû´M¿¬cP;";
 	};
 	[ 465 ] = { -- Hellfire Peninsula
 		-- Fulgorge
-		[ 18678 ] = ";ï¿½G9ï¿½ï¿½f:ï¿½p:ï¿½p;ï¿½ï¿½ï¿½>5y	>5y	B obGï¿½j=Kï¿½cZN}YQ:Yï¿½Q:Yï¿½Qï¿½\\ï¿½Pï¿½dï¿½Pï¿½dï¿½Nï¿½i	Ko\\@ï¿½ï¿½}@ï¿½ï¿½>ï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½:eï¿½ï¿½;ï¿½G;ï¿½G:ï¿½p>5y	Kï¿½cZQ:Yï¿½Pï¿½dï¿½Pï¿½dï¿½Ko\\Gs@ï¿½i@ï¿½ï¿½}>ï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½;ï¿½G>5y	Gï¿½j=Kï¿½cZPï¿½dï¿½@ï¿½i>ï¿½ï¿½ï¿½>5y	>5y	Gï¿½j=Pï¿½dï¿½AØƒF@ï¿½i>5y	>5y	Pï¿½dï¿½GsCï¿½yAØƒF>5y	>5y	GsCï¿½yHï¿½ï¿½ï¿½Fï¿½ZFÜ©ï¿½FÜ©ï¿½Jï¿½ï¿½ï¿½P\000ï¿½\"X1ï¿½ï¿½ZÍ‰ï¿½]ï¿½\
-]ï¿½\
-aï¿½ï¿½i=Anc}ï¿½rGz0sï¿½{ï¿½sï¿½{ï¿½snï¿½Sqï¿½ï¿½8qï¿½ï¿½8j=ï¿½ï¿½dï¿½ï¿½e[6ï¿½ï¿½[)ï¿½ï¿½Xï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½FÜ©ï¿½FÜ©ï¿½P\000ï¿½\"UÖ™]ï¿½\
-i=Anc}ï¿½nc}ï¿½sï¿½{ï¿½qï¿½ï¿½8[6ï¿½ï¿½Xï¿½ï¿½ï¿½T9ï¿½ï¿½RGï¿½ï¿½Lï¿½ï¿½ï¿½FÜ©ï¿½]ï¿½\
-nc}ï¿½qï¿½ï¿½8]Iï¿½ï¿½[6ï¿½ï¿½T9ï¿½ï¿½RGï¿½ï¿½FÜ©ï¿½UÖ™]ï¿½\
-qï¿½ï¿½8dï¿½ï¿½e]Iï¿½ï¿½T9ï¿½ï¿½RGï¿½ï¿½RGï¿½ï¿½UÖ™X1ï¿½ï¿½]ï¿½\
-dï¿½ï¿½e]Iï¿½ï¿½]Iï¿½ï¿½RGï¿½ï¿½X1ï¿½ï¿½X1ï¿½ï¿½]ï¿½\
-]Iï¿½ï¿½fï¿½hgï¿½ï¿½hï¿½ï¿½Rhï¿½ï¿½Rkqï¿½kï¿½ï¿½ï¿½m/ï¿½1u?ï¿½&ï¿½ï¿½ï¿½å€ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½Lï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½cï¿½ï¿½qï¿½ï¿½lï¿½ï¿½gKï¿½gKï¿½fï¿½hhï¿½ï¿½Rm/ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½Lï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½vï¿½ï¿½qï¿½ï¿½gKï¿½gKï¿½hï¿½ï¿½Rkï¿½ï¿½İ•ï¿½Lï¿½ï¿½zï¿½ï¿½ï¿½gKï¿½kï¿½ï¿½ï¿½m/ï¿½1m/ï¿½1ï¿½ï¿½Lzï¿½ï¿½ï¿½vï¿½ï¿½gKï¿½m/ï¿½1m/ï¿½1zï¿½ï¿½ï¿½vï¿½ï¿½";
+		[ 18678 ] = "; G9ü•f:p:p;ÀƒÃ>5y	>5y	B obGöj=KçcZN}YQ:YÎQ:YÎQ‚\\ôP‰d¯P‰d¯NÅi	Ko\\@‰}@ò¤É>—§Î>—§Î:e¦; G; G:p>5y	KçcZQ:YÎP‰d¯P‰d¯Ko\\Gs@i@‰}>—§Î>—§Î; G>5y	Göj=KçcZP‰d¯@i>—§Î>5y	>5y	Göj=P‰d¯AØƒF@i>5y	>5y	P‰d¯GsCÃyAØƒF>5y	>5y	GsCÃyH ²½F²ZFÜ©ŒFÜ©ŒJº¢¯P\000œ\"X1”¯ZÍ‰À]‡\
+]‡\
+aë€åi=Anc}órGz0sñ{Úsñ{ÚsnƒSqª†8qª†8j=‰™d›ˆe[6‘ÿ[)›ÆX ÑLú¨üH ²½FÜ©ŒFÜ©ŒP\000œ\"UÖ™]‡\
+i=Anc}ónc}ósñ{Úqª†8[6‘ÿX ÑT9ŸìRG åLú¨üFÜ©Œ]‡\
+nc}óqª†8]I‹ç[6‘ÿT9ŸìRG åFÜ©ŒUÖ™]‡\
+qª†8d›ˆe]I‹çT9ŸìRG åRG åUÖ™X1”¯]‡\
+d›ˆe]I‹ç]I‹çRG åX1”¯X1”¯]‡\
+]I‹çf°hg¨ºhõ§Rhõ§Rkq¬k¥²İm/¶1u?²&€¯å€¯åæ±ñ•é´L•é´L—­·*–‡¼‘–‡¼‘‘½c»¥qø¹l»‹gK¹gK¹f°hhõ§Rm/¶1€¯å•é´L•é´L–‡¼‘»¥vâ·âqø¹gK¹gK¹hõ§Rk¥²İ•é´L»¥z’¸†gK¹k¥²İm/¶1m/¶1•é´Lz’¸†vâ·âgK¹m/¶1m/¶1z’¸†vâ·â";
 		-- Mekthorg the Wild
-		[ 18677 ] = "rï¿½ssï¿½kï¿½tth1tth1vh>yï¿½mpyï¿½mp|Iuï¿½zï¿½{}(ï¿½4ï¿½ï¿½~Oï¿½ï¿½Åï¿½Å;ï¿½nï¿½ï¿½ï¿½ï¿½}Iï¿½*}\\ï¿½p{xï¿½\rk=ï¿½zjï¿½hï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ieï¿½Fm/ï¿½ï¿½m/ï¿½ï¿½qNï¿½vï¿½ï¿½ï¿½vï¿½xrsTu2rï¿½srï¿½stth1yï¿½mp}(ï¿½4ï¿½ï¿½Åƒï¿½ï¿½ï¿½}cï¿½?}Iï¿½*{xï¿½\roOï¿½ak=ï¿½zhï¿½ï¿½ï¿½vï¿½xrrï¿½syï¿½mpzï¿½~}(ï¿½4ï¿½ï¿½ï¿½ï¿½}cï¿½?{xï¿½\rvÜœï¿½oOï¿½ahï¿½ï¿½ï¿½m/ï¿½ï¿½yï¿½ï¿½ï¿½vï¿½xryï¿½mpzï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½}cï¿½?vÜœï¿½r&ï¿½ï¿½oOï¿½am/ï¿½ï¿½yï¿½ï¿½ï¿½yï¿½mpzï¿½{ï¿½ï¿½ï¿½vÜœï¿½r&ï¿½ï¿½r&ï¿½ï¿½m/ï¿½ï¿½vï¿½ï¿½ï¿½yXï¿½ï¿½yï¿½ï¿½ï¿½zï¿½{ï¿½ï¿½ï¿½r&ï¿½ï¿½vï¿½ï¿½ï¿½yXï¿½ï¿½zï¿½{zï¿½~ï¿½ï¿½ï¿½vï¿½ï¿½ï¿½yXï¿½ï¿½zï¿½~ï¿½ï¿½ï¿½yXï¿½ï¿½ï¿½\"ï¿½ï¿½Lï¿½uï¿½ï¿½Ù¢ï¿½Ù£ï¿½ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½Ñ¯.ï¿½Ñ¯.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½pï¿½yï¿½\"ï¿½ï¿½\"ï¿½ï¿½ï¿½Ù¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯.ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½\"ï¿½è¥»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Jï¿½İºï¿½ï¿½ï¿½ï¿½ï¿½İºï¿½ï¿½ï¿½";
+		[ 18677 ] = "rÊss©k‹tth1tth1vh>y³mpy³mp|Iuµz’{}(€4…~OùÅùÅ;‚nƒ‡´}I™*}\\p{x\rk=´zj»hü·´hü·´ie³Fm/Ÿ¾m/Ÿ¾qN•v®–vxrsTu2rÊsrÊstth1y³mp}(€4ùÅƒ‡´}c”?}I™*{x\roO¢ak=´zhü·´vxrrÊsy³mpzî~}(€4ƒ‡´}c”?{x\rvÜœÙoO¢ahü·´m/Ÿ¾yŒƒ÷vxry³mpzî~ƒ‡´€ª€ª}c”?vÜœÙr&±oO¢am/Ÿ¾yŒƒ÷y³mpz’{€ªvÜœÙr&±r&±m/Ÿ¾v®–yX‹…yŒƒ÷z’{€ªr&±v®–yX‹…z’{zî~€ªv®–yX‹…zî~€ªyX‹…¬\"Çè¤LÀu¢ä½Ù¢ä½Ù£¯µR¥»²•¥»²•¯¾®U±Ñ¯.±Ñ¯.¶öµµ·¹J°½½®pÆy¬\"Çè¬\"Çè¢ä½Ù¥»²•¥»²•±Ñ¯.·¹J°½½¬\"Çè¥»²•¥»²•·¹J²İº¥»²•²İº°½½";
 		-- Vorakem Doomspeaker
-		[ 18679 ] = "ï¿½Fï¿½ï¿½Cï¿½ï¿½ï¿½G_ï¿½ï¿½Gï¿½ï¿½ï¿½Ctï¿½ï¿½FEï¿½ï¿½FEï¿½ï¿½NOï¿½xQ ï¿½xQ ï¿½[Tï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½Sï¿½ï¿½ï¿½QGï¿½sKÆ‡sKÆˆFï¿½ï¿½G_ï¿½yIï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½FEï¿½ï¿½FEï¿½xQ ï¿½ï¿½Sï¿½ï¿½ï¿½Sï¿½ï¿½sKÆï¿½G_ï¿½yIï¿½ï¿½ï¿½FEï¿½ï¿½Sï¿½ï¿½ï¿½G_ï¿½yIï¿½ï¿½ï¿½Sï¿½ï¿½a{ï¿½ï¿½[rï¿½\
-fï¿½ï¿½\
-fï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½[=ï¿½ï¿½[=ï¿½b[ï¿½ï¿½ubï¿½ï¿½ubï¿½ï¿½kï¿½ï¿½ï¿½qhï¿½ï¿½qhï¿½]yï¿½ï¿½2}Vï¿½2}Vï¿½a{ï¿½ï¿½\
-fï¿½ï¿½\
-fï¿½ï¿½ï¿½[=ï¿½ubï¿½ï¿½ubï¿½ï¿½ï¿½qhï¿½2}Vï¿½\
-fï¿½ï¿½ubï¿½ï¿½2}Vï¿½È˜ï¿½ï¿½ï¿½ï¿½Dï¿½rï¿½Â·rï¿½Â¼ï¿½Â¿Hï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½!ï¿½Ì¼ï¿½ï¿½'ï¿½ï¿½ï¿½'ï¿½	ï¿½ï¿½È˜ï¿½ï¿½È˜ï¿½ï¿½rï¿½Â¿Hï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½'ï¿½È˜ï¿½b-Pvcï¿½Lï¿½h_K~h_K~oï¿½Mï¿½oï¿½Vï¿½jkSï¿½jkXRhï¿½Yï¿½hï¿½Yï¿½ctVfb-Pvh_K~oï¿½Vï¿½jkSï¿½jkSï¿½hï¿½Yï¿½b-Pvh_K~jkSï¿½b-Pv";
+		[ 18679 ] = "ˆFã‰ÔCşÌG_¡©G†¨“Ct«‹FE«‹FE«ŸNO©xQ ©xQ  [T“¶Sş“¶SşŒúQG‡sKÆ‡sKÆˆFãÌG_–yI†¡©G†«‹FE«‹FE©xQ “¶Sş“¶Sş‡sKÆÌG_–yI†«‹FE“¶SşÌG_–yI†“¶Sş²a{¹±[r·\
+fµ·\
+fµºÚ]í¼Ù[=¼Ù[=¿b[çÁub©Áub©Âk¹½¸qh½¸qhº]yõ´2}V´2}V²a{¹·\
+fµ·\
+fµ¼Ù[=Áub©Áub©½¸qh´2}V·\
+fµÁub©´2}VµÈ˜†³¢‰D·r„Â·r„Â¼…Â¿H²¿H²¾!œÌ¼‹Ÿ'¼‹Ÿ'¹	µÈ˜†µÈ˜†·r„Â¿H²¿H²¼‹Ÿ'µÈ˜†b-PvcL’h_K~h_K~o—Mío¾VıjkSşjkXRhÇY†hÇY†ctVfb-Pvh_K~o¾VıjkSşjkSşhÇY†b-Pvh_K~jkSşb-Pv";
 	};
 	[ 491 ] = { -- Howling Fjord
 		-- King Ping
-		[ 32398 ] = "O!ï¿½(STï¿½ï¿½PAï¿½PAï¿½M/ï¿½ï¿½O!ï¿½(Ffï¿½Fï¿½ï¿½ï¿½Caï¿½fCaï¿½f>ï¿½S>Iï¿½ï¿½Caï¿½f>Iï¿½ï¿½Ffï¿½MÌ½5Nï¿½ï¿½ï¿½Pï¿½Pï¿½P\rï¿½ï¿½MÌ½5QNï¿½\000S,ï¿½Rï¿½ï¿½Rï¿½ï¿½Qï¿½ï¿½QNï¿½\000Qï¿½ÏSaÉ¬Wï¿½ï¿½Wï¿½ï¿½Wï¿½ï¿½jSï¿½ÑWï¿½ï¿½Sï¿½ÑQï¿½Ï";
+		[ 32398 ] = "O!(ST“¯PA—PA—M/O!(FfŸFµ¤ãCa¦fCa¦f>¥S>I¢ĞCa¦f>I¢ĞFfŸMÌ½5N¿¯ìPì°Pì°P\r½¸MÌ½5QN½\000S,½RëÄRëÄQÃşQN½\000QåÏSaÉ¬W†ÉW†ÉWšÌjSˆÑW†ÉSˆÑQåÏ";
 		-- Perobas the Bloodthirster
-		[ 32377 ] = "ï¿½ï¿½ï¿½u	ï¿½Dï¿½Dï¿½ï¿½/ï¿½)\"Tï¿½)\"Tï¿½K!ï¿½ï¿½ï¿½å‚ˆï¿½ï¿½ß€ï¿½ï¿½ï¿½ï¿½Dï¿½)\"Tï¿½)\"Tï¿½ï¿½å€·ï¿½ï¿½3Gï¿½ï¿½.Òï¿½2[ï¿½ï¿½2[ï¿½w9ï¿½ï¿½ï¿½:Dï¿½ï¿½2[ï¿½ï¿½:Dï¿½ï¿½3Gï¿½C.ï¿½ï¿½I'\
-ï¿½ï¿½%Fï¿½&ï¿½ï¿½ï¿½Ì¸>ï¿½ï¿½>ï¿½ï¿½ï¿½#ï¿½ï¿½*ï¿½{+Wï¿½p0ï¿½ï¿½C.ï¿½ï¿½C.ï¿½ï¿½ï¿½%Fï¿½&ï¿½ï¿½&ï¿½ï¿½>ï¿½ï¿½ï¿½*ï¿½{+Wï¿½C.ï¿½ï¿½&ï¿½ï¿½&ï¿½ï¿½ï¿½*ï¿½{+W";
+		[ 32377 ] = "€·‚u	ˆDˆD‹Ÿ/Š)\"TŠ)\"TˆK!ÿ‚ˆå‚ˆåªß€·€·ˆDŠ)\"TŠ)\"T‚ˆå€·—š3G˜Û.Ò¤2[¤2[›w9Œ™ :D¤2[™ :D—š3GªC.¿¬I'\
+®Ë%F³&¶§Ì¸>˜¸>˜¹À#·Á*è±{+W¬p0ªªC.¿ªC.¿®Ë%F³&³&¸>˜·Á*è±{+WªC.¿³&³&·Á*è±{+W";
 		-- Vigdis the War Maiden
-		[ 32386 ] = "ï¿½ï¿½~ï¿½ï¿½!uï¿½ï¿½ï¿½pÄµï¿½nï¿½ï¿½xeï¿½ï¿½b{ï¿½vemï¿½e?ï¿½{hï¿½ï¿½{hï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<ï¿½gï¿½=ï¿½ï¿½ï¿½ï¿½ï¿½Ì“gï¿½tï¿½ï¿½~ï¿½ï¿½ï¿½pÄµï¿½nï¿½ï¿½ï¿½b{ï¿½vemï¿½vemï¿½{hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½uï¿½ï¿½ï¿½<ï¿½gï¿½=ï¿½Ì“gï¿½tï¿½ï¿½ï¿½pÄµï¿½nï¿½ï¿½ï¿½nï¿½ï¿½vemï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½<ï¿½ï¿½ï¿½<ï¿½Ì“gï¿½:ï¿½tï¿½ï¿½Hï¿½tï¿½ï¿½nï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<ï¿½:ï¿½tï¿½ï¿½Hï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:ï¿½tï¿½ï¿½H";
+		[ 32386 ] = "¯·~¾®!u¨¯ØpÄµ€n—¹xe»¬b{½vemÀe?Â{hÕÂ{hÕÃãsÃ€ÀëßÁ½‘¡u½‘¡u¹³Ÿù¶®›<³g™=­¤–»­Ì“g´t„ğ¯·~¾¯ØpÄµ€n—»¬b{½vem½vemÂ{hÕÃ€ÁˆõÀëß½‘¡u¶®›<³g™=­Ì“g´t„ğ¯ØpÄµ€n—µ€n—½vemÃ€Áˆõ½‘¡u¶®›<¶®›<­Ì“g±:“t´H´t„ğµ€n—µ€n—Ã€ÁˆõÁˆõ¶®›<±:“t´Hµ€n—ÁˆõÁˆõ±:“t´H";
 	};
 	[ 492 ] = { -- Icecrown
 		-- High Thane Jorfus
-		[ 32501 ] = "ï¿½ï¿½gï¿½ï¿½ï¿½bï¿½ï¿½ï¿½]pï¿½ï¿½]pï¿½ï¿½ZÇµ\
-\\/ï¿½Wï¿½ï¿½;Oiï¿½ï¿½Poï¿½ï¿½Poï¿½Z^ï¿½ï¿½_.ï¿½ï¿½_.ï¿½ï¿½fï¿½iï¿½ï¿½iï¿½ï¿½Ajï¿½ï¿½gï¿½ï¿½ï¿½gï¿½ï¿½ï¿½]pï¿½\
-\\/ï¿½Wï¿½ï¿½ï¿½Poï¿½ï¿½_.ï¿½ï¿½_.ï¿½iï¿½ï¿½ï¿½gï¿½ï¿½ï¿½gï¿½ï¿½\
-\\/ï¿½Wï¿½ï¿½Wï¿½ï¿½ï¿½_.ï¿½ï¿½gï¿½|Pï¿½auLï¿½ï¿½ttï¿½ï¿½ttï¿½ï¿½vï¿½È­zï¿½ï¿½_zï¿½ï¿½_~ï¿½ï¿½ï¿½&ï¿½ï¿½&ï¿½ï¿½oï¿½{|Pï¿½a|Pï¿½attï¿½ï¿½zï¿½ï¿½_zï¿½ï¿½_ï¿½&ï¿½|Pï¿½aNï¿½ï¿½Pï¿½ï¿½PNï¿½ï¿½WEï¿½ï¿½ZQï¿½Q[~ï¿½ï¿½[ï¿½^Ù³ï¿½_vï¿½1_vï¿½1]ï¿½ï¿½ï¿½Zï¿½ï¿½+SÃµsPï¿½ï¿½ï¿½Oï¿½ï¿½ZPAï¿½ï¿½Mï¿½uNï¿½ï¿½WEï¿½ï¿½[~ï¿½ï¿½Xï¿½ï¿½p[ï¿½_vï¿½1Zï¿½ï¿½+Zï¿½ï¿½+SÃµsOï¿½ï¿½ZPAï¿½ï¿½Nï¿½ï¿½PNï¿½ï¿½WEï¿½ï¿½Xï¿½ï¿½p[ï¿½[ï¿½Zï¿½ï¿½+Oï¿½ï¿½ZPAï¿½ï¿½PNï¿½ï¿½WEï¿½ï¿½WEï¿½ï¿½[ï¿½Oï¿½ï¿½ZWEï¿½ï¿½Oï¿½ï¿½ZPAï¿½ï¿½";
+		[ 32501 ] = "­ßg´¬²b©­«]p­«]p°‰ZÇµ\
+\\/»W¡½;Oi¿ËPo¿ËPo½Z^¶â_.¶â_.¶Èf´iõ´iõ°Aj­ßg´­ßg´­«]pµ\
+\\/»W¡¿ËPo¶â_.¶â_.´iõ­ßg´­ßg´µ\
+\\/»W¡»W¡¶â_.­ßg´|PáauLØûttÑÊttÑÊvéÈ­zûÅ_zûÅ_~ÊÀƒ&Ûƒ&Û€oá{|Páa|PáattÑÊzûÅ_zûÅ_ƒ&Û|PáaN›…PòœÌPN¡©WE¬àZQ©Q[~«²[²^Ù³_v·1_v·1]„·èZõ¶+SÃµsP–µãOƒ³ZPA¯M uN›…WE¬à[~«²X´®p[²_v·1Zõ¶+Zõ¶+SÃµsOƒ³ZPA¯N›…PN¡©WE¬àX´®p[²[²Zõ¶+Oƒ³ZPA¯PN¡©WE¬àWE¬à[²Oƒ³ZWE¬àOƒ³ZPA¯";
 		-- Hildana Deathstealer
-		[ 32495 ] = "Jqï¿½HXuï¿½HRdï¿½Lï¿½TIï¿½Lï¿½JJFï¿½JJFï¿½MAï¿½Qï¿½B ]ï¿½?\r]p<j_:ï¿½_:ï¿½`ï¿½<ï¿½`@\000`@\000^(Dï¿½UtIï¿½M}Nï¿½P.Sï¿½N.]O` RdtS9ieS9ieR&nï¿½Lï¿½uIï¿½wï¿½Eï¿½}ODï¿½{ï¿½HXuï¿½Jqï¿½Nï¿½mVJï¿½fRJqï¿½HRdï¿½]B3]ï¿½?\r_:ï¿½LIJï¿½M}Nï¿½N.]S9ieLï¿½uIï¿½wï¿½Iï¿½wï¿½Dï¿½{ï¿½HXuï¿½Lï¿½bï¿½Jï¿½fRHRdï¿½]B3_:ï¿½`@\000S9ieIï¿½wï¿½HXuï¿½Lï¿½bï¿½HRdï¿½K)]ï¿½]B3`@\000UtIï¿½S9ieHXuï¿½Nï¿½mVOï¿½hï¿½Lï¿½bï¿½K)]ï¿½Uï¿½Fï¿½]B3UtIï¿½S9ieNï¿½mVOï¿½hï¿½Oï¿½hï¿½K)]ï¿½Lï¿½TQï¿½B Uï¿½Fï¿½UtIï¿½O` S9ieOï¿½hï¿½Qï¿½B UtIï¿½Pï¿½Eï¿½N.]O` Oï¿½hï¿½Qï¿½B Pï¿½Eï¿½Mï¿½Eï¿½N.]Oï¿½hï¿½Lï¿½TJJFï¿½Qï¿½B Mï¿½Eï¿½LIJï¿½N.]Lï¿½TJJFï¿½Mï¿½Eï¿½LIJï¿½Lï¿½TJJFï¿½LIJÇ†\
-ï¿½Bï¿½ï¿½~ï¿½rï¿½ï¿½ï¿½rï¿½ï¿½ï¿½ï¿½ï¿½Ò„2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í–ï¿½ï¿½Şš6ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½ï¿½Mï¿½ï¿½ï¿½Mï¿½ï¿½ï¿½Ğvï¿½ï¿½ï¿½pï¿½*ï¿½ô‡§ï¿½ï¿½\
-ï¿½Bï¿½\
-ï¿½Bï¿½rï¿½ï¿½ï¿½Ò„2ï¿½ï¿½ï¿½ï¿½ï¿½Í–ï¿½ï¿½Ş™ï¿½ï¿½ï¿½ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½1ï¿½*ï¿½ï¿½\
-ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ş™ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½pï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½1ï¿½\
-ï¿½Bï¿½Ò„2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½Uï¿½rï¿½ï¿½ï¿½1ï¿½Ò„2ï¿½Ò„2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Kï¿½Ò„2ï¿½ï¿½ï¿½Kï¿½Uï¿½r";
+		[ 32495 ] = "JqŞHXu¨HRdğLçTIÛL¥JJF¡JJF¡MAªQÄB ]Ó?\r]p<j_:Ô_:Ô`ò<ç`@\000`@\000^(DUtIÁM}N‘P.S¶N.]O` RdtS9ieS9ieR&nìL²uIÎwöEê}ODİ{ŸHXu¨JqŞNÒmVJºfRJqŞHRdğ]B3]Ó?\r_:ÔLIJÇM}N‘N.]S9ieL²uIÎwöIÎwöDİ{ŸHXu¨LŸb×JºfRHRdğ]B3_:Ô`@\000S9ieIÎwöHXu¨LŸb×HRdğK)]„]B3`@\000UtIÁS9ieHXu¨NÒmVO¾hšLŸb×K)]„U¨FÜ]B3UtIÁS9ieNÒmVO¾hšO¾hšK)]„LçTQÄB U¨FÜUtIÁO` S9ieO¾hšQÄB UtIÁP±EêN.]O` O¾hšQÄB P±EêMóEÂN.]O¾hšLçTJJF¡QÄB MóEÂLIJÇN.]LçTJJF¡MóEÂLIJÇLçTJJF¡LIJÇ†\
+B†Š~ˆr‡Áˆr‡Á‹„Ò„2’äŠû—ü‡§™‰Í–öŞš6—R™’ú™’ú—E ò“M¡£“M¡£“Ğv–öp‰*Šô‡§²†\
+B†\
+Bˆr‡ÁÒ„2’äŠû™‰Í–öŞ™’ú“M¡£–öp‹¬ˆ1‰*Šô†\
+B’äŠû–öŞ™’ú™’ú–öp—˜K‹¬ˆ1†\
+BÒ„2’äŠû™’ú—˜KUˆr‹¬ˆ1Ò„2Ò„2’äŠû—˜KÒ„2—˜KUˆr";
 		-- Putridus the Ancient
-		[ 32487 ] = "ï¿½ï¿½ï¿½ï¿½ì­«ï¿½xv?ï¿½{Pï¿½ï¿½wé®wé®rhï¿½ï¿½r×ˆDr×ˆDwE{ï¿½ï¿½fï¿½ï¿½fï¿½ï¿½kaÄ˜ï¿½ctï¿½>sï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½fï¿½@ï¿½fï¿½Ö©*ï¿½,ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xv?ï¿½wé®r×ˆDï¿½>sï¿½ï¿½@ï¿½fï¿½,ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½evï¿½ï¿½ï¿½v?ï¿½r×ˆDï¿½>sï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ezvï¿½ï¿½ï¿½r×ˆDï¿½>sï¿½ï¿½ï¿½ï¿½eï¿½\"ï¿½ï¿½ï¿½ï¿½kï¿½zr×ˆDï¿½>sï¿½ï¿½\"ï¿½ï¿½ï¿½`y*ï¿½ï¿½kï¿½r×ˆDï¿½fï¿½ï¿½ï¿½ctï¿½>sï¿½ï¿½`y*ï¿½xgÎƒï¿½kï¿½fï¿½ï¿½ï¿½ctï¿½`y*ï¿½ï¿½hï¿½ï¿½ï¿½hï¿½ï¿½xgÎ‚fï¿½ï¿½ï¿½hï¿½ï¿½fï¿½ï¿½ï¿½ct";
+		[ 32487 ] = "°ë³­ì¯ì­«©xv?•{P¬wé®wé®rh•›r×ˆDr×ˆDwE{˜‚f®‚f®ŠkaÄ˜ºct§>s¼®—“²@¦f²@¦f³Ö©*´,°´,°°ë³­«©xv?•wé®r×ˆD§>s¼²@¦f´,°´,°­«©x®±§ev®‰Œv?•r×ˆD§>s¼´,°®±§ezv®‰Œr×ˆD§>s¼®±§e«\"•€ƒäkôzr×ˆD§>s¼«\"•€¤`y*ƒäkôr×ˆD‚f®˜ºct§>s¼¤`y*ŠxgÎƒäkô‚f®˜ºct¤`y*–ıh´–ıh´ŠxgÎ‚f®–ıh´‚f®˜ºct";
 	};
 	[ 477 ] = { -- Nagrand
 		-- Bro'Gaz the Clanless
-		[ 18684 ] = "Qï¿½;ï¿½Uï¿½9DWï¿½>Wï¿½>XREï¿½VsQVsQT,XMYH1`ï¿½FzDï¿½AAï¿½ï¿½ï¿½Aï¿½ï¿½6>ï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½>ï¿½Aï¿½}ï¿½CTyEï¿½]ï¿½Gï¿½Wï¿½RJï¿½Qï¿½Cï¿½Qï¿½;ï¿½Qï¿½;ï¿½Wï¿½>VsQH1`ï¿½Dï¿½AAï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½Aï¿½}ï¿½RJï¿½Qï¿½;ï¿½VsQAï¿½ï¿½ï¿½Aï¿½}ï¿½CTyNï¿½Pï¿½RJï¿½VsQH1`ï¿½Aï¿½ï¿½ï¿½CTyGï¿½Wï¿½Nï¿½Pï¿½VsQH1`ï¿½CTyGï¿½Wï¿½Gï¿½Wï¿½VsQMYIï¿½\\ï¿½H1`ï¿½Gï¿½Wï¿½MYIï¿½\\ï¿½Gï¿½Wï¿½nï¿½Um\"ï¿½^t%ï¿½ï¿½t%ï¿½ï¿½tï¿½ï¿½Is3ï¿½ï¿½uYï¿½ï¿½{\"ï¿½ï¿½}5ï¿½ç†¡ï¿½Ûï¿½ï¿½ï¿½\rï¿½ï¿½\rï¿½ï¿½~ï¿½Zï¿½3ï¿½ï¿½ï¿½*ï¿½İŒ6ï¿½[ï¿½~ï¿½ï¿½ï¿½Ç‹ï¿½ï¿½7ï¿½Sï¿½ï¿½Cï¿½ï¿½ï¿½Ä…ï¿½zï¿½|ï¿½fï¿½|ï¿½f|ï¿½ï¿½y{ï¿½byï¿½ï¿½tï¿½ï¿½ï¿½nï¿½Unï¿½Ut%ï¿½ï¿½s3ï¿½Å†ï¿½ï¿½ï¿½\rï¿½Üƒ3ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½*ï¿½İŒ~ï¿½ï¿½ï¿½Ç‹ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½Ä…ï¿½ï¿½Ä€|ï¿½f{ï¿½bnï¿½Us3ï¿½ï¿½uYï¿½ï¿½ï¿½ï¿½ï¿½Ûƒ3ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½byï¿½ï¿½yï¿½ï¿½nï¿½UuYï¿½ï¿½ï¿½\
-ï¿½Ş†ï¿½ï¿½ÛŒ~ï¿½ï¿½yï¿½ï¿½uYï¿½ï¿½}5ï¿½ï¿½\
-ï¿½ŞŒ~ï¿½ï¿½ï¿½Ç‹ï¿½ï¿½ï¿½ï¿½ï¿½yï¿½ï¿½}5ï¿½ï¿½Ï•ï¿½ï¿½\
-ï¿½Ş‰Ç‹ï¿½ï¿½ï¿½ï¿½ï¿½}5ï¿½ï¿½Nï¿½ï¿½Ï•ï¿½ï¿½Ç‹ï¿½ï¿½ï¿½ï¿½ÄNï¿½ï¿½Ï•ï¿½ï¿½ï¿½ï¿½Ä”ï¿½ï¿½Ù”ï¿½ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½ï¿½\\ï¿½Yï¿½ï¿½ï¿½Vï¿½Ï¸Ç²ï¿½ï¿½nï¿½ï¿½ï¿½Ñ³ï¿½ï¿½Ñ¶ï¿½ï¿½-ï¿½ï¿½ï¿½ï¿½0ï¿½ï¿½ï¿½Ä”ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë„ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½Fï¿½ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½ï¿½Ù–fï¿½ï¿½ï¿½ï¿½ï¿½\\ï¿½ï¿½Vï¿½Æ¿ÑµÏ¸Ç³ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%ï¿½ï¿½ï¿½Ë„ï¿½ï¿½ï¿½Fï¿½yï¿½ï¿½ï¿½yï¿½ï¿½ï¿½fï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½Ï¸Ç¶ï¿½ï¿½ï¿½0ï¿½ï¿½0ï¿½ï¿½ï¿½ï¿½ï¿½%ï¿½ï¿½Ô¾Ë˜ï¿½Ë„ï¿½yï¿½ï¿½ï¿½Æ¿ÑµÏ¸Ç¸0ï¿½ï¿½Ô¾Ë—yï¿½ï¿½ï¿½ï¿½ï¿½5ï¿½Æ¿Ñ¸0ï¿½ï¿½%ï¿½ï¿½%ï¿½ï¿½Ô¾Ëï¿½ï¿½5ï¿½ï¿½ï¿½\\ï¿½Æ¿Ñ£%ï¿½ï¿½ï¿½ï¿½5ï¿½ï¿½ï¿½\\ï¿½%ï¿½";
+		[ 18684 ] = "Qå;‹UÖ9DWÁ>WÁ>XREêVsQVsQT,XMYH1`FzD›AAª„•A‹6>¸‹Æ>¸‹Æ>í„AŞ}ÅCTyE]GÕWRJºQÿCÃQå;‹Qå;‹WÁ>VsQH1`D›AAª„•Aª„•>¸‹ÆAŞ}ÅRJºQå;‹VsQAª„•AŞ}ÅCTyNæPØRJºVsQH1`Aª„•CTyGÕWNæPØVsQH1`CTyGÕWGÕWVsQMYIõ\\ŸH1`GÕWMYIõ\\ŸGÕWnUm\"ˆ^t%‰Àt%‰Àt›ŒIs3ÅuY“¯{\"—­}5šç†¡‡Û·‡ö\r…Ü\r…Ü~ó‚Zƒ3ƒş‡*ƒİŒ6[Œ~„µ‰Ç‹’‰7•S‡ï›C…¨ŸÄ…¤z€|¦f€|¦f|¦y{ç by³œt¼˜ÁnUnUt%‰Às3Å†¡‡Û\r…Üƒ3ƒşƒ3ƒş‡*ƒİŒ~„µ‰Ç‹’‡ï›C…¨ŸÄ…¨ŸÄ€|¦f{ç bnUs3ÅuY“¯†¡‡Ûƒ3ƒşŒ~„µ…¨ŸÄ{ç by³œy³œnUuY“¯‡\
+Ş†¡‡ÛŒ~„µy³œuY“¯}5šç‡\
+ŞŒ~„µ‰Ç‹’…¨ŸÄy³œ}5šç…Ï•ö‡\
+Ş‰Ç‹’…¨ŸÄ}5šçNš…Ï•ö‰Ç‹’…¨ŸÄNš…Ï•ö…¨ŸÄ”µ½Ù”•µ»–f³¼–f³¼šû¶²¼5£¼¾\\¦Y¼ª½VµÏ¸Ç²±n³¯¯Ñ³¯¯Ñ¶€±-¶®´ê¸0»ªáÄ”¦üÄã¦üÄã¤êË¥¡ÑÊà˜­Ë„š¬Ğ˜™ÒF˜™ÒF•Ì—yÀø—yÀø”µ½Ù–f³¼£¼¾\\ª½V«Æ¿ÑµÏ¸Ç³¯¯Ñ¶®´ê¦üÄã¡ÑÊà£%Ä˜­Ë„˜™ÒF—yÀø—yÀø–f³¼²¼5µÏ¸Ç¶®´ê¸0»¸0»¦üÄã£%ÄšÔ¾Ë˜­Ë„—yÀø«Æ¿ÑµÏ¸Ç¸0»šÔ¾Ë—yÀø²¼5«Æ¿Ñ¸0»£%Ä£%ÄšÔ¾Ë²¼5£¼¾\\«Æ¿Ñ£%Ä²¼5£¼¾\\£%Ä";
 		-- Goretooth
-		[ 17144 ] = "ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½A[ï¿½A<ï¿½ï¿½<ï¿½ï¿½?ï¿½ï¿½/AØŸ;Eï¿½ï¿½;Eï¿½ï¿½ï¿½R×ŸbTï¿½bTï¿½\rX$ï¿½[Jï¿½ï¿½Q:ï¿½ï¿½Oï¿½ï¿½ï¿½Iyï¿½ï¿½Iyï¿½kDĞŠCAï¿½ï¿½ï¿½A[ï¿½ï¿½<ï¿½ï¿½?ï¿½ï¿½ï¿½?ï¿½ï¿½;Eï¿½ï¿½bTï¿½bTï¿½[Jï¿½7Vï¿½ï¿½7Vï¿½ï¿½ï¿½Q:ï¿½ï¿½Iyï¿½ï¿½Iyï¿½CAï¿½ï¿½ï¿½A[ï¿½ï¿½A[ï¿½ï¿½?ï¿½ï¿½bTï¿½bTï¿½7Vï¿½ï¿½ï¿½Iyï¿½bTï¿½ï¿½Iyï¿½ï¿½A[NwROHuYVï¿½tï¿½Vï¿½tï¿½Yï¿½pb]\"r]\"r_pï¿½`vrï¿½`vrï¿½`ï¿½xï¿½^(|^(|_Ëƒ9\\Vï¿½ï¿½\\Vï¿½ï¿½Wï¿½ï¿½Nï¿½ï¿½N\\ï¿½7MBï¿½ï¿½O.{dO.{dNwRVï¿½tï¿½Vï¿½tï¿½]\"r`vrï¿½^(|\\Vï¿½ï¿½Nï¿½ï¿½Nï¿½ï¿½N\\ï¿½7O.{dO.{dVï¿½tï¿½`vrï¿½`vrï¿½^(|Nï¿½ï¿½`vrï¿½Nï¿½ï¿½O.{dg$bï¿½i=^ï¿½lï¿½aï¿½mï¿½cï¿½sh$rï¿½jï¿½rï¿½jï¿½t`oï¿½twï¿½rï¿½z~tï¿½}It9ï¿½kï¿½zxiï¿½{gfwï¿½gfwï¿½eï¿½ruhï¿½irhï¿½irjï¿½lPhï¿½qNkï¿½h_jï¿½lPhï¿½irhï¿½eï¿½g$bï¿½lï¿½aï¿½rï¿½jï¿½twï¿½rï¿½z~rï¿½z~t9ï¿½kï¿½zxgfwï¿½hï¿½irhï¿½qNkï¿½h_hï¿½irhï¿½eï¿½hï¿½eï¿½lï¿½aï¿½mï¿½cï¿½rï¿½z~kï¿½zxgfwï¿½gfwï¿½hï¿½qNi^uï¿½n;h*kï¿½h_hï¿½eï¿½rï¿½z~gfwï¿½i^uï¿½n;h*hï¿½eï¿½mï¿½cï¿½rï¿½z~i^uï¿½nvwï¿½pï¿½jï¿½n;h*mï¿½cï¿½rï¿½z~nvwï¿½r-sï¿½pï¿½jï¿½mï¿½cï¿½rï¿½jï¿½rï¿½jï¿½rï¿½z~r-sï¿½rï¿½jï¿½r-sï¿½pï¿½jï¿½";
+		[ 17144 ] = "¿ØÂ¼ÁˆÀÄÆÎÍVÆÎÍVÅÈÓÃÒÁÃÊà¿ØÂ¼ÆÎÍVÆÎÍVÃÒÁÃÊàÅA[A<”÷<–È?±›/AØŸ;E‡Ÿ;E‡ ØR×ŸbTñŸbTñŸ\rX$[JòQ:ŒÓO¾‹ÆIy‹ÆIy‰kDĞŠCAÅA[”÷<–È?±–È?±Ÿ;E‡ŸbTñŸbTñ[J™7V¡™7V¡òQ:‹ÆIy‹ÆIyŠCAÅA[ÅA[–È?±ŸbTñŸbTñ™7V¡‹ÆIyŸbTñ‹ÆIyÅA[NwROHuYVétêVétêY³pb]\"r]\"r_pÑ`vrñ`vrñ`·xè^(|^(|_Ëƒ9\\V„÷\\V„÷W»‹NŒÓN\\ˆ7MB‚ˆO.{dO.{dNwRVétêVétê]\"r`vrñ^(|\\V„÷NŒÓNŒÓN\\ˆ7O.{dO.{dVétê`vrñ`vrñ^(|NŒÓ`vrñNŒÓO.{dg$bÊi=^«lçaåm²csh$r×j™r×j™t`oØtwörñz~tĞ}It9€kÚzxi³{gfwögfwöe¡ruhïirhïirj³lPhŒqNkûh_j³lPhïirh eµg$bÊlçaår×j™twörñz~rñz~t9€kÚzxgfwöhïirhŒqNkûh_hïirh eµh eµlçaåm²crñz~kÚzxgfwögfwöhŒqNi^uÉn;h*kûh_h eµrñz~gfwöi^uÉn;h*h eµm²crñz~i^uÉnvwüpÿjÍn;h*m²crñz~nvwür-sÉpÿjÍm²cr×j™r×j™rñz~r-sÉr×j™r-sÉpÿjÍ";
 		-- Voidhunter Yar
-		[ 18683 ] = "Zï¿½ï¿½z_ï¿½^Vï¿½]aï¿½ï¿½ï¿½^Vï¿½]_ï¿½cï¿½ï¿½eï¿½ï¿½?g_ï¿½ï¿½eï¿½fã®¸gÕ²ï¿½gÕ²ï¿½jï¿½ï¿½ï¿½kï¿½ï¿½gï¿½ygXï¿½ï¿½eï¿½ï¿½beï¿½ï¿½bc3Ä¡`Hï¿½_`Hï¿½_aï¿½6^ï¿½ï¿½}]ï¿½ï¿½ï¿½Yï¿½ï¿½Uï¿½ï¿½STï¿½P'ï¿½ï¿½Nvï¿½ï¿½Rï¿½OQ[ï¿½ï¿½Rï¿½,Rï¿½,Nï¿½ï¿½Oï¿½ï¿½ï¿½Sgï¿½ï¿½Uï¿½ï¿½Xï¿½Xï¿½W8ï¿½ï¿½YÛŸï¿½Zï¿½ï¿½z^Vï¿½]Zï¿½ï¿½ï¿½aï¿½ï¿½ï¿½_ï¿½cï¿½ï¿½cï¿½ï¿½g_ï¿½ï¿½eï¿½gÕ²ï¿½kï¿½ï¿½gï¿½ygï¿½yeï¿½ï¿½b`Hï¿½_`Hï¿½_^ï¿½ï¿½}]ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½Uï¿½ï¿½STï¿½STï¿½Nvï¿½ï¿½Rï¿½ORï¿½,Oï¿½ï¿½ï¿½Sgï¿½ï¿½Xï¿½YÛŸï¿½Zï¿½ï¿½zZï¿½ï¿½zZï¿½ï¿½ï¿½Wï¿½ï¿½\000cï¿½ï¿½ï¿½aï¿½ï¿½ï¿½cï¿½ï¿½cï¿½ï¿½eï¿½gÕ²ï¿½gÕ²ï¿½gï¿½y`Hï¿½_`Hï¿½_]ï¿½ï¿½ï¿½STï¿½STï¿½Rï¿½ORï¿½,Rï¿½,Sgï¿½ï¿½Xï¿½Xï¿½Zï¿½ï¿½zWï¿½ï¿½\000cï¿½ï¿½ï¿½cï¿½ï¿½gÕ²ï¿½Rï¿½,Xï¿½Wï¿½ï¿½\000bï¿½ï¿½ï¿½cï¿½ï¿½ï¿½gÕ²ï¿½Rï¿½,Wï¿½ï¿½\000Uï¿½ï¿½bï¿½ï¿½ï¿½gÕ²ï¿½`Hï¿½_STï¿½Rï¿½,Uï¿½ï¿½_ï¿½ï¿½'bï¿½ï¿½ï¿½`Hï¿½_STï¿½Uï¿½ï¿½Uï¿½ï¿½[ï¿½ï¿½ï¿½_ï¿½ï¿½'`Hï¿½_STï¿½Uï¿½ï¿½WÕ¾;WÕ¾;[ï¿½ï¿½ï¿½`Hï¿½_WÕ¾;`Hï¿½_STï¿½";
+		[ 18683 ] = "Zº¥z_¦^V«]aÿ®ù^V«]_¦c¨´e¥?g_§€e«fã®¸gÕ²¯gÕ²¯jû²×k¶égé¶ygX»‘eÏÀbeÏÀbc3Ä¡`HÇ_`HÇ_aË6^—Ì}]ÅÇïY­ÇU”ÅSTÂP'ÄãNvÁÑR¾OQ[¸áR²,R²,N­æO—©ŸSg­—U‡ªX§X§W8 øYÛŸËZº¥z^V«]Z³«Úaÿ®ù_¦c¨´c¨´g_§€e«gÕ²¯k¶égé¶ygé¶yeÏÀb`HÇ_`HÇ_^—Ì}]ÅÇï]ÅÇïU”ÅSTÂSTÂNvÁÑR¾OR²,O—©ŸSg­—X§YÛŸËZº¥zZº¥zZ³«ÚW§¯\000c¯µ¡aÿ®ùc¨´c¨´e«gÕ²¯gÕ²¯gé¶y`HÇ_`HÇ_]ÅÇïSTÂSTÂR¾OR²,R²,Sg­—X§X§Zº¥zW§¯\000c¯µ¡c¨´gÕ²¯R²,X§W§¯\000b–»˜c¯µ¡gÕ²¯R²,W§¯\000U¡´b–»˜gÕ²¯`HÇ_STÂR²,U¡´_À'b–»˜`HÇ_STÂU¡´U¼º[‹À£_À'`HÇ_STÂU¼ºWÕ¾;WÕ¾;[‹À£`HÇ_WÕ¾;`HÇ_STÂ";
 	};
 	[ 479 ] = { -- Netherstorm
 		-- Chief Engineer Lorthander
-		[ 18697 ] = "@UlCï¿½`ï¿½F^pF^pJ`ï¿½KPctKPctJf?G>gï¿½G>gï¿½Dï¿½npBï¿½phBï¿½ph@ï¿½oï¿½@Ul@UlF^pKPctG>gï¿½Bï¿½ph@UlKPctG>gï¿½@Ult9ï¿½&tFï¿½ï¿½vï¿½ï¿½ï¿½vï¿½ï¿½ï¿½}ï¿½Ì‘ï¿½ï¿½Hï¿½ï¿½Hï¿½ï¿½_|6Û¿|6Û¿wï¿½ÚŸt9ï¿½&t9ï¿½&vï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½H|6Û¿t9ï¿½&ï¿½Yï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½\\ï¿½ï¿½\\ï¿½.ï¿½Hï¿½\\ï¿½İŸ\\ï¿½İï¿½ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½ï¿½ï¿½ï¿½\\ï¿½ï¿½\\ï¿½\\ï¿½İ—ï¿½ï¿½ï¿½";
+		[ 18697 ] = "@UlC¶`ªF^pF^pJ`‰KPctKPctJf?G>g†G>g†DĞnpBÊphBÊph@Ñoƒ@Ul@UlF^pKPctG>g†BÊph@UlKPctG>g†@Ult9Ñ&tFËÌv‡ÈÎv‡ÈÎ}«Ì‘±ÏH±ÏHËÕ_|6Û¿|6Û¿w´ÚŸt9Ñ&t9Ñ&v‡ÈÎ±ÏH±ÏH|6Û¿t9Ñ&•Y¬ú’ˆ G”\\”\\.ŸHŸ\\¤İŸ\\¤İí«q—š®ù—š®ù•Y¬ú”\\”\\Ÿ\\¤İ—š®ù";
 		-- Ever-Core the Punisher
-		[ 18698 ] = "<k]:ï¿½e>ï¿½cï¿½Iï¿½jKdï¿½S3jï¿½S3jï¿½O.pï¿½Jï¿½uJï¿½uDï¿½u@Nrï¿½@Nrï¿½<k]>ï¿½cï¿½FRmIï¿½jS3jï¿½S3jï¿½Jï¿½u@Nrï¿½@Nrï¿½>ï¿½cï¿½?phï¿½FRmS3jï¿½@Nrï¿½@Nrï¿½?phï¿½B ldB ldFRm@Nrï¿½;6ï¿½:=ï¿½ï¿½@!ï¿½SDï¿½ï¿½>Iyï¿½nKï¿½ï¿½Kï¿½ï¿½J)ï¿½ï¿½Gï¿½gGï¿½gJï¿½ï¿½ï¿½Iï¿½ï¿½Iï¿½ï¿½=ï¿½ï¿½ï¿½78ï¿½78ï¿½2Gï¿½o0|ï¿½*0|ï¿½*2Tï¿½ï¿½4ï¿½ï¿½ï¿½4ï¿½ï¿½ï¿½7\
-ï¿½\r6ï¿½ï¿½ï¿½>pï¿½P;6ï¿½@!ï¿½SDï¿½ï¿½>Kï¿½ï¿½Gï¿½g78ï¿½0|ï¿½*4ï¿½ï¿½ï¿½Aï¿½i>pï¿½P@!ï¿½S@!ï¿½SDï¿½ï¿½>Gï¿½g78ï¿½4ï¿½ï¿½ï¿½6ï¿½ï¿½ï¿½Aï¿½i@!ï¿½SGï¿½g78ï¿½6ï¿½ï¿½ï¿½9ï¿½ï¿½Bï¿½ï¿½sAï¿½iGï¿½g78ï¿½9ï¿½ï¿½>Vï¿½ï¿½Aï¿½<Bï¿½ï¿½sGï¿½gIï¿½ï¿½78ï¿½>Vï¿½ï¿½Aï¿½<Gï¿½gIï¿½ï¿½Iï¿½ï¿½>Vï¿½ï¿½Aï¿½<ï¿½eUï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½M}ï¿½nPß¦ï¿½Oï¿½ï¿½QÊªï¿½QÊ¬ï¿½Vï¿½4ieï¿½4ieï¿½ uï¿½ï¿½*|ï¿½*|ï¿½ï¿½!~Ù.s{ï¿½pï¿½.s{ï¿½!~Ù!~Ù“3{ï¿½boiï¿½boiï¿½d2ï¿½m\\qï¿½eUï¿½ï¿½ï¿½M}ï¿½UPï¿½*|ï¿½ï¿½.s{ï¿½%rï¿½ï¿½lÙšpï¿½!~Ùboiï¿½m\\qï¿½eUï¿½ï¿½eUï¿½ï¿½UPï¿½nPß°4ieï¿½*|ï¿½%rï¿½ï¿½lÙ!~Ùboiï¿½eUï¿½ï¿½nPßªï¿½QÊ°4ieï¿½%rë©¦mï¿½ï¿½lgsï¿½ï¿½lÙboiï¿½4ieï¿½ï¿½mï¿½ï¿½Jeï¿½e`'ï¿½lgsï¿½boiï¿½ï¿½QÊ°4ieï¿½Jeï¿½/Yï¿½ï¿½e`'ï¿½boiï¿½ï¿½QÊªJeï¿½ï¿½Yï¿½/Yï¿½ï¿½boiï¿½eUï¿½ï¿½ï¿½QÊ§ï¿½Yî¡‰VÕ¡ï¿½VÕœ/Yï¿½ï¿½eUï¿½ï¿½ï¿½QÊ¡ï¿½VÕ—eUï¿½";
+		[ 18698 ] = "<k]:¦e>„cI¦jKdÉS3jÀS3jÀO.pØJ³uJ³uD¯u@Nr•@Nr•<k]>„cFRmI¦jS3jÀS3jÀJ³u@Nr•@Nr•>„c?ph FRmS3jÀ@Nr•@Nr•?ph B ldB ldFRm@Nr•;6¨:=£¢@!£SD¶¦>Iy£nK¦éK¦éJ)­ßGâ´gGâ´gJŒ·IïºûIïºû=«ÈÇ78Æ78Æ2GÀo0|·*0|·*2T§»4ş¦ö4ş¦ö7\
+®\r6¡·è>p«P;6¨@!£SD¶¦>K¦éGâ´g78Æ0|·*4ş¦öAå¯i>p«P@!£S@!£SD¶¦>Gâ´g78Æ4ş¦ö6¡·èAå¯i@!£SGâ´g78Æ6¡·è9¼óB–µsAå¯iGâ´g78Æ9¼ó>V½ÒAë»<B–µsGâ´gIïºû78Æ>V½ÒAë»<Gâ´gIïºûIïºû>V½ÒAë»<—eU›˜ÛO¤šáM}¢nPß¦šOª¹QÊª¹QÊ¬ÌV°4ie°4ie¯ u÷¨*|à¨*|à!~Ù.s{špå.s{!~Ù!~Ù“3{boiboid2”m\\q—eU›šáM}UP¨*|à.s{¥%rë—âlÙšpå!~Ùboi”m\\q—eU›—eU›UP¢nPß°4ie¨*|à¥%rë—âlÙ!~Ùboi—eU›¢nPßª¹QÊ°4ie¥%rë©¦m¿—lgs—âlÙboi°4ie©¦m¿ªJe˜e`'—lgsboiª¹QÊ°4ieªJeœ/Y“˜e`'boiª¹QÊªJe§»Yîœ/Y“boi—eU›ª¹QÊ§»Yî¡‰VÕ¡‰VÕœ/Y“—eU›ª¹QÊ¡‰VÕ—eU›";
 		-- Nuramoc
-		[ 20932 ] = "T%Nï¿½Rï¿½Gï¿½Uï¿½@oWï¿½<]X52Zk0ï¿½Zk0ï¿½\\ï¿½0ï¿½_ï¿½6ï¿½_ï¿½6ï¿½a A_BCï¿½\\<Nï¿½]ï¿½Rï¿½\\ï¿½Uï¿½\\ï¿½Uï¿½Wï¿½Yï¿½U`Wï¿½U`Wï¿½T%Nï¿½Uï¿½@oWï¿½<]Zk0ï¿½_ï¿½6ï¿½_ï¿½6ï¿½_BCï¿½\\6Dï¿½[6Gï¿½\\<Nï¿½\\ï¿½Uï¿½\\ï¿½Uï¿½U`Wï¿½Uï¿½@oUï¿½@oWï¿½<]_ï¿½6ï¿½_ï¿½6ï¿½\\6Dï¿½[6Gï¿½[6Gï¿½\\ï¿½Uï¿½Uï¿½@oUï¿½@o_ï¿½6ï¿½[6Gï¿½ï¿½zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë˜ï¿½ï¿½{ï¿½yï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½{ï¿½dï¿½ï¿½	ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½Ó†8ï¿½ï¿½8ï¿½ï¿½zï¿½ï¿½ï¿½Ë˜ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½{ï¿½	ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½:ï¿½8ï¿½ï¿½ï¿½ËŠï¿½Ë˜ï¿½ï¿½{ï¿½ï¿½ï¿½{ï¿½ï¿½Ë°ï¿½ï¿½{ï¿½ï¿½:;^ï¿½:ï¿½ï¿½r<ï¿½ÆšJxï¿½ï¿½Oï¿½Æ®eï¿½ï¿½ï¿½o.ï¿½ï¿½mIï¿½ï¿½pvï¿½ï¿½pvï¿½ï¿½rï¿½ï¿½:vÈºï¿½vÈºï¿½tï¿½ï¿½>sï¿½ï¿½=nHï¿½ydï¿½ï¿½Zï¿½ï¿½vNï¿½ï¿½ï¿½Iï¿½t@4ï¿½{@4ï¿½{;^ï¿½<ï¿½ÆšJxï¿½ï¿½eï¿½ï¿½ï¿½lï¿½ï¿½ï¿½o.ï¿½ï¿½pvï¿½ï¿½vÈºï¿½vÈºï¿½sï¿½ï¿½=nHï¿½ynHï¿½yZï¿½ï¿½vNï¿½ï¿½ï¿½@4ï¿½{<ï¿½ÆšCÊ˜lï¿½ï¿½ï¿½o.ï¿½ï¿½vÈºï¿½nHï¿½yNï¿½ï¿½ï¿½@4ï¿½{@4ï¿½{CÊ˜Jxï¿½ï¿½lï¿½ï¿½ï¿½vÈºï¿½nHï¿½ynHï¿½y@4ï¿½{Jxï¿½ï¿½Jxï¿½ï¿½lï¿½ï¿½ï¿½nHï¿½y";
+		[ 20932 ] = "T%NÙRøGüUã@oW”<]X52Zk0¤Zk0¤\\¿0¾_—6_—6a A_BCÃ\\<Nß]íR–\\‘U¯\\‘U¯WYáU`WéU`WéT%NÙUã@oW”<]Zk0¤_—6_—6_BCÃ\\6D¶[6Gö\\<Nß\\‘U¯\\‘U¯U`WéUã@oUã@oW”<]_—6_—6\\6D¶[6Gö[6Gö\\‘U¯Uã@oUã@o_—6[6Gö…z‡“ŒŠË˜º’{§y’{­•ı­•ı°‚Ÿ°·¢{°·¢{ªd§¨	¥µ£ê¡:ˆœÓ†8šç†8šç…zŠË˜º’{­•ı°·¢{°·¢{¨	¥µ£ê¡:£ê¡:†8šçŠËŠË˜º’{°·¢{ŠË°·¢{£ê¡:;^Ì:ÔÈr<‹ÆšJxÊÚOÆ®eÁÃo.½ìmI´¼pv±–pv±–rˆ±:vÈº…vÈº…t÷Ç>s•É=nHÇyd•ÌZÔÍvN¸ÎËIÒt@4Ñ{@4Ñ{;^Ì<‹ÆšJxÊÚeÁÃlúÀòo.½ìpv±–vÈº…vÈº…s•É=nHÇynHÇyZÔÍvN¸ÎË@4Ñ{<‹ÆšCÊ˜lúÀòo.½ìvÈº…nHÇyN¸ÎË@4Ñ{@4Ñ{CÊ˜JxÊÚlúÀòvÈº…nHÇynHÇy@4Ñ{JxÊÚJxÊÚlúÀònHÇy";
 	};
 	[ 473 ] = { -- Shadowmoon Valley
 		-- Ambassador Jerrikar
 		[ 18695 ] = "F\
-ï¿½ï¿½Hï¿½yKPyKPyO;~Mï¿½&Mï¿½&Jï¿½ï¿½ZIKï¿½ï¿½IKï¿½ï¿½F\
-ï¿½ï¿½KPyKPyMï¿½&IKï¿½ï¿½pï¿½Pbqï¿½K^uYAAuYAAwsAhyï¿½Dï¿½yï¿½Dï¿½wï¿½Qï¿½tgSatgSapï¿½PbuYAAuYAAyï¿½Dï¿½tgSaï¿½]\\ï¿½ï¿½Wï¿½0YÔ™0YÔ˜ï¿½_ï¿½fï¿½ï¿½fï¿½ï¿½ï¿½dï¿½ï¿½_'ï¿½_'ï¿½]\\ï¿½ï¿½0YÔ™0YÔ’fï¿½ï¿½_'y=ï¿½ï¿½{ï¿½ï¿½ï¿½|~ï¿½ï¿½|~ï¿½ï¿½zï¿½ï¿½xeï¿½ï¿½xeï¿½ï¿½qï¿½ï¿½4qÄ¬ï¿½qÄ¬ï¿½y=ï¿½ï¿½|~ï¿½ï¿½|~ï¿½ï¿½xeï¿½ï¿½qÄ¬ï¿½ï¿½Bï¿½Õ²ï¿½Lï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½^ï¿½dï¿½ï¿½ï¿½Ú§ï¿½ï¿½Ú§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½2ï¿½uï¿½2ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bï¿½Õ¸ï¿½ï¿½^ï¿½ï¿½ï¿½^ï¿½Ú§ï¿½ï¿½uï¿½2ï¿½ï¿½ï¿½^ï¿½uï¿½2ï¿½ï¿½ï¿½";
+€ƒH yKPyKPyO;~Mæ“&Mæ“&Jû’ZIK‘IK‘F\
+€ƒKPyKPyMæ“&IK‘pùPbqœK^uYAAuYAAwsAhyŒD›yŒD›wšQ½tgSatgSapùPbuYAAuYAAyŒD›tgSaŒ]\\ú‘W™0YÔ™0YÔ˜´_ì’f’fƒdşŒ_'Œ_'Œ]\\ú™0YÔ™0YÔ’fŒ_'y=¤‡{˜¤µ|~®ì|~®ìzî·âxe¸´xe¸´qø°4qÄ¬íqÄ¬íy=¤‡|~®ì|~®ìxe¸´qÄ¬í®B—Õ²–L¸üš^¸üš^ºd„ºÚ§ºÚ§¸õ¨º°u¥2°u¥2­I¡©¬¥¬¥®B—Õ¸üš^¸üš^ºÚ§°u¥2¸üš^°u¥2¬¥";
 		-- Collidus the Warp-Watcher
-		[ 18694 ] = "ï¿½ï¿½;ï¿½ï¿½ï¿½7lï¿½x43ï¿½x43ï¿½ï¿½4nï¿½\"6fï¿½\"6fï¿½58ï¿½'Hï¿½ï¿½'Hï¿½ï¿½ï¿½Hï¿½uJ	ï¿½uJ	ï¿½ï¿½Vï¿½ï¿½HW$ï¿½ï¿½8Kï¿½ï¿½;ï¿½ï¿½x43ï¿½uJ	ï¿½HW$ï¿½ï¿½LCï¿½38eï¿½ï¿½8Kï¿½x43ï¿½'Hï¿½ï¿½uJ	ï¿½ï¿½LCï¿½ï¿½:rï¿½38eï¿½x43ï¿½'Hï¿½ï¿½ï¿½LCï¿½ï¿½Lï¿½ï¿½ï¿½:rï¿½x43ï¿½\"6fï¿½\"6fï¿½'Hï¿½ï¿½ï¿½Lï¿½ï¿½\"6fï¿½ï¿½Lï¿½ï¿½ï¿½:r]Vjq_ï¿½iï¿½ilï¿½ilï¿½mï¿½qAuï¿½ï¿½ï¿½uï¿½ï¿½ï¿½wï¿½*uï¿½ï¿½uï¿½ï¿½oï¿½ï¿½ï¿½l6}5aï¿½u]ï¿½x1[ï¿½uï¿½[ï¿½uï¿½[ï¿½oï¿½]Vjq]Vjqilï¿½uï¿½ï¿½ï¿½uï¿½ï¿½ï¿½uï¿½ï¿½l6}5aï¿½u[ï¿½uï¿½]Vjq]Vjquï¿½ï¿½ï¿½l6}5gï¿½xï¿½aï¿½u]Vjql6}5gï¿½xï¿½]Vjqï¿½ï¿½ï¿½ï¿½Ãˆï¿½!ï¿½Ë!ï¿½ËŒ<ï¿½ï¿½à°‰ï¿½à°‰ï¿½ï¿½ï¿½ï¿½4ï¿½mï¿½Oï¿½Yï¿½vï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½.ï¿½zï¿½ï¿½yï¿½ï¿½yï¿½ï¿½ï¿½ï¿½\
-ï¿½ï¿½gï¿½ï¿½gï¿½}ï¿½Ñï¿½ï¿½iï¿½!ï¿½Ë‹à°‰ï¿½4ï¿½mï¿½Pï¿½=ï¿½Oï¿½Yï¿½,ï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½.ï¿½yï¿½ï¿½yï¿½ï¿½ï¿½gï¿½ï¿½ï¿½iï¿½!ï¿½Ë4ï¿½mï¿½Ø»ï¿½ï¿½Pï¿½=ï¿½,ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½8ï¿½ï¿½ï¿½yï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½!ï¿½ËØ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Pï¿½=ï¿½uï¿½ï¿½ï¿½ï¿½^ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½iï¿½ï¿½ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½i";
+		[ 18694 ] = "”¼;‹“Ã7l™x43™x43¢¢4n¬\"6f¬\"6f­58è®'H“®'H“¾ùHÀuJ	ÀuJ	ÁøV¨¿HW$™õ8K”¼;‹™x43ÀuJ	¿HW$½—LC¢38e™õ8K™x43®'H“ÀuJ	½—LCª’:r¢38e™x43®'H“½—LC«¹L¥ª’:r™x43¬\"6f¬\"6f®'H“«¹L¥¬\"6f«¹L¥ª’:r]Vjq_i³il˜il˜mŠqAuı‚£uı‚£w‰*uŠ³uŠ³o—†µl6}5a·u]«x1[‹u¡[‹u¡[…o¾]Vjq]Vjqil˜uı‚£uı‚£uŠ³l6}5a·u[‹u¡]Vjq]Vjquı‚£l6}5gÈxâa·u]Vjql6}5gÈxâ]Vjq–½‘ëÃˆ!¾Ë!¾ËŒ<¶‹à°‰‹à°‰¾¯ì4µmO¦YŸv¢,«ª³­.µz¬¶y°¶y°«¥µ\
+¢³g¢³g}¯Ñí­i!¾Ë‹à°‰4µmœPª=O¦Y¢,«¥8¬„ª³­.¶y°¶y°¢³gí­i!¾Ë4µmØ»‘œPª=¢,« u¦®¥8¬„¶y°í­i–½!¾ËØ»‘“¶º¦œPª= u¦®¢ª^¥8¬„í­i–½Ø»‘“¶º¦ u¦®¢ª^í­ií­i–½“¶º¦“¶º¦ u¦®í­i";
 		-- Kraator
-		[ 18696 ] = "eï¿½fï¿½jï¿½a oï¿½cZoï¿½cZoOnjmjmeï¿½iï¿½eï¿½fï¿½oï¿½cZjmeï¿½fï¿½iï¿½ï¿½Riï¿½ï¿½ï¿½m}ï¿½ï¿½m}ï¿½ï¿½qï¿½ï¿½KrĞªWrĞªWoï¿½ï¿½ï¿½iï¿½ï¿½Rm}ï¿½ï¿½rĞªWiï¿½ï¿½Rï¿½lq ï¿½ï¿½ruï¿½ï¿½yXï¿½ï¿½yXï¿½*ï¿½Ø–+Hï¿½+Hï¿½%y*ï¿½lq ï¿½ï¿½yXï¿½+Hï¿½lq pï¿½rqvï¿½ï¿½vï¿½ï¿½x	 4wï¿½(ewï¿½(eq-%?pï¿½vï¿½ï¿½wï¿½(epï¿½L/m5Oï¿½kï¿½Tï¿½rMTï¿½rMSï¿½vEQbyQbyNï¿½vï¿½LrGLrGL/m5Tï¿½rMTï¿½rMQbyLrG";
+		[ 18696 ] = "e¼fÈj¬a o·cZo·cZoOnjmjme›i†e¼fÈo·cZjme¼fÈi³µRi†¬²m}¨Œm}¨Œqÿ§KrĞªWrĞªWoŠ·Îi³µRm}¨ŒrĞªWi³µR—lq œru«yX«yX˜*€Ø–+H–+H•%y*—lq «yX–+H—lq prqv”„v”„x	 4w€(ew€(eq-%?pv”„w€(epL/m5O±kÚT•rMT•rMSñvEQbyQbyN‘v®LrGLrGL/m5T•rMT•rMQbyLrG";
 	};
 	[ 493 ] = { -- Sholazar Basin
 		-- Aotona
-		[ 32481 ] = "r{ï¿½l{ï¿½ï¿½ï¿½y#ï¿½kÍ’ï¿½iï¿½ï¿½dï¿½>dï¿½>cï¿½ï¿½ï¿½jï¿½ï¿½jï¿½ï¿½iÇƒFlï¿½4lï¿½4pï¿½r{ï¿½lr{ï¿½ly#ï¿½pï¿½ï¿½pï¿½ï¿½kÍ’ï¿½dï¿½>jï¿½ï¿½lï¿½4r{ï¿½lr{ï¿½lpï¿½ï¿½dï¿½>r{ï¿½ldï¿½>jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\000ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë©*ï¿½:ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½#ï¿½Bï¿½#ï¿½Bï¿½ï¿½ï¿½ï¿½ï¿½&ï¿½ï¿½#ï¿½Bï¿½&ï¿½ï¿½2ï¿½ï¿½u?ï¿½ï¿½sgï¿½0là¸ºlà¸ºlï¿½ï¿½ï¿½iï¿½ï¿½ï¿½gKï¿½ï¿½eï¿½ï¿½Tfï¿½ï¿½ï¿½fï¿½ï¿½ï¿½kï¿½ï¿½pÑ«<pÑ«<sï¿½u?ï¿½ï¿½là¸ºiï¿½ï¿½ï¿½gKï¿½ï¿½gKï¿½ï¿½fï¿½ï¿½ï¿½pÑ«<pÑ«<u?ï¿½ï¿½là¸ºlà¸ºgKï¿½ï¿½pÑ«<";
+		[ 32481 ] = "r{ˆl{À‰îy#“kÍ’şiœúd–>d–>c÷j’j’iÇƒFl€4l€4pr{ˆlr{ˆly#“p·p·kÍ’şd–>j’l€4r{ˆlr{ˆlp·d–>r{ˆld–>j’‡§‚©Š\000[°[°’°…¡øˆ“øˆ“ˆD‰­†¡†¡†¡†¡‡§‚©[°[°øˆ“†¡†¡:¢ä–+Ÿª•ã®ù•ã®ùË©*:¢ä„2²ˆŠî·‰#¾B‰#¾B„ãÁ¶‚&¼‰#¾B‚&¼„2²ˆu?´êsg¸0là¸ºlà¸ºl²ÀòiÛÃÖgK´Âe±Tfö­Šfö­ŠkªÚpÑ«<pÑ«<sñ®«u?´êlà¸ºiÛÃÖgK´ÂgK´Âfö­ŠpÑ«<pÑ«<u?´êlà¸ºlà¸ºgK´ÂpÑ«<";
 		-- King Krush
-		[ 32485 ] = "FLï¿½ï¿½@.ï¿½ï¿½>cï¿½ï¿½>cï¿½ï¿½>ï¿½zDï¿½tDï¿½tKï¿½aï¿½Pï¿½]ï¿½Pï¿½]ï¿½Qï¿½TZï¿½IZï¿½I_ï¿½K=`O!Xï¿½UYT@hrPï¿½qoKï¿½wï¿½Ovz0Pï¿½}\"N\\ï¿½Oï¿½ï¿½MNÒ¦8NÒ¦8Pï¿½ï¿½ï¿½Rï¿½ï¿½Rï¿½ï¿½OOï¿½I>ï¿½I>ï¿½Iï¿½ï¿½ï¿½G_ï¿½G_ï¿½Aï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½>ï¿½ï¿½ï¿½Aï¿½ï¿½\\Eï¿½ï¿½ï¿½FLï¿½ï¿½>cï¿½ï¿½Dï¿½tZï¿½I`O!Xï¿½UYXï¿½UYPï¿½qoMjsï¿½Kï¿½wï¿½Pï¿½}\"N\\ï¿½NÒ¦8Rï¿½ï¿½I>ï¿½I>ï¿½G_ï¿½>ï¿½ï¿½ï¿½FLï¿½ï¿½Dï¿½tPï¿½]ï¿½Pï¿½]ï¿½Zï¿½IXï¿½UYKï¿½wï¿½N\\ï¿½NÒ¦8NÒ¦8I>ï¿½>ï¿½ï¿½ï¿½Pï¿½]ï¿½Xï¿½UYMjsï¿½NÒ¦8>ï¿½ï¿½ï¿½Eï¿½ï¿½ï¿½FLï¿½ï¿½Pï¿½]ï¿½Mjsï¿½Kï¿½wï¿½NÒ¦8Eï¿½ï¿½ï¿½FLï¿½ï¿½Mjsï¿½Kï¿½wï¿½FLï¿½ï¿½Kï¿½wï¿½Eï¿½ï¿½ï¿½tï¿½l<w$bï¿½zï¿½gï¿½ï¿½ï¿½gï¿½ï¿½c,ï¿½XdMï¿½XdMï¿½kï¿½ï¿½ï¿½wï¿½ï¿½ï¿½wï¿½{J{dyï¿½{dyï¿½vï¿½r tï¿½l<tï¿½l<zï¿½gï¿½.iï¿½.iï¿½ï¿½ï¿½gï¿½XdMï¿½XdMï¿½ï¿½wï¿½{dyï¿½{dyï¿½tï¿½l<.iï¿½.iï¿½ï¿½XdM{dyï¿½ï¿½ï¿½Dï¿½9ï¿½Ó…Ñ‚ï¿½jï¿½@ï¿½ï¿½Ì„ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½kï¿½_ï¿½kï¿½_ï¿½Cï¿½	ï¿½ï¿½Í¤ï¿½ï¿½Í¤ï¿½Eï¿½ï¿½ï¿½ï¿½Ú’ï¿½ï¿½Ú’ï¿½ï¿½ÚŸï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½8ï¿½ï¿½tÖï¿½tÖï¿½nï¿½Bï¿½ï¿½Dï¿½jï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½qï¿½kï¿½_ï¿½ï¿½Í¤ï¿½ï¿½Í¤ï¿½ï¿½Ú’ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½xï¿½ï¿½ï¿½ï¿½ï¿½tÖï¿½tÖï¿½ï¿½Dï¿½Ñ‚ï¿½jï¿½@ï¿½ï¿½ï¿½ï¿½Oï¿½}ï¿½Oï¿½}ï¿½{ï¿½qï¿½ï¿½Í¤ï¿½ï¿½Í¤ï¿½ï¿½ï¿½xï¿½tÖï¿½tÖï¿½Ñ‚ï¿½Qï¿½Fï¿½Qï¿½Fï¿½jï¿½@ï¿½Oï¿½}ï¿½Oï¿½}ï¿½ï¿½Í¤ï¿½tÖï¿½Qï¿½Fï¿½Oï¿½}ï¿½tÖ";
+		[ 32485 ] = "FL†Õ@.†È>c‚ş>c‚ş>ßzDİtDİtKçaŞP‰]„P‰]„Q£TZÚIZÚI_ùK=`O!XâUYT@hrP±qoKûwüOvz0P–}\"N\\€Oƒ’MNÒ¦8NÒ¦8Pù§ïRªôRªôOO±I>´I>´I´ÀòG_ÄG_ÄA°Áø>«¼Ì>«¼ÌA½®\\E¼©ÚFL†Õ>c‚şDİtZÚI`O!XâUYXâUYP±qoMjsİKûwüP–}\"N\\€NÒ¦8RªôI>´I>´G_Ä>«¼ÌFL†ÕDİtP‰]„P‰]„ZÚIXâUYKûwüN\\€NÒ¦8NÒ¦8I>´>«¼ÌP‰]„XâUYMjsİNÒ¦8>«¼ÌE¼©ÚFL†ÕP‰]„MjsİKûwüNÒ¦8E¼©ÚFL†ÕMjsİKûwüFL†ÕKûwüE¼©ÚtÃl<w$b©z’g“‚ëg…ãc,‰XdM‰XdMŠkŸˆ“w®ˆ“w®{J{dyõ{dyõvâr tÃl<tÃl<z’g“.iº.iº‚ëg‰XdM‰XdMˆ“w®{dyõ{dyõtÃl<.iº.iº‰XdM{dyõƒÈD„9ËÓ…Ñ‚jÒ@¤Ì„“›Èõ¢{Ëq¥‡ÆÁªkÆ_ªkÆ_¬CÈ	«˜Í¤«˜Í¤¥E×õŸßÚ’ŸßÚ’”÷ÚŸ‘Øx‹çØõ‡8ÛôƒtÖƒtÖnÍBƒÈDjÒ@“›Èõ–¡Ìó¢{ËqªkÆ_«˜Í¤«˜Í¤ŸßÚ’‘Øx‘Øx‹çØõƒtÖƒtÖƒÈD…Ñ‚jÒ@–¡ÌóOÎ}OÎ}¢{Ëq«˜Í¤«˜Í¤‘ØxƒtÖƒtÖ…Ñ‚ˆQÔFˆQÔFjÒ@OÎ}OÎ}«˜Í¤ƒtÖˆQÔFOÎ}ƒtÖ";
 		-- Loque'nahak
-		[ 32517 ] = "ï¿½ï¿½ï¿½ï¿½Ö¯Nï¿½ï¿½ï¿½;ï¿½ï¿½ï¿½;ï¿½ï¿½ï¿½ï¿½kï¿½ï¿½kï¿½Ü»ï¿½É»ï¿½ï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½;ï¿½ï¿½kï¿½ï¿½kï¿½É»ï¿½ï¿½ï¿½ï¿½ï¿½kï¿½\rï¿½ß¾.ï¿½ ï¿½8ï¿½ ï¿½8ï¿½ï¿½Í¤ï¿½Ì¸ï¿½Ì¸ï¿½ï¿½ï¿½#ï¿½kï¿½\rï¿½ ï¿½8ï¿½Ì¸ï¿½kï¿½\rï¿½ï¿½ï¿½ï¿½~Hï¿½z~;ï¿½~;ï¿½ï¿½uÉ…ï¿½Lï¿½ï¿½Lï¿½ï¿½8ï¿½Î‚ï¿½ï¿½ï¿½~;ï¿½ï¿½Lï¿½ï¿½ï¿½ï¿½A6Sï¿½ï¿½3nï¿½ï¿½3nï¿½ï¿½3nï¿½	6ï¿½ï¿½	;ï¿½ï¿½	;ï¿½ï¿½ï¿½?vï¿½M?bï¿½M?bï¿½[;ï¿½ï¿½A6Sï¿½A6Sï¿½ï¿½3nï¿½	;ï¿½ï¿½	;ï¿½ï¿½M?bï¿½A6SXï¿½MVXï¿½JJ[ï¿½Fï¿½[ï¿½Fï¿½`\000R]ï¿½Tï¿½[ï¿½Fï¿½]ï¿½Tï¿½Xï¿½MVLï¿½ï¿½ï¿½Oï¿½ï¿½Rï¿½ï¿½Rï¿½ï¿½PUï¿½ï¿½Kï¿½ï¿½AKï¿½ï¿½AIÎ¬wLï¿½ï¿½ï¿½Rï¿½ï¿½Kï¿½ï¿½ALï¿½ï¿½ï¿½3×²37_ï¿½\\9è°‚9è°‚9ï¿½ï¿½05Éºd5Éºd2Ş¹ï¿½3×²39è°‚5Éºd3×²3";
+		[ 32517 ] = "±‰³³Ö¯N¶§¯;¶§¯;¸è³¸è¸k¸è¸k¶Ü»à³É»¥³É»¥±£¸±‰³±‰³¶§¯;¸è¸k¸è¸k³É»¥±‰³ªk¿\r­ß¾.° Æ8° Æ8«’Í¤¦Ì¸¦Ì¸¥ãÉ#ªk¿\r° Æ8¦Ì¸ªk¿\r‚×è~HÓz~;Ğ~;Ğ‚uÉ…„LÒñ„LÒñ…8ÖÎ‚×è~;Ğ„LÒñ‚×è‘A6S“Ã3n–Ï3n–Ï3n™	6€™	;’™	;’–â?v“M?b“M?b‘[;Ÿ‘A6S‘A6S–Ï3n™	;’™	;’“M?b‘A6SX§MVXÕJJ[˜Fğ[˜Fğ`\000R]úT¢[˜Fğ]úT¢X§MVL¥£ÃOå¤ãR©ÀR©ÀPU¯åKÀ¯AKÀ¯AIÎ¬wL¥£ÃR©ÀKÀ¯AL¥£Ã3×²37_®\\9è°‚9è°‚9†¹05Éºd5Éºd2Ş¹û3×²39è°‚5Éºd3×²3";
 	};
 	[ 478 ] = { -- Terokkar Forest
 		-- Crippler
-		[ 18689 ] = "Vï¿½ï¿½ï¿½C×¢ï¿½Gfï¿½hGfï¿½hNï¿½9Yï¿½|wYï¿½|wfï¿½zJsï¿½Asï¿½A}Bï¿½\"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½Ìm/ï¿½~Xï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½Gfï¿½hGfï¿½hYï¿½|wsï¿½Asï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½m/ï¿½~q ï¿½2^ï¿½LXï¿½ï¿½ï¿½Gfï¿½hï¿½ï¿½ï¿½q ï¿½2s3ï¿½5fï¿½^ï¿½LGfï¿½hï¿½ï¿½ï¿½s3ï¿½5sgï¿½fï¿½Gfï¿½hsï¿½Asï¿½Aï¿½ï¿½ï¿½sgï¿½l]ï¿½Lfï¿½sï¿½Asï¿½Asgï¿½q&ï¿½sï¿½Aq&ï¿½l]ï¿½L]ï¿½ï¿½ï¿½`\rï¿½\retï¿½petï¿½pjÍŸ!mï¿½ï¿½mï¿½ï¿½k\"ï¿½ï¿½eÂ²eÂ²`ï¿½b]ï¿½ï¿½ï¿½]ï¿½ï¿½ï¿½etï¿½pmï¿½ï¿½mï¿½ï¿½eÂ²]ï¿½ï¿½ï¿½";
+		[ 18689 ] = "Vš¥¡C×¢½Gf‘hGf‘hNæƒ9Y“|wY“|wfézJs€As€A}BŒ\"‚ø›’‚ø›’ƒş­¸ª¿Øª¿Øx†Ìm/º~X“œÙVš¥¡Gf‘hGf‘hY“|ws€As€A‚ø›’ª¿Øª¿Øm/º~q ´2^•LX“œÙGf‘hª¿Øq ´2s3­5f“^•LGf‘hª¿Øs3­5sg¤f“Gf‘hs€As€Aª¿Øsg¤l]•Lf“s€As€Asg¤q&›s€Aq&›l]•L]¿¦Ü`\rŸ\retœpetœpjÍŸ!m¦´m¦´k\"®ìeÂ²eÂ²`¯b]¿¦Ü]¿¦Üetœpm¦´m¦´eÂ²]¿¦Ü";
 		-- Doomsayer Jurim
-		[ 18686 ] = "]VNï¿½\\)Gï¿½^.G^.G_ï¿½Nï¿½^BTï¿½]aA_\000hï¿½^\\nï¿½^\\nï¿½[ï¿½nï¿½\\qhï¿½\\qhï¿½Zraï¿½[ï¿½T9]VNï¿½^.G^BTï¿½]aA^\\nï¿½\\qhï¿½\\qhï¿½[ï¿½T9]VNï¿½]VNï¿½^BTï¿½]aA]aA\\qhï¿½]VNï¿½bï¿½>ï¿½bï¿½;ï¿½fï¿½<~y	Aï¿½}c>Ò‚ï¿½=ï¿½ï¿½191ï¿½03:ï¿½g/ï¿½ï¿½g/ï¿½ï¿½ï¿½2ï¿½ï¿½5ï¿½ï¿½5ï¿½ï¿½7;ï¿½ï¿½S@ï¿½}ï¿½B@yDE2mï¿½Emmï¿½Emhï¿½Cgeï¿½?Ueï¿½?Ubï¿½>ï¿½fï¿½<~ï¿½191ï¿½g/ï¿½ï¿½5ï¿½ï¿½S@ï¿½}ï¿½B@mï¿½Emeï¿½?Ufï¿½<~iï¿½@ï¿½ï¿½ï¿½=ï¿½ï¿½191ï¿½5ï¿½mï¿½Emeï¿½?Uiï¿½@ï¿½ï¿½ï¿½=ï¿½ï¿½5ï¿½ï¿½S@ï¿½mï¿½Emiï¿½@ï¿½nVB@y	Aï¿½ï¿½ï¿½=ï¿½ï¿½S@ï¿½mï¿½EmnVB@y	Aï¿½y	Aï¿½ï¿½S@ï¿½mï¿½Emï¿½ï¿½Stï¿½/PAï¿½ï¿½Rï¿½XVfï¿½Z^ï¿½ï¿½_iï¿½ï¿½o.ï¿½~ï¿½Ö€ï¿½Yc{ï¿½ï¿½bï¿½ï¿½]ï¿½ï¿½]ï¿½+YQï¿½ï¿½USï¿½ï¿½USï¿½ï¿½Stï¿½ï¿½Rï¿½ï¿½o.ï¿½Ö€ï¿½ï¿½q[ï¿½Yc{ï¿½ï¿½]ï¿½ï¿½USï¿½ï¿½USï¿½ï¿½Rï¿½XVfï¿½ï¿½`ï¿½ï¿½ï¿½o.ï¿½ï¿½q[ï¿½Yc{ï¿½ï¿½USï¿½XVfï¿½ï¿½`ï¿½ï¿½ï¿½q[ï¿½Yc{ï¿½Yc{ï¿½XVfï¿½ï¿½_iï¿½ï¿½_iï¿½ï¿½`ï¿½ï¿½Yc{";
+		[ 18686 ] = "]VN‘\\)Gü^.G^.G_—Næ^BTÉ]aA_\000h´^\\nß^\\nß[çn\\qhŒ\\qhŒZra‰[çT9]VN‘^.G^BTÉ]aA^\\nß\\qhŒ\\qhŒ[çT9]VN‘]VN‘^BTÉ]aA]aA\\qhŒ]VN‘b©>íb¶;¹fÈ<~y	A}c>Ò‚Ğ=¸‡191Š03:’g/¤’g/¤’°2‚‹5÷‹5÷ˆ7;¬ƒS@ª}ÙB@yDE2m¿Emm¿EmhÎCgeµ?Ueµ?Ub©>ífÈ<~‡191’g/¤‹5÷ƒS@ª}ÙB@m¿Emeµ?UfÈ<~i @‰‚Ğ=¸‡191‹5÷m¿Emeµ?Ui @‰‚Ğ=¸‹5÷ƒS@ªm¿Emi @‰nVB@y	A‚Ğ=¸ƒS@ªm¿EmnVB@y	Ay	AƒS@ªm¿Em‹ÀStŒ/PA”¨R—XVfZ^¡ë_iª¬o.¶~´Ö€ë¤Yc{ ½bœ«]œ«]–+YQ“US“US‹ÀSt”¨Rª¬o.´Ö€ë¨Áq[¤Yc{œ«]“US“US”¨R—XVf¥Ö`·ª¬o.¨Áq[¤Yc{“US—XVf¥Ö`·¨Áq[¤Yc{¤Yc{—XVf¡ë_i¡ë_i¥Ö`·¤Yc{";
 		-- Okrek
-		[ 18685 ] = "K^kï¿½Oï¿½fRRï¿½lPRï¿½lPNï¿½uFLï¿½oï¿½Rï¿½lPLï¿½oï¿½K^kï¿½|ï¿½-w}\"ï¿½~ï¿½!ï¿½~ï¿½!ï¿½)ï¿½ï¿½4tï¿½ï¿½4t~ï¿½4ï¿½|ï¿½-w~ï¿½!ï¿½ï¿½4t|ï¿½-wï¿½t9ï¿½s7lï¿½=ï¿½ï¿½=ï¿½ï¿½ï¿½Fmï¿½{=ï¿½=ï¿½ï¿½{=ï¿½t9ï¿½ï¿½ï¿½ï¿½/ï¿½ï¿½-ï¿½*ï¿½-ï¿½*ï¿½&ï¿½Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Sï¿½\
-ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-ï¿½*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+		[ 18685 ] = "K^k¬O±fRRˆlPRˆlPNŠuFLúoØRˆlPLúoØK^k¬|Ó-w}\"Ş~ù!ò~ù!ò„•)ï€ÿ4t€ÿ4t~Ò4|Ó-w~ù!ò€ÿ4t|Ó-w”t9—s7l›=à›=à›˜Fm’{=›=à’{=”t9¼Œ/«‘-©*‘-©*’&«P‘±œ‘±œ”S¶\
+‘½¤¼‘-©*‘±œ‘±œ‘½¤¼";
 	};
 	[ 11 ] = { -- The Barrens
 		-- Takk the Leaper
-		[ 5842 ] = "ï¿½ï¿½ï¿½`hï¿½ï¿½Uï¿½ï¿½Uï¿½ï¿½İï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!ï¿½ï¿½'Yï¿½ï¿½'Yï¿½ï¿½&fï¿½ï¿½Ì˜ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½'Yï¿½ï¿½Ì›ï¿½Ì˜ï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½Uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+		[ 5842 ] = "•€”`h—šU—šUœÙİ¤Œ¤ŒŸ!œô'Yœô'Y›²&f›¹Ì˜Ç»•€—šU¤Œœô'Y›¹Ì›¹Ì˜Ç»—šU—šU¤Œ›¹Ì";
 	};
 	[ 495 ] = { -- The Storm Peaks
 		-- Dirkee
-		[ 32500 ] = "gï¿½ï¿½ï¿½hrï¿½ï¿½iï¿½ï¿½oiï¿½ï¿½ojï¿½ï¿½ï¿½i0ï¿½ï¿½bï¿½ï¿½ï¿½d9ï¿½ï¿½b-ï¿½ï¿½b-ï¿½ï¿½^\\ï¿½	]Bï¿½L]Bï¿½L^ï¿½ï¿½aï¿½ï¿½ï¿½fÈ†sgï¿½ï¿½ï¿½iï¿½ï¿½oiï¿½ï¿½oi0ï¿½ï¿½ezï¿½#b ï¿½Abï¿½ï¿½ï¿½b-ï¿½ï¿½b-ï¿½ï¿½]Bï¿½Laï¿½ï¿½ï¿½fÈ†siï¿½ï¿½oezï¿½#b ï¿½Ab-ï¿½ï¿½aï¿½ï¿½ï¿½aï¿½ï¿½ï¿½fÈ†sezï¿½#cĞŒ~b ï¿½Aaï¿½ï¿½ï¿½ezï¿½#cĞŒ~aï¿½ï¿½ï¿½ifhï¿½cï¿½mï¿½aumï¿½auoicï¿½jï¿½ijï¿½ilwmï¿½j6p\rj6p\rgï¿½jï¿½ififmï¿½aujï¿½iifjï¿½ij6p\rï¿½}}ï¿½vEï¿½ï¿½tgï¿½ï¿½tgï¿½ï¿½tï¿½ï¿½ï¿½{qï¿½ï¿½{qï¿½ï¿½Å¬5Å¬5Å«}}ï¿½ï¿½tgï¿½ï¿½tgï¿½ï¿½{qï¿½5ï¿½";
+		[ 32500 ] = "gšƒhr€‰i†€oi†€oj’…i0‰ b”¢d9–ïb-œôb-œô^\\™	]B”L]B”L^‘aª‹’fÈ†sgšƒi†€oi†€oi0‰ ezŠ#b Ab”¢b-œôb-œô]B”Laª‹’fÈ†si†€oezŠ#b Ab-œôaª‹’aª‹’fÈ†sezŠ#cĞŒ~b Aaª‹’ezŠ#cĞŒ~aª‹’ifh“c×móaumóauoicşj¦ij¦ilwmÌj6p\rj6p\rgÈjºififmóauj¦iifj¦ij6p\r«}}«vE«Útg«Útg­¤t¯¤{q¯¤{q­ÅÅ¬5Å¬5Å«}}«Útg«Útg¯¤{q¬5Å";
 		-- Skoll
-		[ 35189 ] = "uzï¿½ï¿½wï¿½ï¿½2wï¿½ï¿½Rwï¿½ï¿½Ruï¿½ï¿½ï¿½tï¿½ï¿½ywï¿½ï¿½Rtï¿½ï¿½yuzï¿½ï¿½oï¿½ï¿½|q4ï¿½5s3ï¿½ï¿½s3ï¿½ï¿½rï¿½ï¿½Toï¿½ï¿½|Jï¿½ï¿½ï¿½J)ï¿½ï¿½Kï¿½ï¿½Kï¿½ï¿½LÆ‚:Jï¿½ï¿½ï¿½LÆ¥SLÓ¢nP\rï¿½ï¿½P\rï¿½ï¿½Nì¥µLÆ¥SF\
-ï¿½Fï¿½ï¿½Hï¿½ï¿½Hï¿½ï¿½GEï¿½ï¿½F\
-ï¿½";
+		[ 35189 ] = "uz¤Ïw¥2w´§Rw´§Ru¨¨Ît¢§yw´§Rt¢§yuz¤Ïo¾Ÿ|q45s3¾s3¾r•¢To¾Ÿ|Jõƒ•J)€ÿKáÅKáÅLÆ‚:Jõƒ•LÆ¥SLÓ¢nP\r£¢P\r£¢Nì¥µLÆ¥SF\
+‚FµÅH€‰H€‰GE‚×F\
+‚";
 		-- Time-lost Proto Drake
-		[ 32491 ] = "S9[q[ï¿½Sï¿½b-Mcb-Mcn5Gï¿½nOM<cï¿½R]XrU?_ï¿½U?_ï¿½Rï¿½aoLcï¿½G8mï¿½Hï¿½tï¿½IX}\\IX}\\Mï¿½xï¿½V\
-qï¿½V\
-qï¿½]PiKa[fï¿½a[fï¿½dï¿½hygï¿½kxgï¿½kxiï¿½pNiï¿½|\"}ï¿½vï¿½yowï¿½jJwï¿½jJwï¿½dZy	`vwsMnOM<n5Gï¿½n5Gï¿½wyGÏ€ï¿½Jï¿½ï¿½Já…µN5ï¿½ï¿½R@ï¿½ï¿½R@ï¿½Vï¿½?ZQ{djWqï¿½@zï¿½ï¿½@zï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~.ï¿½	xï¿½ï¿½hÕ—\
-d9ï¿½ï¿½a:ï¿½%a:ï¿½%^ï¿½ï¿½ï¿½\\ï¿½ï¿½\\ï¿½ï¿½]ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½aï¿½ï¿½7fï¿½ï¿½ï¿½hï¿½ï¿½Ujï¿½ï¿½ï¿½jï¿½ï¿½ï¿½o4ï¿½ï¿½sZï¿½ï¿½sZï¿½ï¿½wyï¿½ï¿½zï¿½ï¿½c|ï¿½ï¿½Ê€Uï¿½C}\"ï¿½!kï¿½ï¿½jWï¿½Ci*ï¿½Fi*ï¿½Ffmï¿½ï¿½cï¿½~5ï¿½ï¿½}\"ï¿½!ï¿½Uï¿½Cï¿½Uï¿½Cï¿½ï¿½ï¿½Nï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½~ï¿½ï¿½ï¿½}\"ï¿½]}\"ï¿½]xï¿½ï¿½FuFï¿½YuFï¿½Yetï¿½1aï¿½aï¿½^ï¿½ï¿½ï¿½^\\ï¿½ï¿½^\\ï¿½ï¿½[ï¿½OUzï¿½4Uzï¿½4Mï¿½ï¿½bNï¿½ï¿½xIï¿½ï¿½Nï¿½ï¿½xMï¿½ï¿½bMï¿½ï¿½bF8ï¿½DDMÂ¼DMÂ¼Cï¿½ï¿½dGï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Gï¿½Dgï¿½<Dgï¿½<D3ï¿½BGï¿½.^ï¿½n[ï¿½qï¿½S,yï¿½Ikï¿½ï¿½Gï¿½.D3ï¿½BEï¿½uï¿½Cï¿½nHCZfï¿½CZfï¿½Dtaï¿½Fï¿½^ï¿½b-McnOM<cï¿½Rcï¿½RU?_ï¿½Lcï¿½gï¿½kxiï¿½|\"iÔ…F}ï¿½vï¿½wï¿½jJy	`vOO}wsMn5Gï¿½n5Gï¿½ï¿½ï¿½Jï¿½ï¿½R@ï¿½ï¿½R@ï¿½?ZQ|jca{djWï¿½@zï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½xï¿½ï¿½qÄï¿½hÕ—\
-a:ï¿½%\\ï¿½ï¿½\\ï¿½ï¿½_ï¿½ï¿½ï¿½aï¿½ï¿½7eï¿½ï¿½ï¿½fï¿½ï¿½ï¿½jï¿½ï¿½ï¿½sZï¿½ï¿½zï¿½ï¿½c|ï¿½ï¿½ï¿½|ï¿½ï¿½ï¿½}\"ï¿½!yÇ¤ï¿½kï¿½ï¿½i*ï¿½Fcï¿½{dï¿½ï¿½~5ï¿½ï¿½ï¿½Uï¿½Cï¿½Uï¿½Cï¿½Gï¿½ï¿½}\"ï¿½]Uzï¿½4Nï¿½ï¿½xUï¿½ï¿½~Iï¿½ï¿½Mï¿½ï¿½bDMÂ¼DMÂ¼Gï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Dgï¿½<Gï¿½.Gï¿½ï¿½ï¿½Ikï¿½ï¿½D3ï¿½BEï¿½}ï¿½Eï¿½uï¿½CZfï¿½Fï¿½^ï¿½S9[qb-Mccï¿½Rcï¿½RLcï¿½Hï¿½d`ï¿½|}ï¿½vï¿½y	`vOO}n5Gï¿½ï¿½ï¿½R@ï¿½ï¿½ï¿½ï¿½qÄï¿½lPï¿½SsZï¿½ï¿½|ï¿½ï¿½ï¿½yÇ¤ï¿½kï¿½ï¿½cï¿½auï¿½ï¿½{dï¿½ï¿½Uï¿½C}\"ï¿½]^\\ï¿½ï¿½Uzï¿½4Uï¿½ï¿½~Gï¿½ï¿½ï¿½Iï¿½ï¿½DMÂ¼Jï¿½ï¿½ï¿½Dgï¿½<Gï¿½ï¿½ï¿½Nï¿½~ï¿½Ikï¿½ï¿½Eï¿½}ï¿½Eï¿½}ï¿½Eï¿½uï¿½Fï¿½^ï¿½S9[qcï¿½RHï¿½d`ï¿½ï¿½Qï¿½OO}ï¿½ï¿½R@sZï¿½ï¿½yÇ¤ï¿½vÂï¿½wXï¿½ï¿½{dï¿½ï¿½}\"ï¿½]^\\ï¿½ï¿½Uï¿½ï¿½~ZDÉŸGï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½DMÂ¼Jï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½Iï¿½ï¿½:L^!S9[qHï¿½d`ï¿½ï¿½Tï¿½ï¿½ï¿½Qï¿½ï¿½ï¿½R@sZï¿½ï¿½vÂï¿½tï¿½ï¿½ï¿½sï¿½ï¿½ï¿½wXï¿½ï¿½}\"ï¿½]^\\ï¿½ï¿½ZDÉŸ]ï¿½LKï¿½ï¿½Gï¿½ï¿½ï¿½DMÂ¼Jï¿½ï¿½ï¿½Iï¿½ï¿½:Lï¿½ï¿½`Fï¿½^ï¿½L^!Hï¿½d`ï¿½ï¿½X	ï¿½ï¿½Tï¿½ï¿½ï¿½R@sZï¿½ï¿½tï¿½ï¿½ï¿½rï¿½sï¿½ï¿½ï¿½}\"ï¿½]uFï¿½Yaï¿½^\\ï¿½ï¿½]ï¿½LKï¿½ï¿½DMÂ¼Jï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Lï¿½ï¿½`Pbï¿½fFï¿½^ï¿½Hï¿½d`GgÎ‚ï¿½X	ï¿½ï¿½R@|jcajï¿½ï¿½ï¿½sZï¿½ï¿½rï¿½eï¿½ï¿½ï¿½sï¿½ï¿½ï¿½uFï¿½Yaï¿½]ï¿½L]Ù»ï¿½Nï¿½ï¿½Kï¿½ï¿½Jï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½Pbï¿½fVÈ¤ï¿½Eï¿½}ï¿½Fï¿½^ï¿½Ggï¿½y	`vï¿½ï¿½X	|jcajï¿½ï¿½ï¿½rï¿½mï¿½ï¿½.eï¿½ï¿½ï¿½uFï¿½Yaï¿½aï¿½]Ù»ï¿½]5ï¿½ï¿½W+ï¿½PNï¿½ï¿½Jï¿½ï¿½ï¿½Eï¿½}ï¿½Ggï¿½G8mï¿½y	`v|jcazï¿½fYjï¿½ï¿½ï¿½mï¿½ï¿½.kï¿½ï¿½caï¿½Heï¿½ï¿½ï¿½aï¿½W+ï¿½PJï¿½ï¿½ï¿½VÈ¤ï¿½Eï¿½}ï¿½G8mï¿½IX}\\y	`vzï¿½fY{djWeï¿½ï¿½ï¿½jï¿½ï¿½ï¿½kï¿½ï¿½bï¿½ï¿½caï¿½Haï¿½Yï¿½ï¿½ï¿½W+ï¿½PVÈ¤ï¿½Nï¿½~ï¿½Eï¿½}ï¿½IX}\\ï¿½|y	`v{djWeï¿½ï¿½ï¿½kï¿½ï¿½auï¿½ï¿½a:ï¿½ï¿½bï¿½ï¿½aï¿½[ï¿½ï¿½Yï¿½ï¿½ï¿½VÈ¤ï¿½S,yï¿½Nï¿½~ï¿½IX}\\ï¿½|{djWï¿½ï¿½ï¿½ï¿½dgï¿½eï¿½ï¿½ï¿½auï¿½ï¿½a:ï¿½ï¿½aï¿½]5ï¿½ï¿½^ï¿½nS,yï¿½IX}\\4ï¿½Nï¿½|ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½7dgï¿½auï¿½ï¿½auï¿½ï¿½a:ï¿½ï¿½]5ï¿½ï¿½^ï¿½nIX}\\V\
-qï¿½|ï¿½ï¿½ï¿½4ï¿½Nï¿½ï¿½ï¿½ï¿½\\ï¿½ï¿½aï¿½ï¿½7auï¿½ï¿½auï¿½ï¿½]5ï¿½ï¿½[ï¿½ï¿½aNlï¿½^ï¿½nV\
-qï¿½vï¿½ï¿½ï¿½|ï¿½ï¿½ñ‚½‚ï¿½\\ï¿½ï¿½auï¿½ï¿½[ï¿½ï¿½aNlï¿½V\
-qï¿½a[fï¿½vï¿½ï¿½ç‚½ï¿½ï¿½lPï¿½S\\ï¿½ï¿½[ï¿½ï¿½VÈ¤ï¿½cZmï¿½aNlï¿½a[fï¿½p|ï¿½jvï¿½ï¿½ï¿½lPï¿½S\\ï¿½ï¿½VÈ¤ï¿½]ï¿½ï¿½veï¿½pNcZmï¿½a[fï¿½m5ï¿½Cp|ï¿½jlPï¿½ShÕ—\
-\\ï¿½ï¿½]ï¿½ï¿½veï¿½pNa[fï¿½gï¿½kxjï¿½ï¿½ï¿½m5ï¿½ClPï¿½ShÕ—\
-]ï¿½ï¿½va4ï¿½ï¿½frï¿½eï¿½pNgï¿½kxiÔ…Fjï¿½ï¿½ï¿½lPï¿½SlPï¿½ShÕ—\
-a4ï¿½ï¿½fsï¿½ï¿½frï¿½gï¿½kxlPï¿½Sa4ï¿½ï¿½eï¿½ï¿½`fsï¿½ï¿½gï¿½kxiÔ…FiÔ…FlPï¿½Seï¿½ï¿½`iÔ…Feï¿½ï¿½`fsï¿½ï¿½";
+		[ 32491 ] = "S9[q[…S•b-Mcb-Mcn5GÁnOM<c¢R]XrU?_ßU?_ßRÑaoLcœG8m„HètIX}\\IX}\\MÙxèV\
+qÄV\
+qÄ]PiKa[fÂa[fÂd÷hygÁkxgÁkxiŒpNi­|\"}‘vµyow€jJw€jJwšdZy	`vwsMnOM<n5GÁn5GÁwyGÏ€ëJá€ëJá…µN5‡ÕR@‡ÕR@‡Vé†?ZQ{djWqƒ@zûƒ@zûƒ¼~¾‚½‚½‚½‚½~.‰	xhÕ—\
+d9¤a:£%a:£%^ù¤É\\¦Õ\\¦Õ]í¨™_ª«ô_ª«ô`¾°ÿa–·7fö«Ÿh Ujõ™ jõ™ o4•»sZ”µsZ”µwy–özŒœc|²¢Ê€U¬C}\"®!kç ëjW¬Ci*³Fi*³Ffm¸Ác¼~5²½}\"®!€U¬C€U¬C‰±NGµğGµğ~‘Èü}\"Ì]}\"Ì]xÇÓFuFÕYuFÕYetÖ1aÔaÔ^ìÏË^\\ÊÍ^\\ÊÍ[ÎOUzĞ4UzĞ4M¿ÎbN±ÉxI“ÆN±ÉxM¿ÎbM¿ÎbF8ÈDDMÂ¼DMÂ¼Cø»dG§­J…©ÇG¦Dg›<Dg›<D3BGâ.^Ùn[’q½S,yÎIk„‡Gâ.D3BEuÜC¢nHCZf®CZf®DtaœFö^¸b-McnOM<c¢Rc¢RU?_ßLcœgÁkxi­|\"iÔ…F}‘vµw€jJy	`vOO}wsMn5GÁn5GÁ€ëJá‡ÕR@‡ÕR@†?ZQ|jca{djWƒ@zû‚½‚½‚½‚½xqÄÿhÕ—\
+a:£%\\¦Õ\\¦Õ_ª«ôa–·7e¯±‚fö«Ÿjõ™ sZ”µzŒœc|²¢Ê|²¢Ê}\"®!yÇ¤kç ëi*³Fc¼{dÇè~5²½€U¬C€U¬CGµğ}\"Ì]UzĞ4N±ÉxUË~I“ÆM¿ÎbDMÂ¼DMÂ¼G§­J…©ÇDg›<Gâ.Güš³Ik„‡D3BEã}àEuÜCZf®Fö^¸S9[qb-Mcc¢Rc¢RLcœH­d`|}‘vµy	`vOO}n5GÁ‡ÕR@‚½‚½qÄÿlP“SsZ”µ|²¢ÊyÇ¤kç ëc¼auÀÊ{dÇè€U¬C}\"Ì]^\\ÊÍUzĞ4UË~G´Á×I“ÆDMÂ¼J…©ÇDg›<Güš³N«~Ik„‡Eã}àEã}àEuÜFö^¸S9[qc¢RH­d`‚©QOO}‡ÕR@sZ”µyÇ¤vÂŠwXÎå{dÇè}\"Ì]^\\ÊÍUË~ZDÉŸG§»ôG´Á×DMÂ¼J…©ÇGüš³Iü¢:L^!S9[qH­d`ƒ÷T¨‚©Q‡ÕR@sZ”µvÂŠt÷šûs÷Ğ×wXÎå}\"Ì]^\\ÊÍZDÉŸ]ÅLK¯‰G§»ôDMÂ¼J…©ÇIü¢:LŸ¥`Fö^¸L^!H­d`‚ĞX	ƒ÷T¨‡ÕR@sZ”µt÷šûršs÷Ğ×}\"Ì]uFÕYaÔ^\\ÊÍ]ÅLK¯‰DMÂ¼J…©ÇJ…©ÇLŸ¥`Pb¥fFö^¸H­d`GgÎ‚ĞX	‡ÕR@|jcajõ™ sZ”µršeÖĞÿs÷Ğ×uFÕYaÔ]ÅL]Ù»ôNóªîK¯‰J…©ÇJ…©ÇPb¥fVÈ¤Eã}àFö^¸GgÎy	`v‚ĞX	|jcajõ™ ršm«.eÖĞÿuFÕYaÔaÔ]Ù»ô]5³¼W+ªPNóªîJ…©ÇEã}àGgÎG8m„y	`v|jcazûfYjõ™ m«.kç ëcaÏHeÖĞÿaÔW+ªPJ…©ÇVÈ¤Eã}àG8m„IX}\\y	`vzûfY{djWe¯±‚jõ™ kç ëbÌÓcaÏHaÔY³«’W+ªPVÈ¤N«~Eã}àIX}\\|y	`v{djWe¯±‚kç ëauÀÊa:ÆïbÌÓaÔ[³®Y³«’VÈ¤S,yÎN«~IX}\\|{djW‚½‚½dg´e¯±‚auÀÊa:ÆïaÔ]5³¼^ÙnS,yÎIX}\\4€N|‚½‚½a–·7dg´auÀÊauÀÊa:Æï]5³¼^ÙnIX}\\V\
+qÄ|¹ƒñ4€N‚½‚½\\¦Õa–·7auÀÊauÀÊ]5³¼[³®aNl‘^ÙnV\
+qÄv§Šç|¹ƒñ‚½‚½\\¦ÕauÀÊ[³®aNl‘V\
+qÄa[fÂv§Šç‚½‚½lP“S\\¦Õ[³®VÈ¤cZm¥aNl‘a[fÂp|Œjv§ŠçlP“S\\¦ÕVÈ¤]àŸve›pNcZm¥a[fÂm5ŒCp|ŒjlP“ShÕ—\
+\\¦Õ]àŸve›pNa[fÂgÁkxjº‰ m5ŒClP“ShÕ—\
+]àŸva4œÓfrŞe›pNgÁkxiÔ…Fjº‰ lP“SlP“ShÕ—\
+a4œÓfs—frŞgÁkxlP“Sa4œÓe”`fs—gÁkxiÔ…FiÔ…FlP“Se”`iÔ…Fe”`fs—";
 		-- Vyragosa
-		[ 32630 ] = "Sï¿½\\[ï¿½T9bï¿½Nbï¿½Nnï¿½Henï¿½Mï¿½dRï¿½]pYUï¿½`ï¿½Uï¿½`ï¿½S@bL~d@Gï¿½n(IXu%Iï¿½~\000Iï¿½~\000NIyï¿½VzrhVzrh]ï¿½iï¿½aï¿½gfaï¿½gfefih1lh1liï¿½pï¿½j|ï¿½~\000wXyï¿½oï¿½wï¿½jï¿½wï¿½jï¿½x	dï¿½yxawï¿½Mï¿½nï¿½Mï¿½nï¿½Henï¿½Hewï¿½Hrï¿½[Kï¿½ï¿½[Kï¿½ï¿½$NÙˆDRï¿½DRä‡†Wï¿½ï¿½ï¿½Zï¿½{ï¿½jï¿½ï¿½qï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½{ï¿½ï¿½,bï¿½,ï¿½aï¿½,ï¿½a~ï¿½ï¿½ï¿½xrï¿½4iDï¿½ï¿½dï¿½ï¿½Haï¿½ï¿½ï¿½aï¿½ï¿½ï¿½_iï¿½m\\ï¿½ï¿½y\\ï¿½ï¿½y^\\ï¿½=`ï¿½ï¿½`ï¿½ï¿½a-ï¿½ï¿½bï¿½ï¿½gfï¿½Ciï¿½ï¿½kdï¿½Ckdï¿½Coï¿½ï¿½_sÉ•YsÉ•Ywé—šzï¿½ï¿½}\"ï¿½nï¿½Ä¬ï¿½}ï¿½ï¿½ï¿½lVï¿½ï¿½jÇ¬ï¿½iï¿½ï¿½ï¿½iï¿½ï¿½ï¿½fÜ¹dcï¿½ï¿½ï¿½~ï¿½ï¿½`}ï¿½ï¿½Å€Ä¬ï¿½Ä¬ï¿½ï¿½ï¿½ñ·¶ï¿½ï¿½ï¿½ï¿½ï¿½\000ÉŸ}ï¿½ï¿½\000}ï¿½ï¿½\000y7ï¿½ï¿½uï¿½ï¿½ï¿½uï¿½ï¿½ï¿½eï¿½ï¿½ï¿½aï¿½Ôµaï¿½Ôµ_\\ï¿½o^ï¿½ï¿½q^ï¿½ï¿½q[ï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½N.ï¿½O!ï¿½JÆ§O!ï¿½N.ï¿½N.ï¿½Fï¿½ï¿½ï¿½Dï¿½ï¿½`Dï¿½ï¿½`Dgï¿½Hï¿½BJï¿½ï¿½kGï¿½ï¿½ï¿½DÖ›ï¿½DÖ›ï¿½Dï¿½ï¿½ï¿½HRï¿½ï¿½_Hnï¿½\\raSï¿½zqIÛ…+HRï¿½ï¿½Dï¿½ï¿½ï¿½Eï¿½vï¿½Dnï¿½Cï¿½gRCï¿½gRDï¿½b@Gf_\\bï¿½Nnï¿½Mï¿½dRï¿½dRï¿½Uï¿½`ï¿½L~d@h1lj|ï¿½jDï¿½ï¿½~\000wXwï¿½jï¿½yxaï¿½P wï¿½Mï¿½nï¿½Henï¿½Heï¿½[Kï¿½ï¿½DRï¿½DRä†®Zï¿½|ï¿½d{ï¿½jï¿½ï¿½ï¿½{ï¿½ï¿½,ï¿½aï¿½,ï¿½axrï¿½4r3ï¿½ï¿½iDï¿½ï¿½aï¿½ï¿½ï¿½\\ï¿½ï¿½y\\ï¿½ï¿½y`ï¿½ï¿½bï¿½ï¿½fï¿½&gfï¿½Ckdï¿½CsÉ•Yzï¿½ï¿½}\"ï¿½n}\"ï¿½n}ï¿½ï¿½ï¿½z6ï¿½%lVï¿½ï¿½iï¿½ï¿½ï¿½cï¿½ï¿½ï¿½{ï¿½ÈŒ~ï¿½ï¿½`ï¿½Ä¬ï¿½Ä¬æ·ï¿½ï¿½}ï¿½ï¿½\000Uï¿½ï¿½ï¿½O!ï¿½Uï¿½ï¿½\"JÆ§N.ï¿½Dï¿½ï¿½`Dï¿½ï¿½`Hï¿½BJï¿½ï¿½kDÖ›ï¿½HRï¿½ï¿½Hlï¿½WIÛ…+Dï¿½ï¿½ï¿½FR~ï¿½Eï¿½vï¿½Cï¿½gRGf_\\Sï¿½\\bï¿½NdRï¿½dRï¿½L~d@Ieï¿½\r|ï¿½~\000wXyxaï¿½P nï¿½Heï¿½DRï¿½,ï¿½ar3ï¿½ï¿½lï¿½ï¿½ï¿½sÉ•Y}\"ï¿½nz6ï¿½%lVï¿½ï¿½cï¿½ï¿½ï¿½aï¿½ï¿½n{ï¿½ÈŒï¿½Ä¬ï¿½}ï¿½ï¿½\000^ï¿½ï¿½qUï¿½ï¿½ï¿½Uï¿½ï¿½\"H$ï¿½{JÆ§Dï¿½ï¿½`Jï¿½ï¿½kDÖ›ï¿½Hlï¿½WOAIÛ…+FR~ï¿½FR~ï¿½Eï¿½vï¿½Gf_\\Sï¿½\\dRï¿½Ieï¿½R@ï¿½P ï¿½DRï¿½sÉ•Yz6ï¿½%w1ï¿½.wï¿½Ï‰{ï¿½ÈŒ}ï¿½ï¿½\000^ï¿½ï¿½qUï¿½ï¿½\"Zï¿½ï¿½CHï¿½ï¿½H$ï¿½{Dï¿½ï¿½`Jï¿½ï¿½kHlï¿½WJkï¿½ï¿½Lq^ï¿½Sï¿½\\Ieï¿½gULï¿½R@ï¿½DRï¿½sÉ•Yw1ï¿½.ufï¿½ï¿½tgï¿½{wï¿½Ï‰}ï¿½ï¿½\000^ï¿½ï¿½qZï¿½ï¿½C]}ï¿½ï¿½Kxï¿½-Hï¿½ï¿½Dï¿½ï¿½`Jï¿½ï¿½kJkï¿½ï¿½Mï¿½Gf_\\Lq^ï¿½Ieï¿½@Xï¿½ï¿½gULï¿½DRï¿½sÉ•Yufï¿½ï¿½ruï¿½ï¿½tgï¿½{}ï¿½ï¿½\000uï¿½ï¿½ï¿½aï¿½Ôµ^ï¿½ï¿½q]}ï¿½ï¿½Kxï¿½-Dï¿½ï¿½`Jï¿½ï¿½kJï¿½ï¿½kMï¿½PÑ¦\
-Gf_\\IeGï¿½hrï¿½@Xï¿½ï¿½DRï¿½|ï¿½dkdï¿½CsÉ•Yruï¿½ï¿½fEÑ£tgï¿½{uï¿½ï¿½ï¿½aï¿½Ôµ]}ï¿½ï¿½^Iï¿½ï¿½Obï¿½ï¿½Kxï¿½-Jï¿½ï¿½kJï¿½ï¿½kPÑ¦\
-W8ï¿½%FR~ï¿½Gf_\\Gï¿½hryxaï¿½@Xï¿½|ï¿½dkdï¿½Cruï¿½ï¿½nï¿½ï¿½fEÑ£uï¿½ï¿½ï¿½aï¿½Ôµaï¿½Ôµ^Iï¿½ï¿½]ï¿½ï¿½`Wï¿½ï¿½ï¿½Obï¿½ï¿½Jï¿½ï¿½kFR~ï¿½Gï¿½hrGï¿½n(yxa|ï¿½d{jfï¿½kdï¿½Cnï¿½ï¿½lVï¿½ï¿½cï¿½ï¿½ï¿½fEÑ£aï¿½ÔµWï¿½ï¿½ï¿½Jï¿½ï¿½kW8ï¿½%FR~ï¿½Gï¿½n(Iï¿½~\000yxa{jfï¿½{ï¿½jï¿½fï¿½&kdï¿½ClVï¿½ï¿½buï¿½vcï¿½ï¿½ï¿½aï¿½ÔµZ#ï¿½5Wï¿½ï¿½ï¿½W8ï¿½%OAFR~ï¿½Iï¿½~\000ï¿½\r|ï¿½yxa{ï¿½jï¿½fï¿½&lVï¿½ï¿½aï¿½ï¿½naï¿½Ç“buï¿½vaï¿½Ôµ\\\"ï¿½ï¿½Z#ï¿½5W8ï¿½%Sï¿½zqOAIï¿½~\000ï¿½\r|ï¿½{ï¿½jï¿½ï¿½,ï¿½adÖ´ï¿½fï¿½&aï¿½ï¿½naï¿½Ç“aï¿½Ôµ]ï¿½ï¿½`_Hnï¿½Sï¿½zqIï¿½~\000ï¿½ï¿½ï¿½\r|ï¿½ï¿½,ï¿½abï¿½ï¿½dÖ´ï¿½aï¿½ï¿½naï¿½ï¿½naï¿½Ç“]ï¿½ï¿½`_Hnï¿½Iï¿½~\000Vzrh}(ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½a\\ï¿½ï¿½ybï¿½ï¿½aï¿½ï¿½naï¿½ï¿½n]ï¿½ï¿½`\\\"ï¿½ï¿½aï¿½m5_Hnï¿½Vzrhwï¿½ï¿½}(ï¿½ï¿½ï¿½,ï¿½a\\ï¿½ï¿½yaï¿½ï¿½n\\\"ï¿½ï¿½aï¿½m5Vzrhaï¿½gfwï¿½ï¿½ï¿½,ï¿½alï¿½ï¿½ï¿½\\ï¿½ï¿½y\\\"ï¿½ï¿½W8ï¿½%cï¿½nHaï¿½m5aï¿½gfpï¿½wï¿½ï¿½lï¿½ï¿½ï¿½\\ï¿½ï¿½yW8ï¿½%^Oï¿½f\
-pï¿½cï¿½nHaï¿½gfmï¿½ï¿½ï¿½pï¿½lï¿½ï¿½ï¿½iDï¿½ï¿½\\ï¿½ï¿½y^Oï¿½f\
-pï¿½aï¿½gfh1lk)ï¿½Cmï¿½ï¿½ï¿½lï¿½ï¿½ï¿½iDï¿½ï¿½^Oï¿½aï¿½ï¿½wfï¿½sï¿½f\
-pï¿½h1ljDï¿½ï¿½k)ï¿½Clï¿½ï¿½ï¿½lï¿½ï¿½ï¿½iDï¿½ï¿½aï¿½ï¿½wfï¿½;fï¿½sï¿½h1llï¿½ï¿½ï¿½aï¿½ï¿½weï¿½ï¿½fï¿½;h1ljDï¿½ï¿½jDï¿½ï¿½lï¿½ï¿½ï¿½eï¿½ï¿½jDï¿½ï¿½eï¿½ï¿½fï¿½;";
+		[ 32630 ] = "S©\\[ôT9bœNbœNn¤Hen¾MàdR½]pYU¯`ƒU¯`ƒS@bL~d@G§n(IXu%IÇ~\000IÇ~\000NIyŒVzrhVzrh]¿iîaÊgfaÊgfefih1lh1liûpòj|Æ~\000wXy…o¾wïjîwïjîx	dşyxawâM¸n¾Màn¤Hen¤HewéHr[K…[K…†$NÙˆDRäˆDRä‡†W†®Zõ{Ójûƒq·ƒ¯{Ÿƒ¯{Ÿ„,bƒ,ƒaƒ,ƒa~‰­xr4iD—­d¨ŸHaª£Éaª£É_i¥m\\„§y\\„§y^\\©=`¬˜`¬˜a-±£b·Ûgf¬CiùkdšCkdšCo¤–_sÉ•YsÉ•Ywé—šzû}\"£n€Ä¬æ}‘®ÅlV¡jÇ¬æi™³êi™³êfÜ¹dc¼¥~¤³`}‘®Å€Ä¬æ€Ä¬æø±ñ·¶”·¶”\000ÉŸ}‘Í\000}‘Í\000y7ÓêuµÕıuµÕıeãÖÕa‰Ôµa‰Ôµ_\\Ğo^ÌËq^ÌËq[‹ÎòUêĞ×UêĞ×N.ÏO!ÊJÆ§O!ÊN.ÏN.ÏF¨ÈèD¼Ã`D¼Ã`Dg¼H®BJõªkG€¦§DÖ›àDÖ›àD¢æHRÒ_Hn¸\\raSœzqIÛ…+HRÒD¢æEıv€DnìCÊgRCÊgRDãb@Gf_\\bœNn¾MàdR½dR½U¯`ƒL~d@h1lj|ÆjD…é~\000wXwïjîyxa¾P wâM¸n¤Hen¤He[K…ˆDRäˆDRä†®Zõ|Ùd{Ójûƒ¯{Ÿƒ,ƒaƒ,ƒaxr4r3‘£iD—­aª£É\\„§y\\„§y`¬˜b·Ûf²&gf¬CkdšCsÉ•Yzû}\"£n}\"£n}‘®Åz6¥%lV¡i™³êc¼¥{ÓÈŒ~¤³`€Ä¬æ€Ä¬æ·¶”}‘Í\000UêĞ×O!ÊUğÌ\"JÆ§N.ÏD¼Ã`D¼Ã`H®BJõªkDÖ›àHRÒHl›WIÛ…+D¢æFR~ƒEıv€CÊgRGf_\\S©\\bœNdR½dR½L~d@Ie€\r|¹~\000wXyxa¾P n¤HeˆDRäƒ,ƒar3‘£l¿“÷sÉ•Y}\"£nz6¥%lV¡c¼¥aåÁn{ÓÈŒ€Ä¬æ}‘Í\000^ÌËqUêĞ×UğÌ\"H$Â{JÆ§D¼Ã`JõªkDÖ›àHl›WOAIÛ…+FR~ƒFR~ƒEıv€Gf_\\S©\\dR½IeƒR@¾P ˆDRäsÉ•Yz6¥%w1.wÈÏ‰{ÓÈŒ}‘Í\000^ÌËqUğÌ\"Z³ÊCH¼˜H$Â{D¼Ã`JõªkHl›WJk¢İLq^ÅS©\\Ie„gULƒR@ˆDRäsÉ•Yw1.uf›ŸtgÑ{wÈÏ‰}‘Í\000^ÌËqZ³ÊC]}ÅğKx°-H¼˜D¼Ã`JõªkJk¢İM¦Gf_\\Lq^ÅIeƒ@X­„gULˆDRäsÉ•Yuf›Ÿruš¦tgÑ{}‘Í\000uµÕıa‰Ôµ^ÌËq]}ÅğKx°-D¼Ã`JõªkJõªkM¦PÑ¦\
+Gf_\\IeG†hrƒ@X­ˆDRä|ÙdkdšCsÉ•Yruš¦fEÑ£tgÑ{uµÕıa‰Ôµ]}Åğ^I¼˜Ob«’Kx°-JõªkJõªkPÑ¦\
+W8¥%FR~ƒGf_\\G†hryxaƒ@X­|ÙdkdšCruš¦nÒfEÑ£uµÕıa‰Ôµa‰Ôµ^I¼˜]¥´`WšªôOb«’JõªkFR~ƒG†hrG§n(yxa|Ùd{jfıkdšCnÒlV¡cĞÏìfEÑ£a‰ÔµWšªôJõªkW8¥%FR~ƒG§n(IÇ~\000yxa{jfı{Ójûf²&kdšClV¡buÍvcĞÏìa‰ÔµZ#¬5WšªôW8¥%OAFR~ƒIÇ~\000€\r|¹yxa{Ójûf²&lV¡aåÁnaªÇ“buÍva‰Ôµ\\\"®¸Z#¬5W8¥%SœzqOAIÇ~\000€\r|¹{Ójûƒ,ƒadÖ´Âf²&aåÁnaªÇ“a‰Ôµ]¥´`_Hn¸SœzqIÇ~\000¤€ò€\r|¹ƒ,ƒab·ÛdÖ´ÂaåÁnaåÁnaªÇ“]¥´`_Hn¸IÇ~\000Vzrh}(„•¤€òƒ,ƒa\\„§yb·ÛaåÁnaåÁn]¥´`\\\"®¸a½m5_Hn¸Vzrhw‹‹}(„•ƒ,ƒa\\„§yaåÁn\\\"®¸a½m5VzrhaÊgfw‹‹ƒ,ƒal¿“÷\\„§y\\\"®¸W8¥%cÊnHa½m5aÊgfpëw‹‹l¿“÷\\„§yW8¥%^O f\
+pòcÊnHaÊgfm¥Œæpël¿“÷iD—­\\„§y^O f\
+pòaÊgfh1lk)ŠCm¥Œæl¿“÷iD—­^O a£wfsf\
+pòh1ljD…ék)ŠCl¿“÷l¿“÷iD—­a£wfã;fsh1ll¿“÷a£weı•fã;h1ljD…éjD…él¿“÷eı•jD…éeı•fã;";
 	};
 	[ 201 ] = { -- Un'Goro Crater
 		-- Ravasaur Matriarch
-		[ 6581 ] = "ï¿½ï¿½ï¿½ï¿½ï¿½İšï¿½ï¿½sï¿½ï¿½sï¿½pï¿½Xï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½3ï¿½&ï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½mï¿½İ´ï¿½ï¿½ï¿½!ï¿½Cï¿½ï¿½Cï¿½ï¿½Î¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â²,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½mï¿½Ï°ï¿½ï¿½İ´ï¿½ï¿½Cï¿½ï¿½Cï¿½ï¿½ï¿½î›…ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½ï¿½ï¿½mï¿½_ï¿½ï¿½ï¿½Ï°ï¿½ï¿½Cï¿½ë›…ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Gï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½Ï°ï¿½ï¿½ï¿½ï¿½ï¿½";
+		[ 6581 ] = "›…¤”¢İšç©—s©—s¬p—X°G›…°G›…²3¢&²G©­²G©­¬„µf©õµm¢İ´¨Ÿò¾!›CÀë›CÀë—Î¿¾–¹î–¹î–Â²,›…¤”›…¤”©—s°G›…°G›…²G©­©õµm¤Ï°¢İ´¨›CÀë›CÀë–¹î›…¤”°G›…©õµm§_±¤Ï°›CÀë›…¤”›…¤”°G›…§_±§_±¤Ï°›…¤”";
 	};
 	[ 40 ] = { -- Wetlands
 		-- Razormaw Matriarch
-		[ 1140 ] = "ï¿½ï¿½Mï¿½ï¿½J)ï¿½|Gï¿½ï¿½|Gï¿½ï¿½?Iï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Oï¿½Tï¿½ï¿½Tï¿½ï¿½gXrï¿½'Xï¿½ï¿½;Tgï¿½Pbï¿½ï¿½Mï¿½ï¿½Mï¿½|Gï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½Tï¿½ï¿½'Xï¿½ï¿½;Tgï¿½ï¿½Mï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½'Xï¿½ï¿½;Tg";
+		[ 1140 ] = "«„M¬˜J)°|G®°|G®´?IµÖLôµÖLôµöOì³T÷³T÷²gXr°'X“¯;Tg¬Pb«„M«„M°|G®µÖLôµÖLô³T÷°'X“¯;Tg«„MµÖLôµÖLô°'X“¯;Tg";
 	};
 	[ 467 ] = { -- Zangarmarsh
 		-- Bog Lurker
-		[ 18682 ] = "g$ï¿½ï¿½eÂ¥ï¿½eï¿½ï¿½oeï¿½ï¿½oh1ï¿½Qlwï¿½9{ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½nkï¿½ï¿½ï¿½jï¿½ï¿½Cjï¿½ï¿½Cg$ï¿½ï¿½eï¿½ï¿½olwï¿½9{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½lï¿½njï¿½ï¿½Ceï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½mVï¿½Ilï¿½neï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½~\rï¿½Ap\rï¿½ï¿½mVï¿½Ieï¿½ï¿½oï¿½ï¿½ï¿½ï¿½~\rï¿½AzÇ›p\rï¿½ï¿½eï¿½ï¿½olwï¿½9lwï¿½9ï¿½ï¿½ï¿½ï¿½zÇ›lwï¿½9zÇ›p\rï¿½ï¿½ï¿½ï¿½ï¿½ZÏƒï¿½Oï¿½uï¿½ï¿½ï¿½uï¿½ï¿½×“ï¿½Mï¿½Ê¦ï¿½Ê¦ï¿½ï¿½Ö“ï¿½Aï¿½<ï¿½Aï¿½<ï¿½ï¿½ï¿½xï¿½ï¿½ï¿½\\ï¿½ï¿½ï¿½\\Öï¿½ï¿½sï¿½Mï¿½ï¿½ï¿½Kï¿½ï¿½ï¿½Zï¿½uï¿½ï¿½ï¿½uï¿½ï¿½ï¿½Ê¦ï¿½Aï¿½<ï¿½Aï¿½<ï¿½ï¿½ï¿½\\ï¿½sï¿½Mï¿½sï¿½Mï¿½ï¿½ï¿½Kï¿½uï¿½ï¿½ï¿½uï¿½ï¿½ï¿½Aï¿½<ï¿½sï¿½M5ï¿½=ï¿½:74@ï¿½2ï¿½@ï¿½2ï¿½Gï¿½4ï¿½J=7ï¿½J=7ï¿½K^;K?ï¿½K?ï¿½HRGsDJï¿½DJï¿½<ï¿½Mï¿½8ï¿½M8ï¿½M:ï¿½Eï¿½?EF:Aï¿½:ï¿½Eï¿½8ï¿½M8ï¿½M4{EY5ï¿½=ï¿½@ï¿½2ï¿½J=7ï¿½K?ï¿½K?ï¿½DJï¿½8ï¿½M8ï¿½M?EFAï¿½Bï¿½:Aï¿½8ï¿½M5ï¿½=ï¿½K?ï¿½8ï¿½MAï¿½Bï¿½<ï¿½;~:Aï¿½5ï¿½=ï¿½K?ï¿½Aï¿½Bï¿½CM<j<ï¿½;~5ï¿½=ï¿½@ï¿½2ï¿½@ï¿½2ï¿½K?ï¿½CM<j@ï¿½:D<ï¿½;~@ï¿½2ï¿½@ï¿½2ï¿½CM<j@ï¿½:D";
+		[ 18682 ] = "g$¨üeÂ¥Èe‡ oe‡ oh1™Qlw”9{”€‰‘n†§”†§”‡_š¹„ı¥„ı¥ƒĞ­‚¯‰‚¯‰—«¹¤Öl£nkô©¦j¬«Cj¬«Cg$¨üe‡ olw”9{”†§”†§”„ı¥‚¯‰l£nj¬«Ce‡ o†§”‚¯‰¤ÖmVIl£ne‡ o†§”¤Ö~\rŸAp\r™õmVIe‡ o†§”~\rŸAzÇ›p\r™õe‡ olw”9lw”9†§”zÇ›lw”9zÇ›p\r™õÏÿÃZÏƒ¾OÑu¼æÑu¼æ×“ÃMÜÊ¦ÜÊ¦àÖ“àAÜ<àAÜ<İæêxØèî\\Øèî\\ÖìÖsâMÔ÷×KÏÿÃZÑu¼æÑu¼æÜÊ¦àAÜ<àAÜ<Øèî\\ÖsâMÖsâMÔ÷×KÑu¼æÑu¼æàAÜ<ÖsâM5µ=ó:74@ª2‚@ª2‚Gï4êJ=7´J=7´K^;K?ØK?ØHRGsDJîDJî<ŸMÌ8M8M: Eİ?EF:A£: Eİ8M8M4{EY5µ=ó@ª2‚J=7´K?ØK?ØDJî8M8M?EFAòB×:A£8M5µ=óK?Ø8MAòB×<˜;~:A£5µ=óK?ØAòB×CM<j<˜;~5µ=ó@ª2‚@ª2‚K?ØCM<j@¾:D<˜;~@ª2‚@ª2‚CM<j@¾:D";
 		-- Coilfang Emissary
-		[ 18681 ] = "AUy*=ï¿½ao>i]5>i]5A\\VDn_!Dn_!FLxEï¿½{ï¿½Eï¿½{ï¿½CT|cAUy*AUy*>i]5Dn_!Dn_!Eï¿½{ï¿½AUy*ï¿½ï¿½[ï¿½ï¿½JXï¿½ï¿½{]ï¿½ï¿½{]ï¿½ï¿½Rb3ï¿½Qi7ï¿½Qi7ï¿½7pï¿½9uÉ¤9uÉ Gtï¿½ï¿½j#ï¿½ï¿½eï¿½Wbï¿½`ï¿½ï¿½`ï¿½ï¿½[ï¿½ï¿½{]ï¿½ï¿½{]ï¿½ï¿½Qi7ï¿½9uÉï¿½eï¿½ï¿½`ï¿½{]ï¿½ï¿½{]ï¿½ï¿½9uÉ j#ï¿½{]ï¿½ï¿½j#ï¿½ï¿½eï¿½,ï¿½ï¿½ï¿½Rï¿½mï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½<ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½'ï¿½{ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½pÅ®ï¿½;Âœï¿½;Âœï¿½GÂ¯ï¿½ï¿½ï¿½*ï¿½;Âœï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½Xï¿½×¨kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\\ï¿½ï¿½ï¿½\\ï¿½Ö ï¿½ï¿½`ï¿½lï¿½`ï¿½lï¿½ï¿½Ù©ï¿½İ©ï¿½İ¦ï¿½ï¿½ÈÒ¶ï¿½ï¿½Ò¶ï¿½ï¿½ï¿½mï¿½Ò®ï¿½×¨kï¿½ï¿½ï¿½\\ï¿½`ï¿½lï¿½`ï¿½lï¿½ï¿½İÒ¶ï¿½ï¿½Ò¶ï¿½ï¿½Ò®ï¿½×¨kï¿½×¨kï¿½`ï¿½lï¿½Ò¶ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½ï¿½Qï¿½ï¿½ï¿½Qï¿½)ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ì½„ï¿½Qï¿½ï¿½Ö®ï¿½sï¿½â´¨Å®ï¿½ï¿½Mï¿½ï¿½Mï¿½ï¿½Ãˆï¿½ï¿½Kï¿½ï¿½Mï¿½ï¿½Kï¿½sï¿½ï¿½";
+		[ 18681 ] = "AUy*=²ao>i]5>i]5A\\VDn_!Dn_!FLxE¼{¹E¼{¹CT|cAUy*AUy*>i]5Dn_!Dn_!E¼{¹AUy*—´[ûšJX†£{]„£{]„¦Rb3¨Qi7¨Qi7§7p¤9uÉ¤9uÉ Gtˆ j#æe™Wbñ—“`—“`—´[û£{]„£{]„¨Qi7¤9uÉæe—“`£{]„£{]„¤9uÉ j#£{]„ j#æe²,¸™¶Rµm¹º¶ö¹º¶öºÀ¼<¸™¾¸™¾³t¿'±{¼¥±{¼¥²,¸™¹º¶ö¹º¶ö¸™¾±{¼¥¾¤ÇX½pÅ®¿;Âœ¿;ÂœÁGÂ¯ÀøÇ*¿;ÂœÀøÇ*¾¤ÇX¡×¨k¡¡‚¢¢\\¢¢\\¤Ö ½¥`¦l¥`¦l¨è¬Ù©²İ©²İ¦»µÈÒ¶šÒ¶š›à³mŸÒ®¡×¨k¢¢\\¥`¦l¥`¦l©²İÒ¶šÒ¶šŸÒ®¡×¨k¡×¨k¥`¦lÒ¶š¹…Ö®¹ÀĞh»ÓÍì»ÓÍì¾HÓ½„×Q½„×Q»)Øû¹…Ö®»ÓÍì½„×Q¹…Ö®µsÇâ´¨Å®·ÂM·ÂM¹…Ãˆ¸ÆK·ÂM¸ÆKµsÇâ";
 		-- Marticar
-		[ 18680 ] = "ï¿½ï¿½)zï¿½ï¿½u8+ï¿½Wï¿½,ï¿½Mï¿½.M<.M<0ï¿½Qï¿½0!\\/0!\\/.ï¿½`b-`ï¿½)mï¿½,s3*	w1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½u8#ï¿½j+ï¿½Wï¿½.M<0!\\/)mï¿½*	w1%?vYï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½#ï¿½j(ï¿½_!(ï¿½_!+ï¿½Wï¿½0!\\/(ï¿½hï¿½)mï¿½%?vY!ï¿½yrï¿½ï¿½ ï¿½ï¿½(ï¿½_!0!\\/-`ï¿½(ï¿½hï¿½%?vY!ï¿½yr!ï¿½yrï¿½ï¿½(ï¿½_!(ï¿½_!-`ï¿½(ï¿½hï¿½(ï¿½_!(ï¿½hï¿½!ï¿½yr]\"]ï¿½b[Rï¿½h$P\000sï¿½P|y^Kï¿½ï¿½Kï¿½Kï¿½HSï¿½ï¿½VYï¿½VYï¿½UYrï¿½ï¿½Zr\000Uru\\qi7]cecndMfï¿½aï¿½hDaï¿½hD]ï¿½bM]\"]ï¿½]\"]ï¿½h$P\000nï¿½Qï¿½sï¿½P|ï¿½Kï¿½VYï¿½VYï¿½ï¿½Zr\000Uecnaï¿½hD]\"]ï¿½]\"]ï¿½nï¿½Qï¿½sï¿½P|sï¿½P|ï¿½VY\000Ui7]cecn]\"]ï¿½]\"]ï¿½sï¿½P|\000U\000Ui7]c]\"]ï¿½ï¿½ï¿½tï¿½'cFï¿½h^ï¿½h^ï¿½ï¿½Yï¿½ï¿½ï¿½[=ï¿½ï¿½[=ï¿½\\`|ï¿½\\dï¿½ï¿½ï¿½oï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½\\ï¿½6ï¿½ï¿½|ï¿½ï¿½|ï¿½9ï¿½ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½{ï¿½ï¿½ï¿½tï¿½h^ï¿½h^æ»„[=ï¿½\\dï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½|ï¿½ï¿½|ï¿½ï¿½{ï¿½ï¿½h^ï¿½h^ï¿½\\dï¿½ï¿½ï¿½oï¿½ï¿½h^ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½|";
+		[ 18680 ] = "‰û)z’Æu8+îW€,…Mæ.M<.M<0¤Q‰0!\\/0!\\/.—`b-`¾)m«,s3*	w1 æŠÀ¤À¤Q‰û‰ûÆu8#œj+îW€.M<0!\\/)m«*	w1%?vY À¤‰û‰û#œj(´_!(´_!+îW€0!\\/(ühÁ)m«%?vY!ƒyr ‰û(´_!0!\\/-`¾(ühÁ%?vY!ƒyr!ƒyr‰û(´_!(´_!-`¾(ühÁ(´_!(ühÁ!ƒyr]\"]‘b[R–h$P\000s÷P|y^KÍùKùKHS¯’VY’VYUYrŒ˜Zr\000Uru\\qi7]cecndMf®a×hDa×hD]ÅbM]\"]‘]\"]‘h$P\000nÌQ–s÷P|ùK’VY’VYŒ˜Zr\000Uecna×hD]\"]‘]\"]‘nÌQ–s÷P|s÷P|’VY\000Ui7]cecn]\"]‘]\"]‘s÷P|\000U\000Ui7]c]\"]‘¶Ütã°'cF°h^æ°h^æ´ğY™»„[=»„[=½\\`|½\\d¢ÁŞo—ËI€·Îùˆ­Îùˆ­Î\\Œ6É|É|Ä9Œ‘¹û{‹¹û{‹¶Ütã°h^æ°h^æ»„[=½\\d¢ÁŞo—Îùˆ­É|É|¹û{‹°h^æ°h^æ½\\d¢ÁŞo—°h^æÁŞo—É|";
 	};
 	[ 496 ] = { -- Zul'Drak
 		-- Gondria
-		[ 33776 ] = "ï¿½ï¿½ï¿½ï¿½ËŸ\rï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½mï¿½ï¿½-t2ï¿½-t2ï¿½iï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½Iï¿½pÌï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã•ï¿½ï¿½ï¿½ï¿½ï¿½ÊŸï¿½ï¿½ÊŸï¿½ï¿½ï¿½rï¿½yï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+ï¿½jï¿½nï¿½ï¿½ï¿½nï¿½ï¿½ï¿½Tï¿½ï¿½Ã•ï¿½ï¿½Ã•ï¿½ï¿½ÊŸï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½nï¿½ï¿½Ã•ï¿½ï¿½ï¿½2ykï¿½gï¿½nï¿½}ï¿½ï¿½}ï¿½ï¿½ yxï¿½2yk";
+		[ 33776 ] = "›í—ü ËŸ\r›¬¦ï ÿgü¤µm« -t2 -t2 i¦ ÿgü®ÒÁ °ÊÁ[®¸ÍI®¸ÍI¬pÌªÍÉ®¸ÍIªÍÉ®ÒÁ Ã•«íË­„ÊŸ²½ÊŸ²½Èr¶yÅı·ÎÅı·ÎÄ+»jÂn¸õÂn¸õÂT­ßÃ•«íÃ•«íÊŸ²½Åı·ÎÅı·ÎÂn¸õÃ•«í´2yk´gƒn°}Š°}Š° yx´2yk";
 		-- Griegen
-		[ 32471 ] = ")Î²M,ï¿½ï¿½4{ï¿½(:Jï¿½ Eï¿½ï¿½Gï¿½ï¿½%Gï¿½ï¿½%Gï¿½ï¿½ï¿½B ï¿½B ï¿½B&ï¿½@;ÊŸ@;ÊŸ5ï¿½Îª1ï¿½ï¿½w1ï¿½ï¿½w1ï¿½ï¿½X4ï¿½ï¿½?<ï¿½ï¿½-Iï¿½*^ï¿½ï¿½*^ï¿½ï¿½)Î²M4{ï¿½(:Jï¿½ Gï¿½ï¿½%B ï¿½1ï¿½ï¿½w4ï¿½ï¿½?7yï¿½_<ï¿½ï¿½*^ï¿½ï¿½4{ï¿½(4{ï¿½(:Jï¿½ B ï¿½@;ÊŸ1ï¿½ï¿½w7yï¿½_><ï¿½ï¿½<ï¿½ï¿½4{ï¿½(@;ÊŸ7yï¿½_<ï¿½ï¿½ï¿½><ï¿½ï¿½4{ï¿½(B ï¿½B ï¿½@;ÊŸ<ï¿½ï¿½ï¿½B ï¿½<ï¿½ï¿½ï¿½><ï¿½ï¿½>Ò(Aï¿½ï¿½lC×†ï¿½C×†ï¿½Gï¿½ï¿½ï¿½Gï¿½ï¿½?'ï¿½6>wï¿½ï¿½;Ô£{;Ô£{62ï¿½ï¿½5tï¿½ï¿½5tï¿½ï¿½7ï¿½ï¿½k<6ï¿½>?.ï¿½ï¿½>Ò(C×†ï¿½C×†ï¿½Gï¿½ï¿½DÖ’ï¿½?'ï¿½6;Ô£{5tï¿½ï¿½?.ï¿½ï¿½C×†ï¿½DÖ’ï¿½DÖ’ï¿½?'ï¿½65tï¿½ï¿½<6ï¿½>?.ï¿½ï¿½DÖ’ï¿½DÖ’ï¿½5tï¿½ï¿½<6ï¿½>!uï¿½ï¿½!Nï¿½ï¿½$ï¿½6$ï¿½6'ï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½*ï¿½ï¿½ï¿½)eï¿½#ï¿½ï¿½	#ï¿½ï¿½	!uï¿½ï¿½$ï¿½6$ï¿½6*ï¿½ï¿½ï¿½#ï¿½ï¿½	";
+		[ 32471 ] = ")Î²M,­Å4{­(:J± E¢±G”´%G”´%G»ºçB »B »B&È@;ÊŸ@;ÊŸ5İÎª1åËw1åËw1½ÈX4¼Å?<¸¦-I¹*^¶Ü*^¶Ü)Î²M4{­(:J± G”´%B »1åËw4¼Å?7yÇ_<¸¦*^¶Ü4{­(4{­(:J± B »@;ÊŸ1åËw7yÇ_><º’<¸¦4{­(@;ÊŸ7yÇ_<„ÄÉ><º’4{­(B »B »@;ÊŸ<„ÄÉB »<„ÄÉ><º’>Ò(A‰‡lC×†šC×†šGüŒ„Gö‘?'›6>w¡©;Ô£{;Ô£{62¡£5t—5t—7€™k<6˜>?.’½>Ò(C×†šC×†šGö‘DÖ’Ã?'›6;Ô£{5t—?.’½C×†šDÖ’ÃDÖ’Ã?'›65t—<6˜>?.’½DÖ’ÃDÖ’Ã5t—<6˜>!u”¢!N£$ê‹6$ê‹6'¡ŒÌ*’•»*’•»)e˜#°˜	#°˜	!u”¢$ê‹6$ê‹6*’•»#°˜	";
 		-- Terror Spinner
-		[ 32475 ] = "ï¿½ï¿½Vï¿½aQ-ï¿½!Pï¿½ï¿½!Pï¿½ï¿½UÖƒï¿½Vï¿½#bŞ˜r]ï¿½ï¿½ï¿½Y>ï¿½ï¿½Y>ï¿½\rWÈ ï¿½\\Ú ï¿½\\ÚIeFï¿½eï¿½ï¿½eï¿½ï¿½#bŞ™ï¿½Y>ï¿½ï¿½Y>ï¿½ï¿½\\Ú›eï¿½ï¿½ï¿½6ï¿½3ï¿½ï¿½ï¿½6ãº˜6ï¿½ï¿½;ï¿½ï¿½@4ï¿½ï¿½CÊ¹ï¿½PAï¿½ï¿½Qï¿½ï¿½ï¿½Qï¿½ï¿½mO}ï¿½?Iï¿½?ï¿½ï¿½ï¿½;)ï¿½ï¿½6ï¿½ï¿½6ï¿½ï¿½6ï¿½@4ï¿½ï¿½CÊµï¿½Qï¿½ï¿½?Iï¿½?ï¿½ï¿½ï¿½6ï¿½@4ï¿½@4ï¿½ï¿½CÊ´?Iï¿½@4ï¿½?Iï¿½?ï¿½Í¤Q:ÏƒOï¿½ï¿½ï¿½Uï¿½ï¿½ï¿½Uï¿½ï¿½Zrï¿½ï¿½bï¿½ï¿½ï¿½bï¿½ï¿½._ï¿½Í¤Q:ï¿½ï¿½Uï¿½ï¿½ï¿½bï¿½Í¤Q:Ã¶cï¿½ÈŒfÈ snÈ snï¿½ï¿½sï¿½ï¿½ï¿½gÈ snï¿½ï¿½gÃ¶cÊ¸Î¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¶ï¿½8ï¿½ï¿½ï¿½bï¿½ï¿½ï¿½bï¿½Æ¯ß¸Î¦ï¿½ï¿½ï¿½Ñ¿ï¿½ï¿½bï¿½Î¦ï¿½";
+		[ 32475 ] = "ƒVƒaQ-!P!PUÖƒV˜#bŞ˜r]¿™èY>™èY>Ÿ\rWÈ ½\\Ú ½\\ÚIeF›e›e˜#bŞ™èY>™èY> ½\\Ú›e²ş6·3øº˜6ãº˜6ã»ô;³¼@4¹ÚCÊ¹­PAµ»Q·µ»Q·³mO}´?I´?²œ;)²ş6²ş6º˜6ã¼@4¹ÚCÊµ»Q·´?I´?²ş6¼@4¼@4¹ÚCÊ´?I¼@4´?I´?Í¤Q:ÏƒOóÓğU÷ÓğU÷ÔZrÍób©Íób©Í._ËÍ¤Q:ÓğU÷Íób©Í¤Q:Ã¶cÊÈŒfÈ snÈ snÁŞs×ÁˆgÈ snÁˆgÃ¶cÊ¸Î¦´¹À¡ÊÂê¡ÑÂê¡ÑÃ¶¥8¿–¯b¿–¯b¼Æ¯ß¸Î¦´Âê¡Ñ¿–¯b¸Î¦´";
 		-- Zul'drak Sentinel
-		[ 32447 ] = "/ï¿½Ò¯1:ï¿½hIï¿½ï¿½Iï¿½ï¿½Iï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½ï¿½Lï¿½ï¿½jHï¿½ï¿½cI×­0ï¿½ï¿½0/ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½/ï¿½Ò¯Iï¿½ï¿½Lï¿½ï¿½ï¿½Hï¿½ï¿½cI×­I×­/ï¿½ï¿½ï¿½Iï¿½ï¿½Iï¿½ï¿½Lï¿½ï¿½ï¿½I×­aï¿½ï¿½ï¿½fï¿½ï¿½hÇ€Anï¿½ï¿½)sÃŒï¿½rÊ‘uw8ï¿½\rzï¿½i|ï¿½ï¿½|ï¿½ï¿½{/ï¿½Jxï¿½ï¿½oBï¿½`ï¿½2ï¿½ï¿½ï¿½:ï¿½/ï¿½:ï¿½/gï¿½ï¿½eï¿½ï¿½eï¿½ï¿½eï¿½Tiï¿½8lï¿½ï¿½iï¿½8eï¿½Teï¿½Taï¿½ï¿½aï¿½ï¿½ï¿½aï¿½ï¿½ï¿½hÇ€Aiï¿½ï¿½iï¿½ï¿½nï¿½ï¿½)rÊ‘uw8ï¿½\r|ï¿½ï¿½xï¿½ï¿½oBï¿½`ï¿½:ï¿½/eï¿½ï¿½eï¿½ï¿½iï¿½8iï¿½Llï¿½ï¿½eï¿½Taï¿½ï¿½ï¿½aï¿½ï¿½ï¿½iï¿½ï¿½rÊ‘utï¿½ï¿½ï¿½w8ï¿½\rxï¿½ï¿½eï¿½ï¿½iï¿½LkÓ¬oï¿½ï¿½ï¿½lï¿½ï¿½aï¿½ï¿½ï¿½aï¿½ï¿½ï¿½rÊ‘utï¿½ï¿½ï¿½tï¿½ï¿½ï¿½xï¿½ï¿½uï¿½oBï¿½`eï¿½ï¿½kÓ¬oï¿½ï¿½ï¿½aï¿½ï¿½ï¿½tï¿½ï¿½ï¿½oBï¿½`kÓ¬oHï¿½ï¿½tï¿½ï¿½oï¿½ï¿½ï¿½tï¿½ï¿½ï¿½uï¿½oBï¿½`oHï¿½ï¿½tï¿½ï¿½tï¿½ï¿½ï¿½uï¿½uï¿½oHï¿½ï¿½t%ï¿½ï¿½uï¿½t%ï¿½ï¿½tï¿½ï¿½";
-	};
--- [Ebonhold] vanilla zone path data - generated by tools/generate_pathdata.js
-	[ 1 ] = { -- Elwynn Forest
-		-- Bhag'thera
-		[ 2938 ] = string.char(81, 184, 214, 163, 81, 184, 214, 163, 81, 184, 214, 163);
-		-- Princess
-		[ 2940 ] = string.char(234, 209, 142, 130, 234, 209, 142, 130, 234, 209, 142, 130);
-		-- Morgan the Collector
-		[ 2942 ] = string.char(60, 202, 81, 184, 60, 202, 81, 184, 60, 202, 81, 184);
-		-- Fedfennel
-		[ 3670 ] = string.char(81, 56, 91, 79, 81, 56, 91, 79, 81, 56, 91, 79);
-	};
-	[ 21 ] = { -- Tirisfal Glades
-		-- Ressan the Needler
-		[ 1482 ] = string.char(163, 112, 143, 66, 163, 112, 143, 66, 163, 112, 143, 66);
-		-- Deeb
-		[ 1484 ] = string.char(40, 156, 224, 122, 40, 156, 224, 122, 40, 156, 224, 122);
-		-- Sri'skulk
-		[ 1485 ] = string.char(132, 171, 245, 104, 132, 171, 245, 104, 132, 171, 245, 104);
-		-- Bayne
-		[ 1481 ] = string.char(142, 130, 204, 140, 142, 130, 204, 140, 142, 130, 204, 140);
-		-- Muad
-		[ 1480 ] = string.char(20, 46, 163, 112, 20, 46, 163, 112, 20, 46, 163, 112);
-	};
-	[ 215 ] = { -- Mulgore
-		-- The Rake
-		[ 3248 ] = string.char(255, 127, 163, 112, 255, 127, 163, 112, 255, 127, 163, 112);
-		-- Snagglespear
-		[ 3244 ] = string.char(91, 143, 193, 181, 91, 143, 193, 181, 91, 143, 193, 181);
-		-- Arnak Grimtotem
-		[ 3246 ] = string.char(163, 112, 173, 199, 163, 112, 173, 199, 163, 112, 173, 199);
-		-- Enforcer Emilgund
-		[ 3252 ] = string.char(224, 122, 173, 71, 224, 122, 173, 71, 224, 122, 173, 71);
-	};
-	[ 33 ] = { -- Silverpine Forest
-		-- Grimson the Pale
-		[ 1765 ] = string.char(245, 104, 153, 89, 245, 104, 153, 89, 245, 104, 153, 89);
-		-- Mirelow
-		[ 1766 ] = string.char(204, 140, 40, 156, 204, 140, 40, 156, 204, 140, 40, 156);
-		-- Sever
-		[ 1768 ] = string.char(71, 97, 81, 184, 71, 97, 81, 184, 71, 97, 81, 184);
-		-- Slavering Worg
-		[ 1770 ] = string.char(183, 158, 224, 122, 183, 158, 224, 122, 183, 158, 224, 122);
-	};
-	[ 38 ] = { -- Loch Modan
-		-- Ol' Sooty
-		[ 1107 ] = string.char(163, 112, 30, 133, 163, 112, 30, 133, 163, 112, 30, 133);
-		-- Chok'sul
-		[ 1108 ] = string.char(40, 156, 71, 97, 40, 156, 71, 97, 40, 156, 71, 97);
-		-- Ambassador Infernus
-		[ 1110 ] = string.char(204, 140, 193, 181, 204, 140, 193, 181, 204, 140, 193, 181);
-		-- Grizlak
-		[ 1112 ] = string.char(122, 84, 163, 112, 122, 84, 163, 112, 122, 84, 163, 112);
-	};
-	[ 41 ] = { -- Westfall
-		-- Vultros
-		[ 3868 ] = string.char(60, 138, 71, 97, 60, 138, 71, 97, 60, 138, 71, 97);
-		-- Lieutenant Fangore
-		[ 2932 ] = string.char(71, 97, 40, 156, 71, 97, 40, 156, 71, 97, 40, 156);
-		-- Brute
-		[ 2934 ] = string.char(193, 181, 204, 140, 193, 181, 204, 140, 193, 181, 204, 140);
-	};
-	[ 44 ] = { -- Redridge Mountains
-		-- Bellygrub
-		[ 447 ] = string.char(71, 97, 122, 148, 71, 97, 122, 148, 71, 97, 122, 148);
-		-- Tethis
-		[ 448 ] = string.char(40, 156, 163, 112, 40, 156, 163, 112, 40, 156, 163, 112);
-		-- Noxious Shredder
-		[ 449 ] = string.char(30, 133, 193, 181, 30, 133, 193, 181, 30, 133, 193, 181);
-	};
-	[ 10 ] = { -- Duskwood
-		-- Mor'Ladim
-		[ 1975 ] = string.char(81, 184, 204, 140, 81, 184, 204, 140, 81, 184, 204, 140);
-		-- The Lich
-		[ 1980 ] = string.char(163, 112, 71, 97, 163, 112, 71, 97, 163, 112, 71, 97);
-		-- Stitches
-		[ 2970 ] = string.char(142, 130, 183, 158, 142, 130, 183, 158, 142, 130, 183, 158);
-	};
-	[ 45 ] = { -- Arathi Highlands
-		-- Fozruk
-		[ 1688 ] = string.char(204, 140, 163, 112, 204, 140, 163, 112, 204, 140, 163, 112);
-		-- Bimble Longberry
-		[ 1689 ] = string.char(71, 97, 40, 156, 71, 97, 40, 156, 71, 97, 40, 156);
-		-- Kovork
-		[ 1692 ] = string.char(245, 168, 30, 133, 245, 168, 30, 133, 245, 168, 30, 133);
-		-- Zaricotl
-		[ 1694 ] = string.char(163, 112, 122, 84, 163, 112, 122, 84, 163, 112, 122, 84);
-	};
-	[ 40 ] = { -- Wetlands
-		-- Sarltooth
-		[ 1188 ] = string.char(163, 112, 204, 140, 163, 112, 204, 140, 163, 112, 204, 140);
-		-- Togrul
-		[ 1189 ] = string.char(40, 156, 71, 97, 40, 156, 71, 97, 40, 156, 71, 97);
-	};
-	[ 1413 ] = { -- Teldrassil
-		-- Blackmoss the Fetid
-		[ 3271 ] = string.char(163, 112, 204, 140, 163, 112, 204, 140, 163, 112, 204, 140);
-		-- Gobbler
-		[ 3273 ] = string.char(40, 156, 71, 97, 40, 156, 71, 97, 40, 156, 71, 97);
-		-- Oakenscowl
-		[ 3274 ] = string.char(30, 133, 245, 168, 30, 133, 245, 168, 30, 133, 245, 168);
-	};
-	[ 148 ] = { -- Darkshore
-		-- Lady Moongazer
-		[ 2184 ] = string.char(163, 112, 163, 112, 163, 112, 163, 112, 163, 112, 163, 112);
-		-- Moonstalker Sire
-		[ 2572 ] = string.char(204, 140, 122, 84, 204, 140, 122, 84, 204, 140, 122, 84);
-		-- Mist Creeper
-		[ 2185 ] = string.char(71, 97, 40, 156, 71, 97, 40, 156, 71, 97, 40, 156);
-		-- Soriid the Devourer
-		[ 2187 ] = string.char(40, 156, 204, 140, 40, 156, 204, 140, 40, 156, 204, 140);
-		-- Theryssia
-		[ 2188 ] = string.char(142, 130, 81, 184, 142, 130, 81, 184, 142, 130, 81, 184);
-	};
-	[ 15 ] = { -- Ashenvale
-		-- Kreldig Ungor
-		[ 12717 ] = string.char(163, 112, 204, 140, 163, 112, 204, 140, 163, 112, 204, 140);
-		-- Kizrak
-		[ 12718 ] = string.char(40, 156, 163, 112, 40, 156, 163, 112, 40, 156, 163, 112);
-		-- Simone the Inconspicuous
-		[ 5340 ] = string.char(204, 140, 71, 97, 204, 140, 71, 97, 204, 140, 71, 97);
-	};
-	[ 7 ] = { -- Stonetalon Mountains
-		-- Brother Ravenoak
-		[ 5915 ] = string.char(163, 112, 163, 112, 163, 112, 163, 112, 163, 112, 163, 112);
-		-- Besseleth
-		[ 5929 ] = string.char(204, 140, 40, 156, 204, 140, 40, 156, 204, 140, 40, 156);
-		-- Karang Amakkar
-		[ 5928 ] = string.char(71, 97, 204, 140, 71, 97, 204, 140, 71, 97, 204, 140);
-	};
-	[ 405 ] = { -- Desolace
-		-- Gibblewilt
-		[ 5354 ] = string.char(163, 112, 204, 140, 163, 112, 204, 140, 163, 112, 204, 140);
-		-- The Minstrel
-		[ 5355 ] = string.char(40, 156, 71, 97, 40, 156, 71, 97, 40, 156, 71, 97);
-	};
-	[ 357 ] = { -- Feralas
-		-- Bloodroar the Stalker
-		[ 5346 ] = string.char(71, 97, 204, 140, 71, 97, 204, 140, 71, 97, 204, 140);
-		-- Diamond Head
-		[ 5345 ] = string.char(40, 156, 163, 112, 40, 156, 163, 112, 40, 156, 163, 112);
-		-- Brokespear
-		[ 9662 ] = string.char(204, 140, 40, 156, 204, 140, 40, 156, 204, 140, 40, 156);
+		[ 32447 ] = "/ÅÒ¯1:ĞhIÏòIÏòIµ¡L’µ»L’µ»L‹ÛjHïÛcI×­0ÿØ0/ÅÖÈ/ÅÖÈ/ÅÒ¯IÏòL’µ»HïÛcI×­I×­/ÅÖÈIÏòIÏòL’µ»I×­a£‡âf»ÒhÇ€An—Š)sÃŒÌrÊ‘uw8\rzi|¢×|¢×{/ªJx«¿oB³`…2Õı‚:Ú/‚:Ú/g°–eªûeªûe’Ti—8lç”ıi—8e’Te’Ta½Œa£‡âa£‡âhÇ€Ai¦…i¦…n—Š)rÊ‘uw8\r|¢×x«¿oB³`‚:Ú/eªûeªûi—8i¥Llç”ıe’Ta£‡âa£‡âi¦…rÊ‘utˆšáw8\rx«¿eªûi¥LkÓ¬oƒ•ãlç”ıa£‡âa£‡ârÊ‘utˆšátˆšáx«¿uğªoB³`eªûkÓ¬oƒ•ãa£‡âtˆšáoB³`kÓ¬oH¬‘tê¡øoƒ•ãtˆšáuğªoB³`oH¬‘tê¡øtˆšáuğªuğªoH¬‘t%¤ğuğªt%¤ğtê¡ø";
 	};
 };
-
-

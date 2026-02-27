@@ -711,11 +711,27 @@ do
 		return false;
 	end
 
-	local function GetNameplateNpcID ( PlateUnit )
-		local Guid = UnitGUID( PlateUnit );
-		if ( Guid ) then
-			return tonumber( Guid:sub( 7, 10 ), 16 );
+	local function GetGUIDNpcID ( Guid )
+		if ( not Guid ) then
+			return;
 		end
+
+		-- [Ebonhold] hyphenated GUID format: Creature-0-4161-0-319-10596-000069A926
+		local Type = Guid:match( "^([^-]+)-" );
+		if ( Type ) then
+			local _, _, _, _, NpcID = strsplit( "-", Guid );
+			return tonumber( NpcID );
+		end
+
+		-- [Ebonhold] legacy hex GUID format: 0xF1300031AD7AAFB6
+		local NpcIDHex = Guid:match( "^0x%x%x%x000(%x%x%x%x)%x+$" );
+		if ( NpcIDHex ) then
+			return tonumber( NpcIDHex, 16 );
+		end
+	end
+
+	local function GetNameplateNpcID ( PlateUnit )
+		return GetGUIDNpcID( UnitGUID( PlateUnit ) );
 	end
 	-- [Ebonhold] nameplate detection
 	local function ScanNameplates ()

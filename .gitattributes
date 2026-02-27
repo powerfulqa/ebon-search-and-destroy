@@ -6,3 +6,5 @@
 *.blp binary
 *.tga binary
 *.blp binary
+_NPCScanOverlay/Data/*.lua binary
+_NPCScanOverlay/_NPCScan.Overlay.*Data.lua binary

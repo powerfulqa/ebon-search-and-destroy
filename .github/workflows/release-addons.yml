@@ -1,0 +1,43 @@
+name: Release Addons Bundle
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bundle-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build addon bundle zip
+        run: |
+          ZIP_NAME="NPCscan Ebonhold.zip"
+          mkdir -p dist/bundle
+          cp -R _NPCScan dist/bundle/
+          cp -R _NPCScanOverlay dist/bundle/
+          cd dist/bundle
+          zip -r "../${ZIP_NAME}" _NPCScan _NPCScanOverlay
+          cd ../..
+          echo "ZIP_PATH=dist/${ZIP_NAME}" >> "$GITHUB_ENV"
+
+      - name: Publish GitHub Release asset
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ZIP_PATH }}
+          generate_release_notes: true
+
+      - name: Upload workflow artifact (manual runs)
+        if: ${{ !startsWith(github.ref, 'refs/tags/') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: NPCscan Ebonhold
+          path: ${{ env.ZIP_PATH }}

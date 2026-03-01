@@ -1,5 +1,5 @@
 ## Interface: 30300
-## Title: _|cffCCCC88NPCScan|r.Overlay
+## Title: _|cffCCCC88NPCScan|r.Overlay (|cff3399ffEbonhold|r)
 ## Notes: Adds mob patrol paths to your map.
 ## Author: Saiket
 ## X-Credits: s8095324 (zhTW)

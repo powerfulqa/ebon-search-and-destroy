@@ -68,10 +68,10 @@ powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
 
 Defaults:
 - RepoRoot: parent folder of `tools/`
-- AddOnsPath: `G:\Project Ebonhold\Ebonhold\Interface\AddOns`
+- AddOnsPath: your WoW `Interface\AddOns` directory (configured in `tools/deploy-addons.ps1`)
 
 ### Run (custom paths)
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1 -RepoRoot "C:\Users\Chris\ebon-search-and-destroy" -AddOnsPath "G:\Project Ebonhold\Ebonhold\Interface\AddOns"
+powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1 -RepoRoot "D:\path\to\repo" -AddOnsPath "D:\path\to\WoW\Interface\AddOns"
 ```

@@ -22,9 +22,9 @@ jobs:
           ZIP_NAME="NPCscan Ebonhold.zip"
           mkdir -p dist/bundle
           cp -R _NPCScan dist/bundle/
-          cp -R _NPCScanOverlay dist/bundle/
+          cp -R _NPCScanOverlay dist/bundle/_NPCScan.Overlay
           cd dist/bundle
-          zip -r "../${ZIP_NAME}" _NPCScan _NPCScanOverlay
+          zip -r "../${ZIP_NAME}" _NPCScan _NPCScan.Overlay
           cd ../..
           echo "ZIP_PATH=dist/${ZIP_NAME}" >> "$GITHUB_ENV"
 

@@ -10,6 +10,7 @@ $sourceOverlay = Join-Path $RepoRoot '_NPCScanOverlay'
 
 $destNpcScan = Join-Path $AddOnsPath '_NPCScan'
 $destOverlay = Join-Path $AddOnsPath '_NPCScan.Overlay'
+$destOverlayLegacy = Join-Path $AddOnsPath '_NPCScanOverlay'
 
 if (-not (Test-Path $RepoRoot)) {
     throw "Repo path not found: $RepoRoot"
@@ -31,6 +32,11 @@ $npcScanCode = $LASTEXITCODE
 Write-Host "Syncing _NPCScan.Overlay..."
 robocopy $sourceOverlay $destOverlay /MIR /R:1 /W:1 /FFT /NFL /NDL /NJH /NJS /NP | Out-Null
 $overlayCode = $LASTEXITCODE
+
+if ((Test-Path $destOverlayLegacy) -and ($destOverlayLegacy -ne $destOverlay)) {
+    Write-Host "Removing legacy overlay folder: _NPCScanOverlay"
+    Remove-Item -Path $destOverlayLegacy -Recurse -Force
+}
 
 if ($npcScanCode -ge 8 -or $overlayCode -ge 8) {
     throw "Deploy failed. robocopy exit codes: _NPCScan=$npcScanCode Overlay=$overlayCode"

@@ -126,6 +126,7 @@ me.OptionsCharacterDefault = {
 		[ 1766 ] = L.NPCs[ 1766 ]; -- [Ebonhold] vanilla rares
 		[ 1768 ] = L.NPCs[ 1768 ]; -- [Ebonhold] vanilla rares
 		[ 1694 ] = L.NPCs[ 1694 ]; -- [Ebonhold] vanilla rares
+		[ 1948 ] = L.NPCs[ 1948 ]; -- [Ebonhold] vanilla rares
 	};
 	NPCWorldIDs = {
 		[ 18684 ] = 3; -- Bro'Gaz the Clanless
@@ -223,6 +224,7 @@ me.OptionsCharacterDefault = {
 		[ 1766 ] = 2; -- [Ebonhold] vanilla rares
 		[ 1768 ] = 2; -- [Ebonhold] vanilla rares
 		[ 1694 ] = 2; -- [Ebonhold] vanilla rares
+		[ 1948 ] = 2; -- [Ebonhold] vanilla rares
 	};
 	Achievements = {
 		[ 1312 ] = true; -- Bloody Rare (Outlands)
@@ -420,6 +422,9 @@ do
 	--- Ends actual scan for NPC.
 	function NPCDeactivate ( NpcID )
 		if ( NPCsActive[ NpcID ] ) then
+			if ( me.OptionsCharacter.NPCWorldIDs[ NpcID ] ) then
+				return; -- [Ebonhold] world-guarded NPCs stay active despite cache
+			end
 			NPCsActive[ NpcID ] = nil;
 			ScanRemove( NpcID );
 			me.Config.Search.UpdateTab( "NPC" );

@@ -102,6 +102,8 @@ select( 2, ... ).L = setmetatable( {
 		[ 1766 ] = "Mirelow", -- [Ebonhold] vanilla rares
 		[ 1768 ] = "Sever", -- [Ebonhold] vanilla rares
 		[ 1694 ] = "Zaricotl", -- [Ebonhold] vanilla rares
+		-- [Ebonhold] Silverpine
+		[ 1948 ] = "Snarlmane", -- [Ebonhold] vanilla rares
 	};
 
 	BUTTON_FOUND = "NPC found!",
@@ -167,6 +169,8 @@ select( 2, ... ).L = setmetatable( {
 		end
 	end;
 } );
+
+print("LOCALE_1948_DEBUG", select(2,...).L.NPCs[1948])
 
 
 SLASH__NPCSCAN1 = "/npcscan";

@@ -839,7 +839,7 @@ do
 			if ( not Found ) then
 				for NpcID in pairs( ScanIDs ) do
 					local Name = me.TestID( NpcID );
-					if ( Name ) then
+					if ( Name and Name == L.NPCs[ NpcID ] ) then
 						OnFound( NpcID, Name );
 						break;
 					end

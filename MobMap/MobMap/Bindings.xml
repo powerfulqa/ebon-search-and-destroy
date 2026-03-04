@@ -1,5 +1,0 @@
-<Bindings>
-	<Binding name="MOBMAP" header="MOBMAP">
-		MobMap_ToggleMobMapFrame();
-	</Binding>
-</Bindings>

@@ -1,3 +1,6 @@
 .github/status
 *.bak
 *.orig
+tools/tmp_classicNpcDB.lua
+tools/tmp_EbonholdNpcDB.lua
+tools/tmp_EbonholdQuestDB.lua

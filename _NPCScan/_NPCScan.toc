@@ -33,6 +33,7 @@ Locales.xml
 
 _NPCScan.lua
 generated_npcscan_rare_tables.lua
+npcscan_wowhead_rares.lua
 _NPCScan.Button.lua
 _NPCScan.Overlays.lua
 _NPCScan.TamableIDs.lua

@@ -71,3 +71,14 @@ Ebonhold adds mechanics not present in standard WotLK. When writing or updating 
 - Saved vars guard: if OptionsCharacter.NPCs count < 10 at PLAYER_LOGIN, nil it to force defaults
 - Deploy via: powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
 - Source folders: _NPCScan/ and _NPCScanOverlay/ (underscore prefix always)
+
+### Ebonhold Rare Data Source of Truth
+- Rare NPC table source of truth is PE-Questie database content (Classic + Ebonhold DB files).
+- Generated table file is `_NPCScan/generated_npcscan_rare_tables.lua` and is loaded by `_NPCScan/_NPCScan.toc`.
+- Regeneration pipeline: `tools/extract_npcscan_rare_tables.ps1` downloads PE-Questie data, filters/merges rare entries, and rewrites generated table output in `_NPCScan/`.
+- When rare data changes are requested, prefer rerunning the extractor and committing generated output instead of manual table edits.
+
+### Nameplate Detection Context (Ebonhold)
+- Passive nameplate detection is primary on this server and must continue to work even when legacy TestID scanning state differs.
+- Keep Ebonhold-specific behavior stable: direct button trigger path (`SetNPC`) from passive detection, without `OnFound` side effects.
+- Any changes to rare lists should be validated against passive nameplate behavior to avoid regressions in alerting.

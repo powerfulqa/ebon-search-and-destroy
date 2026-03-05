@@ -170,8 +170,6 @@ select( 2, ... ).L = setmetatable( {
 	end;
 } );
 
-print("LOCALE_1948_DEBUG", select(2,...).L.NPCs[1948])
-
 
 SLASH__NPCSCAN1 = "/npcscan";
 SLASH__NPCSCAN2 = "/scan";

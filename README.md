@@ -1,49 +1,27 @@
-# ebon-search-and-destroy
-WotLK 3.3.5a _NPCScan fork for a custom server environment.
+# _NPCScan Wrath Private Server Fork
 
-## What it does
-Scans for rare NPCs and fires a toast button when one is detected. Uses two parallel detection methods:
-- **Nameplate scan** — passive always-on scanner reads nameplate FontStrings directly via C_NamePlate.GetNamePlates()
-- **TestID/namecache scan** — original method for out-of-range detection, works for Outland/Northrend rares
+## Features
+- `nameplate1..40` UnitName() scanning (Wrath 3.3.5 private cores)
+- `DisableCache = true` by default — every scan is fresh
+- `/npcscan clearcache` wipes session + persistent state
+- Purple nameplate overlay + sound + alert button
+- Tagged releases: v1.2.7 (name scan), v1.2.8 (debug cleanup)
 
-## Repo structure
-- `_NPCScan/` — main addon source
-- `_NPCScanOverlay/` — overlay addon source
-- `tools/deploy-addons.ps1` — deploys both addons to your WoW `Interface/AddOns` folder
-- `tools/extract_npcscan_rare_tables.ps1` — regenerates rare NPC tables from PE-Questie into `_NPCScan/`
+## Server Compatibility
+✅ Unit tokens work (`UnitName("nameplate1")`)
+✅ GUID format: `0xF13000060B684A99` (NPC ID not embedded)
+❌ GUID NPC ID extraction (name-based only)
+❌ WorldFrame:GetChildren() nameplates (unit tokens only)
 
-## Deploy
-```powershell
-powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
-```
+## Install
+1. Copy to `Interface/AddOns/_NPCScan/`
+2. `/reload`
+3. `/npcscan clearcache`
 
-## Automated rare NPC extraction workflow
+## What you need to copy to WoW
 
-### Run
-From repo root:
+Just **two files** from your repo:
+1. `_NPCScan/_NPCScan.lua` (v1.2.8)
+2. `_NPCScan/Locales/Locale-enUS.lua` (debug print removed)
 
-```powershell
-powershell -ExecutionPolicy Bypass -File tools/extract_npcscan_rare_tables.ps1
-```
-
-### What it does
-- Downloads fresh PE-Questie DB files used as source of truth for rare NPC data.
-- Filters/merges rare NPC entries (including Ebonhold data) into _NPCScan table format.
-- Writes generated output to:
-	- `_NPCScan/generated_npcscan_rare_tables.lua`
-
-### Commit + release flow
-After validating generated output:
-
-```powershell
-git add _NPCScan/generated_npcscan_rare_tables.lua _NPCScan/_NPCScan.toc tools/extract_npcscan_rare_tables.ps1
-git commit -m "chore: refresh generated rare npc tables"
-git push origin main
-
-# release tag example
-git tag -a vX.Y.Z -m "vX.Y.Z"
-git push origin vX.Y.Z
-```
-
-## WoW version
-WotLK 3.3.5a — Interface: 30300
+Put them in `Interface/AddOns/_NPCScan/`, `/reload`, `/npcscan clearcache` and you're done.

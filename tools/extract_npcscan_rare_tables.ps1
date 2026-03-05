@@ -286,7 +286,8 @@ foreach($w in @(2,1,0)){
 }
 $out.Add('}')
 
-$outPath='generated_npcscan_rare_tables.lua'
+$repoRoot = Split-Path $PSScriptRoot -Parent
+$outPath = Join-Path $repoRoot '_NPCScan\generated_npcscan_rare_tables.lua'
 Set-Content $outPath ($out -join "`n") -NoNewline
 Write-Output "TOTAL_FINAL=$($final.Count)"
 Write-Output "WORLD2=$((@($final.Values | ? { $_.World -eq 2 })).Count)"

@@ -32,6 +32,7 @@ Embeds.xml
 Locales.xml
 
 _NPCScan.lua
+generated_npcscan_rare_tables.lua
 _NPCScan.Button.lua
 _NPCScan.Overlays.lua
 _NPCScan.TamableIDs.lua

@@ -846,7 +846,9 @@ local function ScanAdd ( NpcID )
 				me.Frame:Show();
 			end
 			ScanIDs[ NpcID ] = 1;
-			me.Overlays.Add( NpcID );
+			if ( me.Overlays and me.Overlays.Add ) then
+				me.Overlays.Add( NpcID );
+			end
 		end
 		TrackedNamesDirty = true;
 		return true; -- Successfully added
@@ -859,7 +861,9 @@ local function ScanRemove ( NpcID )
 		ScanIDs[ NpcID ] = Count - 1;
 	else
 		ScanIDs[ NpcID ] = nil;
-		me.Overlays.Remove( NpcID );
+		if ( me.Overlays and me.Overlays.Remove ) then
+			me.Overlays.Remove( NpcID );
+		end
 		if ( not next( ScanIDs ) ) then -- Last
 			me.Frame:Hide();
 		end
@@ -1167,8 +1171,35 @@ do
 		SetMapByID( ZoneIDBackup ); -- Restore previous map view
 		return InCorrectZone, InvalidReason;
 	end
+	local function TriggerFoundAlert ( NpcID, Name )
+		local Button = me.Button;
+		if ( Button and Button.SetNPC ) then
+			Button:SetNPC( NpcID, Name ); -- Sends added and found overlay messages
+			return true;
+		end
+
+		if ( me.Overlays ) then
+			if ( me.Overlays.Add ) then
+				me.Overlays.Add( NpcID );
+			end
+			if ( me.Overlays.Found ) then
+				me.Overlays.Found( NpcID );
+			end
+		end
+
+		if ( Button and Button.PlaySound ) then
+			Button.PlaySound( me.Options and me.Options.AlertSound or nil );
+		else
+			PlaySoundFile( [[Sound\Event Sounds\Event_wardrum_ogre.wav]] );
+			PlaySoundFile( [[Sound\Events\scourge_horn.wav]] );
+		end
+	end
 	--- Validates found mobs before showing alerts.
 	local function OnFound ( NpcID, Name )
+		if ( type( Name ) ~= "string" ) then
+			Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
+		end
+
 		-- Disable active scans
 		NPCDeactivate( NpcID );
 		for AchievementID in pairs( me.OptionsCharacter.Achievements ) do
@@ -1183,7 +1214,7 @@ do
 
 		if ( Valid ) then
 			me.Print( L[ Tamable and "FOUND_TAMABLE_FORMAT" or "FOUND_FORMAT" ]:format( Name ), GREEN_FONT_COLOR );
-			me.Button:SetNPC( NpcID, Name ); -- Sends added and found overlay messages
+			TriggerFoundAlert( NpcID, Name );
 		elseif ( InvalidReason ) then
 			me.Print( InvalidReason );
 		end
@@ -1197,10 +1228,14 @@ do
 
 	-- [Ebonhold] true when toast is already showing or queued for this NPC.
 	local function IsToastAlreadyQueuedOrShown ( NpcID, Name )
-		if ( me.Button.ID == NpcID or me.Button.NpcName == Name ) then
+		local Button = me.Button;
+		if ( not Button ) then
+			return false;
+		end
+		if ( Button.ID == NpcID or Button.NpcName == Name ) then
 			return true;
 		end
-		if ( me.Button.PendingID == NpcID or me.Button.PendingName == Name ) then
+		if ( Button.PendingID == NpcID or Button.PendingName == Name ) then
 			return true;
 		end
 		return false;
@@ -1258,13 +1293,16 @@ do
 			local PlateUnit = "nameplate" .. i;
 			local NpcID, Name = GetNameplateTrackedMatch( PlateUnit );
 			if ( NpcID and ScanIDs[ NpcID ] ) then
+				if ( type( Name ) ~= "string" ) then
+					Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
+				end
 				local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
 				if ( not WorldID or WorldID == me.WorldID ) then
 					if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then
 						return true;
 					end
 					me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
-					me.Button:SetNPC( NpcID, Name );
+					TriggerFoundAlert( NpcID, Name );
 					return true;
 				end
 			end
@@ -1341,7 +1379,6 @@ end
 -- Used instead of ADDON_LOADED to give overlay mods a chance to load and register for messages.
 function me.Frame:PLAYER_LOGIN ( Event )
 	self[ Event ] = nil;
-	print( "[NPCScan] passive nameplate scanner enabled" ); -- [Ebonhold]
 
 	local Options = _NPCScanOptions;
 	local OptionsCharacter = _NPCScanOptionsCharacter;

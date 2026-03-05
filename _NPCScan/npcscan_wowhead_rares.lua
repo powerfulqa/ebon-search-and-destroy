@@ -1,4 +1,5 @@
-NPCs = {
+local me = _NPCScan;
+local rares = {
     -- Eastern Kingdoms
 
     -- Kalimdor
@@ -423,7 +424,7 @@ NPCs = {
 
 }
 
-NPCWorldIDs = {
+local rareWorldIDs = {
     -- Eastern Kingdoms
 
     -- Kalimdor
@@ -847,3 +848,9 @@ NPCWorldIDs = {
     [ 1533 ] = 0, -- Zone 85
 
 }
+
+for id, name in pairs( rares ) do
+    if not me.OptionsCharacter.NPCs[ id ] then
+        me.NPCAdd( id, name, rareWorldIDs[ id ] );
+    end
+end

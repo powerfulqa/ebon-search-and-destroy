@@ -1,4 +1,5 @@
-NPCs = {
+local me = _NPCScan;
+local rares = {
     -- Eastern Kingdoms
     [ 16392 ] = "Captain Armando Ossex", -- Alterac Mountains
     [ 13776 ] = "Corporal Teeka Bloodsnarl", -- Alterac Mountains
@@ -335,7 +336,7 @@ NPCs = {
 
 }
 
-NPCWorldIDs = {
+local rareWorldIDs = {
     -- Eastern Kingdoms
     [ 16392 ] = 2, -- Alterac Mountains
     [ 13776 ] = 2, -- Alterac Mountains
@@ -671,3 +672,9 @@ NPCWorldIDs = {
     -- Unknown/Other
 
 }
+
+for id, name in pairs( rares ) do
+    if not me.OptionsCharacter.NPCs[ id ] then
+        me.NPCAdd( id, name, rareWorldIDs[ id ] );
+    end
+end

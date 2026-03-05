@@ -18,10 +18,14 @@
 2. `/reload`
 3. `/npcscan clearcache`
 
-## What you need to copy to WoW
+## Your WoW files (copy these)
 
-Just **two files** from your repo:
-1. `_NPCScan/_NPCScan.lua` (v1.2.8)
-2. `_NPCScan/Locales/Locale-enUS.lua` (debug print removed)
+```text
+Interface/AddOns/_NPCScan/
+├── _NPCScan.lua          (v1.2.8)
+├── Locales/
+│   └── Locale-enUS.lua   (debug print removed)
+└── ... (keep your other existing files)
+```
 
-Put them in `Interface/AddOns/_NPCScan/`, `/reload`, `/npcscan clearcache` and you're done.
+Then run `/reload` and `/npcscan clearcache`.

@@ -6,4 +6,6 @@
 **Status**: ✅ Detection + sound + overlay working on Bayne/Farmer Solliden
 **Next features**: Zone-specific scanning, configurable name list
 
+**Status sync (2026-03-05)**: See `.github/status.md` for latest completed/open items and release notes.
+
 **Never** revert to GUID NPC ID extraction or WorldFrame:GetChildren().

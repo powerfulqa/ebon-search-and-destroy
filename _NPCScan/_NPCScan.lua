@@ -13,6 +13,7 @@ me.Version = GetAddOnMetadata( ..., "Version" ):match( "^([%d.]+)" );
 
 me.Options = {
 Version = me.Version;
+DisableCache = true;
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -813,11 +814,24 @@ local next, assert = next, assert;
 local ScanIDs = {}; --- [ NpcID ] = Number of concurrent scans for this ID
 local TrackedNames = {}; --- [ Name ] = NpcID for active scans
 local TrackedNamesDirty = true;
+local SessionNPCNames = {}; --- [ NpcID ] = Name for runtime-only tracking when cache writes are disabled
+local RecentDetections = {}; --- [ GuidOrName ] = GetTime() timestamp
+local RecentDetectionWindow = 3;
 
 local function TrackedNamesRebuild ()
 	wipe( TrackedNames );
+	for NpcID, Name in pairs( me.OptionsCharacter.NPCs ) do
+		if ( Name ) then
+			TrackedNames[ Name ] = NpcID;
+		end
+	end
+	for NpcID, Name in pairs( SessionNPCNames ) do
+		if ( Name ) then
+			TrackedNames[ Name ] = NpcID;
+		end
+	end
 	for NpcID in pairs( ScanIDs ) do
-		local Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ];
+		local Name = me.OptionsCharacter.NPCs[ NpcID ] or SessionNPCNames[ NpcID ] or L.NPCs[ NpcID ];
 		if ( Name ) then
 			TrackedNames[ Name ] = NpcID;
 		end
@@ -918,7 +932,12 @@ function me.NPCAdd ( NpcID, Name, WorldID )
 	if ( not Options.NPCs[ NpcID ] ) then
 		assert( type( Name ) == "string", "Name must be a string." );
 		assert( WorldID == nil or type( WorldID ) == "string" or type( WorldID ) == "number", "Invalid WorldID." );
-		Options.NPCs[ NpcID ], Options.NPCWorldIDs[ NpcID ] = Name, WorldID;
+		if ( not me.Options.DisableCache ) then
+			Options.NPCs[ NpcID ], Options.NPCWorldIDs[ NpcID ] = Name, WorldID;
+		else
+			SessionNPCNames[ NpcID ] = Name;
+		end
+		TrackedNamesDirty = true;
 		if ( not NPCActivate( NpcID, WorldID ) ) then -- Didn't activate
 			me.Config.Search.UpdateTab( "NPC" ); -- Just add row
 		end
@@ -931,6 +950,7 @@ end
 function me.NPCRemove ( NpcID )
 	NpcID = tonumber( NpcID );
 	local Options = me.OptionsCharacter;
+	SessionNPCNames[ NpcID ] = nil;
 	if ( Options.NPCs[ NpcID ] ) then
 		Options.NPCs[ NpcID ], Options.NPCWorldIDs[ NpcID ] = nil;
 		if ( not NPCDeactivate( NpcID ) ) then -- Wasn't active
@@ -1222,6 +1242,7 @@ do
 
 	local pairs = pairs;
 	local GetAchievementCriteriaInfo = GetAchievementCriteriaInfo;
+	local GetTime = GetTime;
 	local NameplateScanFrame = CreateFrame( "Frame", nil, UIParent ); -- [Ebonhold] always-on cached-nameplate scanner
 	NameplateScanFrame.UpdateRate = 0.3;
 	local NameplateNextUpdate = 0;
@@ -1246,16 +1267,6 @@ do
 			return;
 		end
 
-		local Reaction = UnitReaction( PlateUnit, "player" );
-		if ( not Reaction or Reaction > 4 ) then
-			return;
-		end
-
-		local Classification = UnitClassification( PlateUnit );
-		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then
-			return;
-		end
-
 		local Name = UnitName( PlateUnit );
 		if ( not Name ) then
 			return;
@@ -1263,7 +1274,25 @@ do
 
 		local NpcID = GetTrackedNpcIDByName( Name );
 		if ( NpcID ) then
-			return NpcID, Name;
+			return NpcID, Name, UnitGUID( PlateUnit );
+		end
+	end
+
+	local function WasRecentlyDetected ( GuidOrName )
+		if ( not GuidOrName ) then
+			return;
+		end
+		local Now = GetTime();
+		local Last = RecentDetections[ GuidOrName ];
+		if ( Last and ( Now - Last ) < RecentDetectionWindow ) then
+			return true;
+		end
+		RecentDetections[ GuidOrName ] = Now;
+
+		for Key, Timestamp in pairs( RecentDetections ) do
+			if ( ( Now - Timestamp ) > ( RecentDetectionWindow * 3 ) ) then
+				RecentDetections[ Key ] = nil;
+			end
 		end
 	end
 	-- [Ebonhold] nameplate detection
@@ -1274,8 +1303,8 @@ do
 
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID, Name = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and ScanIDs[ NpcID ] ) then
+			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
+			if ( NpcID and ScanIDs[ NpcID ] and not WasRecentlyDetected( Guid or Name ) ) then
 				OnFound( NpcID, Name );
 				return true;
 			end
@@ -1285,14 +1314,10 @@ do
 	-- [Ebonhold] scan tracked NPCs from nameplates via reaction/classification/name filter.
 	-- Uses direct toast path to avoid NPCDeactivate removing cached entries from active scans.
 	local function ScanTrackedNameplates ()
-		if ( not next( ScanIDs ) ) then
-			return;
-		end
-
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID, Name = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and ScanIDs[ NpcID ] ) then
+			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
+			if ( NpcID and not WasRecentlyDetected( Guid or Name ) ) then
 				if ( type( Name ) ~= "string" ) then
 					Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
 				end
@@ -1561,6 +1586,17 @@ function me.SlashCommand ( Input )
 			if ( not me.CacheListPrint( true, true ) ) then -- Nothing in cache
 				me.Print( L.CMD_CACHE_EMPTY, GREEN_FONT_COLOR );
 			end
+			return;
+		elseif ( Command == "CLEARCACHE" ) then
+			for NpcID in pairs( me.OptionsCharacter.NPCs ) do
+				me.NPCRemove( NpcID );
+			end
+			wipe( me.OptionsCharacter.NPCs );
+			wipe( me.OptionsCharacter.NPCWorldIDs );
+			wipe( SessionNPCNames );
+			wipe( RecentDetections );
+			TrackedNamesDirty = true;
+			me.Print( "Cache cleared", GREEN_FONT_COLOR );
 			return;
 		end
 		-- Invalid subcommand

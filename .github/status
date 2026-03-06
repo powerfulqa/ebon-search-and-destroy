@@ -8,13 +8,5 @@
 - Confirmed values on this server: classification="rare", reaction=2 for hostile rares
 - GUID parsing abandoned — server uses non-standard raw hex format, NPC ID not recoverable from it
 
-### Overlay
-- Storm Peaks patrol paths now render correctly
-- Root cause: .gitattributes had * text=auto eol=lf and *.lua text eol=lf which corrupted binary-packed path data during git rename commit
-- Fix: marked _NPCScanOverlay/*Data.lua as binary in .gitattributes
-- Restored PathData and ZoneData from original baseline (bfeb7ff)
-- Do NOT remove the binary override from .gitattributes
-
 ### Known remaining items
 - Outland/Northrend TestID path not yet field-tested with nameplates OFF
-- MobMap.lua has a local unrelated edit (not committed)

@@ -242,11 +242,15 @@ function me:NPCUpdate ()
 	local source = EbonSearch.Options.DisableCache
 		and EbonSearch.SessionNPCNames
 		or  EbonSearch.OptionsCharacter.NPCs;
-	local zones = EbonSearch.NPCZones or {};
+	local zones    = EbonSearch.NPCZones or {};
+	local worldIDs = EbonSearch.OptionsCharacter.NPCWorldIDs or {};
 	for NpcID, Name in pairs( source ) do
+		-- Prefer the specific zone name from NPCZones; fall back to any
+		-- continent/world string stored when the NPC was manually added.
+		local zone = zones[ NpcID ] or GetWorldIDName( worldIDs[ NpcID ] );
 		local Row = me.Table:AddRow( NpcID,
 			EbonSearch.TestID( NpcID ) and [[|TInterface\RaidFrame\ReadyCheck-NotReady:0|t]] or nil,
-			Name, NpcID, zones[ NpcID ] );
+			Name, NpcID, zone );
 
 		if ( not EbonSearch.NPCIsActive( NpcID ) ) then
 			Row:SetAlpha( me.InactiveAlpha );

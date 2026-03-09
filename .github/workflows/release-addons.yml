@@ -19,12 +19,12 @@ jobs:
 
       - name: Build addon bundle zip
         run: |
-          ZIP_NAME="NPCscan Ebonhold.zip"
+          ZIP_NAME="EbonSearch Ebonhold.zip"
           mkdir -p dist/bundle
-          cp -R _NPCScan dist/bundle/
-          cp -R _NPCScanOverlay dist/bundle/_NPCScan.Overlay
+          cp -R EbonSearch dist/bundle/
+          cp -R EbonOverlay dist/bundle/
           cd dist/bundle
-          zip -r "../${ZIP_NAME}" _NPCScan _NPCScan.Overlay
+          zip -r "../${ZIP_NAME}" EbonSearch EbonOverlay
           cd ../..
           echo "ZIP_PATH=dist/${ZIP_NAME}" >> "$GITHUB_ENV"
 
@@ -39,5 +39,5 @@ jobs:
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         uses: actions/upload-artifact@v4
         with:
-          name: NPCscan Ebonhold
+          name: EbonSearch Ebonhold
           path: ${{ env.ZIP_PATH }}

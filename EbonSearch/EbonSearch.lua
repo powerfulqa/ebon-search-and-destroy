@@ -1097,10 +1097,11 @@ end
 
 --- Resets the scanning list and reloads it from saved settings.
 function me.Synchronize ( Options, OptionsCharacter )
-	-- Load defaults if settings omitted
+	-- Load defaults if settings omitted; fall back to live SavedVars when no explicit Options given
+	-- [Ebonhold] v2.0.0: EbonSearchDB nil-guard — me.OptionsDefault is not defined, avoids nil-index crash
 	local IsDefaultScan, IsHunter;
 	if ( not Options ) then
-		Options = me.OptionsDefault;
+		Options = EbonSearchDB or me.Options;
 	end
 	if ( not OptionsCharacter ) then
 		OptionsCharacter = me.OptionsCharacterDefault;
@@ -1516,7 +1517,19 @@ function me.Frame:PLAYER_LOGIN ( Event )
 	end
 
 	me.Overlays.Register();
-	me.Synchronize( Options, OptionsCharacter ); -- Loads defaults if either are nil
+	-- [Ebonhold] v2.0.0: defer Synchronize by one frame so table-file PLAYER_LOGIN handlers
+	-- (generated_npcscan_rare_tables.lua, npcscan_wowhead_rares.lua) have a chance to run first
+	-- and populate me.OptionsCharacter.NPCs before Synchronize iterates it.
+	local _opts, _charOpts = Options, OptionsCharacter;
+	local _timer, _elapsed = CreateFrame( "Frame" ), 0;
+	_timer:SetScript( "OnUpdate", function ( self, dt )
+		_elapsed = _elapsed + dt;
+		if ( _elapsed >= 0.1 ) then
+			self:SetScript( "OnUpdate", nil );
+			me.Synchronize( _opts, _charOpts );
+			_opts, _charOpts = nil, nil;
+		end
+	end );
 end
 do
 	local FirstWorld = true;

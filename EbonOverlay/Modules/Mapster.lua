@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * Modules/Mapster.lua - Adjusts WorldMap module with Mapster.                *
   ****************************************************************************]]
 

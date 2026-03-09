@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonSearch by Saiket                                                         *
+  * EbonSearch                                                         *
   * EbonSearch.Button.lua - Displays a button to target found NPCs.              *
   ****************************************************************************]]
 

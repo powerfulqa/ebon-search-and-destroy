@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * Modules/WorldMapTemplate.lua - Template module for WorldMap-like canvases. *
   ****************************************************************************]]
 

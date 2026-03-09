@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * EbonOverlay.ZoneData.lua - Zone size data and localized zone names.   *
   ****************************************************************************]]
 

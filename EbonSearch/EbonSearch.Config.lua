@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonSearch by Saiket                                                         *
+  * EbonSearch                                                         *
   * EbonSearch.Config.lua - Adds an options pane to the Interface Options menu.  *
   ****************************************************************************]]
 

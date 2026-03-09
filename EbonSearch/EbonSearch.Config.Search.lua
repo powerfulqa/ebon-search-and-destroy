@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonSearch by Saiket                                                         *
+  * EbonSearch                                                         *
   * EbonSearch.Config.Search.lua - Adds a configuration pane to add/remove NPCs  *
   *   and achievements to search for.                                          *
   ****************************************************************************]]

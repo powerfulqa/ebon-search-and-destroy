@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * Modules/Carbonite.lua - Modifies the WorldMap and Minimap modules for      *
   *   compatibility with Carbonite.                                            *
   ****************************************************************************]]

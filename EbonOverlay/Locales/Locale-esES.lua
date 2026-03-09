@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * Locales/Locale-esES.lua - Localized string constants (es-ES/es-MX).        *
   ****************************************************************************]]
 

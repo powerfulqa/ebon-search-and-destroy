@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * Modules/BattlefieldMinimap.lua - Canvas for Blizzard_BattlefieldMinimap.   *
   ****************************************************************************]]
 

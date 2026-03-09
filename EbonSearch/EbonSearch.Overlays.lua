@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonSearch by Saiket                                                         *
+  * EbonSearch                                                         *
   * EbonSearch.Overlays.lua - Integration with NPC map overlay mods.       *
   ****************************************************************************]]
 

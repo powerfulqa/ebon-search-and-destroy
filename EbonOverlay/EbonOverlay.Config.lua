@@ -1,5 +1,5 @@
 ﻿--[[****************************************************************************
-  * EbonOverlay by Saiket                                                 *
+  * EbonOverlay                                                 *
   * EbonOverlay.Config.lua - Adds a configuration pane to enable and      *
   *   disable display modules like the WorldMap and BattlefieldMinimap.        *
   ****************************************************************************]]

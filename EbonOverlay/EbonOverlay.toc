@@ -1,18 +1,11 @@
 ﻿## Interface: 30300
 ## Title: Ebonhold Search and Destroy (Overlay)
 ## Notes: Ebonhold Search and Destroy Overlay v2.0.0 (Saiket -> Serv)
-## Author: Saiket, Serv (powerfulqa)
-## X-Credits: s8095324 (zhTW)
+## Author: Serv (powerfulqa)
 ## Version: 2.0.0-alpha1
-## X-Date: 2010-06-07
-## X-Category: Maps
-## X-License: GPLv3
-## X-Email: saiket.wow@gmail.com
-## X-Website: http://sites.google.com/site/wowsaiket/Add-Ons/NPCScanOverlay
-## X-Feedback: http://code.google.com/p/wow-saiket/issues/list?can=1&q=AddOn:NPCScan.Overlay
-## X-WoWI-ID: 14686
-## X-Curse-Project-ID: npcscan-overlay
-## X-Localizations: enUS, zhTW
+## X-Date: 2026-03-09
+
+## X-Localizations: enUS
 ## SavedVariables: EbonOverlayDB
 ## OptionalDeps: Ace3, EbonSearch, AlphaMap3, Carbonite, Mapster
 Libs\LibStub\LibStub.lua

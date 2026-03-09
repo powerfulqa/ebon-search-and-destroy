@@ -7,8 +7,8 @@
 local EbonSearch = select( 2, ... );
 
 -- Minimap button angle is stored in Options so it persists across sessions.
--- Angle is in radians measured clockwise from the top of the minimap.
-local MIN_ANGLE_DEFAULT = math.pi * 0.75; -- bottom-left quadrant
+-- Angle is in radians, standard atan2 convention: 0 = east, pi/2 = north.
+local MIN_ANGLE_DEFAULT = -math.pi * 0.75; -- lower-left quadrant
 
 do
 	local icon = CreateFrame( "Button", "EbonSearchMinimapButton", Minimap );
@@ -22,9 +22,9 @@ do
 	icon:RegisterForClicks( "AnyUp" );
 	icon:RegisterForDrag( "LeftButton" );
 
-	-- Icon texture: 20×20 centered, texcoord crops the raw icon border
+	-- Icon texture: 16×16 centered; smaller than the ring hole so corners stay hidden
 	local tex = icon:CreateTexture( nil, "BACKGROUND" );
-	tex:SetSize( 20, 20 );
+	tex:SetSize( 16, 16 );
 	tex:SetPoint( "CENTER" );
 	tex:SetTexture( "Interface\\Icons\\Ability_Spy" );
 	tex:SetTexCoord( 0.05, 0.95, 0.05, 0.95 );
@@ -48,9 +48,10 @@ do
 	local function SetAngle ( angle )
 		if ( not EbonSearch.Options ) then return; end
 		EbonSearch.Options.MinimapAngle = angle;
+		icon:ClearAllPoints();
 		icon:SetPoint( "CENTER", Minimap, "CENTER",
 			RADIUS * math.cos( angle ),
-		   -RADIUS * math.sin( angle ) );
+			RADIUS * math.sin( angle ) );
 	end
 
 	local function GetAngle ()
@@ -65,7 +66,7 @@ do
 			local cx, cy = GetCursorPosition();
 			local scale  = UIParent:GetEffectiveScale();
 			cx, cy = cx / scale, cy / scale;
-			SetAngle( math.atan2( mx - cx, cy - my ) );
+			SetAngle( math.atan2( cy - my, cx - mx ) );
 		end );
 	end );
 	icon:SetScript( "OnDragStop", function ( self )
@@ -138,5 +139,5 @@ do
 	-- Default angle for fresh installs (Options not populated at file-load time)
 	icon:SetPoint( "CENTER", Minimap, "CENTER",
 		RADIUS * math.cos( MIN_ANGLE_DEFAULT ),
-	   -RADIUS * math.sin( MIN_ANGLE_DEFAULT ) );
+		RADIUS * math.sin( MIN_ANGLE_DEFAULT ) );
 end

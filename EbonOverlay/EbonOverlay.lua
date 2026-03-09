@@ -165,17 +165,6 @@ do
 		MinX, MinY = min( Ax, Bx, Cx ), min( Ay, By, Cy );
 		WindowX, WindowY = max( Ax, Bx, Cx ) - MinX, max( Ay, By, Cy ) - MinY;
 
-		-- Reject degenerate or implausibly large triangles before allocating a texture
-		if ( not WindowX or not WindowY or WindowX <= 0 or WindowY <= 0 ) then
-			return;
-		end
-		if ( ScaleX <= 0 or math.abs( ScaleY ) < 0.0001 ) then
-			return;
-		end
-		if ( WindowX > 0.35 or WindowY > 0.35 ) then
-			return;
-		end
-
 		Width, Height = self:GetWidth(), self:GetHeight();
 		Texture:SetPoint( "TOPLEFT", MinX * Width, -MinY * Height );
 		Texture:SetSize( WindowX * Width, WindowY * Height );
@@ -234,7 +223,6 @@ do
 	local Max = 2 ^ 16 - 1;
 	local Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2;
 	function me:DrawPath ( PathData, Layer, R, G, B )
-		DEFAULT_CHAT_FRAME:AddMessage( ("EbonOverlay DEBUG path bytes=%d"):format( #PathData ) );
 		for Index = 1, #PathData - 11, 12 do  -- guard: only iterate complete 12-byte segments
 			Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2 = PathData:byte( Index, Index + 11 );
 			me.TextureAdd( self, Layer, R, G, B,

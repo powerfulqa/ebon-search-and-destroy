@@ -88,7 +88,7 @@ do
 	icon:SetScript( "OnEnter", function ( self )
 		GameTooltip:SetOwner( self, "ANCHOR_LEFT" );
 		GameTooltip:ClearLines();
-		GameTooltip:AddLine( "|cff3399ffEbonhold Search & Destroy|r" );
+		GameTooltip:AddLine( "|cff66ccffEbonhold|r Search & Destroy" );
 
 		local zone = GetRealZoneText();
 		local blacklist = EbonSearch.Options and EbonSearch.Options.ZoneBlacklist or {};

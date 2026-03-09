@@ -1758,7 +1758,7 @@ SlashCmdList["ESD"] = function ( Input )
 			me.Print( "/esd zone blacklist [add|remove|list] [zone name]" );
 		end
 	else
-		me.Print( "|cff3399ffEbonhold Search & Destroy|r v" .. me.Version );
+		me.Print( "|cff66ccffEbonhold|r Search & Destroy v" .. me.Version );
 		me.Print( "  |cffFFFF00/esd|r                          -- open options panel" );
 		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );

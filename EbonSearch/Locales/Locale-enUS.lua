@@ -175,6 +175,6 @@ select( 2, ... ).L = setmetatable( {
 SLASH__EBONSEARCH1 = "/npcscan";
 SLASH__EBONSEARCH2 = "/scan";
 
-BINDING_HEADER__EBONSEARCH = "_|cffCCCC88NPCScan|r";
+BINDING_HEADER__EBONSEARCH = "|cff66ccffEbonhold|r Search & Destroy";
 _G[ "BINDING_NAME_CLICK EbonSearchButton:LeftButton" ] = [=[Target last found mob
 |cff808080(Use when EbonSearch alerts you)|r]=];

@@ -817,6 +817,7 @@ local ScanIDs = {}; --- [ NpcID ] = Number of concurrent scans for this ID
 local TrackedNames = {}; --- [ Name ] = NpcID for active scans
 local TrackedNamesDirty = true;
 local SessionNPCNames = {}; --- [ NpcID ] = Name for runtime-only tracking when cache writes are disabled
+me.SessionNPCNames = SessionNPCNames; -- [Ebonhold] exposed so Config.Search.NPCUpdate can iterate it
 local RecentDetections = {}; --- [ GuidOrName ] = GetTime() timestamp
 local RecentDetectionWindow = 3;
 

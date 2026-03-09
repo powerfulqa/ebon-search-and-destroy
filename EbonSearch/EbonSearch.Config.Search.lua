@@ -232,7 +232,11 @@ end
 function me:NPCUpdate ()
 	me.NPCValidate();
 	local WorldIDs = EbonSearch.OptionsCharacter.NPCWorldIDs;
-	for NpcID, Name in pairs( EbonSearch.OptionsCharacter.NPCs ) do
+	-- When DisableCache=true NPCs live in SessionNPCNames; otherwise in OptionsCharacter.NPCs
+	local source = EbonSearch.Options.DisableCache
+		and EbonSearch.SessionNPCNames
+		or  EbonSearch.OptionsCharacter.NPCs;
+	for NpcID, Name in pairs( source ) do
 		local Row = me.Table:AddRow( NpcID,
 			EbonSearch.TestID( NpcID ) and [[|TInterface\RaidFrame\ReadyCheck-NotReady:0|t]] or nil,
 			Name, NpcID, GetWorldIDName( WorldIDs[ NpcID ] ) );

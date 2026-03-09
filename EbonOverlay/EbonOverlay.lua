@@ -318,6 +318,14 @@ end
   * Function: EbonOverlay.NPCFound                                        *
   ****************************************************************************]]
 function me.NPCFound ( NpcID )
+	-- [Ebonhold] Phase 2: helper to get a display name from EbonSearch tables
+	local function NpcName ()
+		local L = EbonSearch and EbonSearch.L;
+		return ( L and L.NPCs and L.NPCs[ NpcID ] )
+			or ( EbonSearch and EbonSearch.OptionsCharacter and EbonSearch.OptionsCharacter.NPCs and EbonSearch.OptionsCharacter.NPCs[ NpcID ] )
+			or tostring( NpcID );
+	end
+
 	local Map = me.NPCMaps[ NpcID ];
 	if ( Map and not me.NPCsFoundIgnored[ NpcID ] ) then
 		SetMapToCurrentZone();
@@ -333,9 +341,18 @@ function me.NPCFound ( NpcID )
 				if ( me.NPCsEnabled[ NpcID ] ) then
 					me.Modules.UpdateMap( Map );
 				end
+				-- [Ebonhold] Phase 2: confirm position was recorded
+				if ( EbonSearch and EbonSearch.Print ) then
+					EbonSearch.Print( "|cff66ccffEbonOverlay:|r Position recorded for |cffFFFF00" .. NpcName() .. "|r (" .. ( "%.4f" ):format( X ) .. ", " .. ( "%.4f" ):format( Y ) .. ")" );
+				end
 
 				return true;
 			end
+		end
+	elseif ( not Map ) then
+		-- [Ebonhold] Phase 2: NPC triggered an alert but has no overlay path data
+		if ( EbonSearch and EbonSearch.Print ) then
+			EbonSearch.Print( "|cff66ccffEbonOverlay:|r No map data for |cffFFFF00" .. NpcName() .. "|r — position not recorded" );
 		end
 	end
 end

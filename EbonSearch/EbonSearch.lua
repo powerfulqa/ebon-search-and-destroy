@@ -15,6 +15,7 @@ me.Options = {
 Version = me.Version;
 DisableCache = true;
 ZoneBlacklist = {}; -- [Ebonhold] v2.0.0: [ ZoneName ] = true to suppress scanning in that zone
+MinimapAngle = math.pi * 0.75; -- [Ebonhold] v2.0.0: minimap button position angle (radians, clockwise from top)
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -1704,19 +1705,28 @@ end
 
 SlashCmdList[ "_EBONSEARCH" ] = me.SlashCommand;
 
--- [Ebonhold] v2.0.0: /esd command for zone blacklist management
+-- [Ebonhold] v2.0.0: unified /esd command — no-args opens Interface Options,
+-- subcommands handle zone blacklist management.
 SLASH_ESD1 = "/esd";
 SlashCmdList["ESD"] = function ( Input )
 	if ( not me.Options.ZoneBlacklist ) then
 		me.Options.ZoneBlacklist = {};
 	end
 	local Command = Input:match( "^(%S+)" );
+
+	if ( not Command ) then
+		-- No arguments: open Interface Options panel
+		InterfaceOptionsFrame_OpenToCategory( me.Config );
+		InterfaceOptionsFrame_OpenToCategory( me.Config ); -- twice to ensure correct tab selection
+		return;
+	end
+
 	local Rest1 = Input:match( "^%S+%s+(.+)$" );
 	local Sub = Rest1 and Rest1:match( "^(%S+)" );
 	local Rest2 = Rest1 and Rest1:match( "^%S+%s+(.+)$" );
 	local Action = Rest2 and Rest2:match( "^(%S+)" );
 	local ZoneArg = Rest2 and Rest2:match( "^%S+%s+(.+)$" );
-	Command = Command and Command:upper() or "";
+	Command = Command:upper();
 	Sub     = Sub     and Sub:upper()     or "";
 	Action  = Action  and Action:upper()  or "";
 
@@ -1725,10 +1735,16 @@ SlashCmdList["ESD"] = function ( Input )
 			local Zone = ZoneArg or GetRealZoneText();
 			me.Options.ZoneBlacklist[ Zone ] = true;
 			me.Print( "Zone blacklisted: |cffFFFF00" .. Zone .. "|r", GREEN_FONT_COLOR );
+			if ( me.Config and me.Config.ZoneBlacklist ) then
+				me.Config.ZoneBlacklist.Refresh();
+			end
 		elseif ( Action == "REMOVE" ) then
 			local Zone = ZoneArg or GetRealZoneText();
 			me.Options.ZoneBlacklist[ Zone ] = nil;
 			me.Print( "Zone removed: |cffFFFF00" .. Zone .. "|r", GREEN_FONT_COLOR );
+			if ( me.Config and me.Config.ZoneBlacklist ) then
+				me.Config.ZoneBlacklist.Refresh();
+			end
 		elseif ( Action == "LIST" ) then
 			me.Print( "Blacklisted zones:" );
 			local count = 0;
@@ -1741,7 +1757,8 @@ SlashCmdList["ESD"] = function ( Input )
 			me.Print( "/esd zone blacklist [add|remove|list] [zone name]" );
 		end
 	else
-		me.Print( "|cff3399ffEbonhold Search & Destroy|r v2.0.0" );
+		me.Print( "|cff3399ffEbonhold Search & Destroy|r v" .. me.Version );
+		me.Print( "  |cffFFFF00/esd|r                          -- open options panel" );
 		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
 		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );

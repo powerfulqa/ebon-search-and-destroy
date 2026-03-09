@@ -126,12 +126,17 @@ function me:DequeueShow ()
 	self:UpdateNavButtons();
 end
 
---- [Ebonhold] v2.0.0: Update the NavNext button visibility.
+--- [Ebonhold] v2.0.0: Update the NavNext button and queue count badge.
 function me:UpdateNavButtons ()
 	if ( #AlertQueue > 0 ) then
 		self.NavNext:Show();
+		if ( self.QueueBadge ) then
+			self.QueueBadge:SetText( "+" .. #AlertQueue .. " more" );
+			self.QueueBadge:Show();
+		end
 	else
 		self.NavNext:Hide();
+		if ( self.QueueBadge ) then self.QueueBadge:Hide(); end
 	end
 end
 --- Updates the button out of combat to target a given unit.
@@ -144,6 +149,11 @@ function me:Update ( ID, Name )
 	self.ID = ID;
 
 	self:SetText( Name );
+	-- [Ebonhold] v2.0.0: show current zone as subtitle
+	if ( self.ZoneLabel ) then
+		local zone = GetRealZoneText();
+		self.ZoneLabel:SetText( zone ~= "" and zone or EbonSearch.L.BUTTON_FOUND );
+	end
 	local Model = self.Model;
 	Model:Reset();
 	if ( type( ID ) == "number" ) then -- ID is NPC ID
@@ -391,6 +401,7 @@ local SubTitle = me:CreateFontString( nil, "OVERLAY", "GameFontBlackTiny" );
 SubTitle:SetPoint( "TOPLEFT", Title, "BOTTOMLEFT", 0, -4 );
 SubTitle:SetPoint( "RIGHT", Title );
 SubTitle:SetText( EbonSearch.L.BUTTON_FOUND );
+me.ZoneLabel = SubTitle; -- [Ebonhold] v2.0.0: exposed for dynamic zone display in Update()
 
 -- Border
 me:SetBackdrop( {
@@ -405,6 +416,13 @@ Close:SetPoint( "TOPRIGHT" );
 Close:SetSize( 32, 32 );
 Close:SetScale( 0.8 );
 Close:SetHitRectInsets( 8, 8, 8, 8 );
+
+-- [Ebonhold] v2.0.0: Queue count badge — shows "+N more" when rares are queued
+local QueueBadge = me:CreateFontString( nil, "OVERLAY", "GameFontHighlightSmall" );
+QueueBadge:SetPoint( "TOPRIGHT", me, "TOPRIGHT", -34, -3 );
+QueueBadge:SetTextColor( 1, 0.82, 0 ); -- gold
+QueueBadge:Hide();
+me.QueueBadge = QueueBadge;
 
 -- [Ebonhold] v2.0.0: NavNext button — skip to next queued rare alert
 me.NavNext = CreateFrame( "Button", "EbonSearchNavNextButton", UIParent );

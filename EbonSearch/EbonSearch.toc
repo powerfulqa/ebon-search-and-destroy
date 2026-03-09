@@ -29,3 +29,4 @@ EbonSearch.TamableIDs.lua
 
 EbonSearch.Config.lua
 EbonSearch.Config.Search.lua
+EbonSearch.MinimapButton.lua

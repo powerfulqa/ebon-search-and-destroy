@@ -217,7 +217,7 @@ do
 	local Max = 2 ^ 16 - 1;
 	local Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2;
 	function me:DrawPath ( PathData, Layer, R, G, B )
-		for Index = 1, #PathData, 12 do
+		for Index = 1, #PathData - 11, 12 do  -- guard: only iterate complete 12-byte segments
 			Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2 = PathData:byte( Index, Index + 11 );
 			me.TextureAdd( self, Layer, R, G, B,
 				( Ax1 * 256 + Ax2 ) / Max, ( Ay1 * 256 + Ay2 ) / Max,

@@ -34,7 +34,7 @@ do
 	iconTex:SetTexture( "Interface\\Minimap\\ObjectIcons" );
 	iconTex:SetSize( 17, 17 );
 	iconTex:SetPoint( "CENTER", 0, 0 );
-	iconTex:SetTexCoord( 0.08, 0.92, 0.08, 0.92 );
+	iconTex:SetTexCoord( 0.00, 0.125, 0.00, 0.125 );
 	icon.icon = iconTex;
 
 	-- Hover highlight (standard minimap button glow)

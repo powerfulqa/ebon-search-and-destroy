@@ -5,11 +5,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-$sourceNpcScan = Join-Path $RepoRoot '_NPCScan'
-$sourceOverlay = Join-Path $RepoRoot '_NPCScanOverlay'
+$sourceNpcScan = Join-Path $RepoRoot 'EbonSearch'
+$sourceOverlay = Join-Path $RepoRoot 'EbonOverlay'
 
-$destNpcScan = Join-Path $AddOnsPath '_NPCScan'
-$destOverlay = Join-Path $AddOnsPath '_NPCScan.Overlay'
+$destNpcScan = Join-Path $AddOnsPath 'EbonSearch'
+$destOverlay = Join-Path $AddOnsPath 'EbonOverlay'
 $destOverlayLegacy = Join-Path $AddOnsPath '_NPCScanOverlay'
 
 if (-not (Test-Path $RepoRoot)) {
@@ -25,11 +25,18 @@ if (-not (Test-Path $sourceOverlay)) {
     throw "Source addon folder not found: $sourceOverlay"
 }
 
-Write-Host "Syncing _NPCScan..."
+# Remove old _NPCScan folder from WoW if it still exists (renamed to EbonSearch)
+$destLegacyNpcScan = Join-Path $AddOnsPath '_NPCScan'
+if (Test-Path $destLegacyNpcScan) {
+    Write-Host "Removing legacy _NPCScan folder from AddOns..."
+    Remove-Item -Path $destLegacyNpcScan -Recurse -Force
+}
+
+Write-Host "Syncing EbonSearch..."
 robocopy $sourceNpcScan $destNpcScan /MIR /R:1 /W:1 /FFT /NFL /NDL /NJH /NJS /NP | Out-Null
 $npcScanCode = $LASTEXITCODE
 
-Write-Host "Syncing _NPCScan.Overlay..."
+Write-Host "Syncing EbonOverlay..."
 robocopy $sourceOverlay $destOverlay /MIR /R:1 /W:1 /FFT /NFL /NDL /NJH /NJS /NP | Out-Null
 $overlayCode = $LASTEXITCODE
 
@@ -39,7 +46,7 @@ if ((Test-Path $destOverlayLegacy) -and ($destOverlayLegacy -ne $destOverlay)) {
 }
 
 if ($npcScanCode -ge 8 -or $overlayCode -ge 8) {
-    throw "Deploy failed. robocopy exit codes: _NPCScan=$npcScanCode Overlay=$overlayCode"
+    throw "Deploy failed. robocopy exit codes: EbonSearch=$npcScanCode EbonOverlay=$overlayCode"
 }
 
-Write-Host "Deploy complete. robocopy exit codes: _NPCScan=$npcScanCode Overlay=$overlayCode"
+Write-Host "Deploy complete. robocopy exit codes: EbonSearch=$npcScanCode EbonOverlay=$overlayCode"

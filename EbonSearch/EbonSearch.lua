@@ -1109,6 +1109,14 @@ function me.Synchronize ( Options, OptionsCharacter )
 	end
 
 	-- Clear all scans
+	-- [Ebonhold] v2.0.0: With DisableCache=true, NPCAdd writes to SessionNPCNames
+	-- instead of me.OptionsCharacter.NPCs. Deactivate and wipe those too or they
+	-- become orphans in ScanIDs and trip the assert below.
+	for NpcID in pairs( SessionNPCNames ) do
+		NPCDeactivate( NpcID );
+	end
+	wipe( SessionNPCNames );
+	TrackedNamesDirty = true;
 	for AchievementID in pairs( me.OptionsCharacter.Achievements ) do
 		me.AchievementRemove( AchievementID );
 	end
@@ -1517,19 +1525,11 @@ function me.Frame:PLAYER_LOGIN ( Event )
 	end
 
 	me.Overlays.Register();
-	-- [Ebonhold] v2.0.0: defer Synchronize by one frame so table-file PLAYER_LOGIN handlers
-	-- (generated_npcscan_rare_tables.lua, npcscan_wowhead_rares.lua) have a chance to run first
-	-- and populate me.OptionsCharacter.NPCs before Synchronize iterates it.
-	local _opts, _charOpts = Options, OptionsCharacter;
-	local _timer, _elapsed = CreateFrame( "Frame" ), 0;
-	_timer:SetScript( "OnUpdate", function ( self, dt )
-		_elapsed = _elapsed + dt;
-		if ( _elapsed >= 0.1 ) then
-			self:SetScript( "OnUpdate", nil );
-			me.Synchronize( _opts, _charOpts );
-			_opts, _charOpts = nil, nil;
-		end
-	end );
+	-- [Ebonhold] v2.0.0: call Synchronize directly; table-file PLAYER_LOGIN handlers
+	-- fire after this and use NPCActivate's NPCsActive guard for deduplication.
+	-- The earlier deferred 0.1s timer caused orphan-scan crashes because table files
+	-- added to SessionNPCNames before Synchronize could clear them.
+	me.Synchronize( Options, OptionsCharacter );
 end
 do
 	local FirstWorld = true;

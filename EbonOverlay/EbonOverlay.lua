@@ -110,6 +110,11 @@ do
 		local ULx, ULy, LLx, LLy, URx, URy, LRx, LRy;
 		function ApplyTransform( A, B, C, D, E, F )
 			Det = A * E - B * D;
+			-- Hard-reject degenerate transform; clamping just smears it across the map
+			if ( Det == 0 or Det ~= Det ) then
+				Texture:Hide();
+				return;
+			end
 			AF, BF, CD, CE = A * F, B * F, C * D, C * E;
 
 			ULx, ULy = ( BF - CE ) / Det, ( CD - AF ) / Det;
@@ -117,15 +122,16 @@ do
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
 
-			-- Bounds to prevent "TexCoord out of range" errors
-			if ( ULx < -1e4 ) then ULx = -1e4; elseif ( ULx > 1e4 ) then ULx = 1e4; end
-			if ( ULy < -1e4 ) then ULy = -1e4; elseif ( ULy > 1e4 ) then ULy = 1e4; end
-			if ( LLx < -1e4 ) then LLx = -1e4; elseif ( LLx > 1e4 ) then LLx = 1e4; end
-			if ( LLy < -1e4 ) then LLy = -1e4; elseif ( LLy > 1e4 ) then LLy = 1e4; end
-			if ( URx < -1e4 ) then URx = -1e4; elseif ( URx > 1e4 ) then URx = 1e4; end
-			if ( URy < -1e4 ) then URy = -1e4; elseif ( URy > 1e4 ) then URy = 1e4; end
-			if ( LRx < -1e4 ) then LRx = -1e4; elseif ( LRx > 1e4 ) then LRx = 1e4; end
-			if ( LRy < -1e4 ) then LRy = -1e4; elseif ( LRy > 1e4 ) then LRy = 1e4; end
+			-- Hard-reject NaN UVs (inf/inf from near-zero Det slips past == 0 check)
+			if (
+				ULx ~= ULx or ULy ~= ULy or
+				LLx ~= LLx or LLy ~= LLy or
+				URx ~= URx or URy ~= URy or
+				LRx ~= LRx or LRy ~= LRy
+			) then
+				Texture:Hide();
+				return;
+			end
 
 			Texture:SetTexCoord( ULx, ULy, LLx, LLy, URx, URy, LRx, LRy );
 		end
@@ -158,6 +164,17 @@ do
 		-- Note: The texture region is made as small as possible to improve framerates.
 		MinX, MinY = min( Ax, Bx, Cx ), min( Ay, By, Cy );
 		WindowX, WindowY = max( Ax, Bx, Cx ) - MinX, max( Ay, By, Cy ) - MinY;
+
+		-- Reject degenerate or implausibly large triangles before allocating a texture
+		if ( not WindowX or not WindowY or WindowX <= 0 or WindowY <= 0 ) then
+			return;
+		end
+		if ( ScaleX <= 0 or math.abs( ScaleY ) < 0.0001 ) then
+			return;
+		end
+		if ( WindowX > 0.35 or WindowY > 0.35 ) then
+			return;
+		end
 
 		Width, Height = self:GetWidth(), self:GetHeight();
 		Texture:SetPoint( "TOPLEFT", MinX * Width, -MinY * Height );
@@ -217,6 +234,7 @@ do
 	local Max = 2 ^ 16 - 1;
 	local Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2;
 	function me:DrawPath ( PathData, Layer, R, G, B )
+		DEFAULT_CHAT_FRAME:AddMessage( ("EbonOverlay DEBUG path bytes=%d"):format( #PathData ) );
 		for Index = 1, #PathData - 11, 12 do  -- guard: only iterate complete 12-byte segments
 			Ax1, Ax2, Ay1, Ay2, Bx1, Bx2, By1, By2, Cx1, Cx2, Cy1, Cy2 = PathData:byte( Index, Index + 11 );
 			me.TextureAdd( self, Layer, R, G, B,

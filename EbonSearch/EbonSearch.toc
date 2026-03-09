@@ -1,5 +1,5 @@
 ﻿## Interface: 30300
-## Title: |cff3399ffEbonhold|r: Search and Destroy
+## Title: Ebonhold Search and Destroy
 ## Notes: v2.0.0 — nameplate + target/mouseover + zone radar
 ## Notes-frFR: Analyse les PNJs autour de vous à la recherche de ceux qui sont rares.
 ## Notes-koKR: 근처에 있는 희귀몹을 탐색합니다.

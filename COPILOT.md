@@ -1,11 +1,15 @@
-## Context for _NPCScan debugging
+## Context for EbonSearch (formerly _NPCScan)
 
-**Root cause**: Private 3.3.5 server GUIDs (`0xF13000060B684A99`) don't embed NPC ID. 
-**Solution**: `nameplate1..40` UnitName() matching in OnUpdate loop.
-**Key commits**: v1.2.7 (name scan), v1.2.8 (debug cleanup)
-**Status**: ✅ Detection + sound + overlay working on Bayne/Farmer Solliden
-**Next features**: Zone-specific scanning, configurable name list
+**Root cause**: Private 3.3.5 server GUIDs (`0xF13000060B684A99`) don't embed NPC ID.
+**Solution**: `nameplate1..40` UnitName() + target/mouseover matching.
+**Key commits**: v2.0.0-alpha1 (ProcessUnit + queue + zone blacklist), v2.0.0-beta1 (namespace rename)
+**Status**: ✅ Detection + sound + overlay + multi-alert queue working
+**Addon folder**: `EbonSearch/` (was `_NPCScan/`), `EbonOverlay/` (was `_NPCScanOverlay/`)
 
-**Status sync (2026-03-05)**: See `.github/status.md` for latest completed/open items and release notes.
+**Credits**
+- Upstream: _NPCScan 7.x (Saiket)
+- Patterns: SilverDragon (Torhal), RareScanner (Sariel)
+- Rare data: Questie Ebonhold DB (Xurkon)
+- Ebonhold core: Serv
 
 **Never** revert to GUID NPC ID extraction or WorldFrame:GetChildren().

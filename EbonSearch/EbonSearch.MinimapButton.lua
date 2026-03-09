@@ -53,8 +53,6 @@ do
 	border:SetPoint( "TOPLEFT" );
 	icon.border = border;
 
-	DEFAULT_CHAT_FRAME:AddMessage( "EbonSearch DEBUG minimap button rebuilt" );
-
 	-- Position helpers --------------------------------------------------------
 	local RADIUS = 80; -- px from minimap centre
 

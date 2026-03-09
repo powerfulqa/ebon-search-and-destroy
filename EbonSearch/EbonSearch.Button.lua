@@ -1,4 +1,4 @@
-﻿--[[****************************************************************************
+--[[****************************************************************************
   * EbonSearch                                                         *
   * EbonSearch.Button.lua - Displays a button to target found NPCs.              *
   ****************************************************************************]]
@@ -417,14 +417,14 @@ Close:SetSize( 32, 32 );
 Close:SetScale( 0.8 );
 Close:SetHitRectInsets( 8, 8, 8, 8 );
 
--- [Ebonhold] v2.0.0: Queue count badge — shows "+N more" when rares are queued
+-- [Ebonhold] v2.0.0: Queue count badge - shows "+N more" when rares are queued
 -- Anchor is set after NavNext is created (see below) so we can attach it above the arrow.
 local QueueBadge = me:CreateFontString( nil, "OVERLAY", "GameFontHighlightSmall" );
 QueueBadge:SetTextColor( 1, 0.82, 0 ); -- gold
 QueueBadge:Hide();
 me.QueueBadge = QueueBadge;
 
--- [Ebonhold] v2.0.0: NavNext button — skip to next queued rare alert
+-- [Ebonhold] v2.0.0: NavNext button - skip to next queued rare alert
 me.NavNext = CreateFrame( "Button", "EbonSearchNavNextButton", UIParent );
 me.NavNext:SetFrameStrata( "FULLSCREEN_DIALOG" );
 me.NavNext:SetSize( 22, 22 );
@@ -447,7 +447,7 @@ me.NavNext:SetScript( "OnEnter", function ( self )
 end );
 me.NavNext:SetScript( "OnLeave", GameTooltip_Hide );
 me.NavNext:Hide();
--- [Ebonhold] anchor badge above the NavNext arrow — floats outside the toast, never overlaps NPC name
+-- [Ebonhold] anchor badge above the NavNext arrow - floats outside the toast, never overlaps NPC name
 QueueBadge:SetPoint( "BOTTOM", me.NavNext, "TOP", 0, 4 );
 QueueBadge:SetJustifyH( "CENTER" );
 

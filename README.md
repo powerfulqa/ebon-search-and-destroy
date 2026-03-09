@@ -7,16 +7,16 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 
 ## Features
 
-- **Nameplate scanning** — polls `nameplate1..40` every frame using `UnitName`, `UnitReaction`, and `UnitClassification`
-- **Target / mouseover detection** — catches rares via `PLAYER_TARGET_CHANGED` and `UPDATE_MOUSEOVER_UNIT`
-- **Name-based matching** — GUID NPC ID extraction is disabled (Ebonhold GUIDs do not encode NPC ID)
-- **DisableCache = true** by default — every session scans fresh; no persistent suppression of found NPCs
-- **Multi-alert queue** — alerts stack; use the NavNext button to cycle through multiple finds
-- **Alert button** — click to target the found mob; drag to reposition
-- **Zone blacklist** — suppress scanning in specific zones
-- **Map overlay** — EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
-- **Minimap button** — drag to reposition; click to open options
-- **Rare database** — sourced from the PE-Questie Ebonhold DB via `tools/extract_npcscan_rare_tables.ps1`
+- **Nameplate scanning** - polls `nameplate1..40` every frame using `UnitName`, `UnitReaction`, and `UnitClassification`
+- **Target / mouseover detection** - catches rares via `PLAYER_TARGET_CHANGED` and `UPDATE_MOUSEOVER_UNIT`
+- **Name-based matching** - GUID NPC ID extraction is disabled (Ebonhold GUIDs do not encode NPC ID)
+- **DisableCache = true** by default - every session scans fresh; no persistent suppression of found NPCs
+- **Multi-alert queue** - alerts stack; use the NavNext button to cycle through multiple finds
+- **Alert button** - click to target the found mob; drag to reposition
+- **Zone blacklist** - suppress scanning in specific zones
+- **Map overlay** - EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
+- **Minimap button** - drag to reposition; click to open options
+- **Rare database** - sourced from the PE-Questie Ebonhold DB via `tools/extract_npcscan_rare_tables.ps1`
 
 ---
 
@@ -90,8 +90,8 @@ Interface/AddOns/
 
 ## Acknowledgements
 
-- **_NPCScan 7.x** — Saiket (original foundation)
-- **SilverDragon** — Torhal (WotLK 3.3.5 patterns)
-- **RareScanner** — Sariel (detection patterns)
-- **Rare database** — PE-Questie / Xurkon (Ebonhold NPC data)
-- **Ebonhold adaptations** — Serv (powerfulqa)
+- **_NPCScan 7.x** - Saiket (original foundation)
+- **SilverDragon** - Torhal (WotLK 3.3.5 patterns)
+- **RareScanner** - Sariel (detection patterns)
+- **Rare database** - PE-Questie / Xurkon (Ebonhold NPC data)
+- **Ebonhold adaptations** - Serv (powerfulqa)

@@ -1,4 +1,4 @@
-﻿--[[****************************************************************************
+--[[****************************************************************************
   * EbonOverlay                                                 *
   * EbonOverlay.lua - Adds mob patrol paths to your map.                  *
   ****************************************************************************]]
@@ -379,7 +379,7 @@ function me.NPCFound ( NpcID )
 			end
 		end
 	elseif ( not Map ) then
-		-- [Ebonhold] Phase 2: no path data — still capture position and draw a map pin
+		-- [Ebonhold] Phase 2: no path data - still capture position and draw a map pin
 		SetMapToCurrentZone();
 		local CurrentMap = GetCurrentMapAreaID() - 1;
 		local X, Y = GetPlayerMapPosition( "player" );

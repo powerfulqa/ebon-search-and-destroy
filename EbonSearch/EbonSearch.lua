@@ -1,4 +1,4 @@
-﻿--[[****************************************************************************
+--[[****************************************************************************
   * EbonSearch                                                         *
   * EbonSearch.lua - Scans NPCs near you for specific rare NPC IDs.              *
   ****************************************************************************]]
@@ -1100,7 +1100,7 @@ end
 --- Resets the scanning list and reloads it from saved settings.
 function me.Synchronize ( Options, OptionsCharacter )
 	-- Load defaults if settings omitted; fall back to live SavedVars when no explicit Options given
-	-- [Ebonhold] v2.0.0: EbonSearchDB nil-guard — me.OptionsDefault is not defined, avoids nil-index crash
+	-- [Ebonhold] v2.0.0: EbonSearchDB nil-guard - me.OptionsDefault is not defined, avoids nil-index crash
 	local IsDefaultScan, IsHunter;
 	if ( not Options ) then
 		Options = EbonSearchDB or me.Options;
@@ -1313,7 +1313,7 @@ do
 	end
 	-- [Ebonhold] nameplate detection
 	local function ScanNameplates ()
-		-- [Ebonhold] v2.0.0: zone blacklist — skip scan entirely for blacklisted zones
+		-- [Ebonhold] v2.0.0: zone blacklist - skip scan entirely for blacklisted zones
 		local CurrentZone = GetRealZoneText();
 		if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ CurrentZone ] ) then
 			return;
@@ -1708,7 +1708,7 @@ else -- Zone information is known
 	Frame:ZONE_CHANGED_NEW_AREA( "ZONE_CHANGED_NEW_AREA" );
 end
 
--- [Ebonhold] v2.0.0: unified /esd command — no-args opens Interface Options,
+-- [Ebonhold] v2.0.0: unified /esd command - no-args opens Interface Options,
 -- subcommands handle zone blacklist management.
 SLASH_ESD1 = "/esd";
 SlashCmdList["ESD"] = function ( Input )

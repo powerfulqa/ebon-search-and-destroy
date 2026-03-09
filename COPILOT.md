@@ -14,10 +14,10 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 
 ### Architecture
 
-- **Detection**: OnUpdate loop over `nameplate1..40` — `UnitExists` → `UnitName` → match against rare name table
+- **Detection**: OnUpdate loop over `nameplate1..40` - `UnitExists` → `UnitName` → match against rare name table
 - **Secondary detection**: `PLAYER_TARGET_CHANGED` / `UPDATE_MOUSEOVER_UNIT` events
 - **Alert pipeline**: `ProcessUnit` → `OnFound` → `me.Button:SetNPC`
-- **Overlay**: EbonOverlay draws patrol paths; `EbonOverlay.PathData.lua` contains binary triangle coordinate strings — **never re-save as UTF-8**
+- **Overlay**: EbonOverlay draws patrol paths; `EbonOverlay.PathData.lua` contains binary triangle coordinate strings - **never re-save as UTF-8**
 - **Rare data**: generated from PE-Questie DB via `tools/extract_npcscan_rare_tables.ps1` → `EbonSearch/generated_npcscan_rare_tables.lua`
 - **Minimap button**: 31×31 frame, 3-layer stack (BACKGROUND/ARTWORK/OVERLAY), dragon icon (`INV_Misc_Head_Dragon_Bronze`), drag-to-reposition
 
@@ -51,12 +51,12 @@ tools/         ← extractor + deploy scripts
 
 ### Key commits
 
-- `v2.0.0-alpha1` — ProcessUnit + multi-alert queue + zone blacklist
-- `v2.0.0-beta1` — namespace rename (_NPCScan → EbonSearch, _NPCScanOverlay → EbonOverlay)
-- `54727a2` — PathData binary corruption fix (UTF-8 re-encoding)
-- `b9530ec` — /esd slash command overhaul; /npcscan backward-compat alias
-- `0e1612f` — Ebonhold branding (light blue colour codes in display strings)
-- `cfa9832` — Minimap icon restored to dragon (INV_Misc_Head_Dragon_Bronze)
+- `v2.0.0-alpha1` - ProcessUnit + multi-alert queue + zone blacklist
+- `v2.0.0-beta1` - namespace rename (_NPCScan → EbonSearch, _NPCScanOverlay → EbonOverlay)
+- `54727a2` - PathData binary corruption fix (UTF-8 re-encoding)
+- `b9530ec` - /esd slash command overhaul; /npcscan backward-compat alias
+- `0e1612f` - Ebonhold branding (light blue colour codes in display strings)
+- `cfa9832` - Minimap icon restored to dragon (INV_Misc_Head_Dragon_Bronze)
 
 ---
 

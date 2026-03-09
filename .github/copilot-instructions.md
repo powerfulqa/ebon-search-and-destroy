@@ -1,4 +1,4 @@
-# WoW Addon Development — Project Ebonhold (WotLK 3.3.5a)
+# WoW Addon Development - Project Ebonhold (WotLK 3.3.5a)
 
 You are an expert World of Warcraft addon developer specialising in the WotLK 3.3.5a client (patch 3.3.5a, Interface version 30300). You help develop, update, and maintain Lua-based WoW addons for the Project Ebonhold private server.
 
@@ -42,7 +42,7 @@ Ebonhold adds mechanics not present in standard WotLK. When writing or updating 
 ## Development Guidelines
 - When modifying an existing addon: preserve original author comments, version history, and structure unless refactoring is explicitly requested.
 - When adding Ebonhold-specific features: wrap them in clearly labelled blocks with comments like `-- [Ebonhold]` so they are easy to identify and toggle.
-- Handle the case where custom Ebonhold events/APIs may not exist on other servers — use pcall or existence checks where appropriate.
+- Handle the case where custom Ebonhold events/APIs may not exist on other servers - use pcall or existence checks where appropriate.
 - Test edge cases: level 1 run start, run-end death, Echo selection UI interruptions.
 - Use AceAddon/AceEvent/AceDB libraries only if they are already present in the addon; do not add new dependencies unless asked.
 - For UI work, anchor frames safely using UIParent and avoid tainting protected frames.
@@ -70,12 +70,12 @@ Ebonhold adds mechanics not present in standard WotLK. When writing or updating 
 - Project Ebonhold bug tracker (check for known issues related to addon behaviour or custom system quirks before shipping changes): https://project-ebonhold.com/support/bug-tracker
 - Project Ebonhold main site: https://project-ebonhold.com/
 
-## EbonSearch / EbonOverlay — Ebonhold specifics
+## EbonSearch / EbonOverlay - Ebonhold specifics
 
 This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to EbonSearch / EbonOverlay in v2.0.0.
 
 - **Addon folders**: `EbonSearch/` (scanner + alert UI), `EbonOverlay/` (map overlay)
-- **Primary slash command**: `/esd` — `/npcscan` is retained as a legacy alias only and should not be advertised in help text or documentation.
+- **Primary slash command**: `/esd` - `/npcscan` is retained as a legacy alias only and should not be advertised in help text or documentation.
 - Target client: WotLK 3.3.5a (Interface 30300), private core where creature GUIDs are raw hex like `0xF13000060B684A99` and **do not encode NPC ID in a retail-compatible way**.
 - Detection is **nameplate-driven**:
   - OnUpdate loop over `nameplate1..40`
@@ -94,7 +94,7 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
   - Overlay and alert button still go through the existing `OnFound` / `me.Button:SetNPC` pipeline; the scanner calls into that.
 - PathData encoding:
   - `EbonOverlay/EbonOverlay.PathData.lua` contains binary triangle coordinate strings.
-  - **Never re-save this file as UTF-8** — bytes >0x7F will be corrupted into 2-byte sequences, breaking all triangle rendering.
+  - **Never re-save this file as UTF-8** - bytes >0x7F will be corrupted into 2-byte sequences, breaking all triangle rendering.
 - Data source of truth:
   - Rare tables are generated from the Project Ebonhold Questie database via `tools/extract_npcscan_rare_tables.ps1` and live in `EbonSearch/generated_npcscan_rare_tables.lua`.
   - When rare data needs changing, rerun the extractor instead of hand-editing tables.

@@ -9,7 +9,7 @@
 - `v1.2.8` – debug / locale cleanup
 
 ### v2.0.0-alpha1 ✅ (2026-03-09)
-- **Project renamed**: Ebonhold Search and Destroy — TOC Title/Notes updated on `_NPCScan` and `_NPCScanOverlay`
+- **Project renamed**: Ebonhold Search and Destroy - TOC Title/Notes updated on `_NPCScan` and `_NPCScanOverlay`
 - **Multi-alert queue** (`_NPCScan.Button.lua`):
   - `AlertQueue` replaces single `PendingID/PendingName` slot
   - `Enqueue(ID, Name)` deduplicates, appends, shows immediately or on combat-end
@@ -19,15 +19,15 @@
   - `OnHide` auto-advances queue on dismiss
 - **ProcessUnit scanning** (`_NPCScan.lua`):
   - `ProcessUnitForRares(UnitID)` checks `UnitClassification`, `UnitReaction`, `UnitName` then fires `TriggerFoundAlert`
-  - `PLAYER_TARGET_CHANGED` → `ProcessUnitForRares("target")` — catches rares targeted directly
-  - `UPDATE_MOUSEOVER_UNIT` → `ProcessUnitForRares("mouseover")` — catches rares moused-over with nameplates off
+  - `PLAYER_TARGET_CHANGED` → `ProcessUnitForRares("target")` - catches rares targeted directly
+  - `UPDATE_MOUSEOVER_UNIT` → `ProcessUnitForRares("mouseover")` - catches rares moused-over with nameplates off
   - Registered on the always-on `NameplateScanFrame` (not gated by `ScanIDs`)
 - **Zone blacklist** (`_NPCScan.lua`):
   - `me.Options.ZoneBlacklist = {}` persisted in `_NPCScanOptions` SavedVariables
   - `ScanNameplates()` and `ScanTrackedNameplates()` both early-exit when `GetRealZoneText()` is blacklisted
-  - `/esd zone blacklist add [zone]` — blacklist current or named zone
-  - `/esd zone blacklist remove [zone]` — un-blacklist
-  - `/esd zone blacklist list` — list all blacklisted zones
+  - `/esd zone blacklist add [zone]` - blacklist current or named zone
+  - `/esd zone blacklist remove [zone]` - un-blacklist
+  - `/esd zone blacklist list` - list all blacklisted zones
 
 ### Detection state
 - ✅ `UnitReaction(unit) <= 4` filters friendlies; hostile rares confirmed with `reaction = 2` on this server

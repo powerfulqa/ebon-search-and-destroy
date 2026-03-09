@@ -1384,7 +1384,7 @@ local function LoadRares()
     end
 end
 
--- [Ebonhold] v2.0.0: /reload path — PLAYER_LOGIN won't fire again when already logged in
+-- [Ebonhold] v2.0.0: /reload path - PLAYER_LOGIN won't fire again when already logged in
 if IsLoggedIn() then
     LoadRares();
 else

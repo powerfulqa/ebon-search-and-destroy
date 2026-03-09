@@ -14,7 +14,7 @@ do
 	local icon = CreateFrame( "Button", "EbonSearchMinimapButton", Minimap );
 	EbonSearch.MinimapButton = icon;
 
-	icon:SetSize( 32, 32 );
+	icon:SetSize( 31, 31 );
 	icon:SetFrameStrata( "MEDIUM" );
 	icon:SetFrameLevel( 8 );
 	icon:EnableMouse( true );
@@ -22,12 +22,20 @@ do
 	icon:RegisterForClicks( "AnyUp" );
 	icon:RegisterForDrag( "LeftButton" );
 
-	-- Icon texture: inset 7px from each edge so it sits inside the round border ring
-	local tex = icon:CreateTexture( nil, "BACKGROUND" );
-	tex:SetPoint( "TOPLEFT", 7, -7 );
-	tex:SetPoint( "BOTTOMRIGHT", -7, 7 );
-	tex:SetTexture( "Interface\\Icons\\Ability_Spy" );
-	tex:SetTexCoord( 0.08, 0.92, 0.08, 0.92 );
+	-- Layer 1: circular background behind the icon
+	local bg = icon:CreateTexture( nil, "BACKGROUND" );
+	bg:SetTexture( "Interface\\Minimap\\UI-Minimap-Background" );
+	bg:SetSize( 20, 20 );
+	bg:SetPoint( "CENTER", 0, 0 );
+	bg:SetTexCoord( 0, 1, 0, 1 );
+
+	-- Layer 2: icon artwork, centred and slightly inset
+	local iconTex = icon:CreateTexture( nil, "ARTWORK" );
+	iconTex:SetTexture( "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze" );
+	iconTex:SetSize( 17, 17 );
+	iconTex:SetPoint( "CENTER", 0, 0 );
+	iconTex:SetTexCoord( 0.08, 0.92, 0.08, 0.92 );
+	icon.icon = iconTex;
 
 	-- Hover highlight (standard minimap button glow)
 	local hilite = icon:CreateTexture( nil, "HIGHLIGHT" );
@@ -36,11 +44,16 @@ do
 	hilite:SetTexture( "Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight" );
 	hilite:SetBlendMode( "ADD" );
 
-	-- Border ring: 56×56 centered exactly on the button
+	-- Layer 3: border ring sits over everything, anchored TOPLEFT so it is
+	-- centred on the 31×31 button (54px border, offset (31-54)/2 = -11.5 ≈ the
+	-- standard tracking-border overhang used by all Blizzard minimap buttons)
 	local border = icon:CreateTexture( nil, "OVERLAY" );
-	border:SetSize( 56, 56 );
-	border:SetPoint( "CENTER" );
 	border:SetTexture( "Interface\\Minimap\\MiniMap-TrackingBorder" );
+	border:SetSize( 54, 54 );
+	border:SetPoint( "TOPLEFT" );
+	icon.border = border;
+
+	DEFAULT_CHAT_FRAME:AddMessage( "EbonSearch DEBUG minimap button rebuilt" );
 
 	-- Position helpers --------------------------------------------------------
 	local RADIUS = 80; -- px from minimap centre

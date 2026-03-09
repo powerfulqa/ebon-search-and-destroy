@@ -157,6 +157,7 @@ select( 2, ... ).L = setmetatable( {
 	SEARCH_WORLD = "World:",
 	SEARCH_WORLD_DESC = "An optional world name to limit searching to.  Can be a continent name or |cffff7f3finstance name|r (case-sensitive).",
 	SEARCH_WORLD_FORMAT = "(%s)",
+	SEARCH_ZONE = "Zone:",
 
 	-- Phrases localized by default UI
 	FOUND_ZONE_UNKNOWN = UNKNOWN;

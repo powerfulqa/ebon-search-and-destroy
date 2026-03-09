@@ -1,4 +1,4 @@
-﻿local rares = {
+local rares = {
     -- Eastern Kingdoms
     [ 16392 ] = "Captain Armando Ossex", -- Alterac Mountains
     [ 13776 ] = "Corporal Teeka Bloodsnarl", -- Alterac Mountains
@@ -672,8 +672,711 @@ local rareWorldIDs = {
 
 }
 
+local rareZones = {
+    -- Azshara
+    [ 193 ] = "Azshara",
+
+    -- Redridge Mountains
+    [ 335 ] = "Redridge Mountains",
+    [ 349 ] = "Redridge Mountains",
+    [ 397 ] = "Redridge Mountains",
+
+    -- Elwynn Forest
+    [ 448 ] = "Elwynn Forest",
+
+    -- Stranglethorn Vale
+    [ 469 ] = "Stranglethorn Vale",
+
+    -- Westfall
+    [ 523 ] = "Westfall",
+    [ 626 ] = "Westfall",
+
+    -- Stranglethorn Vale
+    [ 730 ] = "Stranglethorn Vale",
+    [ 731 ] = "Stranglethorn Vale",
+    [ 813 ] = "Stranglethorn Vale",
+
+    -- Redridge Mountains
+    [ 931 ] = "Redridge Mountains",
+
+    -- Stranglethorn Vale
+    [ 1060 ] = "Stranglethorn Vale",
+
+    -- Duskwood
+    [ 1200 ] = "Duskwood",
+
+    -- Dun Morogh
+    [ 1271 ] = "Dun Morogh",
+
+    -- Wetlands
+    [ 1364 ] = "Wetlands",
+
+    -- Stranglethorn Vale
+    [ 1387 ] = "Stranglethorn Vale",
+
+    -- Dun Morogh
+    [ 1388 ] = "Dun Morogh",
+
+    -- Stranglethorn Vale
+    [ 1492 ] = "Stranglethorn Vale",
+    [ 1559 ] = "Stranglethorn Vale",
+
+    -- Wetlands
+    [ 1571 ] = "Wetlands",
+
+    -- Loch Modan
+    [ 1572 ] = "Loch Modan",
+
+    -- Western Plaguelands
+    [ 1788 ] = "Western Plaguelands",
+    [ 1805 ] = "Western Plaguelands",
+    [ 1842 ] = "Western Plaguelands",
+    [ 1843 ] = "Western Plaguelands",
+    [ 1846 ] = "Western Plaguelands",
+    [ 1850 ] = "Western Plaguelands",
+    [ 1852 ] = "Western Plaguelands",
+
+    -- Eastern Plaguelands
+    [ 1855 ] = "Eastern Plaguelands",
+
+    -- Silverpine Forest
+    [ 1947 ] = "Silverpine Forest",
+    [ 2106 ] = "Silverpine Forest",
+
+    -- Teldrassil
+    [ 2166 ] = "Teldrassil",
+
+    -- Hillsbrad Foothills
+    [ 2215 ] = "Hillsbrad Foothills",
+
+    -- Silverpine Forest
+    [ 2226 ] = "Silverpine Forest",
+
+    -- Hillsbrad Foothills
+    [ 2276 ] = "Hillsbrad Foothills",
+
+    -- Burning Steppes
+    [ 2299 ] = "Burning Steppes",
+
+    -- Hillsbrad Foothills
+    [ 2304 ] = "Hillsbrad Foothills",
+    [ 2389 ] = "Hillsbrad Foothills",
+
+    -- Duskwood
+    [ 2409 ] = "Duskwood",
+
+    -- Alterac Mountains
+    [ 2420 ] = "Alterac Mountains",
+    [ 2421 ] = "Alterac Mountains",
+    [ 2422 ] = "Alterac Mountains",
+
+    -- Hillsbrad Foothills
+    [ 2432 ] = "Hillsbrad Foothills",
+
+    -- Alterac Mountains
+    [ 2447 ] = "Alterac Mountains",
+
+    -- Loch Modan
+    [ 2477 ] = "Loch Modan",
+    [ 2478 ] = "Loch Modan",
+
+    -- Silverpine Forest
+    [ 2529 ] = "Silverpine Forest",
+
+    -- Arathi Highlands
+    [ 2558 ] = "Arathi Highlands",
+    [ 2597 ] = "Arathi Highlands",
+    [ 2598 ] = "Arathi Highlands",
+    [ 2599 ] = "Arathi Highlands",
+    [ 2601 ] = "Arathi Highlands",
+    [ 2602 ] = "Arathi Highlands",
+    [ 2607 ] = "Arathi Highlands",
+    [ 2611 ] = "Arathi Highlands",
+    [ 2612 ] = "Arathi Highlands",
+
+    -- Stranglethorn Vale
+    [ 2635 ] = "Stranglethorn Vale",
+
+    -- Badlands
+    [ 2726 ] = "Badlands",
+    [ 2745 ] = "Badlands",
+    [ 2749 ] = "Badlands",
+    [ 2754 ] = "Badlands",
+
+    -- Arathi Highlands
+    [ 2780 ] = "Arathi Highlands",
+    [ 2781 ] = "Arathi Highlands",
+    [ 2782 ] = "Arathi Highlands",
+    [ 2783 ] = "Arathi Highlands",
+    [ 2835 ] = "Arathi Highlands",
+    [ 2851 ] = "Arathi Highlands",
+
+    -- Stranglethorn Vale
+    [ 2858 ] = "Stranglethorn Vale",
+    [ 2859 ] = "Stranglethorn Vale",
+
+    -- Badlands
+    [ 2861 ] = "Badlands",
+    [ 2931 ] = "Badlands",
+
+    -- Loch Modan
+    [ 2932 ] = "Loch Modan",
+
+    -- Searing Gorge
+    [ 2941 ] = "Searing Gorge",
+
+    -- The Barrens
+    [ 3270 ] = "The Barrens",
+
+    -- Searing Gorge
+    [ 3305 ] = "Searing Gorge",
+
+    -- The Barrens
+    [ 3398 ] = "The Barrens",
+    [ 3615 ] = "The Barrens",
+    [ 3638 ] = "The Barrens",
+    [ 3652 ] = "The Barrens",
+    [ 3655 ] = "The Barrens",
+    [ 3672 ] = "The Barrens",
+
+    -- Ashenvale
+    [ 3691 ] = "Ashenvale",
+
+    -- Teldrassil
+    [ 3838 ] = "Teldrassil",
+
+    -- Darkshore
+    [ 3841 ] = "Darkshore",
+
+    -- Alterac Mountains
+    [ 3984 ] = "Alterac Mountains",
+    [ 3985 ] = "Alterac Mountains",
+
+    -- Ashenvale
+    [ 4267 ] = "Ashenvale",
+
+    -- Stonetalon Mountains
+    [ 4312 ] = "Stonetalon Mountains",
+
+    -- The Hinterlands
+    [ 4314 ] = "The Hinterlands",
+
+    -- Thousand Needles
+    [ 4317 ] = "Thousand Needles",
+
+    -- Feralas
+    [ 4319 ] = "Feralas",
+
+    -- Dustwallow Marsh
+    [ 4321 ] = "Dustwallow Marsh",
+    [ 4339 ] = "Dustwallow Marsh",
+
+    -- Stonetalon Mountains
+    [ 4407 ] = "Stonetalon Mountains",
+    [ 4409 ] = "Stonetalon Mountains",
+
+    -- The Hinterlands
+    [ 4468 ] = "The Hinterlands",
+    [ 4469 ] = "The Hinterlands",
+
+    -- Loch Modan
+    [ 4872 ] = "Loch Modan",
+
+    -- Feralas
+    [ 5312 ] = "Feralas",
+
+    -- Ashenvale
+    [ 5314 ] = "Ashenvale",
+
+    -- Feralas
+    [ 5357 ] = "Feralas",
+
+    -- Tanaris
+    [ 5432 ] = "Tanaris",
+    [ 5469 ] = "Tanaris",
+
+    -- The Hinterlands
+    [ 5718 ] = "The Hinterlands",
+
+    -- Desolace
+    [ 5760 ] = "Desolace",
+
+    -- Mulgore
+    [ 5785 ] = "Mulgore",
+
+    -- Durotar
+    [ 5822 ] = "Durotar",
+    [ 5824 ] = "Durotar",
+
+    -- The Barrens
+    [ 5827 ] = "The Barrens",
+    [ 5828 ] = "The Barrens",
+    [ 5830 ] = "The Barrens",
+    [ 5831 ] = "The Barrens",
+
+    -- Searing Gorge
+    [ 5833 ] = "Searing Gorge",
+
+    -- The Barrens
+    [ 5841 ] = "The Barrens",
+    [ 5842 ] = "The Barrens",
+    [ 5851 ] = "The Barrens",
+    [ 5859 ] = "The Barrens",
+    [ 5864 ] = "The Barrens",
+
+    -- Stonetalon Mountains
+    [ 5928 ] = "Stonetalon Mountains",
+    [ 5930 ] = "Stonetalon Mountains",
+    [ 5931 ] = "Stonetalon Mountains",
+    [ 5932 ] = "Stonetalon Mountains",
+
+    -- Thousand Needles
+    [ 5934 ] = "Thousand Needles",
+    [ 5935 ] = "Thousand Needles",
+    [ 5937 ] = "Thousand Needles",
+
+    -- Swamp of Sorrows
+    [ 6026 ] = "Swamp of Sorrows",
+
+    -- Azshara
+    [ 6134 ] = "Azshara",
+    [ 6140 ] = "Azshara",
+
+    -- Dun Morogh
+    [ 6231 ] = "Dun Morogh",
+
+    -- Un'Goro Crater
+    [ 6500 ] = "Un'Goro Crater",
+    [ 6560 ] = "Un'Goro Crater",
+    [ 6583 ] = "Un'Goro Crater",
+    [ 6584 ] = "Un'Goro Crater",
+
+    -- Azshara
+    [ 6646 ] = "Azshara",
+
+    -- Darkshore
+    [ 6669 ] = "Darkshore",
+
+    -- Desolace
+    [ 6706 ] = "Desolace",
+    [ 6726 ] = "Desolace",
+
+    -- Redridge Mountains
+    [ 7009 ] = "Redridge Mountains",
+
+    -- Westfall
+    [ 7053 ] = "Westfall",
+
+    -- Badlands
+    [ 7057 ] = "Badlands",
+
+    -- Hillsbrad Foothills
+    [ 7075 ] = "Hillsbrad Foothills",
+
+    -- Felwood
+    [ 7104 ] = "Felwood",
+    [ 7137 ] = "Felwood",
+
+    -- Loch Modan
+    [ 7170 ] = "Loch Modan",
+
+    -- The Barrens
+    [ 7233 ] = "The Barrens",
+    [ 7288 ] = "The Barrens",
+
+    -- Blasted Lands
+    [ 7665 ] = "Blasted Lands",
+    [ 7666 ] = "Blasted Lands",
+    [ 7667 ] = "Blasted Lands",
+    [ 7728 ] = "Blasted Lands",
+
+    -- Tanaris
+    [ 7823 ] = "Tanaris",
+    [ 7824 ] = "Tanaris",
+
+    -- Blasted Lands
+    [ 7851 ] = "Blasted Lands",
+
+    -- Feralas
+    [ 7875 ] = "Feralas",
+
+    -- The Barrens
+    [ 7895 ] = "The Barrens",
+
+    -- The Hinterlands
+    [ 7977 ] = "The Hinterlands",
+    [ 7995 ] = "The Hinterlands",
+    [ 7996 ] = "The Hinterlands",
+    [ 8018 ] = "The Hinterlands",
+
+    -- Feralas
+    [ 8019 ] = "Feralas",
+    [ 8020 ] = "Feralas",
+
+    -- Tanaris
+    [ 8196 ] = "Tanaris",
+    [ 8197 ] = "Tanaris",
+    [ 8198 ] = "Tanaris",
+    [ 8199 ] = "Tanaris",
+
+    -- The Hinterlands
+    [ 8215 ] = "The Hinterlands",
+
+    -- Searing Gorge
+    [ 8282 ] = "Searing Gorge",
+    [ 8400 ] = "Searing Gorge",
+    [ 8447 ] = "Searing Gorge",
+    [ 8479 ] = "Searing Gorge",
+    [ 8504 ] = "Searing Gorge",
+
+    -- Stonetalon Mountains
+    [ 8518 ] = "Stonetalon Mountains",
+
+    -- Blasted Lands
+    [ 8609 ] = "Blasted Lands",
+
+    -- Azshara
+    [ 8610 ] = "Azshara",
+
+    -- Blasted Lands
+    [ 8716 ] = "Blasted Lands",
+    [ 8717 ] = "Blasted Lands",
+    [ 8718 ] = "Blasted Lands",
+
+    -- Azshara
+    [ 8756 ] = "Azshara",
+    [ 8757 ] = "Azshara",
+    [ 8758 ] = "Azshara",
+
+    -- Burning Steppes
+    [ 8976 ] = "Burning Steppes",
+
+    -- Un'Goro Crater
+    [ 9376 ] = "Un'Goro Crater",
+
+    -- Burning Steppes
+    [ 9459 ] = "Burning Steppes",
+
+    -- Felwood
+    [ 9516 ] = "Felwood",
+
+    -- Burning Steppes
+    [ 9520 ] = "Burning Steppes",
+    [ 10119 ] = "Burning Steppes",
+
+    -- Feralas
+    [ 10182 ] = "Feralas",
+
+    -- Winterspring
+    [ 10196 ] = "Winterspring",
+    [ 10198 ] = "Winterspring",
+    [ 10201 ] = "Winterspring",
+    [ 10202 ] = "Winterspring",
+
+    -- Feralas
+    [ 10204 ] = "Feralas",
+
+    -- Dustwallow Marsh
+    [ 10321 ] = "Dustwallow Marsh",
+
+    -- Un'Goro Crater
+    [ 10583 ] = "Un'Goro Crater",
+
+    -- Winterspring
+    [ 10662 ] = "Winterspring",
+    [ 10663 ] = "Winterspring",
+    [ 10664 ] = "Winterspring",
+    [ 10738 ] = "Winterspring",
+    [ 10806 ] = "Winterspring",
+    [ 10807 ] = "Winterspring",
+
+    -- Eastern Plaguelands
+    [ 10828 ] = "Eastern Plaguelands",
+
+    -- Moonglade
+    [ 10897 ] = "Moonglade",
+
+    -- Winterspring
+    [ 10929 ] = "Winterspring",
+
+    -- Thousand Needles
+    [ 10992 ] = "Thousand Needles",
+
+    -- Tirisfal Glades
+    [ 11022 ] = "Tirisfal Glades",
+
+    -- Western Plaguelands
+    [ 11023 ] = "Western Plaguelands",
+
+    -- Winterspring
+    [ 11138 ] = "Winterspring",
+    [ 11139 ] = "Winterspring",
+
+    -- Moonglade
+    [ 11832 ] = "Moonglade",
+
+    -- Eastern Plaguelands
+    [ 11878 ] = "Eastern Plaguelands",
+    [ 11896 ] = "Eastern Plaguelands",
+    [ 11897 ] = "Eastern Plaguelands",
+    [ 11898 ] = "Eastern Plaguelands",
+
+    -- Dustwallow Marsh
+    [ 11899 ] = "Dustwallow Marsh",
+
+    -- Felwood
+    [ 11900 ] = "Felwood",
+
+    -- Ashenvale
+    [ 11901 ] = "Ashenvale",
+
+    -- Stonetalon Mountains
+    [ 11921 ] = "Stonetalon Mountains",
+
+    -- Silverpine Forest
+    [ 12123 ] = "Silverpine Forest",
+
+    -- Eastern Plaguelands
+    [ 12262 ] = "Eastern Plaguelands",
+    [ 12263 ] = "Eastern Plaguelands",
+    [ 12337 ] = "Eastern Plaguelands",
+
+    -- Blasted Lands
+    [ 12396 ] = "Blasted Lands",
+
+    -- Western Plaguelands
+    [ 12425 ] = "Western Plaguelands",
+
+    -- The Hinterlands
+    [ 12496 ] = "The Hinterlands",
+
+    -- Feralas
+    [ 12497 ] = "Feralas",
+
+    -- Ashenvale
+    [ 12498 ] = "Ashenvale",
+
+    -- Azshara
+    [ 12577 ] = "Azshara",
+
+    -- Felwood
+    [ 12578 ] = "Felwood",
+
+    -- Stonetalon Mountains
+    [ 12579 ] = "Stonetalon Mountains",
+
+    -- Western Plaguelands
+    [ 12596 ] = "Western Plaguelands",
+
+    -- Ashenvale
+    [ 12616 ] = "Ashenvale",
+
+    -- Eastern Plaguelands
+    [ 12617 ] = "Eastern Plaguelands",
+    [ 12636 ] = "Eastern Plaguelands",
+
+    -- Ashenvale
+    [ 12737 ] = "Ashenvale",
+
+    -- Moonglade
+    [ 12740 ] = "Moonglade",
+
+    -- Feralas
+    [ 12801 ] = "Feralas",
+    [ 12803 ] = "Feralas",
+
+    -- Ashenvale
+    [ 12836 ] = "Ashenvale",
+
+    -- The Barrens
+    [ 12865 ] = "The Barrens",
+
+    -- Wetlands
+    [ 12899 ] = "Wetlands",
+
+    -- Swamp of Sorrows
+    [ 12900 ] = "Swamp of Sorrows",
+
+    -- Alterac Mountains
+    [ 13085 ] = "Alterac Mountains",
+
+    -- Eastern Plaguelands
+    [ 13118 ] = "Eastern Plaguelands",
+
+    -- Burning Steppes
+    [ 13177 ] = "Burning Steppes",
+
+    -- Alterac Mountains
+    [ 13217 ] = "Alterac Mountains",
+    [ 13219 ] = "Alterac Mountains",
+
+    -- Azshara
+    [ 13278 ] = "Azshara",
+
+    -- Alterac Mountains
+    [ 13602 ] = "Alterac Mountains",
+
+    -- Desolace
+    [ 13697 ] = "Desolace",
+    [ 13718 ] = "Desolace",
+
+    -- Alterac Mountains
+    [ 13776 ] = "Alterac Mountains",
+    [ 13777 ] = "Alterac Mountains",
+    [ 13840 ] = "Alterac Mountains",
+    [ 13841 ] = "Alterac Mountains",
+
+    -- Azshara
+    [ 13896 ] = "Azshara",
+
+    -- Loch Modan
+    [ 14267 ] = "Loch Modan",
+
+    -- Hillsbrad Foothills
+    [ 14275 ] = "Hillsbrad Foothills",
+
+    -- Silithus
+    [ 14347 ] = "Silithus",
+
+    -- Winterspring
+    [ 14348 ] = "Winterspring",
+
+    -- Redridge Mountains
+    [ 14357 ] = "Redridge Mountains",
+
+    -- Elwynn Forest
+    [ 14388 ] = "Elwynn Forest",
+
+    -- Swamp of Sorrows
+    [ 14445 ] = "Swamp of Sorrows",
+
+    -- Silithus
+    [ 14454 ] = "Silithus",
+
+    -- Winterspring
+    [ 14457 ] = "Winterspring",
+
+    -- Un'Goro Crater
+    [ 14461 ] = "Un'Goro Crater",
+
+    -- Azshara
+    [ 14464 ] = "Azshara",
+
+    -- Felwood
+    [ 14467 ] = "Felwood",
+
+    -- Silithus
+    [ 14471 ] = "Silithus",
+    [ 14473 ] = "Silithus",
+    [ 14474 ] = "Silithus",
+    [ 14475 ] = "Silithus",
+
+    -- Eastern Plaguelands
+    [ 14494 ] = "Eastern Plaguelands",
+
+    -- Un'Goro Crater
+    [ 14527 ] = "Un'Goro Crater",
+
+    -- Burning Steppes
+    [ 14529 ] = "Burning Steppes",
+
+    -- Winterspring
+    [ 14531 ] = "Winterspring",
+
+    -- Silithus
+    [ 14536 ] = "Silithus",
+
+    -- Searing Gorge
+    [ 14621 ] = "Searing Gorge",
+
+    -- Ashenvale
+    [ 14715 ] = "Ashenvale",
+    [ 14733 ] = "Ashenvale",
+    [ 14753 ] = "Ashenvale",
+
+    -- The Barrens
+    [ 14754 ] = "The Barrens",
+    [ 14781 ] = "The Barrens",
+
+    -- Mulgore
+    [ 14865 ] = "Mulgore",
+
+    -- Stranglethorn Vale
+    [ 14875 ] = "Stranglethorn Vale",
+    [ 14904 ] = "Stranglethorn Vale",
+    [ 14905 ] = "Stranglethorn Vale",
+    [ 14910 ] = "Stranglethorn Vale",
+    [ 14912 ] = "Stranglethorn Vale",
+    [ 15070 ] = "Stranglethorn Vale",
+    [ 15080 ] = "Stranglethorn Vale",
+
+    -- Eastern Plaguelands
+    [ 15162 ] = "Eastern Plaguelands",
+
+    -- Silithus
+    [ 15177 ] = "Silithus",
+    [ 15178 ] = "Silithus",
+    [ 15182 ] = "Silithus",
+    [ 15196 ] = "Silithus",
+
+    -- Hillsbrad Foothills
+    [ 15199 ] = "Hillsbrad Foothills",
+
+    -- Silithus
+    [ 15443 ] = "Silithus",
+    [ 15444 ] = "Silithus",
+    [ 15500 ] = "Silithus",
+    [ 15540 ] = "Silithus",
+    [ 15541 ] = "Silithus",
+
+    -- Dustwallow Marsh
+    [ 15552 ] = "Dustwallow Marsh",
+    [ 15591 ] = "Dustwallow Marsh",
+
+    -- Silithus
+    [ 15612 ] = "Silithus",
+    [ 15613 ] = "Silithus",
+    [ 15614 ] = "Silithus",
+    [ 15615 ] = "Silithus",
+    [ 15693 ] = "Silithus",
+    [ 15903 ] = "Silithus",
+
+    -- Dustwallow Marsh
+    [ 16072 ] = "Dustwallow Marsh",
+
+    -- Silithus
+    [ 16091 ] = "Silithus",
+
+    -- Stranglethorn Vale
+    [ 16096 ] = "Stranglethorn Vale",
+
+    -- Eastern Plaguelands
+    [ 16112 ] = "Eastern Plaguelands",
+    [ 16113 ] = "Eastern Plaguelands",
+    [ 16114 ] = "Eastern Plaguelands",
+    [ 16115 ] = "Eastern Plaguelands",
+    [ 16116 ] = "Eastern Plaguelands",
+    [ 16131 ] = "Eastern Plaguelands",
+    [ 16132 ] = "Eastern Plaguelands",
+    [ 16133 ] = "Eastern Plaguelands",
+    [ 16134 ] = "Eastern Plaguelands",
+    [ 16135 ] = "Eastern Plaguelands",
+    [ 16184 ] = "Eastern Plaguelands",
+
+    -- The Barrens
+    [ 16227 ] = "The Barrens",
+
+    -- Alterac Mountains
+    [ 16392 ] = "Alterac Mountains",
+
+    -- Silithus
+    [ 17765 ] = "Silithus",
+    [ 17766 ] = "Silithus",
+}
+
 local function LoadRares()
     local me = EbonSearch;
+    me.NPCZones = rareZones;
     for id, name in pairs( rares ) do
         if not me.OptionsCharacter.NPCs[ id ] then
             me.NPCAdd( id, name );

@@ -130,11 +130,18 @@ end
 
 
 local Tabs = {}; -- [ "NPC" or AchievementID ] = Tab;
+--- Returns the stored name for an NpcID, checking SessionNPCNames when DisableCache=true.
+local function GetStoredNPCName ( NpcID )
+	if ( EbonSearch.Options.DisableCache ) then
+		return EbonSearch.SessionNPCNames[ NpcID ];
+	end
+	return EbonSearch.OptionsCharacter.NPCs[ NpcID ];
+end
 --- Validates ability to use add and remove buttons for NPCs.
 function me.NPCValidate ()
 	local NpcID, Name, WorldID = me.NPCNpcID:GetNumber(), me.NPCName:GetText(), GetWorldID( me.NPCWorld:GetText() );
 
-	local OldName = EbonSearch.OptionsCharacter.NPCs[ NpcID ];
+	local OldName = GetStoredNPCName( NpcID );
 	local OldWorldID = EbonSearch.OptionsCharacter.NPCWorldIDs[ NpcID ];
 	local CanAdd = NpcID and Name ~= ""
 		and NpcID >= 1 and NpcID <= EbonSearch.NpcIDMax
@@ -186,7 +193,7 @@ end
 function me:NPCOnSelect ( NpcID )
 	if ( NpcID ~= nil ) then
 		me.NPCNpcID:SetNumber( NpcID );
-		me.NPCName:SetText( EbonSearch.OptionsCharacter.NPCs[ NpcID ] );
+		me.NPCName:SetText( GetStoredNPCName( NpcID ) or "" );
 		me.NPCWorld:SetText( GetWorldIDName( EbonSearch.OptionsCharacter.NPCWorldIDs[ NpcID ] ) or "" );
 	end
 end
@@ -231,15 +238,15 @@ end
 --- Fills the search table with custom NPCs.
 function me:NPCUpdate ()
 	me.NPCValidate();
-	local WorldIDs = EbonSearch.OptionsCharacter.NPCWorldIDs;
 	-- When DisableCache=true NPCs live in SessionNPCNames; otherwise in OptionsCharacter.NPCs
 	local source = EbonSearch.Options.DisableCache
 		and EbonSearch.SessionNPCNames
 		or  EbonSearch.OptionsCharacter.NPCs;
+	local zones = EbonSearch.NPCZones or {};
 	for NpcID, Name in pairs( source ) do
 		local Row = me.Table:AddRow( NpcID,
 			EbonSearch.TestID( NpcID ) and [[|TInterface\RaidFrame\ReadyCheck-NotReady:0|t]] or nil,
-			Name, NpcID, GetWorldIDName( WorldIDs[ NpcID ] ) );
+			Name, NpcID, zones[ NpcID ] );
 
 		if ( not EbonSearch.NPCIsActive( NpcID ) ) then
 			Row:SetAlpha( me.InactiveAlpha );
@@ -248,7 +255,7 @@ function me:NPCUpdate ()
 end
 --- Customizes the table when the NPCs tab is selected.
 function me:NPCActivate ()
-	me.Table:SetHeader( L.SEARCH_CACHED, L.SEARCH_NAME, L.SEARCH_ID, L.SEARCH_WORLD );
+	me.Table:SetHeader( L.SEARCH_CACHED, L.SEARCH_NAME, L.SEARCH_ID, L.SEARCH_ZONE );
 	me.Table:SetSortHandlers( true, true, true, true );
 	me.Table:SetSortColumn( 2 ); -- Default by name
 

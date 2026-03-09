@@ -14,7 +14,7 @@ do
 	local icon = CreateFrame( "Button", "EbonSearchMinimapButton", Minimap );
 	EbonSearch.MinimapButton = icon;
 
-	icon:SetSize( 31, 31 );
+	icon:SetSize( 32, 32 );
 	icon:SetFrameStrata( "MEDIUM" );
 	icon:SetFrameLevel( 8 );
 	icon:EnableMouse( true );
@@ -22,11 +22,12 @@ do
 	icon:RegisterForClicks( "AnyUp" );
 	icon:RegisterForDrag( "LeftButton" );
 
-	-- Icon texture — sized to fit inside the ~30px circular hole of the border ring
+	-- Icon texture: 20×20 centered, texcoord crops the raw icon border
 	local tex = icon:CreateTexture( nil, "BACKGROUND" );
 	tex:SetSize( 20, 20 );
 	tex:SetPoint( "CENTER" );
-	tex:SetTexture( "Interface\\Icons\\Ability_Spy" ); -- eye/scan icon
+	tex:SetTexture( "Interface\\Icons\\Ability_Spy" );
+	tex:SetTexCoord( 0.05, 0.95, 0.05, 0.95 );
 
 	-- Hover highlight (standard minimap button glow)
 	local hilite = icon:CreateTexture( nil, "HIGHLIGHT" );
@@ -35,11 +36,10 @@ do
 	hilite:SetTexture( "Interface\\Minimap\\UI-Minimap-ZoomButton-Highlight" );
 	hilite:SetBlendMode( "ADD" );
 
-	-- Border ring: 56×56, offset so its centre aligns with the 31×31 button centre
-	-- TOPLEFT of border sits 12px left and 12px above button TOPLEFT
+	-- Border ring: 56×56 centered exactly on the button
 	local border = icon:CreateTexture( nil, "OVERLAY" );
 	border:SetSize( 56, 56 );
-	border:SetPoint( "TOPLEFT", icon, "TOPLEFT", -12, 12 );
+	border:SetPoint( "CENTER" );
 	border:SetTexture( "Interface\\Minimap\\MiniMap-TrackingBorder" );
 
 	-- Position helpers --------------------------------------------------------

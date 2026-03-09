@@ -1,4 +1,3 @@
-local me = _NPCScan;
 local rares = {
     -- Eastern Kingdoms
 
@@ -849,8 +848,20 @@ local rareWorldIDs = {
 
 }
 
-for id, name in pairs( rares ) do
-    if not me.OptionsCharacter.NPCs[ id ] then
-        me.NPCAdd( id, name, rareWorldIDs[ id ] );
+local function LoadRares()
+    local me = _NPCScan;
+    for id, name in pairs( rares ) do
+        if not me.OptionsCharacter.NPCs[ id ] then
+            me.NPCAdd( id, name );
+        end
     end
+end
+
+-- [Ebonhold] v2.0.0: /reload path — PLAYER_LOGIN won't fire again when already logged in
+if IsLoggedIn() then
+    LoadRares();
+else
+    local frame = CreateFrame("Frame");
+    frame:RegisterEvent("PLAYER_LOGIN");
+    frame:SetScript("OnEvent", LoadRares);
 end

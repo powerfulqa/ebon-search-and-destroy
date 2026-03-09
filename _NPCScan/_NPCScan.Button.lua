@@ -14,6 +14,8 @@ me.Flash = CreateFrame( "Frame" );
 me.Flash.LoopCountMax = 3;
 
 me.PendingName, me.PendingID = nil;
+-- [Ebonhold] v2.0.0: multi-alert queue
+local AlertQueue = {}; --- { { id, name }, ... } ordered list of pending alerts
 
 me.RotationRate = math.pi / 4;
 me.RaidTargetIcon = 4; -- Green triangle
@@ -72,9 +74,8 @@ function me.PlaySound ( AlertSound )
 end
 
 
---- Plays alerts and sets the targetting button if not in combat.
--- If in combat, queues the button to appear when combat ends.
--- @see me:Update
+--- Plays alerts and adds the NPC to the multi-alert queue.
+-- [Ebonhold] v2.0.0: replaced single-slot pending with AlertQueue.
 function me:SetNPC ( ID, Name )
 	self.NpcName = Name; -- [Ebonhold]
 	if ( tonumber( ID ) ) then
@@ -90,13 +91,47 @@ function me:SetNPC ( ID, Name )
 		self.Flash.Fade:Play();
 	end
 
-	if ( InCombatLockdown() ) then
-		if ( type( self.PendingID ) == "number" ) then -- Remove old pending NPC
-			_NPCScan.Overlays.Remove( self.PendingID );
+	-- [Ebonhold] v2.0.0: use alert queue (supports simultaneous rares)
+	self:Enqueue( ID, Name );
+end
+
+--- [Ebonhold] v2.0.0: Add a found NPC to the alert queue.
+-- Shows the button immediately if it is currently hidden and not in combat.
+function me:Enqueue ( ID, Name )
+	-- Deduplicate: skip if already displayed or already queued
+	if ( self:IsShown() and ( self.ID == ID or self.NpcName == Name ) ) then return; end
+	for _, e in ipairs( AlertQueue ) do
+		if ( e.id == ID or e.name == Name ) then return; end
+	end
+	table.insert( AlertQueue, { id = ID; name = Name; } );
+	self:UpdateNavButtons();
+	if ( not self:IsShown() ) then
+		if ( InCombatLockdown() ) then
+			-- Stash first queue item as the pending combat slot
+			if ( not self.PendingID ) then
+				local e = AlertQueue[ 1 ];
+				self.PendingID, self.PendingName = e.id, e.name;
+			end
+		else
+			self:DequeueShow();
 		end
-		self.PendingID, self.PendingName = ID, Name;
+	end
+end
+
+--- [Ebonhold] v2.0.0: Pop first item from queue and display it on the button.
+function me:DequeueShow ()
+	if ( #AlertQueue == 0 ) then return; end
+	local e = table.remove( AlertQueue, 1 );
+	self:Update( e.id, e.name );
+	self:UpdateNavButtons();
+end
+
+--- [Ebonhold] v2.0.0: Update the NavNext button visibility.
+function me:UpdateNavButtons ()
+	if ( #AlertQueue > 0 ) then
+		self.NavNext:Show();
 	else
-		self:Update( ID, Name );
+		self.NavNext:Hide();
 	end
 end
 --- Updates the button out of combat to target a given unit.
@@ -162,6 +197,11 @@ function me:OnHide ()
 	if ( type( self.ID ) == "number" ) then -- Remove current overlay
 		_NPCScan.Overlays.Remove( self.ID );
 	end
+	-- [Ebonhold] v2.0.0: advance queue when button is dismissed
+	self:UpdateNavButtons();
+	if ( #AlertQueue > 0 and not InCombatLockdown() ) then
+		self:DequeueShow();
+	end
 end
 --- Highlights the button's border when moused over.
 function me:OnEnter ()
@@ -179,6 +219,9 @@ function me:PLAYER_REGEN_ENABLED ()
 	if ( self.PendingName and self.PendingID ) then
 		self:Update( self.PendingID, self.PendingName );
 		self.PendingID, self.PendingName = nil;
+	elseif ( #AlertQueue > 0 and not self:IsShown() ) then
+		-- [Ebonhold] v2.0.0: drain queue on combat end
+		self:DequeueShow();
 	end
 end
 --- Enables or disables dragging when the drag modifier is held.
@@ -362,6 +405,30 @@ Close:SetPoint( "TOPRIGHT" );
 Close:SetSize( 32, 32 );
 Close:SetScale( 0.8 );
 Close:SetHitRectInsets( 8, 8, 8, 8 );
+
+-- [Ebonhold] v2.0.0: NavNext button — skip to next queued rare alert
+me.NavNext = CreateFrame( "Button", "_NPCScanNavNextButton", UIParent );
+me.NavNext:SetFrameStrata( "FULLSCREEN_DIALOG" );
+me.NavNext:SetSize( 22, 22 );
+me.NavNext:SetPoint( "LEFT", me, "RIGHT", 4, 0 );
+me.NavNext:SetNormalTexture( [[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]] );
+me.NavNext:SetPushedTexture( [[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]] );
+local NavNextHighlight = me.NavNext:CreateTexture( nil, "HIGHLIGHT" );
+NavNextHighlight:SetTexture( [[Interface\Buttons\UI-Common-MouseHilight]] );
+NavNextHighlight:SetBlendMode( "ADD" );
+NavNextHighlight:SetAllPoints();
+me.NavNext:SetScript( "OnClick", function ()
+	if ( not InCombatLockdown() ) then
+		me:Hide(); -- OnHide advances the queue automatically
+	end
+end );
+me.NavNext:SetScript( "OnEnter", function ( self )
+	GameTooltip:SetOwner( self, "ANCHOR_RIGHT" );
+	GameTooltip:SetText( "Next rare (" .. #AlertQueue .. " more queued)" );
+	GameTooltip:Show();
+end );
+me.NavNext:SetScript( "OnLeave", GameTooltip_Hide );
+me.NavNext:Hide();
 
 -- Model view
 local Model = me.Model;

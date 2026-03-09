@@ -1,9 +1,9 @@
 ## Interface: 30300
-## Title: _|cffCCCC88NPCScan|r.Overlay (|cff3399ffEbonhold|r)
+## Title: |cff3399ffEbonhold|r: Search and Destroy (Overlay)
 ## Notes: Adds mob patrol paths to your map.
-## Author: Saiket
+## Author: Saiket, powerfulqa
 ## X-Credits: s8095324 (zhTW)
-## Version: 3.3.5.1
+## Version: 2.0.0-alpha1
 ## X-Date: 2010-06-07
 ## X-Category: Maps
 ## X-License: GPLv3

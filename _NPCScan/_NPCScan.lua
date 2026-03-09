@@ -14,6 +14,7 @@ me.Version = GetAddOnMetadata( ..., "Version" ):match( "^([%d.]+)" );
 me.Options = {
 Version = me.Version;
 DisableCache = true;
+ZoneBlacklist = {}; -- [Ebonhold] v2.0.0: [ ZoneName ] = true to suppress scanning in that zone
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -1297,6 +1298,11 @@ do
 	end
 	-- [Ebonhold] nameplate detection
 	local function ScanNameplates ()
+		-- [Ebonhold] v2.0.0: zone blacklist — skip scan entirely for blacklisted zones
+		local CurrentZone = GetRealZoneText();
+		if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ CurrentZone ] ) then
+			return;
+		end
 		if ( not next( ScanIDs ) ) then
 			return;
 		end
@@ -1314,6 +1320,11 @@ do
 	-- [Ebonhold] scan tracked NPCs from nameplates via reaction/classification/name filter.
 	-- Uses direct toast path to avoid NPCDeactivate removing cached entries from active scans.
 	local function ScanTrackedNameplates ()
+		-- [Ebonhold] v2.0.0: zone blacklist
+		local CurrentZone = GetRealZoneText();
+		if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ CurrentZone ] ) then
+			return;
+		end
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
 			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
@@ -1394,6 +1405,38 @@ do
 			pcall( ScanTrackedNameplates );
 		end
 	end );
+
+	-- [Ebonhold] v2.0.0: scan target and mouseover units for rare matches.
+	-- Catches rares that are targeted/moused-over even when nameplates are hidden or off.
+	local function ProcessUnitForRares ( UnitID )
+		if ( not UnitExists( UnitID ) ) then return; end
+		if ( UnitPlayerControlled( UnitID ) ) then return; end
+		local Classification = UnitClassification( UnitID );
+		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then return; end
+		local Reaction = UnitReaction( UnitID, "player" );
+		if ( not Reaction or Reaction > 4 ) then return; end -- friendly or neutral
+		local Name = UnitName( UnitID );
+		if ( not Name ) then return; end
+		local NpcID = GetTrackedNpcIDByName( Name );
+		if ( not NpcID ) then return; end
+		local Guid = UnitGUID( UnitID );
+		if ( WasRecentlyDetected( Guid or Name ) ) then return; end
+		if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
+		me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
+		TriggerFoundAlert( NpcID, Name );
+	end
+
+	-- [Ebonhold] v2.0.0: register target/mouseover events on the always-on scan frame.
+	NameplateScanFrame:RegisterEvent( "PLAYER_TARGET_CHANGED" );
+	NameplateScanFrame:RegisterEvent( "UPDATE_MOUSEOVER_UNIT" );
+	NameplateScanFrame:SetScript( "OnEvent", function ( self, Event )
+		if ( Event == "PLAYER_TARGET_CHANGED" ) then
+			pcall( ProcessUnitForRares, "target" );
+		elseif ( Event == "UPDATE_MOUSEOVER_UNIT" ) then
+			pcall( ProcessUnitForRares, "mouseover" );
+		end
+	end );
+
 	NameplateScanFrame:Show();
 end
 
@@ -1647,3 +1690,47 @@ else -- Zone information is known
 end
 
 SlashCmdList[ "_NPCSCAN" ] = me.SlashCommand;
+
+-- [Ebonhold] v2.0.0: /esd command for zone blacklist management
+SLASH_ESD1 = "/esd";
+SlashCmdList["ESD"] = function ( Input )
+	if ( not me.Options.ZoneBlacklist ) then
+		me.Options.ZoneBlacklist = {};
+	end
+	local Command = Input:match( "^(%S+)" );
+	local Rest1 = Input:match( "^%S+%s+(.+)$" );
+	local Sub = Rest1 and Rest1:match( "^(%S+)" );
+	local Rest2 = Rest1 and Rest1:match( "^%S+%s+(.+)$" );
+	local Action = Rest2 and Rest2:match( "^(%S+)" );
+	local ZoneArg = Rest2 and Rest2:match( "^%S+%s+(.+)$" );
+	Command = Command and Command:upper() or "";
+	Sub     = Sub     and Sub:upper()     or "";
+	Action  = Action  and Action:upper()  or "";
+
+	if ( Command == "ZONE" and Sub == "BLACKLIST" ) then
+		if ( Action == "ADD" ) then
+			local Zone = ZoneArg or GetRealZoneText();
+			me.Options.ZoneBlacklist[ Zone ] = true;
+			me.Print( "Zone blacklisted: |cffFFFF00" .. Zone .. "|r", GREEN_FONT_COLOR );
+		elseif ( Action == "REMOVE" ) then
+			local Zone = ZoneArg or GetRealZoneText();
+			me.Options.ZoneBlacklist[ Zone ] = nil;
+			me.Print( "Zone removed: |cffFFFF00" .. Zone .. "|r", GREEN_FONT_COLOR );
+		elseif ( Action == "LIST" ) then
+			me.Print( "Blacklisted zones:" );
+			local count = 0;
+			for Zone in pairs( me.Options.ZoneBlacklist ) do
+				me.Print( "  |cffFFFF00" .. Zone .. "|r" );
+				count = count + 1;
+			end
+			if ( count == 0 ) then me.Print( "  (none)" ); end
+		else
+			me.Print( "/esd zone blacklist [add|remove|list] [zone name]" );
+		end
+	else
+		me.Print( "|cff3399ffEbonhold Search & Destroy|r v2.0.0" );
+		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
+		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
+		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );
+	end
+end;

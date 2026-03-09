@@ -1,5 +1,10 @@
 # Ebonhold Search and Destroy v2.0.0
 
+[![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
+[![WoW](https://img.shields.io/badge/WoW-3.3.5a-orange)](https://github.com/powerfulqa/ebon-search-and-destroy)
+[![Interface](https://img.shields.io/badge/Interface-30300-yellow)](https://github.com/powerfulqa/ebon-search-and-destroy)
+[![License](https://img.shields.io/github/license/powerfulqa/ebon-search-and-destroy)](LICENSE)
+
 A rare NPC scanner and map overlay addon for **Project Ebonhold** (WotLK 3.3.5a private server).
 Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and roguelite run structure.
 

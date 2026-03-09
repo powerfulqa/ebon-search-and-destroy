@@ -1,42 +1,97 @@
 # Ebonhold Search and Destroy
 
-## Features
-- `nameplate1..40` + target/mouseover scanning (Wrath 3.3.5 private core)
-- `DisableCache = true` by default — every scan is fresh
-- Multi-alert queue with NavNext button
-- Zone blacklist: `/esd zone blacklist add|remove|list`
-- Purple nameplate overlay + sound + screen flash + alert button
-- Rare data sourced from PE-Questie Ebonhold DB via extractor script
-- Tagged releases: v2.0.0-alpha1 (ProcessUnit + queue + zone blacklist), v2.0.0-beta1 (namespace rename)
+A rare NPC scanner and map overlay addon for **Project Ebonhold** (WotLK 3.3.5a private server).
+Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and roguelite run structure.
 
-## Server Compatibility
-✅ Unit tokens work (`UnitName("nameplate1")`)
-✅ GUID format: `0xF13000060B684A99` (NPC ID not embedded)
-✅ Target/mouseover detection via `PLAYER_TARGET_CHANGED` / `UPDATE_MOUSEOVER_UNIT`
-❌ GUID NPC ID extraction (name-based only)
-❌ WorldFrame:GetChildren() nameplates (unit tokens only)
+---
+
+## Features
+
+- **Nameplate scanning** — polls `nameplate1..40` every frame using `UnitName`, `UnitReaction`, and `UnitClassification`
+- **Target / mouseover detection** — catches rares via `PLAYER_TARGET_CHANGED` and `UPDATE_MOUSEOVER_UNIT`
+- **Name-based matching** — GUID NPC ID extraction is disabled (Ebonhold GUIDs do not encode NPC ID)
+- **DisableCache = true** by default — every session scans fresh; no persistent suppression of found NPCs
+- **Multi-alert queue** — alerts stack; use the NavNext button to cycle through multiple finds
+- **Alert button** — click to target the found mob; drag to reposition
+- **Zone blacklist** — suppress scanning in specific zones
+- **Map overlay** — EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
+- **Minimap button** — drag to reposition; click to open options
+- **Rare database** — sourced from the PE-Questie Ebonhold DB via `tools/extract_npcscan_rare_tables.ps1`
+
+---
 
 ## Install
-1. Copy `EbonSearch/` and `EbonOverlay/` to `Interface/AddOns/`
-2. `/reload`
-3. `/esd` — zone blacklist commands available
 
-## Your WoW files (copy these)
+1. Copy `EbonSearch/` and `EbonOverlay/` into `Interface/AddOns/`
+2. Reload UI: `/reload`
+3. Type `/esd` to open options
+
+---
+
+## Commands
+
+| Command | Description |
+|---|---|
+| `/esd` | Open options panel |
+| `/esd add <NpcID> <Name>` | Add a custom NPC to track |
+| `/esd remove <NpcID or Name>` | Remove a custom NPC |
+| `/esd cache` | List NPCs that are cached (unreachable this session) |
+| `/esd clear` | Remove all custom NPCs and reset session state |
+| `/esd zone blacklist add [zone]` | Blacklist current zone (or named zone) |
+| `/esd zone blacklist remove [zone]` | Un-blacklist a zone |
+| `/esd zone blacklist list` | List all blacklisted zones |
+
+> `/npcscan` is retained as a backward-compatible alias for `/esd`. It is not the primary command.
+
+---
+
+## File Structure
 
 ```text
-Interface/AddOns/EbonSearch/
-├── EbonSearch.lua        (v2.0.0)
+Interface/AddOns/
+├── EbonSearch/
+│   ├── EbonSearch.toc
+│   ├── EbonSearch.lua
+│   ├── EbonSearch.Button.lua
+│   ├── EbonSearch.Config.lua
+│   ├── EbonSearch.Config.Search.lua
+│   ├── EbonSearch.MinimapButton.lua
+│   ├── EbonSearch.Overlays.lua
+│   ├── EbonSearch.TamableIDs.lua
+│   ├── EbonSearch.WowheadRares.lua
+│   ├── generated_npcscan_rare_tables.lua
+│   ├── Locales/
+│   └── Libs/
+└── EbonOverlay/
+    ├── EbonOverlay.toc
+    ├── EbonOverlay.lua
+    ├── EbonOverlay.Config.lua
+    ├── EbonOverlay.Modules.lua
+    ├── EbonOverlay.PathData.lua
+    ├── EbonOverlay.ZoneData.lua
+    ├── Modules/
+    ├── Locales/
+    └── Libs/
 ```
+
+---
+
+## Server Compatibility
+
+| Feature | Status |
+|---|---|
+| Unit token nameplates (`nameplate1..40`) | ✅ |
+| Target / mouseover events | ✅ |
+| Name-based rare matching | ✅ |
+| GUID NPC ID extraction | ❌ not supported on this core |
+| WorldFrame:GetChildren() nameplates | ❌ replaced by unit tokens |
+
+---
 
 ## Acknowledgements
 
-- **Foundation**: _NPCScan 7.x by Saiket
-- **Patterns**: SilverDragon 3.3.5 (Torhal), RareScanner (Sariel)
-- **Rare database**: PE-Questie Ebonhold DB (Xurkon)
-- **Ebonhold adaptations**: Serv
-├── Locales/
-│   └── Locale-enUS.lua   (debug print removed)
-└── ... (keep your other existing files)
-```
-
-Then run `/reload` and `/npcscan clearcache`.
+- **_NPCScan 7.x** — Saiket (original foundation)
+- **SilverDragon** — Torhal (WotLK 3.3.5 patterns)
+- **RareScanner** — Sariel (detection patterns)
+- **Rare database** — PE-Questie / Xurkon (Ebonhold NPC data)
+- **Ebonhold adaptations** — Serv (powerfulqa)

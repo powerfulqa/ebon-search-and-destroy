@@ -4,6 +4,12 @@ You are an expert World of Warcraft addon developer specialising in the WotLK 3.
 
 Always use Context7 MCP when I need library/API documentation, code generation, setup or configuration steps without me having to explicitly ask.
 
+Use Context7 MCP for these lookups:
+1. WoW 3.3.5a UnitClassification API docs
+2. Ebonhold bug tracker issues related to EbonSearch / EbonOverlay
+3. Repo COPILOT.md current state
+
+
 ## Environment & Stack
 - WoW client: Wrath of the Lich King 3.3.5a (Interface: 30300)
 - Language: Lua 5.1 (WoW's embedded subset)
@@ -64,18 +70,50 @@ Ebonhold adds mechanics not present in standard WotLK. When writing or updating 
 - Project Ebonhold bug tracker (check for known issues related to addon behaviour or custom system quirks before shipping changes): https://project-ebonhold.com/support/bug-tracker
 - Project Ebonhold main site: https://project-ebonhold.com/
 
-## _NPCScan Ebonhold Specifics
-- Passive nameplate scanner runs on its own always-shown frame, independent of ScanIDs state
-- Name extraction uses GetPlateNameDirect() — iterates plate:GetRegions() for FontString text
-- Never call OnFound from passive scan — use me.Button:SetNPC(NpcID, Name) directly
-- Saved vars guard: if OptionsCharacter.NPCs count < 10 at PLAYER_LOGIN, nil it to force defaults
-- Deploy via: powershell -ExecutionPolicy Bypass -File tools/deploy-addons.ps1
-- Source folders: _NPCScan/ and _NPCScanOverlay/ (underscore prefix always)
+## EbonSearch / EbonOverlay — Ebonhold specifics
+
+This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to EbonSearch / EbonOverlay in v2.0.0.
+
+- **Addon folders**: `EbonSearch/` (scanner + alert UI), `EbonOverlay/` (map overlay)
+- **Primary slash command**: `/esd` — `/npcscan` is retained as a legacy alias only and should not be advertised in help text or documentation.
+- Target client: WotLK 3.3.5a (Interface 30300), private core where creature GUIDs are raw hex like `0xF13000060B684A99` and **do not encode NPC ID in a retail-compatible way**.
+- Detection is **nameplate-driven**:
+  - OnUpdate loop over `nameplate1..40`
+  - Uses `UnitExists`, `UnitName`, `UnitReaction`, and `UnitClassification` to find hostile rares (`reaction <= 4`, `classification == "rare"/"rareelite"`).
+  - Matches against a prebuilt table of rare **names** from `EbonSearch/generated_npcscan_rare_tables.lua` (not NPC IDs).
+  - Short-lived debounce table keyed by `UnitGUID` (or name) prevents spam but does **not** permanently suppress future alerts.
+- `DisableCache`:
+  - `me.Options.DisableCache = true` by default; do not change this unless explicitly asked.
+  - When true, the addon **does not** write found NPCs into persistent SavedVariables; every session is a fresh scan.
+  - `/esd clear` clears all custom NPCs and resets in-session debounce state.
+- GUID handling:
+  - **Never** re-enable GUID → NPC ID parsing; on this core it is unreliable and will silently break detection.
+  - Any code you add that touches GUIDs must treat them as opaque IDs for short-term "seen recently" tracking only.
+- Event / frame model:
+  - Passive nameplate scanner runs on its own always-shown frame with an OnUpdate handler.
+  - Overlay and alert button still go through the existing `OnFound` / `me.Button:SetNPC` pipeline; the scanner calls into that.
+- PathData encoding:
+  - `EbonOverlay/EbonOverlay.PathData.lua` contains binary triangle coordinate strings.
+  - **Never re-save this file as UTF-8** — bytes >0x7F will be corrupted into 2-byte sequences, breaking all triangle rendering.
+- Data source of truth:
+  - Rare tables are generated from the Project Ebonhold Questie database via `tools/extract_npcscan_rare_tables.ps1` and live in `EbonSearch/generated_npcscan_rare_tables.lua`.
+  - When rare data needs changing, rerun the extractor instead of hand-editing tables.
+
+### When modifying EbonSearch / EbonOverlay
+
+- Do **not**:
+  - Switch back to WorldFrame/GetChildren() nameplate scanning.
+  - Reintroduce GUID-based NPC ID extraction.
+  - Re-save EbonOverlay.PathData.lua as UTF-8.
+- Safe extension points:
+  - Add zone filters around the nameplate scan.
+  - Add configuration UI for enabling/disabling specific rare **names**.
+  - Adjust debounce timing or logging, keeping performance in mind.
 
 ### Ebonhold Rare Data Source of Truth
 - Rare NPC table source of truth is PE-Questie database content (Classic + Ebonhold DB files).
-- Generated table file is `_NPCScan/generated_npcscan_rare_tables.lua` and is loaded by `_NPCScan/_NPCScan.toc`.
-- Regeneration pipeline: `tools/extract_npcscan_rare_tables.ps1` downloads PE-Questie data, filters/merges rare entries, and rewrites generated table output in `_NPCScan/`.
+- Generated table file is `EbonSearch/generated_npcscan_rare_tables.lua` and is loaded by `EbonSearch/EbonSearch.toc`.
+- Regeneration pipeline: `tools/extract_npcscan_rare_tables.ps1` downloads PE-Questie data, filters/merges rare entries, and rewrites generated table output in `EbonSearch/`.
 - When rare data changes are requested, prefer rerunning the extractor and committing generated output instead of manual table edits.
 
 ### Nameplate Detection Context (Ebonhold)

@@ -54,9 +54,11 @@ To add or update a spawn:
 
 ## Addon deploy script
 
-Use this script to sync the repo addons into your live WoW AddOns folder with the required names:
-- `_NPCScan` -> `_NPCScan`
-- `_NPCScanOverlay` -> `_NPCScan.Overlay`
+Use this script to sync the repo addons into your live WoW AddOns folder:
+- `EbonSearch/` -> `Interface\AddOns\EbonSearch`
+- `EbonOverlay/` -> `Interface\AddOns\EbonOverlay`
+
+Also removes the legacy `_NPCScan` and `_NPCScanOverlay` folders from AddOns if they still exist.
 
 ### Run (default paths)
 

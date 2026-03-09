@@ -1,0 +1,7 @@
+﻿<Bindings>
+	<Binding name="CLICK EbonSearchButton:LeftButton" header="_EBONSEARCH">
+		-- Filler
+	</Binding>
+
+	<ModifiedClick action="_EBONSEARCH_BUTTONDRAG" default="CTRL"/>
+</Bindings>

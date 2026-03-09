@@ -23,6 +23,16 @@ do
 	end
 	function me:Paint ( Map )
 		Overlay.ApplyZone( self, Map, PaintPath );
+		-- [Ebonhold] Phase 2: draw gold pins for NPCs with a recorded sighting but no path data
+		local Discoveries = Overlay.Options.Discoveries and Overlay.Options.Discoveries[ Map ];
+		if ( Discoveries ) then
+			local PathData = Overlay.PathData[ Map ];
+			for NpcID, Pos in pairs( Discoveries ) do
+				if ( not PathData or not PathData[ NpcID ] ) then
+					Overlay.DrawDiscoveryMarker( self, Pos[ 1 ], Pos[ 2 ], "OVERLAY" );
+				end
+			end
+		end
 	end
 end
 --[[****************************************************************************

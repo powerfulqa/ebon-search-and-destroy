@@ -265,6 +265,34 @@ do
 	end
 end
 --[[****************************************************************************
+  * Function: EbonOverlay:DrawDiscoveryMarker                             *
+  * Description: Draws a small gold pin at a fractional map position for       *
+  *   NPCs that have no patrol path data.                                      *
+  ****************************************************************************]]
+do
+	local Width, Height, Texture;
+	function me:DrawDiscoveryMarker ( X, Y, Layer )
+		Width, Height = self:GetWidth(), self:GetHeight();
+		X, Y = X * Width, -Y * Height;
+
+		-- Gold ring
+		Texture = me.TextureCreate( self, Layer, 1, 0.82, 0 );
+		Texture:SetTexture( [[Interface\Minimap\Ping\ping2]] );
+		Texture:SetTexCoord( 0, 1, 0, 1 );
+		Texture:SetBlendMode( "ADD" );
+		Texture:SetPoint( "CENTER", self, "TOPLEFT", X, Y );
+		Texture:SetSize( 18, 18 );
+
+		-- Centre glow
+		Texture = me.TextureCreate( self, Layer, 1, 0.82, 0, 0.9 );
+		Texture:SetTexture( [[Textures\SunCenter]] );
+		Texture:SetTexCoord( 0, 1, 0, 1 );
+		Texture:SetBlendMode( "ADD" );
+		Texture:SetPoint( "CENTER", self, "TOPLEFT", X, Y );
+		Texture:SetSize( 10, 10 );
+	end
+end
+--[[****************************************************************************
   * Function: EbonOverlay:ApplyZone                                       *
   * Description: Passes the NpcID, color, PathData, ZoneWidth, and ZoneHeight  *
   *   of all NPCs in a zone to a callback function.                            *
@@ -318,12 +346,22 @@ end
   * Function: EbonOverlay.NPCFound                                        *
   ****************************************************************************]]
 function me.NPCFound ( NpcID )
-	-- [Ebonhold] Phase 2: helper to get a display name from EbonSearch tables
+	-- [Ebonhold] Phase 2: helpers
 	local function NpcName ()
 		local L = EbonSearch and EbonSearch.L;
 		return ( L and L.NPCs and L.NPCs[ NpcID ] )
 			or ( EbonSearch and EbonSearch.OptionsCharacter and EbonSearch.OptionsCharacter.NPCs and EbonSearch.OptionsCharacter.NPCs[ NpcID ] )
 			or tostring( NpcID );
+	end
+	local function ChatPrint ( msg )
+		if ( EbonSearch and EbonSearch.Print ) then
+			EbonSearch.Print( "|cff66ccffEbonOverlay:|r " .. msg );
+		end
+	end
+	local function StoreDiscovery ( Map, X, Y )
+		if ( not me.Options.Discoveries ) then me.Options.Discoveries = {}; end
+		if ( not me.Options.Discoveries[ Map ] ) then me.Options.Discoveries[ Map ] = {}; end
+		me.Options.Discoveries[ Map ][ NpcID ] = { X, Y };
 	end
 
 	local Map = me.NPCMaps[ NpcID ];
@@ -334,25 +372,23 @@ function me.NPCFound ( NpcID )
 			local X, Y = GetPlayerMapPosition( "player" );
 			if ( X ~= 0 and Y ~= 0 ) then
 				me.NPCsFoundX[ NpcID ], me.NPCsFoundY[ NpcID ] = X, Y;
-				-- [Ebonhold] Phase 2: persist most-recent detection position across sessions
-				if ( not me.Options.Discoveries ) then me.Options.Discoveries = {}; end
-				if ( not me.Options.Discoveries[ Map ] ) then me.Options.Discoveries[ Map ] = {}; end
-				me.Options.Discoveries[ Map ][ NpcID ] = { X, Y };
-				if ( me.NPCsEnabled[ NpcID ] ) then
-					me.Modules.UpdateMap( Map );
-				end
-				-- [Ebonhold] Phase 2: confirm position was recorded
-				if ( EbonSearch and EbonSearch.Print ) then
-					EbonSearch.Print( "|cff66ccffEbonOverlay:|r Position recorded for |cffFFFF00" .. NpcName() .. "|r (" .. ( "%.4f" ):format( X ) .. ", " .. ( "%.4f" ):format( Y ) .. ")" );
-				end
-
+				StoreDiscovery( Map, X, Y );
+				me.Modules.UpdateMap( Map ); -- always repaint so pin appears
+				ChatPrint( "Position recorded for |cffFFFF00" .. NpcName() .. "|r (" .. ( "%.4f" ):format( X ) .. ", " .. ( "%.4f" ):format( Y ) .. ")" );
 				return true;
 			end
 		end
 	elseif ( not Map ) then
-		-- [Ebonhold] Phase 2: NPC triggered an alert but has no overlay path data
-		if ( EbonSearch and EbonSearch.Print ) then
-			EbonSearch.Print( "|cff66ccffEbonOverlay:|r No map data for |cffFFFF00" .. NpcName() .. "|r — position not recorded" );
+		-- [Ebonhold] Phase 2: no path data — still capture position and draw a map pin
+		SetMapToCurrentZone();
+		local CurrentMap = GetCurrentMapAreaID() - 1;
+		local X, Y = GetPlayerMapPosition( "player" );
+		if ( X ~= 0 and Y ~= 0 and CurrentMap > 0 ) then
+			StoreDiscovery( CurrentMap, X, Y );
+			me.Modules.UpdateMap( CurrentMap );
+			ChatPrint( "Sighting recorded for |cffFFFF00" .. NpcName() .. "|r — dot marker placed on map" );
+		else
+			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r — position could not be determined" );
 		end
 	end
 end

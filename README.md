@@ -1,6 +1,7 @@
 # Ebonhold Search and Destroy v2.0.0
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
 [![WoW](https://img.shields.io/badge/WoW-3.3.5a-orange)](https://github.com/powerfulqa/ebon-search-and-destroy)
 [![Interface](https://img.shields.io/badge/Interface-30300-yellow)](https://github.com/powerfulqa/ebon-search-and-destroy)
 [![License](https://img.shields.io/github/license/powerfulqa/ebon-search-and-destroy)](LICENSE)

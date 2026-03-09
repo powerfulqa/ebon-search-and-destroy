@@ -268,7 +268,9 @@ foreach($x in $manualExcludeIDs){
 
 $groups=@{2='Eastern Kingdoms';1='Kalimdor';0='Unknown/Other'}
 $out = New-Object System.Collections.Generic.List[string]
-$out.Add('NPCs = {')
+
+# local rares: id -> name, grouped by continent then zone
+$out.Add('local rares = {')
 foreach($w in @(2,1,0)){
   $out.Add("    -- $($groups[$w])")
   $items=@($final.Values | ? { $_.World -eq $w } | Sort-Object ZoneName,Name,Id)
@@ -277,14 +279,42 @@ foreach($w in @(2,1,0)){
 }
 $out.Add('}')
 $out.Add('')
-$out.Add('NPCWorldIDs = {')
-foreach($w in @(2,1,0)){
-  $out.Add("    -- $($groups[$w])")
-  $items=@($final.Values | ? { $_.World -eq $w } | Sort-Object ZoneName,Name,Id)
-  foreach($e in $items){ $out.Add(('    [ {0} ] = {1}, -- {2}' -f $e.Id,$e.World,$e.ZoneName)) }
-  $out.Add('')
+
+# local rareZones: id -> zone name, grouped by zone name
+$out.Add('local rareZones = {')
+$allItems=@($final.Values | Sort-Object ZoneName,Name,Id)
+$lastZone=$null
+foreach($e in $allItems){
+  if($e.ZoneName -ne $lastZone){
+    if($null -ne $lastZone){ $out.Add('') }
+    $out.Add("    -- $($e.ZoneName)")
+    $lastZone=$e.ZoneName
+  }
+  $safeZone=$e.ZoneName -replace '"','\\"'
+  $out.Add(('    [ {0} ] = "{1}",' -f $e.Id,$safeZone))
 }
 $out.Add('}')
+$out.Add('')
+
+# LoadRares function and login guard
+$out.Add('local function LoadRares()')
+$out.Add('    local me = EbonSearch;')
+$out.Add('    me.NPCZones = rareZones;')
+$out.Add('    for id, name in pairs( rares ) do')
+$out.Add('        if not me.OptionsCharacter.NPCs[ id ] then')
+$out.Add('            me.NPCAdd( id, name );')
+$out.Add('        end')
+$out.Add('    end')
+$out.Add('end')
+$out.Add('')
+$out.Add("-- [Ebonhold] v2.0.0: /reload path - PLAYER_LOGIN won't fire again when already logged in")
+$out.Add('if IsLoggedIn() then')
+$out.Add('    LoadRares();')
+$out.Add('else')
+$out.Add('    local frame = CreateFrame("Frame");')
+$out.Add('    frame:RegisterEvent("PLAYER_LOGIN");')
+$out.Add('    frame:SetScript("OnEvent", LoadRares);')
+$out.Add('end')
 
 $repoRoot = Split-Path $PSScriptRoot -Parent
 $outPath = Join-Path $repoRoot 'EbonSearch\generated_npcscan_rare_tables.lua'

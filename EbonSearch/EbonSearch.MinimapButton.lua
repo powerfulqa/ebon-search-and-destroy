@@ -31,7 +31,7 @@ do
 
 	-- Layer 2: icon artwork, centred and slightly inset
 	local iconTex = icon:CreateTexture( nil, "ARTWORK" );
-	iconTex:SetTexture( "Interface\\Icons\\INV_Misc_Head_Dragon_Bronze" );
+	iconTex:SetTexture( "Interface\\Minimap\\ObjectIcons" );
 	iconTex:SetSize( 17, 17 );
 	iconTex:SetPoint( "CENTER", 0, 0 );
 	iconTex:SetTexCoord( 0.08, 0.92, 0.08, 0.92 );

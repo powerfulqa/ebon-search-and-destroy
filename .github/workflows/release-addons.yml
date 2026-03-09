@@ -19,7 +19,7 @@ jobs:
 
       - name: Build addon bundle zip
         run: |
-          ZIP_NAME="EbonSearch Ebonhold.zip"
+          ZIP_NAME="EbonSearch.Ebonhold.zip"
           mkdir -p dist/bundle
           cp -R EbonSearch dist/bundle/
           cp -R EbonOverlay dist/bundle/
@@ -39,5 +39,5 @@ jobs:
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
         uses: actions/upload-artifact@v4
         with:
-          name: EbonSearch Ebonhold
+          name: EbonSearch.Ebonhold
           path: ${{ env.ZIP_PATH }}

@@ -6,7 +6,7 @@
 [![Interface](https://img.shields.io/badge/Interface-30300-yellow)](https://github.com/powerfulqa/ebon-search-and-destroy)
 [![License](https://img.shields.io/github/license/powerfulqa/ebon-search-and-destroy)](LICENSE)
 
-### [⬇ Download latest version](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest/download/EbonSearch%20Ebonhold.zip)
+### [⬇ Download latest version](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest/download/EbonSearch.Ebonhold.zip)
 
 A rare NPC scanner and map overlay addon for **Project Ebonhold** (WotLK 3.3.5a private server).
 Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and roguelite run structure.

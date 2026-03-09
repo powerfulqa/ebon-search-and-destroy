@@ -1131,6 +1131,10 @@ function me.Synchronize ( Options, OptionsCharacter )
 	me.SetAchievementsAddFound( Options.AchievementsAddFound );
 	me.SetAlertSoundUnmute( Options.AlertSoundUnmute );
 	me.SetAlertSound( Options.AlertSound );
+	-- [Ebonhold] v2.0.0: restore saved minimap button position angle
+	if ( Options.MinimapAngle ) then
+		me.Options.MinimapAngle = Options.MinimapAngle;
+	end
 
 	for NpcID, Name in pairs( OptionsCharacter.NPCs ) do
 		-- If defaults, only add tamable custom mobs if the player is a hunter

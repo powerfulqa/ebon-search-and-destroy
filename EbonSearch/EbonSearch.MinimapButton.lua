@@ -82,6 +82,11 @@ do
 	end );
 	icon:SetScript( "OnDragStop", function ( self )
 		self:SetScript( "OnUpdate", nil );
+		-- Final snapshot: calculate angle from cursor at release and persist immediately
+		local mx, my = Minimap:GetCenter();
+		local cx, cy = GetCursorPosition();
+		local scale  = UIParent:GetEffectiveScale();
+		SetAngle( math.atan2( cy / scale - my, cx / scale - mx ) );
 	end );
 
 	-- Tooltip ------------------------------------------------------------------

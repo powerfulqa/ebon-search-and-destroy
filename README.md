@@ -6,6 +6,8 @@
 [![Interface](https://img.shields.io/badge/Interface-30300-yellow)](https://github.com/powerfulqa/ebon-search-and-destroy)
 [![License](https://img.shields.io/github/license/powerfulqa/ebon-search-and-destroy)](LICENSE)
 
+### [⬇ Download latest version](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest/download/EbonSearch%20Ebonhold.zip)
+
 A rare NPC scanner and map overlay addon for **Project Ebonhold** (WotLK 3.3.5a private server).
 Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and roguelite run structure.
 
@@ -81,6 +83,20 @@ Interface/AddOns/
     ├── Locales/
     └── Libs/
 ```
+
+---
+
+## How detection works
+
+The addon uses two detection methods running simultaneously:
+
+**Nameplate scanner** (primary, Classic world rares)
+Polls `nameplate1..40` unit tokens every frame. When a nameplate appears that matches a rare name from the Ebonhold/Classic database, an alert fires immediately. This was built specifically for Ebonhold because the server's GUIDs do not encode NPC IDs in the standard way, making the old ID-based approach unreliable for Classic world rares.
+
+**Tooltip cache scan** (secondary, Outland and Northrend rares)
+The original _NPCScan detection method. Checks the WoW client's internal creature cache using a tooltip hyperlink query (`TestID`). Runs alongside the nameplate scanner and handles Outland and Northrend rares where the original Wowhead rare list is the source of truth. This method was not changed from the upstream addon.
+
+Both methods feed into the same alert pipeline - queue, toast button, skull marker, and discovery pin.
 
 ---
 

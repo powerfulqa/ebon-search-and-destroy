@@ -530,4 +530,13 @@ me:SetScript( "OnLeave", me.OnLeave );
 me:SetScript( "OnEvent", EbonSearch.Frame.OnEvent );
 me:HookScript( "OnShow", me.OnShow );
 me:HookScript( "OnHide", me.OnHide );
+-- [Ebonhold] After the /targetexact macro fires, place a skull on the rare if it was successfully targeted
+me:HookScript( "PostClick", function ( self )
+	local name = self.NpcName;
+	if ( name and UnitExists( "target" ) and UnitName( "target" ) == name ) then
+		if ( GetRaidTargetIndex( "target" ) ~= 8 ) then
+			pcall( SetRaidTarget, "target", 8 );
+		end
+	end
+end );
 me:RegisterEvent( "PLAYER_REGEN_ENABLED" );

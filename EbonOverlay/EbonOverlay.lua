@@ -16,6 +16,7 @@ me.Options = {
 	Modules = {};
 	ModulesAlpha = {};
 	ModulesExtra = {};
+	Discoveries = {}; -- [Ebonhold] Phase 2: { [Map] = { [NpcID] = {X, Y} } }
 };
 
 me.OptionsDefault = {
@@ -24,6 +25,7 @@ me.OptionsDefault = {
 	ModulesAlpha = {};
 	ModulesExtra = {};
 	ShowAll = false;
+	Discoveries = {}; -- [Ebonhold] Phase 2
 };
 
 
@@ -324,6 +326,10 @@ function me.NPCFound ( NpcID )
 			local X, Y = GetPlayerMapPosition( "player" );
 			if ( X ~= 0 and Y ~= 0 ) then
 				me.NPCsFoundX[ NpcID ], me.NPCsFoundY[ NpcID ] = X, Y;
+				-- [Ebonhold] Phase 2: persist most-recent detection position across sessions
+				if ( not me.Options.Discoveries ) then me.Options.Discoveries = {}; end
+				if ( not me.Options.Discoveries[ Map ] ) then me.Options.Discoveries[ Map ] = {}; end
+				me.Options.Discoveries[ Map ][ NpcID ] = { X, Y };
 				if ( me.NPCsEnabled[ NpcID ] ) then
 					me.Modules.UpdateMap( Map );
 				end
@@ -440,6 +446,18 @@ function me:ADDON_LOADED ( Event, AddOn )
 			Options.ModulesExtra = {};
 		end
 		me.Synchronize( Options ); -- Loads defaults if nil
+
+		-- [Ebonhold] Phase 2: restore saved discovery positions so overlay markers are
+		-- visible from session start without needing to re-detect the NPC.
+		if ( Options and Options.Discoveries ) then
+			me.Options.Discoveries = Options.Discoveries;
+			for _, NpcTable in pairs( Options.Discoveries ) do
+				for NpcID, pos in pairs( NpcTable ) do
+					me.NPCsFoundX[ NpcID ] = pos[ 1 ];
+					me.NPCsFoundY[ NpcID ] = pos[ 2 ];
+				end
+			end
+		end
 
 		me:RegisterMessage( MESSAGE_REGISTER );
 		me:RegisterMessage( MESSAGE_FOUND );

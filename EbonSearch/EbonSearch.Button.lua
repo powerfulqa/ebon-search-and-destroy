@@ -418,8 +418,8 @@ Close:SetScale( 0.8 );
 Close:SetHitRectInsets( 8, 8, 8, 8 );
 
 -- [Ebonhold] v2.0.0: Queue count badge — shows "+N more" when rares are queued
+-- Anchor is set after NavNext is created (see below) so we can attach it above the arrow.
 local QueueBadge = me:CreateFontString( nil, "OVERLAY", "GameFontHighlightSmall" );
-QueueBadge:SetPoint( "TOPRIGHT", me, "TOPRIGHT", -34, -3 );
 QueueBadge:SetTextColor( 1, 0.82, 0 ); -- gold
 QueueBadge:Hide();
 me.QueueBadge = QueueBadge;
@@ -447,6 +447,9 @@ me.NavNext:SetScript( "OnEnter", function ( self )
 end );
 me.NavNext:SetScript( "OnLeave", GameTooltip_Hide );
 me.NavNext:Hide();
+-- [Ebonhold] anchor badge above the NavNext arrow — floats outside the toast, never overlaps NPC name
+QueueBadge:SetPoint( "BOTTOM", me.NavNext, "TOP", 0, 4 );
+QueueBadge:SetJustifyH( "CENTER" );
 
 -- Model view
 local Model = me.Model;

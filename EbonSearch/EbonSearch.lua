@@ -1704,8 +1704,6 @@ else -- Zone information is known
 	Frame:ZONE_CHANGED_NEW_AREA( "ZONE_CHANGED_NEW_AREA" );
 end
 
-SlashCmdList[ "_EBONSEARCH" ] = me.SlashCommand;
-
 -- [Ebonhold] v2.0.0: unified /esd command — no-args opens Interface Options,
 -- subcommands handle zone blacklist management.
 SLASH_ESD1 = "/esd";
@@ -1757,11 +1755,55 @@ SlashCmdList["ESD"] = function ( Input )
 		else
 			me.Print( "/esd zone blacklist [add|remove|list] [zone name]" );
 		end
+	elseif ( Command == L.CMD_ADD ) then
+		local ID, Name = ( Rest1 or "" ):match( "^(%d+)%s+(.+)$" );
+		if ( ID ) then
+			ID = tonumber( ID );
+			me.NPCRemove( ID );
+			if ( me.NPCAdd( ID, Name ) ) then
+				me.CacheListPrint( true );
+			end
+		else
+			me.Print( L.CMD_HELP );
+		end
+	elseif ( Command == L.CMD_REMOVE ) then
+		local ID = tonumber( Rest1 );
+		if ( not ID ) then
+			for NpcID, Name in pairs( me.OptionsCharacter.NPCs ) do
+				if ( Name == Rest1 ) then
+					ID = NpcID;
+					break;
+				end
+			end
+		end
+		if ( not me.NPCRemove( ID ) ) then
+			me.Print( L.CMD_REMOVENOTFOUND_FORMAT:format( Rest1 or "" ), RED_FONT_COLOR );
+		end
+	elseif ( Command == L.CMD_CACHE ) then
+		if ( not me.CacheListPrint( true, true ) ) then
+			me.Print( L.CMD_CACHE_EMPTY, GREEN_FONT_COLOR );
+		end
+	elseif ( Command == "CLEAR" ) then
+		for NpcID in pairs( me.OptionsCharacter.NPCs ) do
+			me.NPCRemove( NpcID );
+		end
+		wipe( me.OptionsCharacter.NPCs );
+		wipe( me.OptionsCharacter.NPCWorldIDs );
+		wipe( SessionNPCNames );
+		wipe( RecentDetections );
+		TrackedNamesDirty = true;
+		me.Print( "All custom NPCs cleared.", GREEN_FONT_COLOR );
 	else
 		me.Print( "|cff66ccffEbonhold|r Search & Destroy v" .. me.Version );
-		me.Print( "  |cffFFFF00/esd|r                          -- open options panel" );
+		me.Print( "  |cffFFFF00/esd|r                             -- open options panel" );
+		me.Print( "  /esd add <NpcID> <Name>           -- add custom NPC to track" );
+		me.Print( "  /esd remove <NpcID or Name>       -- remove custom NPC" );
+		me.Print( "  /esd cache                        -- list cached (unreachable) NPCs" );
+		me.Print( "  /esd clear                        -- clear all custom NPCs" );
 		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
 		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );
 	end
 end;
+-- /npcscan is a backward-compatible alias for the ESD handler
+SlashCmdList[ "_EBONSEARCH" ] = SlashCmdList[ "ESD" ];

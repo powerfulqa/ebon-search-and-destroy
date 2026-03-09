@@ -116,7 +116,7 @@ select( 2, ... ).L = setmetatable( {
 	CMD_ADD = "ADD",
 	CMD_CACHE = "CACHE",
 	CMD_CACHE_EMPTY = "None of the mobs being searched for are cached.",
-	CMD_HELP = "Commands are |cff808080“/npcscan add <NpcID> <Name>”|r, |cff808080“/npcscan remove <NpcID or Name>”|r, |cff808080“/npcscan cache”|r to list cached mobs, and simply |cff808080“/npcscan”|r for the options menu.",
+	CMD_HELP = "Commands: |cff808080“/esd add <NpcID> <Name>”|r, |cff808080“/esd remove <NpcID or Name>”|r, |cff808080“/esd cache”|r to list cached mobs, |cff808080“/esd clear”|r to clear all custom NPCs, or simply |cff808080“/esd”|r for the options panel.",
 	CMD_REMOVE = "REMOVE",
 	CMD_REMOVENOTFOUND_FORMAT = "NPC |cff808080“%s”|r not found.",
 	CONFIG_ALERT = "Alert Options",
@@ -173,7 +173,6 @@ select( 2, ... ).L = setmetatable( {
 
 
 SLASH__EBONSEARCH1 = "/npcscan";
-SLASH__EBONSEARCH2 = "/scan";
 
 BINDING_HEADER__EBONSEARCH = "|cff66ccffEbonhold|r Search & Destroy";
 _G[ "BINDING_NAME_CLICK EbonSearchButton:LeftButton" ] = [=[Target last found mob

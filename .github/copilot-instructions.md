@@ -7,7 +7,7 @@ Always use Context7 MCP when I need library/API documentation, code generation, 
 Use Context7 MCP for these lookups:
 1. WoW 3.3.5a UnitClassification API docs
 2. Ebonhold bug tracker issues related to EbonSearch / EbonOverlay
-3. Repo COPILOT.md current state
+3. Repo ARCHITECTURE.md current state
 
 
 ## Environment & Stack

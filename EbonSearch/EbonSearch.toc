@@ -1,10 +1,10 @@
 ﻿## Interface: 30300
 ## Title: Ebonhold Search and Destroy
-## Notes: v2.0.0 Ebonhold Search and Destroy |
+## Notes: Rare NPC scanner and map overlay for Project Ebonhold (WotLK 3.3.5a)
 ## Author: Serv (powerfulqa)
 
-## Version: 2.0.0-alpha1
-## X-Date: 2026-03-209
+## Version: 2.0.0
+## X-Date: 2026-03-09
 ## X-Category: Miscellaneous
 ## X-License: GPLv3
 

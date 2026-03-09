@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy
+# Ebonhold Search and Destroy v2.0.0
 
 A rare NPC scanner and map overlay addon for **Project Ebonhold** (WotLK 3.3.5a private server).
 Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and roguelite run structure.
@@ -12,10 +12,11 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 - **Name-based matching** - GUID NPC ID extraction is disabled (Ebonhold GUIDs do not encode NPC ID)
 - **DisableCache = true** by default - every session scans fresh; no persistent suppression of found NPCs
 - **Multi-alert queue** - alerts stack; use the NavNext button to cycle through multiple finds
-- **Alert button** - click to target the found mob; drag to reposition
-- **Zone blacklist** - suppress scanning in specific zones
+- **Alert button** - click to target the rare and auto-place a skull raid marker; drag to reposition
+- **Zone blacklist** - suppress scanning in specific zones via right-click or slash command
 - **Map overlay** - EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
-- **Minimap button** - drag to reposition; click to open options
+- **Discovery pins** - gold map pin placed at the player's position each time a rare is detected, persisted across sessions
+- **Minimap button** - drag to reposition (position saved); left-click to open options; right-click to toggle zone blacklist
 - **Rare database** - sourced from the PE-Questie Ebonhold DB via `tools/extract_npcscan_rare_tables.ps1`
 
 ---
@@ -37,6 +38,7 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 | `/esd remove <NpcID or Name>` | Remove a custom NPC |
 | `/esd cache` | List NPCs that are cached (unreachable this session) |
 | `/esd clear` | Remove all custom NPCs and reset session state |
+| `/esd clearcache` | Alias for `/esd clear` |
 | `/esd zone blacklist add [zone]` | Blacklist current zone (or named zone) |
 | `/esd zone blacklist remove [zone]` | Un-blacklist a zone |
 | `/esd zone blacklist list` | List all blacklisted zones |

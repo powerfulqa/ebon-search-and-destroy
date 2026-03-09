@@ -1,26 +1,15 @@
 ﻿## Interface: 30300
 ## Title: Ebonhold Search and Destroy
-## Notes: v2.0.0 Ebonhold Search and Destroy | nameplate1..40 + target/mouseover (Ebonhold private core) | Multi-alert queue + zone blacklist + DisableCache=true | Upstream: _NPCScan 7.x (Saiket) | Patterns: SilverDragon 3.3.5 (Torhal), RareScanner (Sariel) | Rare data: Questie Ebonhold DB (Xurkon) via extractor | Core engine: Serv
-## Notes-frFR: Analyse les PNJs autour de vous à la recherche de ceux qui sont rares.
-## Notes-koKR: 근처에 있는 희귀몹을 탐색합니다.
-## Notes-ruRU: Сканирует облость вокруг вас на наличие редких НИПов.
-## Notes-zhTW: 搜尋出沒在你附近的稀有怪。
-## Author: Saiket, Serv (powerfulqa)
-## X-Credits-frFR: Localization: Pettigrow
-## X-Credits-koKR: Localization: kdw112
-## X-Credits-ruRU: Localization: StingerSoft
-## X-Credits-zhTW: Localization: s8095324, pepper_ep
+## Notes: v2.0.0 Ebonhold Search and Destroy |
+## Author: Serv (powerfulqa)
+
 ## Version: 2.0.0-alpha1
-## X-Date: 2010-07-24
+## X-Date: 2026-03-209
 ## X-Category: Miscellaneous
 ## X-License: GPLv3
-## X-Email: saiket.wow@gmail.com
-## X-Website: http://sites.google.com/site/wowsaiket/Add-Ons/NPCScan
-## X-Feedback: http://code.google.com/p/wow-saiket/issues/list?can=1&q=AddOn:NPCScan
-## X-WoWI-ID: 12995
-## X-Curse-Project-ID: npcscan
-## X-Localizations: enUS, frFR, koKR, ruRU, zhTW
-## X-CompatibleLocales: deDE, enUS, esES, esMX, frFR, koKR, ruRU, zhCN, zhTW
+
+## X-Localizations: enUS
+## X-CompatibleLocales: enUS
 ## X-Embeds: LibTextTable-1.0, LibSharedMedia-3.0
 ## SavedVariables: EbonSearchDB
 ## SavedVariablesPerCharacter: EbonSearchCharacterDB
@@ -33,7 +22,7 @@ Locales.xml
 
 EbonSearch.lua
 generated_npcscan_rare_tables.lua
-npcscan_wowhead_rares.lua
+EbonSearch.WowheadRares.lua
 EbonSearch.Button.lua
 EbonSearch.Overlays.lua
 EbonSearch.TamableIDs.lua

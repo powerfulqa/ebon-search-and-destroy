@@ -22,12 +22,12 @@ do
 	icon:RegisterForClicks( "AnyUp" );
 	icon:RegisterForDrag( "LeftButton" );
 
-	-- Icon texture: 16×16 centered; smaller than the ring hole so corners stay hidden
+	-- Icon texture: inset 7px from each edge so it sits inside the round border ring
 	local tex = icon:CreateTexture( nil, "BACKGROUND" );
-	tex:SetSize( 16, 16 );
-	tex:SetPoint( "CENTER" );
+	tex:SetPoint( "TOPLEFT", 7, -7 );
+	tex:SetPoint( "BOTTOMRIGHT", -7, 7 );
 	tex:SetTexture( "Interface\\Icons\\Ability_Spy" );
-	tex:SetTexCoord( 0.05, 0.95, 0.05, 0.95 );
+	tex:SetTexCoord( 0.08, 0.92, 0.08, 0.92 );
 
 	-- Hover highlight (standard minimap button glow)
 	local hilite = icon:CreateTexture( nil, "HIGHLIGHT" );

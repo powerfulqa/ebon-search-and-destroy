@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.1.1
+# Ebonhold Search and Destroy v2.1.2
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -123,6 +123,9 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 ---
 
 ## Changelog
+
+### v2.1.2 (2026-03-10)
+- 🛠️ Hotfix: Clamp minimap TexCoord values to `[0, 1]` — prevents `SetTexCoord` crash caused by extreme UV values (e.g. `-31242`) produced by minimap zoom math
 
 ### v2.1.1 (2026-03-10)
 - Names everywhere (fixed ID prints in overlay alerts)

@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.0.0
+# Ebonhold Search and Destroy v2.1.1
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -119,3 +119,19 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 - **RareScanner** - Sariel (detection patterns)
 - **Rare database** - PE-Questie / Xurkon (Ebonhold NPC data)
 - **Ebonhold adaptations** - Serv (powerfulqa)
+
+---
+
+## Changelog
+
+### v2.1.1 (2026-03-10)
+- Names everywhere (fixed ID prints in overlay alerts)
+- Single-line alerts (no double-spam from overlay + scanner)
+- Overlay pins + confirm message (`NpcName sighted - Recorded on Map`)
+- WotLK 3.3.5a GUID debounce hardened: `WasRecentlyDetected` now keys by Name only (`UnitGUID` unreliable on this core)
+- `NAME_PLATE_UNIT_ADDED` event fast-path: instant alert on nameplate appearance, no wait for next OnUpdate tick
+- Dynamic target keybind (`EbonSearch_TargetButton`) — bind any key to target the last detected rare
+
+### v2.0.0 (2026-02-12)
+- Initial fork from _NPCScan 7.x; renamed to EbonSearch / EbonOverlay
+- Nameplate scanner (`nameplate1..40`), multi-alert queue, zone blacklist, discovery pins, minimap button

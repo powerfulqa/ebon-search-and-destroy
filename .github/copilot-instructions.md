@@ -81,7 +81,7 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
   - OnUpdate loop over `nameplate1..40`
   - Uses `UnitExists`, `UnitName`, `UnitReaction`, and `UnitClassification` to find hostile rares (`reaction <= 4`, `classification == "rare"/"rareelite"`).
   - Matches against a prebuilt table of rare **names** from `EbonSearch/generated_npcscan_rare_tables.lua` (not NPC IDs).
-  - Short-lived debounce table keyed by `UnitGUID` (or name) prevents spam but does **not** permanently suppress future alerts.
+  - Short-lived debounce table keyed by **Name only** (`WasRecentlyDetected(Name)`) prevents spam but does **not** permanently suppress future alerts. `UnitGUID` is intentionally not used as a key — it returns `nil` inconsistently on 3.3.5a nameplates, creating a new key each call and bypassing the debounce window.
 - `DisableCache`:
   - `me.Options.DisableCache = true` by default; do not change this unless explicitly asked.
   - When true, the addon **does not** write found NPCs into persistent SavedVariables; every session is a fresh scan.
@@ -120,3 +120,9 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
 - Passive nameplate detection is primary on this server and must continue to work even when legacy TestID scanning state differs.
 - Keep Ebonhold-specific behavior stable: direct button trigger path (`SetNPC`) from passive detection, without `OnFound` side effects.
 - Any changes to rare lists should be validated against passive nameplate behavior to avoid regressions in alerting.
+
+### Release v2.1.1 Confirmed Working
+- `EbonSearch.Overlays.Found(ID, Name)` — Name threaded through full pipeline, no ID numbers in alerts
+- EbonOverlay `NPCFound`: single `ChatPrint` confirmation in `elseif not Map` branch only; no duplicate prints
+- `StoreDiscovery` → `me.Modules.UpdateMap` — gold map pins placed correctly for all detections
+- `WasRecentlyDetected(Name)` — 3-second debounce keyed by Name only; GUID path removed entirely

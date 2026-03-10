@@ -1,6 +1,6 @@
 ## Context for EbonSearch / EbonOverlay
 
-**Project**: Ebonhold Search and Destroy v2.0.0
+**Project**: Ebonhold Search and Destroy v2.1.1
 **Client**: WotLK 3.3.5a (Interface 30300), Project Ebonhold private server
 **Forked from**: _NPCScan 7.x (Saiket), renamed and adapted in v2.0.0
 
@@ -15,11 +15,26 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 ### Architecture
 
 - **Detection**: OnUpdate loop over `nameplate1..40` - `UnitExists` → `UnitName` → match against rare name table
+- **Fast-path detection**: `NAME_PLATE_UNIT_ADDED` event → instant check on nameplate appearance (no OnUpdate delay)
 - **Secondary detection**: `PLAYER_TARGET_CHANGED` / `UPDATE_MOUSEOVER_UNIT` events
-- **Alert pipeline**: `ProcessUnit` → `OnFound` → `me.Button:SetNPC`
+- **Alert pipeline**: `TriggerFoundAlert` / `OnFound` → `me.Button:SetNPC(ID, Name)` → `Overlays.Found(ID, Name)` → `NPCFound(NpcID, Name)`
 - **Overlay**: EbonOverlay draws patrol paths; `EbonOverlay.PathData.lua` contains binary triangle coordinate strings - **never re-save as UTF-8**
 - **Rare data**: generated from PE-Questie DB via `tools/extract_npcscan_rare_tables.ps1` → `EbonSearch/generated_npcscan_rare_tables.lua`
 - **Minimap button**: 31x31 frame, 3-layer stack (BACKGROUND/ARTWORK/OVERLAY), dragon icon (`INV_Misc_Head_Dragon_Bronze`), drag-to-reposition
+
+### Detection Pipeline (v2.1.1)
+
+```
+NAME_PLATE_UNIT_ADDED  →  TriggerFoundAlert  →  Button:SetNPC(Name)  →  Overlays.Found(ID, Name)  ✓
+ScanTrackedNameplates (0.3s)  →  WasRecentlyDetected(Name)  →  BLOCKED (debounced)          ✓
+me.Frame:ScanNameplates (0.5s)  →  WasRecentlyDetected(Name)  →  BLOCKED (debounced)         ✓
+```
+
+### Debounce Key (v2.1.1)
+
+- **Key**: `Name` only — `UnitGUID("nameplateN")` is unreliable on WotLK 3.3.5a and returns `nil` between ticks, creating a different key each call and bypassing debounce
+- `WasRecentlyDetected(Name)` — 3-second window; keyed by stable NPC name string
+- All 5 call sites updated; `Guid` variable retained for logging only
 
 ---
 
@@ -40,11 +55,12 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 
 ---
 
-### v2.0.0 Release Status
+### v2.1.1 Release Status
 
 | Component | Status |
 |---|---|
 | Nameplate scanner (`nameplate1..40`) | Ready |
+| `NAME_PLATE_UNIT_ADDED` fast-path detection | Ready |
 | Target / mouseover detection | Ready |
 | Multi-alert queue + NavNext button | Ready |
 | Alert toast: click to target + auto skull marker | Ready |
@@ -53,6 +69,9 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 | EbonOverlay patrol paths on World Map + Minimap | Ready |
 | Discovery pins (gold marker at detection position, persisted) | Ready |
 | Rare DB from PE-Questie Ebonhold data | Ready |
+| NPC Name threaded through full alert pipeline | Ready |
+| Debounce keyed by Name only (GUID unreliable on 3.3.5a) | Ready |
+| Dynamic target keybind (`EbonSearch_TargetButton`) | Ready |
 
 ### Known limitations
 
@@ -88,6 +107,8 @@ tools/         <- extractor + deploy scripts
 - `963b018` - Toast click: skull raid marker on targeted rare
 - `13c9d7f` - Em dash removal across repo
 - `e395100` - v2.0.0 release prep (TOC bump, README, tag)
+- `da2aa7e` - v2.1.0: dynamic target keybind (EbonSearch_TargetButton); Name threading through overlay chain
+- `54ceb68` - v2.1.1: NAME_PLATE_UNIT_ADDED fast-path; WasRecentlyDetected Name-only debounce; debug print cleanup
 
 ---
 

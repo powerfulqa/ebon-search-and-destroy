@@ -402,6 +402,7 @@ function me.NPCFound ( NpcID, Name )
 			if ( mapDisc ) then for _ in pairs( mapDisc ) do discCount = discCount + 1; end end
 			print( "Discoveries count (this map):", discCount );
 			print( "Discoveries entry for NpcID", NpcID, ":", npcEntry and ( npcEntry[1] .. ", " .. npcEntry[2] ) or "nil" );
+			ChatPrint( "|cffFFFF00" .. NpcName() .. "|r sighted - Recorded on Map" );
 		else
 			print( "skipped: x/y zero or invalid map" );
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );

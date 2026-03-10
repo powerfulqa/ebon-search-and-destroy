@@ -124,12 +124,17 @@ do
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
 
-			-- [Ebonhold] Clamp UVs to [0,1] — extreme minimap zoom can produce values
-			-- like 28212 that crash SetTexCoord on the 3.3.5a client.
-			ULx = math.max( 0, math.min( 1, ULx ) ); ULy = math.max( 0, math.min( 1, ULy ) );
-			LLx = math.max( 0, math.min( 1, LLx ) ); LLy = math.max( 0, math.min( 1, LLy ) );
-			URx = math.max( 0, math.min( 1, URx ) ); URy = math.max( 0, math.min( 1, URy ) );
-			LRx = math.max( 0, math.min( 1, LRx ) ); LRy = math.max( 0, math.min( 1, LRy ) );
+			-- [Ebonhold] Hide triangles whose UVs are pathologically large (e.g. ±28212 from
+			-- extreme minimap zoom) — outside ±100 is never valid and crashes SetTexCoord
+			-- on the 3.3.5a client. Legitimate triangles produce UVs in the range ~[-5, 5]
+			-- and must pass through unclamped so the parallelogram mapping renders correctly.
+			if ( math.abs( ULx ) > 100 or math.abs( ULy ) > 100 or
+			     math.abs( LLx ) > 100 or math.abs( LLy ) > 100 or
+			     math.abs( URx ) > 100 or math.abs( URy ) > 100 or
+			     math.abs( LRx ) > 100 or math.abs( LRy ) > 100 ) then
+				Texture:Hide();
+				return;
+			end
 
 			Texture:SetTexCoord( ULx, ULy, LLx, LLy, URx, URy, LRx, LRy );
 		end

@@ -1294,16 +1294,19 @@ do
 		end
 	end
 
-	local function WasRecentlyDetected ( GuidOrName )
-		if ( not GuidOrName ) then
+	local function WasRecentlyDetected ( Name )
+		-- [Ebonhold] v2.1.1: key by Name, not GUID. UnitGUID on 3.3.5a nameplates is
+		-- unreliable and can return nil on subsequent calls for the same unit, causing
+		-- different keys on each check and defeating the debounce entirely.
+		if ( not Name ) then
 			return;
 		end
 		local Now = GetTime();
-		local Last = RecentDetections[ GuidOrName ];
+		local Last = RecentDetections[ Name ];
 		if ( Last and ( Now - Last ) < RecentDetectionWindow ) then
 			return true;
 		end
-		RecentDetections[ GuidOrName ] = Now;
+		RecentDetections[ Name ] = Now;
 
 		for Key, Timestamp in pairs( RecentDetections ) do
 			if ( ( Now - Timestamp ) > ( RecentDetectionWindow * 3 ) ) then
@@ -1325,7 +1328,7 @@ do
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
 			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and ScanIDs[ NpcID ] and not WasRecentlyDetected( Guid or Name ) ) then
+			if ( NpcID and ScanIDs[ NpcID ] and not WasRecentlyDetected( Name ) ) then
 				OnFound( NpcID, Name );
 				return true;
 			end
@@ -1343,7 +1346,7 @@ do
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
 			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and not WasRecentlyDetected( Guid or Name ) ) then
+			if ( NpcID and not WasRecentlyDetected( Name ) ) then
 				if ( type( Name ) ~= "string" ) then
 					Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
 				end
@@ -1435,7 +1438,7 @@ do
 		local NpcID = GetTrackedNpcIDByName( Name );
 		if ( not NpcID ) then return; end
 		local Guid = UnitGUID( UnitID );
-		if ( WasRecentlyDetected( Guid or Name ) ) then return; end
+		if ( WasRecentlyDetected( Name ) ) then return; end
 		if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
 		me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
 		TriggerFoundAlert( NpcID, Name );
@@ -1457,7 +1460,7 @@ do
 			pcall( function ()
 				local NpcID, Name, Guid = GetNameplateTrackedMatch( UnitToken );
 				if ( not NpcID ) then return; end
-				if ( WasRecentlyDetected( Guid or Name ) ) then return; end
+				if ( WasRecentlyDetected( Name ) ) then return; end
 				if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
 				if ( ScanIDs[ NpcID ] ) then
 					OnFound( NpcID, Name ); -- goes through the standard ScanIDs path

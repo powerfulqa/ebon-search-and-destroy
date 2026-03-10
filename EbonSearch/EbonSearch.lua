@@ -1442,13 +1442,34 @@ do
 	end
 
 	-- [Ebonhold] v2.0.0: register target/mouseover events on the always-on scan frame.
+	-- [Ebonhold] v2.1.1: NAME_PLATE_UNIT_ADDED fires the instant a nameplate becomes active,
+	-- giving zero-tick detection instead of waiting up to 0.3s for the OnUpdate fallback.
 	NameplateScanFrame:RegisterEvent( "PLAYER_TARGET_CHANGED" );
 	NameplateScanFrame:RegisterEvent( "UPDATE_MOUSEOVER_UNIT" );
-	NameplateScanFrame:SetScript( "OnEvent", function ( self, Event )
+	NameplateScanFrame:RegisterEvent( "NAME_PLATE_UNIT_ADDED" );
+	NameplateScanFrame:SetScript( "OnEvent", function ( self, Event, UnitToken )
 		if ( Event == "PLAYER_TARGET_CHANGED" ) then
 			pcall( ProcessUnitForRares, "target" );
 		elseif ( Event == "UPDATE_MOUSEOVER_UNIT" ) then
 			pcall( ProcessUnitForRares, "mouseover" );
+		elseif ( Event == "NAME_PLATE_UNIT_ADDED" ) then
+			-- Fast path: check the new nameplate immediately against both scan lists.
+			pcall( function ()
+				local NpcID, Name, Guid = GetNameplateTrackedMatch( UnitToken );
+				if ( not NpcID ) then return; end
+				if ( WasRecentlyDetected( Guid or Name ) ) then return; end
+				if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
+				if ( ScanIDs[ NpcID ] ) then
+					OnFound( NpcID, Name ); -- goes through the standard ScanIDs path
+				else
+					-- Cached NPC not in ScanIDs: use the direct toast path (same as ScanTrackedNameplates).
+					local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
+					if ( not WorldID or WorldID == me.WorldID ) then
+						me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
+						TriggerFoundAlert( NpcID, Name );
+					end
+				end
+			end );
 		end
 	end );
 

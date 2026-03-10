@@ -135,6 +135,13 @@ do
 				return;
 			end
 
+			-- [Ebonhold] Clamp UVs to [0,1] — extreme minimap zoom can produce values
+			-- like -31242, which crash SetTexCoord on the 3.3.5a client.
+			ULx = math.max( 0, math.min( 1, ULx ) ); ULy = math.max( 0, math.min( 1, ULy ) );
+			LLx = math.max( 0, math.min( 1, LLx ) ); LLy = math.max( 0, math.min( 1, LLy ) );
+			URx = math.max( 0, math.min( 1, URx ) ); URy = math.max( 0, math.min( 1, URy ) );
+			LRx = math.max( 0, math.min( 1, LRx ) ); LRy = math.max( 0, math.min( 1, LRy ) );
+
 			Texture:SetTexCoord( ULx, ULy, LLx, LLy, URx, URy, LRx, LRy );
 		end
 	end
@@ -190,10 +197,6 @@ do
 
 		-- Common operations
 		WindowX, WindowY = BorderScale / WindowX, BorderScale / WindowY;
-		-- [Ebonhold] Clamp window scale factors — extreme minimap zoom can shrink the
-		-- bounding window to near-zero, inverting to massive values and crashing SetTexCoord.
-		WindowX = math.max( -1, math.min( 1, WindowX ) );
-		WindowY = math.max( -1, math.min( 1, WindowY ) );
 		SinScaleX, SinScaleY = -Sin * ScaleX, Sin * ScaleY;
 		CosScaleX, CosScaleY =  Cos * ScaleX, Cos * ScaleY;
 

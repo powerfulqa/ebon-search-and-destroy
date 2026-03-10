@@ -387,7 +387,7 @@ function me.NPCFound ( NpcID, Name )
 		if ( X ~= 0 and Y ~= 0 and CurrentMap > 0 ) then
 			StoreDiscovery( CurrentMap, X, Y );
 			me.Modules.UpdateMap( CurrentMap );
-			ChatPrint( "Sighting recorded for |cffFFFF00" .. NpcName() .. "|r: dot marker placed on map" );
+			ChatPrint( "Sighted |cffFFFF00" .. NpcName() .. "|r (map dot)" );
 		else
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );
 		end

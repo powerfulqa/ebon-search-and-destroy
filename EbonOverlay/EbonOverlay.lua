@@ -346,8 +346,6 @@ end
   * Function: EbonOverlay.NPCFound                                        *
   ****************************************************************************]]
 function me.NPCFound ( NpcID, Name )
-	-- [Ebonhold] debug: trace NPCFound entry to verify pin path
-	print( "NPCFound", Name or NpcID, "Map:", me.NPCMaps[ NpcID ] and "yes (path data)" or "no (pin only)" );
 	-- [Ebonhold] Phase 2: helpers
 	local function NpcName ()
 		if ( Name and Name ~= "" ) then return Name; end
@@ -385,29 +383,13 @@ function me.NPCFound ( NpcID, Name )
 		SetMapToCurrentZone();
 		local CurrentMap = GetCurrentMapAreaID() - 1;
 		local X, Y = GetPlayerMapPosition( "player" );
-		print( "=== NPCFound DEBUG ===" );
-		print( "npc:", NpcName() );
-		print( "x,y:", X, Y );
-		print( "CurrentMap:", CurrentMap );
 		if ( X ~= 0 and Y ~= 0 and CurrentMap > 0 ) then
-			print( "StoreDiscovery CALL" );
-			local success, err = pcall( StoreDiscovery, CurrentMap, X, Y );
-			print( "StoreDiscovery result:", success, err or "no error" );
-			print( "UpdateMap CALL", CurrentMap );
-			local success2, err2 = pcall( me.Modules.UpdateMap, CurrentMap );
-			print( "UpdateMap result:", success2, err2 or "no error" );
-			local mapDisc = me.Options.Discoveries and me.Options.Discoveries[ CurrentMap ];
-			local npcEntry = mapDisc and mapDisc[ NpcID ];
-			local discCount = 0;
-			if ( mapDisc ) then for _ in pairs( mapDisc ) do discCount = discCount + 1; end end
-			print( "Discoveries count (this map):", discCount );
-			print( "Discoveries entry for NpcID", NpcID, ":", npcEntry and ( npcEntry[1] .. ", " .. npcEntry[2] ) or "nil" );
+			StoreDiscovery( CurrentMap, X, Y );
+			me.Modules.UpdateMap( CurrentMap );
 			ChatPrint( "|cffFFFF00" .. NpcName() .. "|r sighted - Recorded on Map" );
 		else
-			print( "skipped: x/y zero or invalid map" );
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );
 		end
-		print( "=== END DEBUG ===" );
 	end
 end
 do

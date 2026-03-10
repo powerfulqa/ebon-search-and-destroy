@@ -396,6 +396,12 @@ function me.NPCFound ( NpcID, Name )
 			print( "UpdateMap CALL", CurrentMap );
 			local success2, err2 = pcall( me.Modules.UpdateMap, CurrentMap );
 			print( "UpdateMap result:", success2, err2 or "no error" );
+			local mapDisc = me.Options.Discoveries and me.Options.Discoveries[ CurrentMap ];
+			local npcEntry = mapDisc and mapDisc[ NpcID ];
+			local discCount = 0;
+			if ( mapDisc ) then for _ in pairs( mapDisc ) do discCount = discCount + 1; end end
+			print( "Discoveries count (this map):", discCount );
+			print( "Discoveries entry for NpcID", NpcID, ":", npcEntry and ( npcEntry[1] .. ", " .. npcEntry[2] ) or "nil" );
 		else
 			print( "skipped: x/y zero or invalid map" );
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );

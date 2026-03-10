@@ -1219,7 +1219,7 @@ do
 				me.Overlays.Add( NpcID );
 			end
 			if ( me.Overlays.Found ) then
-				me.Overlays.Found( NpcID );
+				me.Overlays.Found( NpcID, Name );
 			end
 		end
 

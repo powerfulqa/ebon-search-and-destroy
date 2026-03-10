@@ -345,9 +345,10 @@ end
 --[[****************************************************************************
   * Function: EbonOverlay.NPCFound                                        *
   ****************************************************************************]]
-function me.NPCFound ( NpcID )
+function me.NPCFound ( NpcID, Name )
 	-- [Ebonhold] Phase 2: helpers
 	local function NpcName ()
+		if ( Name and Name ~= "" ) then return Name; end
 		local L = EbonSearch and EbonSearch.L;
 		return ( L and L.NPCs and L.NPCs[ NpcID ] )
 			or ( EbonSearch and EbonSearch.OptionsCharacter and EbonSearch.OptionsCharacter.NPCs and EbonSearch.OptionsCharacter.NPCs[ NpcID ] )
@@ -429,8 +430,8 @@ do
 --[[****************************************************************************
   * Function: EbonOverlay[ MESSAGE_FOUND ]                                *
   ****************************************************************************]]
-	me[ MESSAGE_FOUND ] = function ( _, _, NpcID )
-		me.NPCFound( assert( tonumber( NpcID ), "Found message Npc ID must be a number." ) );
+	me[ MESSAGE_FOUND ] = function ( _, _, NpcID, _, Name )
+		me.NPCFound( assert( tonumber( NpcID ), "Found message Npc ID must be a number." ), Name );
 	end;
 end
 

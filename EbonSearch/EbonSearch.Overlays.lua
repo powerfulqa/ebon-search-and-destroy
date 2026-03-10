@@ -31,6 +31,6 @@ function me.Remove ( NpcID )
 	me:SendMessage( MESSAGE_REMOVE, NpcID, AddOnName );
 end
 -- Lets overlay mods know the NPC ID was found.
-function me.Found ( NpcID )
-	me:SendMessage( MESSAGE_FOUND, NpcID, AddOnName );
+function me.Found ( NpcID, Name )
+	me:SendMessage( MESSAGE_FOUND, NpcID, AddOnName, Name );
 end

@@ -121,8 +121,9 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
 - Keep Ebonhold-specific behavior stable: direct button trigger path (`SetNPC`) from passive detection, without `OnFound` side effects.
 - Any changes to rare lists should be validated against passive nameplate behavior to avoid regressions in alerting.
 
-### Release v2.1.1 Confirmed Working
+### Release v2.1.4 Confirmed Working
 - `EbonSearch.Overlays.Found(ID, Name)` — Name threaded through full pipeline, no ID numbers in alerts
 - EbonOverlay `NPCFound`: single `ChatPrint` confirmation in `elseif not Map` branch only; no duplicate prints
 - `StoreDiscovery` → `me.Modules.UpdateMap` — gold map pins placed correctly for all detections
 - `WasRecentlyDetected(Name)` — 3-second debounce keyed by Name only; GUID path removed entirely
+- `ApplyTransform` UV guard: triangles with any UV magnitude > 100 are hidden (extreme-zoom degenerate case). **Do not** revert to clamping UVs to `[0,1]` — normal rotated triangles have UVs in ~`[-5, 5]` and clamping makes paths blocky.

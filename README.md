@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.1.2
+# Ebonhold Search and Destroy v2.1.4
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -123,6 +123,13 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 ---
 
 ## Changelog
+
+### v2.1.4 (2026-03-10)
+- Fixed blocky minimap overlay paths: `ApplyTransform` now hides triangles whose UV values exceed ±100 (degenerate extreme-zoom triangles) instead of clamping all UVs to `[0,1]` — clamping was distorting every rotated triangle
+- Root cause confirmed via in-game debug: Det is healthy (0.24–0.96) on all normal triangles; crash-inducing values (e.g. `±28212`) only appear at extreme zoom and are correctly rejected by the new guard
+
+### v2.1.3 (2026-03-10)
+- Intermediate fix: reject triangles with `Det < 1e-5` — reverted, threshold was too aggressive and killed legitimate path triangles
 
 ### v2.1.2 (2026-03-10)
 - 🛠️ Hotfix: Clamp minimap TexCoord values to `[0, 1]` — prevents `SetTexCoord` crash caused by extreme UV values (e.g. `-31242`) produced by minimap zoom math

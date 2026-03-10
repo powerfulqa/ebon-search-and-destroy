@@ -1,6 +1,6 @@
 ## Context for EbonSearch / EbonOverlay
 
-**Project**: Ebonhold Search and Destroy v2.1.1
+**Project**: Ebonhold Search and Destroy v2.1.4
 **Client**: WotLK 3.3.5a (Interface 30300), Project Ebonhold private server
 **Forked from**: _NPCScan 7.x (Saiket), renamed and adapted in v2.0.0
 
@@ -19,6 +19,7 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 - **Secondary detection**: `PLAYER_TARGET_CHANGED` / `UPDATE_MOUSEOVER_UNIT` events
 - **Alert pipeline**: `TriggerFoundAlert` / `OnFound` → `me.Button:SetNPC(ID, Name)` → `Overlays.Found(ID, Name)` → `NPCFound(NpcID, Name)`
 - **Overlay**: EbonOverlay draws patrol paths; `EbonOverlay.PathData.lua` contains binary triangle coordinate strings - **never re-save as UTF-8**
+- **UV guard** (`ApplyTransform`): triangles whose computed UV values exceed `±100` are hidden (degenerate extreme-zoom artefacts). Do **not** clamp UVs to `[0,1]` — legitimate rotated triangles produce UVs in ~`[-5, 5]` and clamping distorts them.
 - **Rare data**: generated from PE-Questie DB via `tools/extract_npcscan_rare_tables.ps1` → `EbonSearch/generated_npcscan_rare_tables.lua`
 - **Minimap button**: 31x31 frame, 3-layer stack (BACKGROUND/ARTWORK/OVERLAY), dragon icon (`INV_Misc_Head_Dragon_Bronze`), drag-to-reposition
 
@@ -55,7 +56,7 @@ me.Frame:ScanNameplates (0.5s)  →  WasRecentlyDetected(Name)  →  BLOCKED (de
 
 ---
 
-### v2.1.1 Release Status
+### v2.1.4 Release Status
 
 | Component | Status |
 |---|---|
@@ -109,6 +110,8 @@ tools/         <- extractor + deploy scripts
 - `e395100` - v2.0.0 release prep (TOC bump, README, tag)
 - `da2aa7e` - v2.1.0: dynamic target keybind (EbonSearch_TargetButton); Name threading through overlay chain
 - `54ceb68` - v2.1.1: NAME_PLATE_UNIT_ADDED fast-path; WasRecentlyDetected Name-only debounce; debug print cleanup
+- `c379a1a` - v2.1.3: ApplyTransform Det < 1e-5 reject (reverted — too aggressive, killed legit path triangles)
+- `a223726` - v2.1.4: ApplyTransform UV magnitude guard (>100 = hide); fixes blocky paths; confirmed via in-game debug
 
 ---
 

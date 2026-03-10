@@ -346,6 +346,8 @@ end
   * Function: EbonOverlay.NPCFound                                        *
   ****************************************************************************]]
 function me.NPCFound ( NpcID, Name )
+	-- [Ebonhold] debug: trace NPCFound entry to verify pin path
+	print( "NPCFound", Name or NpcID, "Map:", me.NPCMaps[ NpcID ] and "yes (path data)" or "no (pin only)" );
 	-- [Ebonhold] Phase 2: helpers
 	local function NpcName ()
 		if ( Name and Name ~= "" ) then return Name; end

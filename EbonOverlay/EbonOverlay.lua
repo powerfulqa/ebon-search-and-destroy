@@ -385,12 +385,22 @@ function me.NPCFound ( NpcID, Name )
 		SetMapToCurrentZone();
 		local CurrentMap = GetCurrentMapAreaID() - 1;
 		local X, Y = GetPlayerMapPosition( "player" );
+		print( "=== NPCFound DEBUG ===" );
+		print( "npc:", NpcName() );
+		print( "x,y:", X, Y );
+		print( "CurrentMap:", CurrentMap );
 		if ( X ~= 0 and Y ~= 0 and CurrentMap > 0 ) then
-			StoreDiscovery( CurrentMap, X, Y );
-			me.Modules.UpdateMap( CurrentMap );
+			print( "StoreDiscovery CALL" );
+			local success, err = pcall( StoreDiscovery, CurrentMap, X, Y );
+			print( "StoreDiscovery result:", success, err or "no error" );
+			print( "UpdateMap CALL", CurrentMap );
+			local success2, err2 = pcall( me.Modules.UpdateMap, CurrentMap );
+			print( "UpdateMap result:", success2, err2 or "no error" );
 		else
+			print( "skipped: x/y zero or invalid map" );
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );
 		end
+		print( "=== END DEBUG ===" );
 	end
 end
 do

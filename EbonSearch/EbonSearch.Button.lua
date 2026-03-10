@@ -534,7 +534,7 @@ me:SetAttribute( "type", "macro" );
 local TargetKeybindButton = CreateFrame( "Button", "EbonSearch_TargetButton", nil, "SecureActionButtonTemplate" );
 TargetKeybindButton:SetAttribute( "type", "macro" );
 TargetKeybindButton:SetAttribute( "macrotext", "/cleartarget" );
-_G["BINDING_NAME_CLICK EbonSearch_TargetButton:LeftButton"] = "Target Detected Rare";
+_G["BINDING_NAME_CLICK_EBONSEARCH_TARGETBUTTON"] = "Target Detected Rare";
 
 me:SetScript( "OnEnter", me.OnEnter );
 me:SetScript( "OnLeave", me.OnLeave );

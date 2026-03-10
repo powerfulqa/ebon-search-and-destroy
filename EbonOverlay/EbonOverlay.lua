@@ -112,10 +112,8 @@ do
 		local ULx, ULy, LLx, LLy, URx, URy, LRx, LRy;
 		function ApplyTransform( A, B, C, D, E, F )
 			Det = A * E - B * D;
-			-- [Ebonhold] Hard-reject near-zero Det: tiny triangles (e.g. extreme minimap zoom)
-			-- produce UV values like 28212 that crash SetTexCoord on the 3.3.5a client.
-			-- 1e-5 threshold catches cases (e.g. Det=3.55e-5) that 1e-6 missed.
-			if ( Det ~= Det or math.abs( Det ) < 1e-5 ) then
+			-- Hard-reject degenerate transform; clamping just smears it across the map
+			if ( Det == 0 or Det ~= Det ) then
 				Texture:Hide();
 				return;
 			end
@@ -126,8 +124,8 @@ do
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
 
-			-- [Ebonhold] Belt-and-suspenders UV clamp: any Det that slips the threshold
-			-- above is clamped here rather than crashing SetTexCoord.
+			-- [Ebonhold] Clamp UVs to [0,1] — extreme minimap zoom can produce values
+			-- like 28212 that crash SetTexCoord on the 3.3.5a client.
 			ULx = math.max( 0, math.min( 1, ULx ) ); ULy = math.max( 0, math.min( 1, ULy ) );
 			LLx = math.max( 0, math.min( 1, LLx ) ); LLy = math.max( 0, math.min( 1, LLy ) );
 			URx = math.max( 0, math.min( 1, URx ) ); URy = math.max( 0, math.min( 1, URy ) );

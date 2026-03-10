@@ -113,9 +113,9 @@ do
 		function ApplyTransform( A, B, C, D, E, F )
 			Det = A * E - B * D;
 			-- [Ebonhold] Hard-reject near-zero Det: tiny triangles (e.g. extreme minimap zoom)
-			-- produce UVs like -31242 that crash SetTexCoord on the 3.3.5a client.
-			-- 1e-6 threshold skips them cleanly; smooth highlights remain on normal-sized tris.
-			if ( Det ~= Det or math.abs( Det ) < 1e-6 ) then
+			-- produce UV values like 28212 that crash SetTexCoord on the 3.3.5a client.
+			-- 1e-5 threshold catches cases (e.g. Det=3.55e-5) that 1e-6 missed.
+			if ( Det ~= Det or math.abs( Det ) < 1e-5 ) then
 				Texture:Hide();
 				return;
 			end
@@ -125,6 +125,13 @@ do
 			LLx, LLy = ( BF - CE - B ) / Det, ( CD - AF + A ) / Det;
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
+
+			-- [Ebonhold] Belt-and-suspenders UV clamp: any Det that slips the threshold
+			-- above is clamped here rather than crashing SetTexCoord.
+			ULx = math.max( 0, math.min( 1, ULx ) ); ULy = math.max( 0, math.min( 1, ULy ) );
+			LLx = math.max( 0, math.min( 1, LLx ) ); LLy = math.max( 0, math.min( 1, LLy ) );
+			URx = math.max( 0, math.min( 1, URx ) ); URy = math.max( 0, math.min( 1, URy ) );
+			LRx = math.max( 0, math.min( 1, LRx ) ); LRy = math.max( 0, math.min( 1, LRy ) );
 
 			Texture:SetTexCoord( ULx, ULy, LLx, LLy, URx, URy, LRx, LRy );
 		end

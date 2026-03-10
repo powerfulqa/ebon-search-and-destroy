@@ -167,6 +167,10 @@ function me:Update ( ID, Name )
 		self:RegisterEvent( "UNIT_MODEL_CHANGED" );
 	end
 	self:SetAttribute( "macrotext", "/targetexact "..Name ); -- [Ebonhold]
+	-- [Ebonhold] v2.1.0: keep hidden keybind button in sync with the active rare
+	if ( not InCombatLockdown() ) then
+		EbonSearch_TargetButton:SetAttribute( "macrotext", "/targetexact "..Name );
+	end
 	self:PLAYER_TARGET_CHANGED(); -- Updates the target icon
 	self:Show();
 	self:StopAnimating();
@@ -524,6 +528,13 @@ FadeIn:SetEndDelay( 0.25 );
 
 
 me:SetAttribute( "type", "macro" );
+
+-- [Ebonhold] v2.1.0: hidden keybind button - "Target Detected Rare" (NPCScan pattern)
+-- Parented to nil so it is never shown; carries the /targetexact macro for the keybind.
+local TargetKeybindButton = CreateFrame( "Button", "EbonSearch_TargetButton", nil, "SecureActionButtonTemplate" );
+TargetKeybindButton:SetAttribute( "type", "macro" );
+TargetKeybindButton:SetAttribute( "macrotext", "/cleartarget" );
+_G["BINDING_NAME_CLICK EbonSearch_TargetButton:LeftButton"] = "Target Detected Rare";
 
 me:SetScript( "OnEnter", me.OnEnter );
 me:SetScript( "OnLeave", me.OnLeave );

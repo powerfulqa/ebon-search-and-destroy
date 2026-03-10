@@ -375,7 +375,6 @@ function me.NPCFound ( NpcID, Name )
 				me.NPCsFoundX[ NpcID ], me.NPCsFoundY[ NpcID ] = X, Y;
 				StoreDiscovery( Map, X, Y );
 				me.Modules.UpdateMap( Map ); -- always repaint so pin appears
-				ChatPrint( "EbonSearch: Found |cffFFFF00" .. NpcName() .. "|r - Recorded on Map" );
 				return true;
 			end
 		end
@@ -387,7 +386,6 @@ function me.NPCFound ( NpcID, Name )
 		if ( X ~= 0 and Y ~= 0 and CurrentMap > 0 ) then
 			StoreDiscovery( CurrentMap, X, Y );
 			me.Modules.UpdateMap( CurrentMap );
-			ChatPrint( "EbonSearch: Found |cffFFFF00" .. NpcName() .. "|r - Recorded on Map" );
 		else
 			ChatPrint( "No map data for |cffFFFF00" .. NpcName() .. "|r: position could not be determined" );
 		end

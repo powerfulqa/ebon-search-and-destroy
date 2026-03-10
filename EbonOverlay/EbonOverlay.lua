@@ -190,6 +190,10 @@ do
 
 		-- Common operations
 		WindowX, WindowY = BorderScale / WindowX, BorderScale / WindowY;
+		-- [Ebonhold] Clamp window scale factors — extreme minimap zoom can shrink the
+		-- bounding window to near-zero, inverting to massive values and crashing SetTexCoord.
+		WindowX = math.max( -1, math.min( 1, WindowX ) );
+		WindowY = math.max( -1, math.min( 1, WindowY ) );
 		SinScaleX, SinScaleY = -Sin * ScaleX, Sin * ScaleY;
 		CosScaleX, CosScaleY =  Cos * ScaleX, Cos * ScaleY;
 

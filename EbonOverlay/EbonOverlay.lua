@@ -112,8 +112,10 @@ do
 		local ULx, ULy, LLx, LLy, URx, URy, LRx, LRy;
 		function ApplyTransform( A, B, C, D, E, F )
 			Det = A * E - B * D;
-			-- Hard-reject degenerate transform; clamping just smears it across the map
-			if ( Det == 0 or Det ~= Det ) then
+			-- [Ebonhold] Hard-reject near-zero Det: tiny triangles (e.g. extreme minimap zoom)
+			-- produce UVs like -31242 that crash SetTexCoord on the 3.3.5a client.
+			-- 1e-6 threshold skips them cleanly; smooth highlights remain on normal-sized tris.
+			if ( Det ~= Det or math.abs( Det ) < 1e-6 ) then
 				Texture:Hide();
 				return;
 			end
@@ -123,24 +125,6 @@ do
 			LLx, LLy = ( BF - CE - B ) / Det, ( CD - AF + A ) / Det;
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
-
-			-- Hard-reject NaN UVs (inf/inf from near-zero Det slips past == 0 check)
-			if (
-				ULx ~= ULx or ULy ~= ULy or
-				LLx ~= LLx or LLy ~= LLy or
-				URx ~= URx or URy ~= URy or
-				LRx ~= LRx or LRy ~= LRy
-			) then
-				Texture:Hide();
-				return;
-			end
-
-			-- [Ebonhold] Clamp UVs to [0,1] — extreme minimap zoom can produce values
-			-- like -31242, which crash SetTexCoord on the 3.3.5a client.
-			ULx = math.max( 0, math.min( 1, ULx ) ); ULy = math.max( 0, math.min( 1, ULy ) );
-			LLx = math.max( 0, math.min( 1, LLx ) ); LLy = math.max( 0, math.min( 1, LLy ) );
-			URx = math.max( 0, math.min( 1, URx ) ); URy = math.max( 0, math.min( 1, URy ) );
-			LRx = math.max( 0, math.min( 1, LRx ) ); LRy = math.max( 0, math.min( 1, LRy ) );
 
 			Texture:SetTexCoord( ULx, ULy, LLx, LLy, URx, URy, LRx, LRy );
 		end

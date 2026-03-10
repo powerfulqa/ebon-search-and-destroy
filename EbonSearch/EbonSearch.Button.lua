@@ -81,7 +81,7 @@ function me:SetNPC ( ID, Name )
 	if ( tonumber( ID ) ) then
 		ID = tonumber( ID );
 		EbonSearch.Overlays.Add( ID );
-		EbonSearch.Overlays.Found( ID );
+		EbonSearch.Overlays.Found( ID, Name );
 	end
 
 	self.PlaySound( EbonSearch.Options.AlertSound );

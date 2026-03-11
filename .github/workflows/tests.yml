@@ -3,10 +3,6 @@ name: Unit Tests
 on:
   push:
     branches: [main]
-    paths:
-      - 'EbonSearch/**'
-      - 'EbonOverlay/**'
-      - 'tests/**'
   pull_request:
     branches: [main]
 

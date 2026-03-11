@@ -15,27 +15,14 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 ### Architecture
 
 - **Detection**: OnUpdate loop over `nameplate1..40` - `UnitExists` → `UnitName` → match against rare name table
-- **Fast-path detection**: `NAME_PLATE_UNIT_ADDED` event → instant check on nameplate appearance (no OnUpdate delay)
+- **Fast-path detection**: `NAME_PLATE_UNIT_ADDED` event → instant check on nameplate appearance
 - **Secondary detection**: `PLAYER_TARGET_CHANGED` / `UPDATE_MOUSEOVER_UNIT` events
 - **Alert pipeline**: `TriggerFoundAlert` / `OnFound` → `me.Button:SetNPC(ID, Name)` → `Overlays.Found(ID, Name)` → `NPCFound(NpcID, Name)`
 - **Overlay**: EbonOverlay draws patrol paths; `EbonOverlay.PathData.lua` contains binary triangle coordinate strings - **never re-save as UTF-8**
-- **UV guard** (`ApplyTransform`): triangles whose computed UV values exceed `±100` are hidden (degenerate extreme-zoom artefacts). Do **not** clamp UVs to `[0,1]` — legitimate rotated triangles produce UVs in ~`[-5, 5]` and clamping distorts them.
+- **UV guard** (`ApplyTransform`): triangles whose computed UV values exceed ±100 are hidden. Do **not** clamp UVs to `[0,1]` — legitimate rotated triangles produce UVs in ~`[-5, 5]`.
+- **Debounce**: `WasRecentlyDetected(Name)` — 3-second window keyed by Name only (`UnitGUID` unreliable on 3.3.5a)
 - **Rare data**: generated from PE-Questie DB via `tools/extract_npcscan_rare_tables.ps1` → `EbonSearch/generated_npcscan_rare_tables.lua`
 - **Minimap button**: 31x31 frame, 3-layer stack (BACKGROUND/ARTWORK/OVERLAY), dragon icon (`INV_Misc_Head_Dragon_Bronze`), drag-to-reposition
-
-### Detection Pipeline (v2.1.1)
-
-```
-NAME_PLATE_UNIT_ADDED  →  TriggerFoundAlert  →  Button:SetNPC(Name)  →  Overlays.Found(ID, Name)  ✓
-ScanTrackedNameplates (0.3s)  →  WasRecentlyDetected(Name)  →  BLOCKED (debounced)          ✓
-me.Frame:ScanNameplates (0.5s)  →  WasRecentlyDetected(Name)  →  BLOCKED (debounced)         ✓
-```
-
-### Debounce Key (v2.1.1)
-
-- **Key**: `Name` only — `UnitGUID("nameplateN")` is unreliable on WotLK 3.3.5a and returns `nil` between ticks, creating a different key each call and bypassing debounce
-- `WasRecentlyDetected(Name)` — 3-second window; keyed by stable NPC name string
-- All 5 call sites updated; `Guid` variable retained for logging only
 
 ---
 
@@ -52,7 +39,7 @@ me.Frame:ScanNameplates (0.5s)  →  WasRecentlyDetected(Name)  →  BLOCKED (de
 ### Commands
 
 - Primary: `/esd` (subcommands: `add`, `remove`, `cache`, `clear`, `zone blacklist add|remove|list`)
-- Dev: `/esd debug overlays` — dumps last `ApplyTransform` sample (Det, 8 UVs, max|UV|, hidden flag) to chat; useful for verifying UV guard behaviour without a profiler
+- Dev: `/esd debug overlays` — dumps last `ApplyTransform` sample to chat
 - Legacy alias: `/npcscan` → routes to the same ESD handler
 
 ---
@@ -91,21 +78,8 @@ me.Frame:ScanNameplates (0.5s)  →  WasRecentlyDetected(Name)  →  BLOCKED (de
 EbonSearch/    <- was _NPCScan/
 EbonOverlay/   <- was _NPCScanOverlay/
 tools/         <- extractor + deploy scripts
-tests/         <- Lua unit tests (run with `lua tests/run_tests.lua`)
+tests/         <- Lua unit tests (`lua tests/run_tests.lua`)
 ```
-
----
-
-### Test Infrastructure
-
-- **Runner**: `tests/run_tests.lua` — assertion library + path-agnostic suite loader
-- **Suites** (112 tests total):
-  - `test_overlay_math.lua` — `ApplyTransform` Det guards, UV bounds, no-clamp regression (9 tests)
-  - `test_detection.lua` — `WasRecentlyDetected` debounce window, expiry, stale pruning (9 tests)
-  - `test_texture_geom.lua` — `TextureAdd` ScaleX/Y guards, `DrawPath` byte decoding, coord round-trip (9 tests)
-  - `test_tracked_names.lua` — `TrackedNamesRebuild`, zone blacklist, dirty flag, duplicates (13 tests)
-- **CI**: `.github/workflows/tests.yml` — `lua5.4` on `ubuntu-latest`; triggers on push/PR touching `EbonSearch/**`, `EbonOverlay/**`, `tests/**`
-- **Run locally**: `lua tests/run_tests.lua` from repo root (requires Lua 5.x in PATH)
 
 ---
 
@@ -125,10 +99,9 @@ tests/         <- Lua unit tests (run with `lua tests/run_tests.lua`)
 - `963b018` - Toast click: skull raid marker on targeted rare
 - `13c9d7f` - Em dash removal across repo
 - `e395100` - v2.0.0 release prep (TOC bump, README, tag)
-- `da2aa7e` - v2.1.0: dynamic target keybind (EbonSearch_TargetButton); Name threading through overlay chain
-- `54ceb68` - v2.1.1: NAME_PLATE_UNIT_ADDED fast-path; WasRecentlyDetected Name-only debounce; debug print cleanup
-- `c379a1a` - v2.1.3: ApplyTransform Det < 1e-5 reject (reverted — too aggressive, killed legit path triangles)
-- `a223726` - v2.1.4: ApplyTransform UV magnitude guard (>100 = hide); fixes blocky paths; confirmed via in-game debug
+- `da2aa7e` - v2.1.0: dynamic target keybind; Name threading through overlay chain
+- `54ceb68` - v2.1.1: NAME_PLATE_UNIT_ADDED fast-path; WasRecentlyDetected Name-only debounce
+- `a223726` - v2.1.4: ApplyTransform UV magnitude guard (>100 = hide); fixes blocky paths
 - `d1ed74d` - 112/112 Lua unit tests; `/esd debug overlays` dev command; GitHub Actions CI
 
 ---

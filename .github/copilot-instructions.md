@@ -127,3 +127,5 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
 - `StoreDiscovery` → `me.Modules.UpdateMap` — gold map pins placed correctly for all detections
 - `WasRecentlyDetected(Name)` — 3-second debounce keyed by Name only; GUID path removed entirely
 - `ApplyTransform` UV guard: triangles with any UV magnitude > 100 are hidden (extreme-zoom degenerate case). **Do not** revert to clamping UVs to `[0,1]` — normal rotated triangles have UVs in ~`[-5, 5]` and clamping makes paths blocky.
+- `EbonOverlay.PrintDebugTransform()` — `/esd debug overlays` dumps last `ApplyTransform` sample (Det, 8 UVs, max|UV|, hidden flag) to chat for in-game UV guard verification
+- 112/112 Lua unit tests pass in `tests/`; run `lua tests/run_tests.lua` before pushing changes to `EbonSearch/` or `EbonOverlay/`

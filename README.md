@@ -50,8 +50,21 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 | `/esd zone blacklist add [zone]` | Blacklist current zone (or named zone) |
 | `/esd zone blacklist remove [zone]` | Un-blacklist a zone |
 | `/esd zone blacklist list` | List all blacklisted zones |
+| `/esd debug overlays` | Dump last triangle's Det + UV values to chat (dev tool) |
 
 > `/npcscan` is retained as a backward-compatible alias for `/esd`. It is not the primary command.
+
+---
+
+## Development
+
+Build-time unit tests run with standard Lua 5.x — no WoW client needed:
+
+```powershell
+lua tests/run_tests.lua
+```
+
+112 tests across 4 suites: `test_overlay_math`, `test_detection`, `test_texture_geom`, `test_tracked_names`. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and pull request.
 
 ---
 
@@ -127,6 +140,8 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 ### v2.1.4 (2026-03-10)
 - Fixed blocky minimap overlay paths: `ApplyTransform` now hides triangles whose UV values exceed ±100 (degenerate extreme-zoom triangles) instead of clamping all UVs to `[0,1]` — clamping was distorting every rotated triangle
 - Root cause confirmed via in-game debug: Det is healthy (0.24–0.96) on all normal triangles; crash-inducing values (e.g. `±28212`) only appear at extreme zoom and are correctly rejected by the new guard
+- Added `/esd debug overlays` dev command: dumps last `ApplyTransform` sample (Det, all 8 UVs, max|UV|, hidden flag) to chat
+- Added 112/112 Lua unit tests (`tests/`) and GitHub Actions CI
 
 ### v2.1.3 (2026-03-10)
 - Intermediate fix: reject triangles with `Det < 1e-5` — reverted, threshold was too aggressive and killed legitimate path triangles

@@ -1,8 +1,37 @@
-# EbonSearch & EbonOverlay — Manual Test Plan
+# EbonSearch & EbonOverlay — Test Plan
 
 Applies to: **EbonSearch v2.1.4 / EbonOverlay v2.1.4** (Interface 30300, WotLK 3.3.5a)
 
-Run the sections relevant to whatever file you just changed. Each section lists its trigger files at the top.
+---
+
+## 0. Automated Unit Tests
+
+**Run before every push.** No WoW client required — standard Lua 5.x only.
+
+```powershell
+# From repo root (Lua 5.x must be in PATH):
+lua tests/run_tests.lua
+```
+
+| Suite | What it covers | Tests |
+|---|---|---|
+| `test_overlay_math.lua` | `ApplyTransform` Det guards, UV bounds, no-clamp regression | 9 |
+| `test_detection.lua` | `WasRecentlyDetected` debounce window, expiry, stale pruning | 9 |
+| `test_texture_geom.lua` | `TextureAdd` ScaleX/Y guards, `DrawPath` byte decoding, coord round-trip | 9 |
+| `test_tracked_names.lua` | `TrackedNamesRebuild`, zone blacklist, dirty flag, duplicates | 13 |
+| **Total** | | **112** |
+
+All 112 tests must pass before moving on to in-game manual testing. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and PR.
+
+If a terminal was opened before Lua was installed:
+```powershell
+$env:PATH += ";C:\Users\ch\AppData\Local\Programs\Lua\bin"
+lua tests/run_tests.lua
+```
+
+---
+
+Run the manual sections below for whatever file you just changed. Each section lists its trigger files at the top.
 
 ---
 

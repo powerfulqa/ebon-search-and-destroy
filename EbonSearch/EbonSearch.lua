@@ -1821,6 +1821,13 @@ SlashCmdList["ESD"] = function ( Input )
 		wipe( RecentDetections );
 		TrackedNamesDirty = true;
 		me.Print( "All custom NPCs cleared.", GREEN_FONT_COLOR );
+	elseif ( Command == "DEBUG" and Sub == "OVERLAYS" ) then
+		-- [Ebonhold] Dev: dump last ApplyTransform sample from EbonOverlay
+		if ( EbonOverlay and EbonOverlay.PrintDebugTransform ) then
+			EbonOverlay.PrintDebugTransform();
+		else
+			me.Print( "EbonOverlay not loaded.", RED_FONT_COLOR );
+		end
 	else
 		me.Print( "|cff66ccffEbonhold|r Search & Destroy v" .. me.Version );
 		me.Print( "  |cffFFFF00/esd|r                             -- open options panel" );
@@ -1831,6 +1838,7 @@ SlashCmdList["ESD"] = function ( Input )
 		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
 		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );
+		me.Print( "  /esd debug overlays               -- dev: dump last UV transform sample" );
 	end
 end;
 -- /npcscan is a backward-compatible alias for the ESD handler

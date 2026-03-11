@@ -124,6 +124,17 @@ do
 			URx, URy = ( BF - CE + E ) / Det, ( CD - AF - D ) / Det;
 			LRx, LRy = ( BF - CE + E - B ) / Det, ( CD - AF - D + A ) / Det;
 
+			-- [Ebonhold] Dev: capture last transform sample for /esd debug overlays
+			local _dbg = me.DebugTransform;
+			if ( _dbg ) then
+				_dbg.Det  = Det;
+				_dbg.ULx, _dbg.ULy = ULx, ULy;
+				_dbg.LLx, _dbg.LLy = LLx, LLy;
+				_dbg.URx, _dbg.URy = URx, URy;
+				_dbg.LRx, _dbg.LRy = LRx, LRy;
+				_dbg.hidden = false;
+			end
+
 			-- [Ebonhold] Hide triangles whose UVs are pathologically large (e.g. ±28212 from
 			-- extreme minimap zoom) — outside ±100 is never valid and crashes SetTexCoord
 			-- on the 3.3.5a client. Legitimate triangles produce UVs in the range ~[-5, 5]
@@ -132,6 +143,7 @@ do
 			     math.abs( LLx ) > 100 or math.abs( LLy ) > 100 or
 			     math.abs( URx ) > 100 or math.abs( URy ) > 100 or
 			     math.abs( LRx ) > 100 or math.abs( LRy ) > 100 ) then
+				if ( _dbg ) then _dbg.hidden = true; end
 				Texture:Hide();
 				return;
 			end
@@ -202,6 +214,33 @@ do
 			WindowY * ( CosScaleY + SinScaleX * ShearFactor ),
 			WindowY * ( ( CosScaleY + SinScaleX * ( 1 + ShearFactor ) ) * BorderOffset + By - MinY ) / BorderScale );
 	end
+end
+-- [Ebonhold] Dev: holds the last ApplyTransform sample; read via /esd debug overlays
+me.DebugTransform = {};
+--- Prints the last recorded ApplyTransform sample to chat (/esd debug overlays).
+function me.PrintDebugTransform ()
+	local dbg = me.DebugTransform;
+	if ( not dbg or dbg.Det == nil ) then
+		DEFAULT_CHAT_FRAME:AddMessage( "|cff66ccffEbonOverlay|r debug: no sample yet - open world map over a mapped zone first", 1, 1, 0 );
+		return;
+	end
+	local function f( v ) return v ~= nil and string.format( "%.6f", v ) or "nil"; end
+	local maxUV = math.max(
+		math.abs( dbg.ULx or 0 ), math.abs( dbg.ULy or 0 ),
+		math.abs( dbg.LLx or 0 ), math.abs( dbg.LLy or 0 ),
+		math.abs( dbg.URx or 0 ), math.abs( dbg.URy or 0 ),
+		math.abs( dbg.LRx or 0 ), math.abs( dbg.LRy or 0 ) );
+	local uvColor   = maxUV > 100 and "|cffFF4444" or "|cff44FF44";
+	local passColor = not dbg.hidden and "|cff44FF44PASS|r" or "|cffFF4444BLOCKED|r";
+	DEFAULT_CHAT_FRAME:AddMessage( "|cff66ccffEbonOverlay debug overlays|r" );
+	DEFAULT_CHAT_FRAME:AddMessage( "  Det    = " .. f( dbg.Det ) .. "  (guard: Det==0 or NaN -> hide)" );
+	DEFAULT_CHAT_FRAME:AddMessage( "  UL UV  = " .. f( dbg.ULx ) .. ", " .. f( dbg.ULy ) );
+	DEFAULT_CHAT_FRAME:AddMessage( "  LL UV  = " .. f( dbg.LLx ) .. ", " .. f( dbg.LLy ) );
+	DEFAULT_CHAT_FRAME:AddMessage( "  UR UV  = " .. f( dbg.URx ) .. ", " .. f( dbg.URy ) );
+	DEFAULT_CHAT_FRAME:AddMessage( "  LR UV  = " .. f( dbg.LRx ) .. ", " .. f( dbg.LRy ) );
+	DEFAULT_CHAT_FRAME:AddMessage( "  max|UV| = " .. uvColor .. string.format( "%.6f", maxUV ) .. "|r  (guard: >100 -> hide)" );
+	DEFAULT_CHAT_FRAME:AddMessage( "  guard fired (hidden) = " .. tostring( dbg.hidden ) );
+	DEFAULT_CHAT_FRAME:AddMessage( "  UV mode = pass-through (no clamp): " .. passColor );
 end
 --[[****************************************************************************
   * Function: EbonOverlay:TextureRemoveAll                                *

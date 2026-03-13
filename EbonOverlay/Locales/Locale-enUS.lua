@@ -19,22 +19,22 @@ EbonOverlayLocalization = setmetatable( {
 	};
 
 	CONFIG_ALPHA = "Alpha",
-	CONFIG_DESC = "Control which maps will show mob path overlays.  Most map-modifying addons are controlled with the World Map option.",
+	CONFIG_DESC = "Choose which maps show mob path overlays.  Most map addons use the World Map setting.",
 	CONFIG_SHOWALL = "Always show all paths",
-	CONFIG_SHOWALL_DESC = "Normally when a mob isn't being searched for, its path gets taken off the map.  Enable this setting to always show every known patrol instead.",
+	CONFIG_SHOWALL_DESC = "Normally, paths are hidden for mobs you aren't tracking.  Turn this on to always show every known patrol route.",
 	CONFIG_TITLE = "Overlay",
 	CONFIG_TITLE_STANDALONE = "|cff66ccffEbonhold|r Overlay",
 	CONFIG_ZONE = "Zone:",
 	MODULE_ALPHAMAP3 = "AlphaMap3 AddOn",
 	MODULE_BATTLEFIELDMINIMAP = "Battlefield-Minimap Popout",
 	MODULE_MINIMAP = "Minimap",
-	MODULE_RANGERING_DESC = "Note: The range ring only appears in zones with tracked rares.",
+	MODULE_RANGERING_DESC = "The range ring only appears in zones with tracked rares.",
 	MODULE_RANGERING_FORMAT = "Show %dyd ring for approximate detection range",
 	MODULE_WORLDMAP = "Main World Map",
 	MODULE_WORLDMAP_KEY = "|cff3399ffEbon|r|cffFFCC00Overlay|r",
 	MODULE_WORLDMAP_KEY_FORMAT = "• %s",
 	MODULE_WORLDMAP_TOGGLE = "|cff3399ffEbon|r|cffFFCC00Overlay|r",
-	MODULE_WORLDMAP_TOGGLE_DESC = "If enabled, displays |cff3399ffEbon|r|cffFFCC00Overlay|r's paths for tracked NPCs.",
+	MODULE_WORLDMAP_TOGGLE_DESC = "Shows |cff3399ffEbon|r|cffFFCC00Overlay|r patrol paths for tracked NPCs.",
 
 	-- Phrases localized by default UI
 	CONFIG_ENABLE = ENABLE;

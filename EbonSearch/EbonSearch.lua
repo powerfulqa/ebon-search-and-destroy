@@ -12,10 +12,11 @@ me.Frame = CreateFrame( "Frame" );
 me.Version = GetAddOnMetadata( ..., "Version" ):match( "^([%d.]+)" );
 
 me.Options = {
-Version = me.Version;
-DisableCache = true;
-ZoneBlacklist = {}; -- [Ebonhold] v2.0.0: [ ZoneName ] = true to suppress scanning in that zone
-MinimapAngle = math.pi * 0.75; -- [Ebonhold] v2.0.0: minimap button position angle (radians, clockwise from top)
+	Version = me.Version;
+	DisableCache = true;
+	ZoneBlacklist = {}; -- [Ebonhold] v2.0.0: [ ZoneName ] = true to suppress scanning in that zone
+	MinimapAngle = math.pi * 0.75; -- [Ebonhold] v2.0.0: minimap button position angle (radians, clockwise from top)
+	FilterWildlife = true; -- [Ebonhold] v2.1.7: suppress known non-rare wildlife misfires (e.g. Barrens Plainsstrider/Giraffe)
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -821,6 +822,26 @@ me.SessionNPCNames = SessionNPCNames; -- [Ebonhold] exposed so Config.Search.NPC
 local RecentDetections = {}; --- [ GuidOrName ] = GetTime() timestamp
 local RecentDetectionWindow = 3;
 
+-- [Ebonhold] v2.1.7: names that misfire as rare on Ebonhold but are regular wildlife.
+-- Add new entries here when new false-positives are reported; do NOT blacklist entire zones.
+local WILDLIFE_BLACKLIST = {
+	["Plainsstrider"]        = true,
+	["Ornery Plainsstrider"] = true,
+	["Giraffe"]              = true,
+	["Barris Giraffe"]       = true,
+};
+
+-- [Ebonhold] v2.1.7: ring buffer of the last N classification hits in ProcessUnitForRares.
+-- Populated after the wildlife filter so only non-suppressed candidates are recorded.
+-- Printed by /esd misfire for in-game misfire debugging.
+local MisfireLog     = {};
+local MisfireLogSize = 10;
+local MisfireLogNext = 1;
+local function LogMisfireHit ( Name, Classification )
+	MisfireLog[ MisfireLogNext ] = { name = Name, classification = Classification, time = GetTime() };
+	MisfireLogNext = ( MisfireLogNext % MisfireLogSize ) + 1;
+end
+
 local function TrackedNamesRebuild ()
 	wipe( TrackedNames );
 	for NpcID, Name in pairs( me.OptionsCharacter.NPCs ) do
@@ -1426,18 +1447,21 @@ do
 
 	-- [Ebonhold] v2.0.0: scan target and mouseover units for rare matches.
 	-- Catches rares that are targeted/moused-over even when nameplates are hidden or off.
+	-- [Ebonhold] v2.1.7: Name checked before Classification; WILDLIFE_BLACKLIST filter applied early.
 	local function ProcessUnitForRares ( UnitID )
 		if ( not UnitExists( UnitID ) ) then return; end
 		if ( UnitPlayerControlled( UnitID ) ) then return; end
+		-- [Ebonhold] v2.1.7: resolve name first so wildlife filter short-circuits before any further API calls
+		local Name = UnitName( UnitID );
+		if ( not Name ) then return; end
+		if ( me.Options.FilterWildlife ~= false and WILDLIFE_BLACKLIST[ Name ] ) then return; end
 		local Classification = UnitClassification( UnitID );
+		LogMisfireHit( Name, Classification ); -- [Ebonhold] v2.1.7: record non-blacklisted candidates for /esd misfire
 		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then return; end
 		local Reaction = UnitReaction( UnitID, "player" );
 		if ( not Reaction or Reaction > 4 ) then return; end -- friendly or neutral
-		local Name = UnitName( UnitID );
-		if ( not Name ) then return; end
 		local NpcID = GetTrackedNpcIDByName( Name );
 		if ( not NpcID ) then return; end
-		local Guid = UnitGUID( UnitID );
 		if ( WasRecentlyDetected( Name ) ) then return; end
 		if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
 		me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
@@ -1828,6 +1852,19 @@ SlashCmdList["ESD"] = function ( Input )
 		else
 			me.Print( "EbonOverlay not loaded.", RED_FONT_COLOR );
 		end
+	elseif ( Command == "MISFIRE" ) then
+		-- [Ebonhold] v2.1.7: dump last ProcessUnitForRares classification hits for misfire debugging
+		me.Print( "|cff66ccffEbonSearch|r misfire log (last " .. MisfireLogSize .. " classification hits):" );
+		local count = 0;
+		for i = 1, MisfireLogSize do
+			local entry = MisfireLog[ i ];
+			if ( entry ) then
+				count = count + 1;
+				local age = math.floor( GetTime() - entry.time );
+				me.Print( string.format( "  |cffFFFF00%s|r / %s  (%ds ago)", entry.name, entry.classification or "?", age ) );
+			end
+		end
+		if ( count == 0 ) then me.Print( "  (no entries yet -- walk near a rare or use /esd debug targets)." ); end
 	else
 		me.Print( "|cff66ccffEbonhold|r Search & Destroy v" .. me.Version );
 		me.Print( "  |cffFFFF00/esd|r                             -- open options panel" );
@@ -1839,6 +1876,7 @@ SlashCmdList["ESD"] = function ( Input )
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
 		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );
 		me.Print( "  /esd debug overlays               -- dev: dump last UV transform sample" );
+		me.Print( "  /esd misfire                      -- dev: last " .. MisfireLogSize .. " ProcessUnitForRares classification hits" );
 	end
 end;
 -- /npcscan is a backward-compatible alias for the ESD handler

@@ -2,8 +2,8 @@
 ## Title: Ebonhold Search and Destroy (Overlay)
 ## Notes: Ebonhold Search and Destroy Overlay v2.0.0 (Saiket -> Serv)
 ## Author: Serv (powerfulqa)
-## Version: 2.1.0
-## X-Date: 2026-03-09
+## Version: 2.1.5
+## X-Date: 2026-03-19
 
 ## X-Localizations: enUS
 ## SavedVariables: EbonOverlayDB

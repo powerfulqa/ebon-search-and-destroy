@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.1.4
+# Ebonhold Search and Destroy v2.1.5
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -51,6 +51,7 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 | `/esd zone blacklist remove [zone]` | Un-blacklist a zone |
 | `/esd zone blacklist list` | List all blacklisted zones |
 | `/esd debug overlays` | Dump last triangle's Det + UV values to chat (dev tool) |
+| `/esd misfire` | Print last 10 classification hits from the nameplate scanner (dev tool) |
 
 > `/npcscan` is retained as a backward-compatible alias for `/esd`. It is not the primary command.
 
@@ -136,6 +137,12 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 ---
 
 ## Changelog
+
+### v2.1.5 (2026-03-19)
+- **Barrens wildlife misfire fix**: `ProcessUnitForRares` now resolves `UnitName()` before calling `UnitClassification()` and rejects known false-rare wildlife (Plainsstrider, Ornery Plainsstrider, Giraffe, Barris Giraffe) via a `WILDLIFE_BLACKLIST` table. Actual Barrens rares (e.g. Lar'korwi Mate) are unaffected
+- Added `FilterWildlife = true` option (default on); set to `false` in-game to temporarily disable without reloading
+- Added `/esd misfire` dev command: prints the last 10 non-blacklisted classification hits (name / classification / age in seconds) for diagnosing future false positives
+- Removed dead `local Guid = UnitGUID(UnitID)` line in `ProcessUnitForRares`
 
 ### v2.1.4 (2026-03-10)
 - Fixed blocky minimap overlay paths: `ApplyTransform` now hides triangles whose UV values exceed ±100 (degenerate extreme-zoom triangles) instead of clamping all UVs to `[0,1]`. Clamping was distorting every rotated triangle

@@ -59,6 +59,7 @@ dofile(_dir .. "test_overlay_math.lua")
 dofile(_dir .. "test_texture_geom.lua")
 dofile(_dir .. "test_tracked_names.lua")
 dofile(_dir .. "test_detection.lua")
+dofile(_dir .. "test_localization.lua")
 
 -- ---------------------------------------------------------------------------
 -- Summary

@@ -829,6 +829,7 @@ local WILDLIFE_BLACKLIST = {
 	["Ornery Plainsstrider"] = true,
 	["Giraffe"]              = true,
 	["Barris Giraffe"]       = true,
+	["Reef Shark"]           = true,
 };
 
 -- [Ebonhold] v2.1.7: ring buffer of the last N classification hits in ProcessUnitForRares.

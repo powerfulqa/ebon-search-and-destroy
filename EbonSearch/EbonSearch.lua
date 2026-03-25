@@ -17,6 +17,7 @@ me.Options = {
 	ZoneBlacklist = {}; -- [Ebonhold] v2.0.0: [ ZoneName ] = true to suppress scanning in that zone
 	MinimapAngle = math.pi * 0.75; -- [Ebonhold] v2.0.0: minimap button position angle (radians, clockwise from top)
 	FilterWildlife = true; -- [Ebonhold] v2.1.7: suppress known non-rare wildlife misfires (e.g. Barrens Plainsstrider/Giraffe)
+	WildlifeBlacklist = {}; -- [Ebonhold] v2.2.0: [ Name ] = true, user-editable via /esd wildlife add/remove; merged with builtin list at runtime
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -823,8 +824,9 @@ local RecentDetections = {}; --- [ GuidOrName ] = GetTime() timestamp
 local RecentDetectionWindow = 3;
 
 -- [Ebonhold] v2.1.7: names that misfire as rare on Ebonhold but are regular wildlife.
--- Add new entries here when new false-positives are reported; do NOT blacklist entire zones.
-local WILDLIFE_BLACKLIST = {
+-- Add new entries here when new false-positives are confirmed server-wide; do NOT blacklist entire zones.
+-- [Ebonhold] v2.2.0: user-reportable misfires go via /esd wildlife add instead of code changes.
+local WILDLIFE_BLACKLIST_BUILTIN = {
 	["Plainsstrider"]        = true,
 	["Ornery Plainsstrider"] = true,
 	["Giraffe"]              = true,
@@ -1159,6 +1161,20 @@ function me.Synchronize ( Options, OptionsCharacter )
 	if ( Options.MinimapAngle ) then
 		me.Options.MinimapAngle = Options.MinimapAngle;
 	end
+	-- [Ebonhold] v2.2.0: restore zone blacklist across sessions
+	if ( Options.ZoneBlacklist ) then
+		wipe( me.Options.ZoneBlacklist );
+		for Zone in pairs( Options.ZoneBlacklist ) do
+			me.Options.ZoneBlacklist[ Zone ] = true;
+		end
+	end
+	-- [Ebonhold] v2.2.0: restore user wildlife blacklist across sessions
+	if ( Options.WildlifeBlacklist ) then
+		wipe( me.Options.WildlifeBlacklist );
+		for Name in pairs( Options.WildlifeBlacklist ) do
+			me.Options.WildlifeBlacklist[ Name ] = true;
+		end
+	end
 
 	for NpcID, Name in pairs( OptionsCharacter.NPCs ) do
 		-- If defaults, only add tamable custom mobs if the player is a hunter
@@ -1457,7 +1473,7 @@ do
 		-- [Ebonhold] v2.1.7: resolve name first so wildlife filter short-circuits before any further API calls
 		local Name = UnitName( UnitID );
 		if ( not Name ) then return; end
-		if ( me.Options.FilterWildlife ~= false and WILDLIFE_BLACKLIST[ Name ] ) then return; end
+		if ( me.Options.FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[ Name ] or me.Options.WildlifeBlacklist[ Name ]) ) then return; end
 		local Classification = UnitClassification( UnitID );
 		LogMisfireHit( Name, Classification ); -- [Ebonhold] v2.1.7: record non-blacklisted candidates for /esd misfire
 		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then return; end
@@ -1810,6 +1826,37 @@ SlashCmdList["ESD"] = function ( Input )
 		else
 			me.Print( "/esd zone blacklist [add|remove|list] [zone name]" );
 		end
+	elseif ( Command == "WILDLIFE" ) then
+		-- [Ebonhold] v2.2.0: user-editable wildlife blacklist; merges with WILDLIFE_BLACKLIST_BUILTIN at detection time.
+		-- Usage: /esd wildlife add <name>  |  /esd wildlife remove <name>  |  /esd wildlife list
+		-- <name> is the full creature name as it appears in-game (multi-word names are supported).
+		if ( Sub == "ADD" ) then
+			local Name = Rest2;
+			if ( Name and Name ~= "" ) then
+				me.Options.WildlifeBlacklist[ Name ] = true;
+				me.Print( "Wildlife blacklisted: |cffFFFF00" .. Name .. "|r  (use /esd wildlife remove to undo)", GREEN_FONT_COLOR );
+			else
+				me.Print( "/esd wildlife add <creature name>" );
+			end
+		elseif ( Sub == "REMOVE" ) then
+			local Name = Rest2;
+			if ( Name and Name ~= "" ) then
+				me.Options.WildlifeBlacklist[ Name ] = nil;
+				me.Print( "Wildlife un-blacklisted: |cffFFFF00" .. Name .. "|r", GREEN_FONT_COLOR );
+			else
+				me.Print( "/esd wildlife remove <creature name>" );
+			end
+		elseif ( Sub == "LIST" ) then
+			me.Print( "User wildlife blacklist:" );
+			local count = 0;
+			for Name in pairs( me.Options.WildlifeBlacklist ) do
+				me.Print( "  |cffFFFF00" .. Name .. "|r" );
+				count = count + 1;
+			end
+			if ( count == 0 ) then me.Print( "  (none -- only built-in entries active)" ); end
+		else
+			me.Print( "/esd wildlife [add|remove|list] <creature name>" );
+		end
 	elseif ( Command == L.CMD_ADD ) then
 		local ID, Name = ( Rest1 or "" ):match( "^(%d+)%s+(.+)$" );
 		if ( ID ) then
@@ -1878,6 +1925,9 @@ SlashCmdList["ESD"] = function ( Input )
 		me.Print( "  /esd zone blacklist add [zone]    -- blacklist current or named zone" );
 		me.Print( "  /esd zone blacklist remove [zone] -- un-blacklist zone" );
 		me.Print( "  /esd zone blacklist list           -- list all blacklisted zones" );
+		me.Print( "  /esd wildlife add <name>          -- suppress a misfire by creature name" );
+		me.Print( "  /esd wildlife remove <name>       -- un-suppress a creature name" );
+		me.Print( "  /esd wildlife list                -- list user-added wildlife entries" );
 		me.Print( "  /esd debug overlays               -- dev: dump last UV transform sample" );
 		me.Print( "  /esd misfire                      -- dev: last " .. MisfireLogSize .. " ProcessUnitForRares classification hits" );
 	end

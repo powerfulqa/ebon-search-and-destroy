@@ -1,10 +1,13 @@
 -- tests/test_wildlife_blacklist.lua
--- Unit tests for the wildlife blacklist merge logic (v2.2.0).
+-- Unit tests for the wildlife blacklist merge logic (v2.2.0+).
 --
 -- SOURCE: EbonSearch/EbonSearch.lua
 --   * WILDLIFE_BLACKLIST_BUILTIN  -- hardcoded server-wide misfires
 --   * me.Options.WildlifeBlacklist -- user-editable, persisted in EbonSearchDB
---   * ProcessUnitForRares check:
+--   * ProcessUnitForRares check (target/mouseover path):
+--       if FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[Name] or WildlifeBlacklist[Name]) then return end
+--   * GetNameplateTrackedMatch check (nameplate scan paths: ScanTrackedNameplates,
+--     NAME_PLATE_UNIT_ADDED, ScanNameplates) -- v2.2.1 regression fix:
 --       if FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[Name] or WildlifeBlacklist[Name]) then return end
 --
 -- Tested invariants:
@@ -17,6 +20,8 @@
 --   7.  Entry removed from user list is immediately inactive
 --   8.  Empty string name does not accidentally match real entries
 --   9.  nil name does not suppress (matches existing nil-guard pattern)
+--  10.  Blacklisted mob that is also in TrackedNames is suppressed by nameplate path
+--       (regression: Reef Shark in generated tables fired through ScanTrackedNameplates)
 
 io.write("-- test_wildlife_blacklist\n")
 
@@ -133,4 +138,54 @@ do
 	local user    = {}
 	local f = make_filter(builtin, user, nil)
 	assert_false(f(nil), "nil_name: nil name should not be suppressed (nil-guard)")
+end
+
+-- ---------------------------------------------------------------------------
+-- 10. Nameplate path: blacklisted mob in TrackedNames is suppressed
+--     Regression: Reef Shark (ID 12123) is in generated rare tables so it lands
+--     in TrackedNames; before v2.2.1 GetNameplateTrackedMatch had no wildlife
+--     check, causing ScanTrackedNameplates / NAME_PLATE_UNIT_ADDED to fire alerts
+--     for it even though it was in WILDLIFE_BLACKLIST_BUILTIN.
+-- ---------------------------------------------------------------------------
+do
+	-- Simulate GetNameplateTrackedMatch filter: name resolved, then wildlife check,
+	-- then TrackedNames lookup.  Mirror the fixed logic in EbonSearch.lua.
+	local function make_nameplate_filter(builtin, user_blacklist, tracked_names, filter_enabled)
+		return function(Name)
+			if not Name then return nil end
+			-- wildlife guard (v2.2.1 fix)
+			if filter_enabled ~= false then
+				if builtin[Name] or user_blacklist[Name] then
+					return nil  -- suppressed: no NpcID returned
+				end
+			end
+			return tracked_names[Name]  -- NpcID or nil
+		end
+	end
+
+	local builtin  = { ["Reef Shark"] = true }
+	local user     = {}
+	local tracked  = { ["Reef Shark"] = 12123, ["Time-Lost Proto-Drake"] = 32491 }
+
+	-- With filter on: Reef Shark is blacklisted, so no NpcID returned
+	local f = make_nameplate_filter(builtin, user, tracked, nil)
+	assert_true(f("Reef Shark") == nil,
+		"nameplate_path: Reef Shark in TrackedNames should be suppressed by wildlife blacklist")
+	-- Non-blacklisted rare in same table must still return its ID
+	assert_true(f("Time-Lost Proto-Drake") == 32491,
+		"nameplate_path: non-blacklisted rare should still match in TrackedNames")
+
+	-- With filter off: Reef Shark bypasses blacklist and returns its ID
+	local f_off = make_nameplate_filter(builtin, user, tracked, false)
+	assert_true(f_off("Reef Shark") == 12123,
+		"nameplate_path: filter_off should let blacklisted mob through TrackedNames")
+
+	-- User-blacklisted mob in TrackedNames is also suppressed
+	local user2   = { ["Coastal Threshadon"] = true }
+	local tracked2 = { ["Coastal Threshadon"] = 99999, ["Time-Lost Proto-Drake"] = 32491 }
+	local f2 = make_nameplate_filter({}, user2, tracked2, nil)
+	assert_true(f2("Coastal Threshadon") == nil,
+		"nameplate_path: user-blacklisted mob in TrackedNames should be suppressed")
+	assert_true(f2("Time-Lost Proto-Drake") == 32491,
+		"nameplate_path: non-blacklisted rare unaffected by user blacklist")
 end

@@ -1328,6 +1328,14 @@ do
 			return;
 		end
 
+		-- [Ebonhold] v2.2.1: apply wildlife blacklist to all nameplate scan paths
+		-- (ScanTrackedNameplates, NAME_PLATE_UNIT_ADDED fast path, ScanNameplates).
+		-- Previously only ProcessUnitForRares checked this, allowing blacklisted mobs
+		-- in the generated rare tables (e.g. Reef Shark) to fire through nameplate paths.
+		if ( me.Options.FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[ Name ] or me.Options.WildlifeBlacklist[ Name ]) ) then
+			return;
+		end
+
 		local NpcID = GetTrackedNpcIDByName( Name );
 		if ( NpcID ) then
 			return NpcID, Name, UnitGUID( PlateUnit );

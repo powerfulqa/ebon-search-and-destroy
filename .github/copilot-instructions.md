@@ -121,11 +121,15 @@ This is the primary addon in this repo. Forked from _NPCScan 7.x and renamed to 
 - Keep Ebonhold-specific behavior stable: direct button trigger path (`SetNPC`) from passive detection, without `OnFound` side effects.
 - Any changes to rare lists should be validated against passive nameplate behavior to avoid regressions in alerting.
 
-### Release v2.1.4 Confirmed Working
+### Current State (v2.1.5+)
 - `EbonSearch.Overlays.Found(ID, Name)` — Name threaded through full pipeline, no ID numbers in alerts
 - EbonOverlay `NPCFound`: single `ChatPrint` confirmation in `elseif not Map` branch only; no duplicate prints
 - `StoreDiscovery` → `me.Modules.UpdateMap` — gold map pins placed correctly for all detections
 - `WasRecentlyDetected(Name)` — 3-second debounce keyed by Name only; GUID path removed entirely
 - `ApplyTransform` UV guard: triangles with any UV magnitude > 100 are hidden (extreme-zoom degenerate case). **Do not** revert to clamping UVs to `[0,1]` — normal rotated triangles have UVs in ~`[-5, 5]` and clamping makes paths blocky.
 - `EbonOverlay.PrintDebugTransform()` — `/esd debug overlays` dumps last `ApplyTransform` sample (Det, 8 UVs, max|UV|, hidden flag) to chat for in-game UV guard verification
-- 112/112 Lua unit tests pass in `tests/`; run `lua tests/run_tests.lua` before pushing changes to `EbonSearch/` or `EbonOverlay/`
+- `WILDLIFE_BLACKLIST_BUILTIN` + `me.Options.WildlifeBlacklist` — two-layer wildlife filter; user entries added via `/esd wildlife add <name>`, persisted in `EbonSearchDB`, merged at detection time
+- `ZoneBlacklist` and `WildlifeBlacklist` both restored in `Synchronize()` from saved `EbonSearchDB` — survive `/reload` and relog
+- `/esd misfire` — prints last 10 `ProcessUnitForRares` classification hits for false-positive diagnosis
+- `/esd wildlife add|remove|list` — user-editable wildlife suppression without code releases
+- 134/134 Lua unit tests pass in `tests/`; run `lua tests/run_tests.lua` before pushing changes to `EbonSearch/` or `EbonOverlay/`

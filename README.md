@@ -21,6 +21,7 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 - **DisableCache = true** by default - every session scans fresh; no persistent suppression of found NPCs
 - **Multi-alert queue** - alerts stack; use the NavNext button to cycle through multiple finds
 - **Alert button** - click to target the rare and auto-place a skull raid marker; drag to reposition
+- **Wildlife filter** - built-in list of known false-positive wildlife names (Plainsstrider, Reef Shark, etc.); user-extendable via `/esd wildlife add` without a code release
 - **Zone blacklist** - suppress scanning in specific zones via right-click or slash command
 - **Map overlay** - EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
 - **Discovery pins** - gold map pin placed at the player's position each time a rare is detected, persisted across sessions
@@ -46,10 +47,12 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 | `/esd remove <NpcID or Name>` | Remove a custom NPC |
 | `/esd cache` | List NPCs that are cached (unreachable this session) |
 | `/esd clear` | Remove all custom NPCs and reset session state |
-| `/esd clearcache` | Alias for `/esd clear` |
 | `/esd zone blacklist add [zone]` | Blacklist current zone (or named zone) |
 | `/esd zone blacklist remove [zone]` | Un-blacklist a zone |
 | `/esd zone blacklist list` | List all blacklisted zones |
+| `/esd wildlife add <name>` | Suppress a misfire by creature name (persists across sessions) |
+| `/esd wildlife remove <name>` | Un-suppress a creature name |
+| `/esd wildlife list` | List user-added wildlife suppression entries |
 | `/esd debug overlays` | Dump last triangle's Det + UV values to chat (dev tool) |
 | `/esd misfire` | Print last 10 classification hits from the nameplate scanner (dev tool) |
 
@@ -65,7 +68,7 @@ Build-time unit tests run with standard Lua 5.x (no WoW client needed):
 lua tests/run_tests.lua
 ```
 
-112 tests across 4 suites: `test_overlay_math`, `test_detection`, `test_texture_geom`, `test_tracked_names`. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and pull request.
+134 tests across 5 suites: `test_overlay_math`, `test_detection`, `test_texture_geom`, `test_tracked_names`, `test_wildlife_blacklist`. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and pull request.
 
 ---
 
@@ -138,11 +141,26 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 
 ## Changelog
 
+### v2.2.0 (pending in-game test)
+- **User-editable wildlife blacklist**: `/esd wildlife add <name>` suppresses any misfire by creature name without a code release; entries persist across sessions in `EbonSearchDB`
+- Built-in wildlife entries (`WILDLIFE_BLACKLIST_BUILTIN`) retained for confirmed server-wide misfires; user entries merge at detection time
+- **Fixed ZoneBlacklist persistence**: blacklisted zones were silently lost on every `/reload` and relog; both `ZoneBlacklist` and `WildlifeBlacklist` are now restored from `EbonSearchDB` in `Synchronize()`
+- Added 9 unit tests for wildlife filter merge logic (134/134 passing)
+
+### v2.1.8 (2026-03-25)
+- Suppressed `Rot Hide Bruiser` and `Vile Fin Shredder` false-positive wildlife misfires
+- Suppressed `Reef Shark` false-positive wildlife misfire
+
+### v2.1.7 (2026-03-24)
+- **Barrens wildlife misfire fix**: `ProcessUnitForRares` now resolves `UnitName()` before `UnitClassification()` and rejects known false-rare wildlife (Plainsstrider, Ornery Plainsstrider, Giraffe, Barris Giraffe) via `WILDLIFE_BLACKLIST_BUILTIN`
+- Added `FilterWildlife = true` option (default on); set to `false` to temporarily disable
+- Added `/esd misfire` dev command: prints the last 10 non-blacklisted classification hits for diagnosing false positives
+
+### v2.1.6 (2026-03-22)
+- Fixed locale parse error in `Locale-enUS.lua` command string; added localization regression test
+
 ### v2.1.5 (2026-03-19)
-- **Barrens wildlife misfire fix**: `ProcessUnitForRares` now resolves `UnitName()` before calling `UnitClassification()` and rejects known false-rare wildlife (Plainsstrider, Ornery Plainsstrider, Giraffe, Barris Giraffe) via a `WILDLIFE_BLACKLIST` table. Actual Barrens rares (e.g. Lar'korwi Mate) are unaffected
-- Added `FilterWildlife = true` option (default on); set to `false` in-game to temporarily disable without reloading
-- Added `/esd misfire` dev command: prints the last 10 non-blacklisted classification hits (name / classification / age in seconds) for diagnosing future false positives
-- Removed dead `local Guid = UnitGUID(UnitID)` line in `ProcessUnitForRares`
+- Bumped TOC Interface version; updated README
 
 ### v2.1.4 (2026-03-10)
 - Fixed blocky minimap overlay paths: `ApplyTransform` now hides triangles whose UV values exceed ±100 (degenerate extreme-zoom triangles) instead of clamping all UVs to `[0,1]`. Clamping was distorting every rotated triangle

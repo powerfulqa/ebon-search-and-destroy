@@ -1,6 +1,6 @@
 # EbonSearch & EbonOverlay: Test Plan
 
-Applies to: **EbonSearch v2.1.4 / EbonOverlay v2.1.4** (Interface 30300, WotLK 3.3.5a)
+Applies to: **EbonSearch v2.1.5+ / EbonOverlay v2.1.5+** (Interface 30300, WotLK 3.3.5a)
 
 ---
 
@@ -19,11 +19,13 @@ lua tests/run_tests.lua
 | `test_detection.lua` | `WasRecentlyDetected` debounce window, expiry, stale pruning | 9 |
 | `test_texture_geom.lua` | `TextureAdd` ScaleX/Y guards, `DrawPath` byte decoding, coord round-trip | 9 |
 | `test_tracked_names.lua` | `TrackedNamesRebuild`, zone blacklist, dirty flag, duplicates | 13 |
-| **Total** | | **112** |
+| `test_localization.lua` | `Locale-enUS.lua` parse and key regression | 8 |
+| `test_wildlife_blacklist.lua` | Wildlife filter merge logic, user list add/remove, `FilterWildlife` bypass | 9 |
+| **Total** | | **134** |
 
-All 112 tests must pass before moving on to in-game manual testing. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and PR.
+All 134 tests must pass before moving on to in-game manual testing. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and PR.
 
-If a terminal was opened before Lua was installed:
+Lua is installed at `C:\Users\ch\AppData\Local\Programs\Lua\bin\lua.exe`. If it is not in PATH:
 ```powershell
 $env:PATH += ";C:\Users\ch\AppData\Local\Programs\Lua\bin"
 lua tests/run_tests.lua
@@ -183,7 +185,40 @@ If output reads `no sample yet`, the map was not open over a zone with rendered 
 
 ---
 
-## 5. Regression Quick-Reference
+## 5. Wildlife Blacklist
+
+**Run after changes to:** `EbonSearch/EbonSearch.lua` (`ProcessUnitForRares`, `WILDLIFE_BLACKLIST_BUILTIN`, `WildlifeBlacklist`)
+
+### 5a: Built-in suppression still active
+
+Walk through the Barrens with FilterWildlife enabled (default).
+
+**Pass criteria:**
+- No alert fires for Plainsstrider, Ornery Plainsstrider, Giraffe, Barris Giraffe, Reef Shark, Rot Hide Bruiser, or Vile Fin Shredder.
+- Actual Barrens rares (e.g. Lar'korwi Mate) still fire an alert.
+
+### 5b: User-added entry via `/esd wildlife add`
+
+1. `/esd wildlife add <creature name>` for a creature currently misfiring.
+2. Approach the creature.
+
+**Pass criteria:**
+- No alert fires.
+- `/esd wildlife list` shows the entry.
+- `/reload` and approach again — entry still suppresses (persisted in `EbonSearchDB`).
+
+### 5c: Remove user entry
+
+1. `/esd wildlife remove <creature name>`.
+2. Approach the creature.
+
+**Pass criteria:**
+- Alert fires again (suppression lifted).
+- `/esd wildlife list` no longer shows the entry.
+
+---
+
+## 6. Regression Quick-Reference
 
 | Symptom | Likely cause | Where to check |
 |---------|-------------|----------------|

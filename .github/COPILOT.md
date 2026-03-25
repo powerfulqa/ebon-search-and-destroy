@@ -1,6 +1,6 @@
 ## Context for EbonSearch / EbonOverlay
 
-**Project**: Ebonhold Search and Destroy v2.1.4
+**Project**: Ebonhold Search and Destroy v2.1.5+
 **Client**: WotLK 3.3.5a (Interface 30300), Project Ebonhold private server
 **Forked from**: _NPCScan 7.x (Saiket), renamed and adapted in v2.0.0
 
@@ -38,13 +38,14 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 
 ### Commands
 
-- Primary: `/esd` (subcommands: `add`, `remove`, `cache`, `clear`, `zone blacklist add|remove|list`)
+- Primary: `/esd` (subcommands: `add`, `remove`, `cache`, `clear`, `zone blacklist add|remove|list`, `wildlife add|remove|list`)
 - Dev: `/esd debug overlays` — dumps last `ApplyTransform` sample to chat
+- Dev: `/esd misfire` — prints last 10 `ProcessUnitForRares` classification hits
 - Legacy alias: `/npcscan` → routes to the same ESD handler
 
 ---
 
-### v2.1.4 Release Status
+### Current Release Status (v2.1.5+)
 
 | Component | Status |
 |---|---|
@@ -53,7 +54,8 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 | Target / mouseover detection | Ready |
 | Multi-alert queue + NavNext button | Ready |
 | Alert toast: click to target + auto skull marker | Ready |
-| Zone blacklist (right-click minimap or `/esd zone blacklist`) | Ready |
+| Zone blacklist (right-click minimap or `/esd zone blacklist`) — persists across sessions | Ready |
+| Wildlife filter + user-editable blacklist (`/esd wildlife add|remove|list`) | Ready |
 | Minimap button with persisted drag position | Ready |
 | EbonOverlay patrol paths on World Map + Minimap | Ready |
 | Discovery pins (gold marker at detection position, persisted) | Ready |
@@ -61,8 +63,8 @@ Ebonhold's private core uses raw hex GUIDs (`0xF13000060B684A99`) that do **not*
 | NPC Name threaded through full alert pipeline | Ready |
 | Debounce keyed by Name only (GUID unreliable on 3.3.5a) | Ready |
 | Dynamic target keybind (`EbonSearch_TargetButton`) | Ready |
-| `/esd debug overlays` dev command | Ready |
-| 112 Lua unit tests + GitHub Actions CI | Ready |
+| `/esd debug overlays` + `/esd misfire` dev commands | Ready |
+| 134 Lua unit tests + GitHub Actions CI | Ready |
 
 ### Known limitations
 

@@ -2,7 +2,5 @@
 *.bak
 *.orig
 .venv/
-tools/tmp_classicNpcDB.lua
-tools/tmp_EbonholdNpcDB.lua
-tools/tmp_EbonholdQuestDB.lua
+tools/tmp_*.lua
 tools/wowhead_scraper/

@@ -141,6 +141,98 @@ do
 end
 
 -- ---------------------------------------------------------------------------
+-- v2.2.3 normalization tests
+-- Mirrors NormalizeName + WildlifeBlacklistNorm lookup logic in EbonSearch.lua.
+-- ---------------------------------------------------------------------------
+local function NormalizeName(Name)
+	if type(Name) ~= "string" then return nil end
+	Name = Name:gsub("^%s+", ""):gsub("%s+$", ""):gsub("%s+", " ")
+	return Name:lower()
+end
+
+local function build_norm(verbatim_table)
+	local out = {}
+	for k in pairs(verbatim_table) do
+		local key = NormalizeName(k)
+		if key then out[key] = true end
+	end
+	return out
+end
+
+local function make_norm_filter(builtin_norm, user_norm, filter_enabled)
+	return function(Name)
+		if filter_enabled == false then return false end
+		if not Name then return false end
+		local key = NormalizeName(Name)
+		if not key then return false end
+		return builtin_norm[key] or (user_norm and user_norm[key]) or false
+	end
+end
+
+-- 11. NormalizeName: lowercases, trims, collapses internal whitespace
+do
+	assert_equal(NormalizeName("Plainsstrider"),       "plainsstrider", "norm: plain word lowercases")
+	assert_equal(NormalizeName("REEF SHARK"),          "reef shark",    "norm: uppercase lowercases")
+	assert_equal(NormalizeName("  Reef Shark  "),      "reef shark",    "norm: leading/trailing spaces trimmed")
+	assert_equal(NormalizeName("Reef    Shark"),       "reef shark",    "norm: internal spaces collapsed")
+	assert_equal(NormalizeName("\tReef\tShark\t"),     "reef shark",    "norm: tabs treated as whitespace")
+	assert_nil(NormalizeName(nil),                                       "norm: nil returns nil")
+	assert_nil(NormalizeName(123),                                       "norm: non-string returns nil")
+end
+
+-- 12. Builtin lookup is case-insensitive via normalized table
+do
+	local builtin_verbatim = { ["Plainsstrider"] = true, ["Reef Shark"] = true }
+	local builtin_norm     = build_norm(builtin_verbatim)
+	local f                = make_norm_filter(builtin_norm, {}, nil)
+	assert_true(f("Plainsstrider"),  "norm_builtin: exact case match")
+	assert_true(f("plainsstrider"),  "norm_builtin: lowercase variant matches")
+	assert_true(f("PLAINSSTRIDER"),  "norm_builtin: uppercase variant matches")
+	assert_true(f("Reef Shark"),     "norm_builtin: multi-word exact case")
+	assert_true(f("reef shark"),     "norm_builtin: multi-word lowercase")
+	assert_true(f("  REEF SHARK  "), "norm_builtin: multi-word with whitespace + case")
+	assert_false(f("Time-Lost Proto-Drake"), "norm_builtin: non-blacklisted rare unaffected")
+end
+
+-- 13. User add/remove resolves through normalized form (case-fold roundtrip)
+do
+	-- User adds "Giraffe" (typed); we mirror to norm
+	local user_verbatim = { ["Giraffe"] = true }
+	local user_norm     = build_norm(user_verbatim)
+	local f             = make_norm_filter({}, user_norm, nil)
+	assert_true(f("Giraffe"),  "norm_user: add Giraffe matches Giraffe")
+	assert_true(f("giraffe"),  "norm_user: add Giraffe matches lowercase")
+	assert_true(f("GIRAFFE"),  "norm_user: add Giraffe matches uppercase")
+
+	-- User removes "GIRAFFE" (different casing); mirror remove from both tables
+	local key = NormalizeName("GIRAFFE")
+	for existing in pairs(user_verbatim) do
+		if NormalizeName(existing) == key then user_verbatim[existing] = nil end
+	end
+	user_norm[key] = nil
+
+	assert_false(f("Giraffe"), "norm_user: case-different remove drops the match")
+	-- Verbatim table should also be empty (the original-case entry removed)
+	assert_nil(user_verbatim["Giraffe"], "norm_user: verbatim entry cleaned up")
+end
+
+-- 14. Synchronize migration: existing saved entries with mixed case still match
+do
+	-- Simulate a SavedVar restored from a v2.2.0 user (verbatim only, no Norm yet).
+	-- Synchronize rebuilds the Norm mirror at login; verify the rebuild matches lookups.
+	local saved_verbatim = { ["plainsstrider"] = true, ["Reef Shark"] = true, ["BARRACUDA"] = true }
+	local rebuilt_norm   = build_norm(saved_verbatim)
+	local f              = make_norm_filter({}, rebuilt_norm, nil)
+
+	-- All entries reachable regardless of original casing
+	assert_true(f("Plainsstrider"),  "migration: mixed-case saved entry matches Title Case")
+	assert_true(f("Reef Shark"),     "migration: title-case saved entry matches itself")
+	assert_true(f("Barracuda"),      "migration: ALL CAPS saved entry matches normal case")
+	assert_true(f("plainsstrider"),  "migration: lowercase saved entry matches lowercase")
+	assert_false(f("Skoll"),         "migration: non-blacklisted name unaffected")
+end
+
+-- ---------------------------------------------------------------------------
 -- 10. Nameplate path: blacklisted mob in TrackedNames is suppressed
 --     Regression: Reef Shark (ID 12123) is in generated rare tables so it lands
 --     in TrackedNames; before v2.2.1 GetNameplateTrackedMatch had no wildlife

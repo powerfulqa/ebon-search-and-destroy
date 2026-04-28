@@ -18,6 +18,7 @@ me.Options = {
 	MinimapAngle = math.pi * 0.75; -- [Ebonhold] v2.0.0: minimap button position angle (radians, clockwise from top)
 	FilterWildlife = true; -- [Ebonhold] v2.1.7: suppress known non-rare wildlife misfires (e.g. Barrens Plainsstrider/Giraffe)
 	WildlifeBlacklist = {}; -- [Ebonhold] v2.2.0: [ Name ] = true, user-editable via /esd wildlife add/remove; merged with builtin list at runtime
+	WildlifeBlacklistNorm = {}; -- [Ebonhold] v2.2.3: [ normalized_name ] = true, lookup-side mirror for case-insensitive match; rebuilt in Synchronize from WildlifeBlacklist
 };
 me.OptionsCharacter = {
 Version = me.Version;
@@ -823,6 +824,15 @@ me.SessionNPCNames = SessionNPCNames; -- [Ebonhold] exposed so Config.Search.NPC
 local RecentDetections = {}; --- [ GuidOrName ] = GetTime() timestamp
 local RecentDetectionWindow = 3;
 
+-- [Ebonhold] v2.2.3: lookup-side normalization for wildlife/zone blacklists.
+-- Trims surrounding whitespace, collapses internal runs, and lowercases.
+-- 3.3.5a Lua 5.1 string.lower is ASCII-only; acceptable since wildlife names are English.
+local function NormalizeName ( Name )
+	if ( type( Name ) ~= "string" ) then return nil; end
+	Name = Name:gsub( "^%s+", "" ):gsub( "%s+$", "" ):gsub( "%s+", " " );
+	return Name:lower();
+end
+
 -- [Ebonhold] v2.1.7: names that misfire as rare on Ebonhold but are regular wildlife.
 -- Add new entries here when new false-positives are confirmed server-wide; do NOT blacklist entire zones.
 -- [Ebonhold] v2.2.0: user-reportable misfires go via /esd wildlife add instead of code changes.
@@ -836,14 +846,30 @@ local WILDLIFE_BLACKLIST_BUILTIN = {
 	["Vile Fin Shredder"]    = true,
 };
 
+-- [Ebonhold] v2.2.3: normalized mirror for case-insensitive lookup. Built once at file
+-- load; the user list (me.Options.WildlifeBlacklistNorm) gets a parallel mirror in
+-- Synchronize. Verbatim WILDLIFE_BLACKLIST_BUILTIN stays for human readability and
+-- existing tests; the gate consults the normalized form.
+local WILDLIFE_BLACKLIST_BUILTIN_NORM = {};
+for Name in pairs( WILDLIFE_BLACKLIST_BUILTIN ) do
+	local Key = NormalizeName( Name );
+	if ( Key ) then WILDLIFE_BLACKLIST_BUILTIN_NORM[ Key ] = true; end
+end
+
 -- [Ebonhold] v2.1.7: ring buffer of the last N classification hits in ProcessUnitForRares.
--- Populated after the wildlife filter so only non-suppressed candidates are recorded.
+-- [Ebonhold] v2.2.3: extended to record the path that hit the gate and the reject stage
+-- (nil = the candidate passed through the classification check; non-nil = which gate stage
+-- rejected). Same 10-entry ring buffer; selective logging keeps it useful (we do NOT log
+-- recent/dup_toast/not_tracked rejections - they would flood the buffer at scan tick rate).
 -- Printed by /esd misfire for in-game misfire debugging.
 local MisfireLog     = {};
 local MisfireLogSize = 10;
 local MisfireLogNext = 1;
-local function LogMisfireHit ( Name, Classification )
-	MisfireLog[ MisfireLogNext ] = { name = Name, classification = Classification, time = GetTime() };
+local function LogMisfireHit ( Name, Classification, Path, Stage )
+	MisfireLog[ MisfireLogNext ] = {
+		name = Name, classification = Classification,
+		path = Path, stage = Stage, time = GetTime()
+	};
 	MisfireLogNext = ( MisfireLogNext % MisfireLogSize ) + 1;
 end
 
@@ -1175,6 +1201,14 @@ function me.Synchronize ( Options, OptionsCharacter )
 			me.Options.WildlifeBlacklist[ Name ] = true;
 		end
 	end
+	-- [Ebonhold] v2.2.3: build the normalized lookup mirror from the verbatim user table.
+	-- The verbatim table preserves whatever the user typed (so /esd wildlife list reads
+	-- naturally); the gate consults the normalized mirror for case-insensitive matches.
+	me.Options.WildlifeBlacklistNorm = {};
+	for Name in pairs( me.Options.WildlifeBlacklist ) do
+		local Key = NormalizeName( Name );
+		if ( Key ) then me.Options.WildlifeBlacklistNorm[ Key ] = true; end
+	end
 
 	for NpcID, Name in pairs( OptionsCharacter.NPCs ) do
 		-- If defaults, only add tamable custom mobs if the player is a hunter
@@ -1270,8 +1304,13 @@ do
 			PlaySoundFile( [[Sound\Events\scourge_horn.wav]] );
 		end
 	end
-	--- Validates found mobs before showing alerts.
-	local function OnFound ( NpcID, Name )
+	--- Processes a confirmed-rare hit from the active-scan path: deactivates the scan,
+	--- runs the tamable-zone check, and fires the alert. The gate (ShouldAlert) MUST run
+	--- before this is called - this function does NOT re-validate wildlife/zone/etc.
+	--- [Ebonhold] v2.2.3: renamed from OnFound. The split avoids NPCDeactivate firing on
+	--- units that the gate would have rejected (the old OnFound deactivated before any
+	--- validation ran, so a filtered unit silently dropped from the active scan).
+	local function OnFoundValidated ( NpcID, Name )
 		if ( type( Name ) ~= "string" ) then
 			Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
 		end
@@ -1318,30 +1357,6 @@ do
 		return false;
 	end
 
-	local function GetNameplateTrackedMatch ( PlateUnit )
-		if ( not UnitExists( PlateUnit ) ) then
-			return;
-		end
-
-		local Name = UnitName( PlateUnit );
-		if ( not Name ) then
-			return;
-		end
-
-		-- [Ebonhold] v2.2.1: apply wildlife blacklist to all nameplate scan paths
-		-- (ScanTrackedNameplates, NAME_PLATE_UNIT_ADDED fast path, ScanNameplates).
-		-- Previously only ProcessUnitForRares checked this, allowing blacklisted mobs
-		-- in the generated rare tables (e.g. Reef Shark) to fire through nameplate paths.
-		if ( me.Options.FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[ Name ] or me.Options.WildlifeBlacklist[ Name ]) ) then
-			return;
-		end
-
-		local NpcID = GetTrackedNpcIDByName( Name );
-		if ( NpcID ) then
-			return NpcID, Name, UnitGUID( PlateUnit );
-		end
-	end
-
 	local function WasRecentlyDetected ( Name )
 		-- [Ebonhold] v2.1.1: key by Name, not GUID. UnitGUID on 3.3.5a nameplates is
 		-- unreliable and can return nil on subsequent calls for the same unit, causing
@@ -1362,51 +1377,113 @@ do
 			end
 		end
 	end
-	-- [Ebonhold] nameplate detection
-	local function ScanNameplates ()
-		-- [Ebonhold] v2.0.0: zone blacklist - skip scan entirely for blacklisted zones
-		local CurrentZone = GetRealZoneText();
-		if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ CurrentZone ] ) then
-			return;
+
+	-- [Ebonhold] v2.2.3: unified trigger filter gate.
+	-- Every detection path (target, mouseover, nameplate scan, NAME_PLATE_UNIT_ADDED,
+	-- TestID cache fallback) now goes through this single function. Replaces the
+	-- ad-hoc filter chains that lived in ProcessUnitForRares and GetNameplateTrackedMatch.
+	--
+	-- Ordering rationale:
+	--   - Wildlife BEFORE classification: Ebonhold-changed wildlife (Plainsstrider, Reef
+	--     Shark, etc.) is server-classified "rare", so a classification check first never
+	--     rejects them.
+	--   - Recent-detection AFTER UnitID checks: WasRecentlyDetected has a side effect
+	--     (writes the timestamp). We only want to mark "seen" for confirmed candidates,
+	--     not for every nameplate that gets scanned. Otherwise legit rares get debounced
+	--     against unrelated nearby mobs that share a tracked-name string.
+	--   - UnitID-dependent checks last and skipped when UnitID is nil (path E case):
+	--     the cache fallback works from the WoW client's NPC name cache via me.TestID,
+	--     so it has no unit token. Wildlife/zone/recent still apply.
+	--
+	-- PathTag values: "target", "mouseover", "scan", "trackedscan", "npua", "cache".
+	-- Zone blacklist is skipped for "target" and "mouseover" - manually targeting a rare
+	-- in a passively-blacklisted zone should still fire (preserves v2.0.0 intent).
+	--
+	-- Returns: NpcID, Name on success; nil, RejectStage on rejection.
+	local function ShouldAlert ( NpcID, Name, UnitID, PathTag )
+		-- 1. Resolve Name from unit token if needed
+		if ( not Name and UnitID ) then
+			Name = UnitName( UnitID );
 		end
-		if ( not next( ScanIDs ) ) then
-			return;
+		if ( not Name ) then return nil, "nil_name"; end
+
+		-- 2. Wildlife blacklist (normalized lookup)
+		if ( me.Options.FilterWildlife ~= false ) then
+			local Key = NormalizeName( Name );
+			local UserNorm = me.Options.WildlifeBlacklistNorm;
+			if ( Key and ( WILDLIFE_BLACKLIST_BUILTIN_NORM[ Key ] or ( UserNorm and UserNorm[ Key ] ) ) ) then
+				LogMisfireHit( Name, "-", PathTag, "wildlife" );
+				return nil, "wildlife";
+			end
 		end
 
+		-- 3. Zone blacklist (passive paths only - manual target/mouseover bypasses)
+		if ( PathTag ~= "target" and PathTag ~= "mouseover" ) then
+			if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ GetRealZoneText() ] ) then
+				return nil, "zone";
+			end
+		end
+
+		-- 4. Resolve NpcID from name if not provided
+		if ( not NpcID ) then
+			NpcID = GetTrackedNpcIDByName( Name );
+		end
+		if ( not NpcID ) then return nil, "not_tracked"; end
+
+		-- 5. WorldID check (when configured for this NPC)
+		local WorldID = me.OptionsCharacter.NPCWorldIDs and me.OptionsCharacter.NPCWorldIDs[ NpcID ];
+		if ( WorldID and WorldID ~= me.WorldID ) then return nil, "world_mismatch"; end
+
+		-- 6. UnitID-dependent checks (skip for path E - cache fallback has no unit token)
+		if ( UnitID ) then
+			if ( not UnitExists( UnitID ) ) then return nil, "no_unit"; end
+			if ( UnitPlayerControlled( UnitID ) ) then return nil, "player_ctrl"; end
+			local Classification = UnitClassification( UnitID );
+			local ClsPass = ( Classification == "rare" or Classification == "rareelite" );
+			-- [Ebonhold] v2.1.7 preservation: log the classification candidate. nil stage
+			-- means "passed the gate at this point"; "classification" means rejected here.
+			LogMisfireHit( Name, Classification, PathTag, ClsPass and nil or "classification" );
+			if ( not ClsPass ) then return nil, "classification"; end
+			local Reaction = UnitReaction( UnitID, "player" );
+			if ( not Reaction or Reaction > 4 ) then return nil, "reaction"; end
+		end
+
+		-- 7. Recent-detection debounce (has side effect - only mark "seen" once we're a real candidate)
+		if ( WasRecentlyDetected( Name ) ) then return nil, "recent"; end
+
+		-- 8. Toast dedup
+		if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return nil, "dup_toast"; end
+
+		return NpcID, Name;
+	end
+	-- [Ebonhold] nameplate detection. Path B in the gate: active-scan-only nameplate
+	-- iteration, runs every 0.3s from the main frame OnUpdate. ScanIDs[NpcID] gates
+	-- whether we have an active search for the matched NPC; the rest is the unified gate.
+	local function ScanNameplates ()
+		if ( not next( ScanIDs ) ) then return; end
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and ScanIDs[ NpcID ] and not WasRecentlyDetected( Name ) ) then
-				OnFound( NpcID, Name );
+			local NpcID, Name = ShouldAlert( nil, nil, PlateUnit, "scan" );
+			if ( NpcID and ScanIDs[ NpcID ] ) then
+				OnFoundValidated( NpcID, Name );
 				return true;
 			end
 		end
 	end
 
-	-- [Ebonhold] scan tracked NPCs from nameplates via reaction/classification/name filter.
-	-- Uses direct toast path to avoid NPCDeactivate removing cached entries from active scans.
+	-- [Ebonhold] scan tracked NPCs from nameplates. Path C in the gate: covers the full
+	-- TrackedNames set (vanilla rares from OptionsCharacter.NPCs that may not be in
+	-- ScanIDs). Uses direct TriggerFoundAlert (NOT OnFoundValidated) to avoid
+	-- NPCDeactivate removing cached entries from active scans - preserves the
+	-- copilot-instructions.md:121 rule about no OnFound side effects on this path.
 	local function ScanTrackedNameplates ()
-		-- [Ebonhold] v2.0.0: zone blacklist
-		local CurrentZone = GetRealZoneText();
-		if ( me.Options.ZoneBlacklist and me.Options.ZoneBlacklist[ CurrentZone ] ) then
-			return;
-		end
 		for i = 1, 40 do
 			local PlateUnit = "nameplate" .. i;
-			local NpcID, Name, Guid = GetNameplateTrackedMatch( PlateUnit );
-			if ( NpcID and not WasRecentlyDetected( Name ) ) then
-				if ( type( Name ) ~= "string" ) then
-					Name = me.OptionsCharacter.NPCs[ NpcID ] or L.NPCs[ NpcID ] or tostring( Name or NpcID );
-				end
-				local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
-				if ( not WorldID or WorldID == me.WorldID ) then
-					if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then
-						return true;
-					end
-					me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
-					TriggerFoundAlert( NpcID, Name );
-					return true;
-				end
+			local NpcID, Name = ShouldAlert( nil, nil, PlateUnit, "trackedscan" );
+			if ( NpcID ) then
+				me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
+				TriggerFoundAlert( NpcID, Name );
+				return true;
 			end
 		end
 	end
@@ -1449,11 +1526,19 @@ do
 			local ok, foundOrErr = pcall( ScanNameplates );
 			local Found = ok and foundOrErr;
 			if ( not Found ) then
+				-- Path E: TestID cache fallback. Inherited from upstream _NPCScan, retained
+				-- for Outland/Northrend rares whose names enter the WoW client's NPC name
+				-- cache (e.g. when nearby players target them). Pre-v2.2.3 this path
+				-- bypassed every filter - any rare in active ScanIDs whose name happened
+				-- to be cached would fire regardless of wildlife/zone state.
 				for NpcID in pairs( ScanIDs ) do
 					local Name = me.TestID( NpcID );
 					if ( Name and Name == L.NPCs[ NpcID ] ) then
-						OnFound( NpcID, Name );
-						break;
+						local AllowedID = ShouldAlert( NpcID, Name, nil, "cache" );
+						if ( AllowedID ) then
+							OnFoundValidated( NpcID, Name );
+							break;
+						end
 					end
 				end
 			end
@@ -1474,23 +1559,13 @@ do
 
 	-- [Ebonhold] v2.0.0: scan target and mouseover units for rare matches.
 	-- Catches rares that are targeted/moused-over even when nameplates are hidden or off.
-	-- [Ebonhold] v2.1.7: Name checked before Classification; WILDLIFE_BLACKLIST filter applied early.
+	-- [Ebonhold] v2.2.3: collapsed into a single ShouldAlert gate call. Path A in the
+	-- gate; zone blacklist is intentionally bypassed for "target"/"mouseover" PathTags
+	-- so manual targeting of a rare in a passively-blacklisted zone still alerts.
 	local function ProcessUnitForRares ( UnitID )
-		if ( not UnitExists( UnitID ) ) then return; end
-		if ( UnitPlayerControlled( UnitID ) ) then return; end
-		-- [Ebonhold] v2.1.7: resolve name first so wildlife filter short-circuits before any further API calls
-		local Name = UnitName( UnitID );
-		if ( not Name ) then return; end
-		if ( me.Options.FilterWildlife ~= false and (WILDLIFE_BLACKLIST_BUILTIN[ Name ] or me.Options.WildlifeBlacklist[ Name ]) ) then return; end
-		local Classification = UnitClassification( UnitID );
-		LogMisfireHit( Name, Classification ); -- [Ebonhold] v2.1.7: record non-blacklisted candidates for /esd misfire
-		if ( Classification ~= "rare" and Classification ~= "rareelite" ) then return; end
-		local Reaction = UnitReaction( UnitID, "player" );
-		if ( not Reaction or Reaction > 4 ) then return; end -- friendly or neutral
-		local NpcID = GetTrackedNpcIDByName( Name );
+		local PathTag = ( UnitID == "target" ) and "target" or "mouseover";
+		local NpcID, Name = ShouldAlert( nil, nil, UnitID, PathTag );
 		if ( not NpcID ) then return; end
-		if ( WasRecentlyDetected( Name ) ) then return; end
-		if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
 		me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
 		TriggerFoundAlert( NpcID, Name );
 	end
@@ -1507,21 +1582,17 @@ do
 		elseif ( Event == "UPDATE_MOUSEOVER_UNIT" ) then
 			pcall( ProcessUnitForRares, "mouseover" );
 		elseif ( Event == "NAME_PLATE_UNIT_ADDED" ) then
-			-- Fast path: check the new nameplate immediately against both scan lists.
+			-- Fast path D: zero-tick detection on nameplate appearance. Branches on
+			-- ScanIDs membership: active scans go through OnFoundValidated (which
+			-- deactivates the search); cached-only matches use direct TriggerFoundAlert.
 			pcall( function ()
-				local NpcID, Name, Guid = GetNameplateTrackedMatch( UnitToken );
+				local NpcID, Name = ShouldAlert( nil, nil, UnitToken, "npua" );
 				if ( not NpcID ) then return; end
-				if ( WasRecentlyDetected( Name ) ) then return; end
-				if ( IsToastAlreadyQueuedOrShown( NpcID, Name ) ) then return; end
 				if ( ScanIDs[ NpcID ] ) then
-					OnFound( NpcID, Name ); -- goes through the standard ScanIDs path
+					OnFoundValidated( NpcID, Name );
 				else
-					-- Cached NPC not in ScanIDs: use the direct toast path (same as ScanTrackedNameplates).
-					local WorldID = me.OptionsCharacter.NPCWorldIDs[ NpcID ];
-					if ( not WorldID or WorldID == me.WorldID ) then
-						me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
-						TriggerFoundAlert( NpcID, Name );
-					end
+					me.Print( L.FOUND_FORMAT:format( Name ), GREEN_FONT_COLOR );
+					TriggerFoundAlert( NpcID, Name );
 				end
 			end );
 		end
@@ -1841,7 +1912,12 @@ SlashCmdList["ESD"] = function ( Input )
 		if ( Sub == "ADD" ) then
 			local Name = Rest2;
 			if ( Name and Name ~= "" ) then
+				-- [Ebonhold] v2.2.3: keep the verbatim and normalized tables in sync.
+				-- Verbatim preserves whatever the user typed (for /esd wildlife list);
+				-- normalized is what the gate consults so case differences don't matter.
 				me.Options.WildlifeBlacklist[ Name ] = true;
+				local Key = NormalizeName( Name );
+				if ( Key ) then me.Options.WildlifeBlacklistNorm[ Key ] = true; end
 				me.Print( "Wildlife blacklisted: |cffFFFF00" .. Name .. "|r  (use /esd wildlife remove to undo)", GREEN_FONT_COLOR );
 			else
 				me.Print( "/esd wildlife add <creature name>" );
@@ -1849,7 +1925,20 @@ SlashCmdList["ESD"] = function ( Input )
 		elseif ( Sub == "REMOVE" ) then
 			local Name = Rest2;
 			if ( Name and Name ~= "" ) then
-				me.Options.WildlifeBlacklist[ Name ] = nil;
+				-- [Ebonhold] v2.2.3: resolve through normalized form so a user can undo
+				-- "add Giraffe" with "remove giraffe" or "remove GIRAFFE". Removes every
+				-- verbatim entry whose normalized form matches.
+				local Key = NormalizeName( Name );
+				if ( Key ) then
+					for Existing in pairs( me.Options.WildlifeBlacklist ) do
+						if ( NormalizeName( Existing ) == Key ) then
+							me.Options.WildlifeBlacklist[ Existing ] = nil;
+						end
+					end
+					me.Options.WildlifeBlacklistNorm[ Key ] = nil;
+				else
+					me.Options.WildlifeBlacklist[ Name ] = nil;
+				end
 				me.Print( "Wildlife un-blacklisted: |cffFFFF00" .. Name .. "|r", GREEN_FONT_COLOR );
 			else
 				me.Print( "/esd wildlife remove <creature name>" );
@@ -1911,15 +2000,23 @@ SlashCmdList["ESD"] = function ( Input )
 			me.Print( "EbonOverlay not loaded.", RED_FONT_COLOR );
 		end
 	elseif ( Command == "MISFIRE" ) then
-		-- [Ebonhold] v2.1.7: dump last ProcessUnitForRares classification hits for misfire debugging
-		me.Print( "|cff66ccffEbonSearch|r misfire log (last " .. MisfireLogSize .. " classification hits):" );
+		-- [Ebonhold] v2.1.7: dump last classification hits for misfire debugging.
+		-- [Ebonhold] v2.2.3: extended with path tag (target/mouseover/scan/trackedscan/
+		-- npua/cache) and reject stage. stage="-" means the candidate passed the gate at
+		-- the classification check; "wildlife"/"classification" mean rejected at that stage.
+		me.Print( "|cff66ccffEbonSearch|r misfire log (last " .. MisfireLogSize .. " gate-relevant hits):" );
 		local count = 0;
 		for i = 1, MisfireLogSize do
 			local entry = MisfireLog[ i ];
 			if ( entry ) then
 				count = count + 1;
 				local age = math.floor( GetTime() - entry.time );
-				me.Print( string.format( "  |cffFFFF00%s|r / %s  (%ds ago)", entry.name, entry.classification or "?", age ) );
+				me.Print( string.format( "  |cffFFFF00%s|r / cls=%s / path=%s / stage=%s  (%ds ago)",
+					entry.name,
+					entry.classification or "?",
+					entry.path or "?",
+					entry.stage or "-",
+					age ) );
 			end
 		end
 		if ( count == 0 ) then me.Print( "  (no entries yet -- walk near a rare or use /esd debug targets)." ); end

@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.1.8
+# Ebonhold Search and Destroy v2.2.3
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -21,12 +21,13 @@ Forked from _NPCScan 7.x (Saiket) and adapted for Ebonhold's GUID format and rog
 - **DisableCache = true** by default - every session scans fresh; no persistent suppression of found NPCs
 - **Multi-alert queue** - alerts stack; use the NavNext button to cycle through multiple finds
 - **Alert button** - click to target the rare and auto-place a skull raid marker; drag to reposition
-- **Wildlife filter** - built-in list of known false-positive wildlife names (Plainsstrider, Reef Shark, etc.); user-extendable via `/esd wildlife add` without a code release
-- **Zone blacklist** - suppress scanning in specific zones via right-click or slash command
+- **Unified trigger gate** - every detection path (target, mouseover, nameplate scan, NAME_PLATE_UNIT_ADDED, TestID cache fallback) consults a single `ShouldAlert` filter chain so wildlife/zone/classification/reaction coverage stays consistent; `/esd misfire` reports path + reject stage for diagnostics
+- **Wildlife filter** - built-in list of known false-positive wildlife names (Plainsstrider, Reef Shark, etc.); user-extendable via `/esd wildlife add` without a code release; case-insensitive matching so `add giraffe` suppresses `Giraffe` at runtime
+- **Zone blacklist** - suppress scanning in specific zones via right-click or slash command; passive paths skip blacklisted zones, manual target/mouseover still alerts
 - **Map overlay** - EbonOverlay draws patrol paths on World Map and Minimap for tracked rares
 - **Discovery pins** - gold map pin placed at the player's position each time a rare is detected, persisted across sessions
 - **Minimap button** - drag to reposition (position saved); left-click to open options; right-click to toggle zone blacklist
-- **Rare database** - sourced from the PE-Questie Ebonhold DB via `tools/extract_npcscan_rare_tables.ps1`
+- **Rare database** - sourced from the Questie-X-WotLKDB and Questie-X-EbonholdDB feeds via `tools/extract_npcscan_rare_tables.ps1`
 
 ---
 
@@ -141,7 +142,30 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 
 ## Changelog
 
-### v2.2.0 (pending in-game test)
+### v2.2.3 (2026-04-28)
+- **Unified `ShouldAlert` trigger gate**: every detection path (target, mouseover, ScanNameplates, ScanTrackedNameplates, NAME_PLATE_UNIT_ADDED, TestID cache fallback) now consults a single filter chain instead of five hand-rolled ones. Closes the architectural cause of recurring false-positive churn across v2.1.x/v2.2.x.
+- **Path E (TestID cache fallback) now filtered**: previously fired with zero filtering whenever an active-scan NPC's name happened to be in the WoW client cache. Wildlife and zone blacklists now apply.
+- **`OnFound` split**: gate runs *before* `NPCDeactivate`, so a filtered unit no longer silently drops from the active scan.
+- **Case-insensitive wildlife matching**: `NormalizeName` (trim + collapse + lowercase) on the lookup side; verbatim `WildlifeBlacklist` preserved so `/esd wildlife list` reads naturally; normalized mirror rebuilt at `PLAYER_LOGIN`. Fixes the foot-gun where `/esd wildlife add giraffe` (lowercase) didn't suppress `Giraffe` at runtime.
+- **`/esd misfire` extended**: ring-buffer entries now record path tag (`target`, `mouseover`, `scan`, `trackedscan`, `npua`, `cache`) and reject stage (`wildlife`, `classification`, etc.) for diagnosing future false-positives.
+- Removed `GetNameplateTrackedMatch`; all three callers now use the gate.
+- 24 new unit tests covering `NormalizeName` behaviour, case-insensitive lookup, add/remove case-fold round-trip, and `Synchronize` migration of mixed-case saved entries (163/163 passing).
+
+### v2.2.2 (2026-04-28)
+- **Refreshed rare table from Questie-X**: extractor repointed from `Xurkon/PE-Questie` (superseded) to `Xurkon/Questie-X-WotLKDB` (TBC + WotLK coverage) and `Xurkon/Questie-X-EbonholdDB`. Generated table grew from 328 -> 522 entries.
+- **Tighter rank/zone filters**: WotLK source narrowed to `rank in {2, 4}` (Rare Elite + Rare per cmangos schema) with a curation whitelist for rank=1 entries (loaded from previous committed list via `git show HEAD:`) so established community-rares survive while fresh rank=1 elites are dropped. Default-deny zone resolution drops every unmapped TBC/WotLK instance and sub-zone (Karazhan, Black Temple, ICC, Coilfang, etc.) that was leaking through as `Zone NNNN`.
+- **261 new rares added**: spot-checked - Mezzir the Howler, Bog Lurker, Marticar, Doomsayer Jurim, Icehorn, Arcturis, Skoll, Gondria, Mekthorg the Wild, Putridus the Ancient, etc.
+- **67 entries removed**: mostly questgivers (Rexxar, Misha, Nathanos, Keeper Remulos) and Naxxramas adds. Real rares lost to upstream rank=0 retagging (Ursius, Brumeran, Borelgore, Duskwing, Vagash) remain covered by `OptionsCharacterDefault.NPCs`.
+- Famous Northrend rares (Loque'nahak, Time-Lost Proto-Drake, Vyragosa, Skoll) remain tracked via `EbonSearch.WowheadRares.lua` and the legacy TestID cache scanner - unchanged.
+- Parser rewritten to handle the WotLK DB's `_d[id] = {...}` prefix and multi-line entries via brace balancing.
+- `.gitignore` collapsed to `tools/tmp_*.lua` wildcard so future extractor downloads are auto-ignored.
+
+### v2.2.1 (2026-03-25)
+- **Wildlife blacklist bypass in nameplate scan paths**: `GetNameplateTrackedMatch` had no wildlife check, so `ScanTrackedNameplates` (OnUpdate) and `NAME_PLATE_UNIT_ADDED` (event fast path) bypassed `WILDLIFE_BLACKLIST_BUILTIN` entirely. Any mob both blacklisted and present in the generated rare tables (e.g. Reef Shark, ID 12123) would fire on every nameplate appearance despite the v2.1.8 blacklist fix.
+- One unified wildlife guard inside `GetNameplateTrackedMatch` covers all three callers (`ScanNameplates`, `ScanTrackedNameplates`, `NAME_PLATE_UNIT_ADDED`).
+- 5 regression tests added (139/139 passing).
+
+### v2.2.0 (2026-03-25)
 - **User-editable wildlife blacklist**: `/esd wildlife add <name>` suppresses any misfire by creature name without a code release; entries persist across sessions in `EbonSearchDB`
 - Built-in wildlife entries (`WILDLIFE_BLACKLIST_BUILTIN`) retained for confirmed server-wide misfires; user entries merge at detection time
 - **Fixed ZoneBlacklist persistence**: blacklisted zones were silently lost on every `/reload` and relog; both `ZoneBlacklist` and `WildlifeBlacklist` are now restored from `EbonSearchDB` in `Synchronize()`

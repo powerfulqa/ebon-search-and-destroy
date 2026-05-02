@@ -1,4 +1,4 @@
-# Ebonhold Search and Destroy v2.2.3
+# Ebonhold Search and Destroy v2.2.4
 
 [![Release](https://img.shields.io/github/v/release/powerfulqa/ebon-search-and-destroy?label=release&color=blue)](https://github.com/powerfulqa/ebon-search-and-destroy/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/powerfulqa/ebon-search-and-destroy/total?color=brightgreen)](https://github.com/powerfulqa/ebon-search-and-destroy/releases)
@@ -141,6 +141,10 @@ Both methods feed into the same alert pipeline - queue, toast button, skull mark
 ---
 
 ## Changelog
+
+### v2.2.4 (2026-05-02)
+- **Branded AddOns-list title**: TOC `## Title` for both addons now uses the standard WoW colour-code format - addon name in Ebonhold light blue (`|cff66ccff`), version badge in yellow (`|cffFFFF00[v2.2.4]|r`). Folder-matching short names (`EbonSearch`, `EbonOverlay`) replace the verbose `Ebonhold Search and Destroy` / `... (Overlay)` titles for a cleaner AddOns panel entry.
+- TOC files carry a maintenance comment reminding you to keep the `[vX.Y.Z]` suffix in `## Title` synced with `## Version` on every bump.
 
 ### v2.2.3 (2026-04-28)
 - **Unified `ShouldAlert` trigger gate**: every detection path (target, mouseover, ScanNameplates, ScanTrackedNameplates, NAME_PLATE_UNIT_ADDED, TestID cache fallback) now consults a single filter chain instead of five hand-rolled ones. Closes the architectural cause of recurring false-positive churn across v2.1.x/v2.2.x.

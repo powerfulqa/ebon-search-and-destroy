@@ -1,8 +1,9 @@
 ﻿## Interface: 30300
-## Title: Ebonhold Search and Destroy (Overlay)
+## Title: |cff66ccffEbonOverlay|r |cffFFFF00[v2.2.4]|r
 ## Notes: Ebonhold Search and Destroy Overlay v2.0.0 (Saiket -> Serv)
 ## Author: Serv (powerfulqa)
-## Version: 2.2.3
+# Keep the [vX.Y.Z] suffix in Title above synced with Version below on every bump.
+## Version: 2.2.4
 ## X-Date: 2026-05-02
 
 ## X-Localizations: enUS

@@ -268,21 +268,31 @@ do
 		if ( TargetIsFoundRare( ID ) ) then
 			-- [Ebonhold] nameplate highlight for found target
 			if ( UnitExists( "target" ) and UnitName( "target" ) == self.NpcName ) then
-				-- [Ebonhold] delay highlight to allow nameplate to initialize
-				C_Timer.After( 0.1, function ()
-					local Plate = C_NamePlate.GetNamePlateForUnit( "target" );
-					if ( Plate ) then
-						if ( not Plate.EbonSearchHighlight ) then
-							local Highlight = Plate:CreateTexture( nil, "OVERLAY" );
-							Highlight:SetAllPoints( Plate );
-							Highlight:SetTexture( "Interface\\TargetingFrame\\UI-TargetingFrame-Flash" );
-							Highlight:SetBlendMode( "ADD" );
-							Plate.EbonSearchHighlight = Highlight;
+				-- [Ebonhold] delay highlight to allow nameplate to initialize.
+				-- C_Timer and C_NamePlate are post-3.3.5a APIs; the Ebonhold
+				-- client backports them, so this path is the working one and
+				-- stays. The if-guard below means that on a stock 3.3.5a
+				-- client lacking either API we skip the highlight silently
+				-- rather than throwing a "C_Timer is nil" error -- the rest
+				-- of the rare-targeting flow (scans, button, model preview)
+				-- is unaffected. ScanNameplates / ScanTrackedNameplates are
+				-- unrelated paths and are not gated here.
+				if ( C_Timer and C_NamePlate ) then
+					C_Timer.After( 0.1, function ()
+						local Plate = C_NamePlate.GetNamePlateForUnit( "target" );
+						if ( Plate ) then
+							if ( not Plate.EbonSearchHighlight ) then
+								local Highlight = Plate:CreateTexture( nil, "OVERLAY" );
+								Highlight:SetAllPoints( Plate );
+								Highlight:SetTexture( "Interface\\TargetingFrame\\UI-TargetingFrame-Flash" );
+								Highlight:SetBlendMode( "ADD" );
+								Plate.EbonSearchHighlight = Highlight;
+							end
+							Plate.EbonSearchHighlight:Show();
+							me.HighlightedPlate = Plate;
 						end
-						Plate.EbonSearchHighlight:Show();
-						me.HighlightedPlate = Plate;
-					end
-				end );
+					end );
+				end
 			end
 
 			if ( type( ID ) == "number" ) then -- Update model with more accurate visual

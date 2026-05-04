@@ -61,6 +61,7 @@ dofile(_dir .. "test_tracked_names.lua")
 dofile(_dir .. "test_detection.lua")
 dofile(_dir .. "test_localization.lua")
 dofile(_dir .. "test_wildlife_blacklist.lua")
+dofile(_dir .. "test_version_sync.lua")
 
 -- ---------------------------------------------------------------------------
 -- Summary

@@ -81,9 +81,19 @@ me:Hide();
 -- Pane title
 local Title = me:CreateFontString( nil, "ARTWORK", "GameFontNormalLarge" );
 Title:SetPoint( "TOPLEFT", 16, -16 );
-Title:SetText( L.CONFIG_TITLE );
+Title:SetText( L.CONFIG_TITLE .. " v" .. ( EbonSearch.Version or "?" ) );
+
+-- Author + source byline. Subdued olive so it sits below the title without
+-- competing with it. Identical format to EbonClearance / BarWarden -- this
+-- is the cross-addon visual signature for the Ebonhold suite. Author / URL
+-- are stamped on the namespace in EbonSearch.lua; do not hardcode here.
+local Byline = me:CreateFontString( nil, "ARTWORK", "GameFontNormalSmall" );
+Byline:SetPoint( "TOPLEFT", Title, "BOTTOMLEFT", 0, -4 );
+Byline:SetText( "|cff888866by " .. ( EbonSearch.Author or "?" )
+             .. "  \194\183  " .. ( EbonSearch.URL or "?" ) .. "|r" );
+
 local SubText = me:CreateFontString( nil, "ARTWORK", "GameFontHighlightSmall" );
-SubText:SetPoint( "TOPLEFT", Title, "BOTTOMLEFT", 0, -8 );
+SubText:SetPoint( "TOPLEFT", Byline, "BOTTOMLEFT", 0, -8 );
 SubText:SetPoint( "RIGHT", -32, 0 );
 SubText:SetHeight( 32 );
 SubText:SetJustifyH( "LEFT" );

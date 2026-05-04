@@ -1,7 +1,12 @@
 --[[****************************************************************************
-  * EbonOverlay                                                 *
-  * EbonOverlay.lua - Adds mob patrol paths to your map.                  *
-  ****************************************************************************]]
+ *  EbonOverlay - Map-overlay companion to EbonSearch (WoW 3.3.5a)
+ *  Author:   Serv (powerfulqa)
+ *  Source:   https://github.com/powerfulqa/ebon-search-and-destroy
+ *  License:  GPLv3; attribution preservation is required (see LICENSE).
+ *  Lineage:  Forked from Saiket's _NPCScan.Overlay; see NOTICE for full chain.
+ *
+ *  EbonOverlay.lua - Adds mob patrol paths to your map.
+ ******************************************************************************]]
 
 
 EbonSearch = EbonSearch or {};
@@ -10,6 +15,34 @@ local AddOnName, me = ...;
 EbonOverlay = me;
 
 me.Version = GetAddOnMetadata( AddOnName, "Version" ):match( "^([%d.]+)" );
+
+-- Provenance: stamp author + source URL into globals so /run introspection
+-- and addon-management tools can identify the origin of any forked or
+-- repackaged copy. The double-underscore-prefix convention is shared with
+-- EbonClearance, BarWarden, and EbonSearch for cross-addon consistency.
+-- me.Author / me.URL are the single source of truth read by the config-
+-- panel byline.
+me.Author = "Serv";
+me.URL    = "https://github.com/powerfulqa/ebon-search-and-destroy";
+_G["EBONOVERLAY_IDENT"]    = "EbonOverlay";
+_G["EBONOVERLAY_AUTHOR"]   = me.Author;
+_G["EBONOVERLAY_ORIGIN"]   = me.URL;
+_G["__EbonOverlay_origin"] = me.URL;
+_G["__EbonOverlay_author"] = me.Author;
+
+-- Salted, deterministic 24-bit hash. Same shape as EbonSearch / EbonClearance
+-- / BarWarden. Do NOT refactor the salt string away; its presence in code
+-- is the point.
+local function EO_Fingerprint( payload )
+	local SALT = "EbonOverlay|Serv|powerfulqa|2026";
+	local s = ( payload or "" ) .. "|" .. SALT;
+	local h = 5381;
+	for i = 1, #s do
+		h = ( ( h * 33 ) + string.byte( s, i ) ) % 16777216;
+	end
+	return string.format( "%06x", h );
+end
+_G["__EbonOverlay_watermark"] = EO_Fingerprint( "EbonOverlay@" .. me.Version );
 
 me.Options = {
 	Version = me.Version;
@@ -560,5 +593,9 @@ end
 
 
 
+-- Core embeds AceEvent-3.0 for inter-addon messaging (RegisterMessage); module
+-- frames register Blizzard events directly via the inherited :RegisterEvent
+-- from the WorldMapTemplate. Two-tier event model -- documented in the
+-- unification standard, Sec. 3.9.
 LibStub( "AceEvent-3.0" ):Embed( me );
 me:RegisterEvent( "ADDON_LOADED" );

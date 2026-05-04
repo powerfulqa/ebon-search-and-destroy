@@ -69,7 +69,32 @@ Build-time unit tests run with standard Lua 5.x (no WoW client needed):
 lua tests/run_tests.lua
 ```
 
-134 tests across 5 suites: `test_overlay_math`, `test_detection`, `test_texture_geom`, `test_tracked_names`, `test_wildlife_blacklist`. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and pull request.
+Suites: `test_overlay_math`, `test_detection`, `test_texture_geom`, `test_tracked_names`, `test_wildlife_blacklist`, `test_localization`, `test_version_sync`. GitHub Actions (`.github/workflows/tests.yml`) runs these automatically on every push and pull request.
+
+---
+
+## Releasing
+
+The version literal lives in seven places: `## Title [vX.Y.Z]`, `## Version`, and `## X-Date` in each of the two `.toc` files, plus the H1 of this README. All in-game version display (config-panel byline, watermark, minimap tooltip, slash-command output) reads from `## Version` via `GetAddOnMetadata` at game time, so the seven literal lines are the only manual touchpoints per release.
+
+Use the bump script — never hand-edit:
+
+```powershell
+.\tools\bump-version.ps1 2.2.5            # writes the change
+.\tools\bump-version.ps1 2.2.5 -DryRun    # preview the diff, no writes
+```
+
+Then:
+
+```powershell
+lua tests\run_tests.lua                   # test_version_sync must pass
+git diff                                  # eyeball
+git commit -am "chore(v2.2.5): bump"
+git tag v2.2.5
+git push --follow-tags
+```
+
+`test_version_sync` cross-checks all seven touchpoints; CI fails if any drifts. Adding a new file that carries the version literal? Add it to both `tools/bump-version.ps1` and `tests/test_version_sync.lua` so the next bumper can't forget.
 
 ---
 

@@ -115,6 +115,8 @@ do
 		GameTooltip:AddLine( "|cff808080Left-click|r: open options" );
 		GameTooltip:AddLine( "|cff808080Right-click|r: toggle zone blacklist" );
 		GameTooltip:AddLine( "|cff808080Drag|r: reposition" );
+		GameTooltip:AddLine( " " );
+		GameTooltip:AddLine( "|cff888866v" .. ( EbonSearch.Version or "?" ) .. "|r" );
 		GameTooltip:Show();
 	end );
 	icon:SetScript( "OnLeave", GameTooltip_Hide );

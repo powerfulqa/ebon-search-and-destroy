@@ -248,10 +248,19 @@ me:Hide();
 -- Pane title
 me.Title = me:CreateFontString( nil, "ARTWORK", "GameFontNormalLarge" );
 me.Title:SetPoint( "TOPLEFT", 16, -16 );
-me.Title:SetText( Label );
+me.Title:SetText( Label .. " v" .. ( EbonOverlay.Version or "?" ) );
+
+-- Author + source byline. Identical format to EbonSearch / EbonClearance /
+-- BarWarden -- the cross-addon visual signature. Author / URL stamped on
+-- the namespace in EbonOverlay.lua.
+me.Byline = me:CreateFontString( nil, "ARTWORK", "GameFontNormalSmall" );
+me.Byline:SetPoint( "TOPLEFT", me.Title, "BOTTOMLEFT", 0, -4 );
+me.Byline:SetText( "|cff888866by " .. ( EbonOverlay.Author or "?" )
+                .. "  \194\183  " .. ( EbonOverlay.URL or "?" ) .. "|r" );
+
 local SubText = me:CreateFontString( nil, "ARTWORK", "GameFontHighlightSmall" );
 me.SubText = SubText;
-SubText:SetPoint( "TOPLEFT", me.Title, "BOTTOMLEFT", 0, -8 );
+SubText:SetPoint( "TOPLEFT", me.Byline, "BOTTOMLEFT", 0, -8 );
 SubText:SetPoint( "RIGHT", -32, 0 );
 SubText:SetHeight( 32 );
 SubText:SetJustifyH( "LEFT" );
